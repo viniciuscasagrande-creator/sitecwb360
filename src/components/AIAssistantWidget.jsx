@@ -19,7 +19,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
     {
       id: 1,
       sender: 'ai',
-      text: 'Olá! Sou a **CWB360° AI**, sua assistente virtual especialista em Curitiba e Região Metropolitana! 🌲✨\n\nPosso te ajudar a encontrar parques, bares, hotéis, shows, passeios de trem e restaurantes típicos. O que você gostaria de explorar hoje?',
+      text: 'Olá! Sou o **Assistente Virtual Curitiba 360**, seu guia virtual especialista em Curitiba e Região Metropolitana! 🌲✨\n\nPosso te ajudar a encontrar parques, bares, hotéis, shows, passeios de trem e restaurantes típicos. O que você gostaria de explorar hoje?',
       recommendations: []
     }
   ]);
@@ -127,14 +127,14 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
         }}
         onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
         onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-        title="Conversar com CWB360° AI"
+        title="Assistente Virtual Curitiba 360"
       >
         <div style={{ position: 'relative' }}>
           <Bot size={26} color="#ffffff" />
           <span style={{ position: 'absolute', top: '-4px', right: '-4px', width: '10px', height: '10px', backgroundColor: '#22c55e', borderRadius: '50%', border: '2px solid #ffffff' }} />
         </div>
         <span style={{ fontSize: '14px', fontWeight: '800', letterSpacing: '0.3px', whiteSpace: 'nowrap' }}>
-          {isOpen ? 'Fechar IA' : 'IA CWB360°'}
+          {isOpen ? 'Fechar IA' : 'IA Curitiba 360'}
         </span>
         <Sparkles size={18} color="#f59e0b" />
       </button>
@@ -183,11 +183,11 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <h4 style={{ fontSize: '16px', fontWeight: '900', color: '#ffffff' }}>CWB360° AI</h4>
+                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#ffffff' }}>Assistente Virtual Curitiba 360</h4>
                   <span style={{ backgroundColor: '#22c55e', color: '#ffffff', fontSize: '10px', fontWeight: '800', padding: '2px 6px', borderRadius: '4px' }}>ONLINE</span>
                 </div>
                 <p style={{ fontSize: '11px', color: '#cbd5e1', marginTop: '1px' }}>
-                  Inteligência Especialista em Curitiba & RMC
+                  IA Especialista em Curitiba & RMC
                 </p>
               </div>
             </div>
@@ -291,7 +291,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
             {isTyping && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#ffffff', padding: '10px 16px', borderRadius: '16px', border: '1px solid #e2e8f0', width: 'fit-content' }}>
                 <RefreshCw size={14} color="#00a896" className="animate-spin" />
-                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>CWB360° AI está pensando...</span>
+                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>Assistente Virtual Curitiba 360 está pensando...</span>
               </div>
             )}
 
