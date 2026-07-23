@@ -2,9 +2,9 @@ export const UNIFIED_NAV_ITEMS = [
   { id: 'all', label: 'Todos os Passeios', icon: 'Sparkles', desc: 'Destaques principais, imperdíveis e atrações próximas' },
   { id: 'parques', label: 'Parques & Natureza', icon: 'Trees', desc: 'Bosques, estufas, recanto das capivaras e mirantes ecológicos' },
   { id: 'cultura', label: 'Cultura & Patrimônio', icon: 'Compass', desc: 'Museu do Olho, Ópera de Arame, Centro Histórico e Memoriais Étnicos' },
-  { id: 'shows', label: 'Shows', icon: 'Music', desc: 'Pedreira Paulo Leminski, Hard Rock Cafe e Vale da Música Flutuante' },
-  { id: 'teatros', label: 'Teatros', icon: 'Drama', desc: 'Teatro Guaíra, Teatro Paiol, Ópera de Arame e Teatro São João' },
-  { id: 'eventos', label: 'Eventos', icon: 'Calendar', desc: 'Festival de Teatro de Curitiba, Natal Palácio Avenida e Feiras da Praça Osório' },
+  { id: 'shows', label: 'Shows', icon: 'Music', desc: 'Pedreira Paulo Leminski, Hard Rock Cafe, Live Curitiba e Vale da Música' },
+  { id: 'teatros', label: 'Teatros', icon: 'Drama', desc: 'Teatro Guaíra, Teatro Paiol, Teatro Positivo, Ópera de Arame e Regina Vogue' },
+  { id: 'eventos', label: 'Eventos', icon: 'Calendar', desc: 'Festival de Teatro CWB, Natal Palácio Avenida, Oficina de Música e Feira da Osório' },
   { id: 'tours', label: 'Tours & Passeios', icon: 'Ticket', desc: 'Linha Turismo Double-Decker, Trem para Morretes e Walking Tours' },
   { id: 'gastronomia', label: 'Gastronomia CWB', icon: 'Utensils', desc: 'Santa Felicidade, Mercado Municipal, Terrazza 40, Bar do Alemão e Barreado' },
   { id: 'agencias', label: 'Agências & Região Metr.', icon: 'Building2', desc: 'Caminho do Vinho SJP, Ilha do Mel, Vila Velha, Lapa, Traslados CWB e Cotações' },
@@ -70,6 +70,7 @@ export const BRAND_LANDMARKS = [
 ];
 
 export const ATTRACTIONS = [
+  // --- SHOWS ---
   {
     id: 'pedreira-shows',
     title: 'Pedreira Paulo Leminski • Shows & Festivais 360°',
@@ -147,8 +148,60 @@ export const ATTRACTIONS = [
     features: ['Palco flutuante no meio do lago da pedreira', 'Apresentações diárias ininterruptas de Jazz e MPB', 'Restaurante e Café da Ópera no deck', 'Cachoeira de fundo com carpas flutuantes', 'Ambiente contemplativo mágico']
   },
   {
+    id: 'live-curitiba-shows',
+    title: 'Live Curitiba • Arena de Shows & Eventos',
+    subtitle: 'Novo Mundo • Sertanejo, Pagode & Pop',
+    location: 'Novo Mundo • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'eventos', 'promocionais'],
+    topic: 'shows',
+    discount: 'PONTOS DE VENDA ONLINE',
+    rating: 4.8,
+    reviewsCount: 3400,
+    duration: 'Noite Inteira',
+    price: 60.00,
+    originalPrice: 80.00,
+    isFree: false,
+    paymentTerms: 'Pista, Camarote & Mesas VIP',
+    lat: -25.4780,
+    lng: -49.2890,
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Uma das maiores e mais modernas casas de espetáculos do Sul do Brasil! Palco frequente das maiores turnês de sertanejo, pagode, funk e pop nacional, contando com sistema de sonorização de última geração e camarotes privativos.',
+    features: ['Capacidade para 10 mil espectadores', 'Camarotes VIP suspensos', 'Estacionamento privativo com segurança', 'Grandes turnês de sertanejo e pop', 'Climatização de alta performance']
+  },
+  {
+    id: 'santa-marta-shows',
+    title: 'Santa Marta Bar • Feijoada com Samba & Sertanejo',
+    subtitle: 'Batel • Gastrobar & Música ao Vivo',
+    location: 'Batel • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'gastronomia'],
+    topic: 'shows',
+    discount: 'SÁBADO DE FEIJOADA',
+    rating: 4.7,
+    reviewsCount: 2900,
+    duration: '3 a 5 horas',
+    price: 35.00,
+    originalPrice: 45.00,
+    isFree: false,
+    paymentTerms: 'Couvert & Buffet de Feijoada',
+    lat: -25.4385,
+    lng: -49.2815,
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O gastrobar sertanejo mais premiado de Curitiba! Famoso pelas noites vibrantes com duplas sertanejas ao vivo, pagode aos domingos e a concorrida Feijoada com Samba aos sábados no coração do Batel.',
+    features: ['Feijoada completa com roda de samba nos sábados', 'Shows sertanejos de terça a domingo', 'Carta de drinks artesanais e chopp gelado', 'Localização privilegiada no Batel', 'Ambiente rústico elegante']
+  },
+
+  // --- TEATROS ---
+  {
     id: 'teatro-guaira',
-    title: 'Teatro Guaíra (Auditório Bento Munhoz da Rocha)',
+    title: 'Teatro Guaíra (Auditório Bento Munhoz da Rocha Neto)',
     subtitle: 'Centro • Praça Santos Andrade',
     location: 'Centro • Curitiba',
     category: 'teatros',
@@ -196,6 +249,83 @@ export const ATTRACTIONS = [
     description: 'Símbolo da transformação cultural de Curitiba! Antigo depósito de pólvora do Exército construído em 1906 e transformado em teatro arena em 1971 inaugurado por Vinicius de Moraes. Possui acústica intimista e palco circular fantástico.',
     features: ['Construção circular histórica de 1906 em tijolos à vista', 'Inaugurado pelo poetista Vinicius de Moraes', 'Palco arena de proximidade com o público', 'Shows de MPB, Bossa Nova e peças de vanguarda', 'Estac. próximo no bairro Prado Velho']
   },
+  {
+    id: 'teatro-positivo',
+    title: 'Teatro Positivo • Maior Teatro Privado do Paraná',
+    subtitle: 'Campo Comprido • Universidade Positivo',
+    location: 'Campo Comprido • Curitiba',
+    category: 'teatros',
+    categories: ['teatros', 'shows', 'promocionais'],
+    topic: 'teatros',
+    discount: 'INGRESSOS ONLINE',
+    rating: 4.9,
+    reviewsCount: 4100,
+    duration: '2 a 3 horas',
+    price: 50.00,
+    originalPrice: 70.00,
+    isFree: false,
+    paymentTerms: 'Plateia Inferior e Superior',
+    lat: -25.4460,
+    lng: -49.3520,
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Inspirado no Teatro Epidauro da Grécia Antiga! O Teatro Positivo conta com 2.400 lugares e tecnologia acústica internacional. É o principal palco de grandes espetáculos musicais da Broadway, óperas e comédias de destaque nacional.',
+    features: ['2.400 assentos estofados hiper confortáveis', 'Arquitetura inspirada na Grécia Antiga', 'Estacionamento amplo no campus universitário', 'Conforto térmico e acessibilidade nota 10', 'Grandes musicais e comédias em cartaz']
+  },
+  {
+    id: 'teatro-fernanda-montenegro',
+    title: 'Teatro Fernanda Montenegro • Shopping Novo Batel',
+    subtitle: 'Batel • Teatro & Comédias',
+    location: 'Batel • Curitiba',
+    category: 'teatros',
+    categories: ['teatros', 'cultura'],
+    topic: 'teatros',
+    discount: 'TEATRO BATEL',
+    rating: 4.7,
+    reviewsCount: 1850,
+    duration: '1h30m',
+    price: 35.00,
+    originalPrice: 50.00,
+    isFree: false,
+    paymentTerms: 'Bilheteria no Shopping',
+    lat: -25.4370,
+    lng: -49.2830,
+    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Localizado dentro do Shopping Novo Batel, homenageia a maior atriz do cinema e teatro brasileiro! Sala acolhedora de 500 lugares famosa pelas temporadas de teatro comédia, dramas premiados e estréias do Festival de Teatro de Curitiba.',
+    features: ['Localizado no Shopping Novo Batel com segurança', '500 assentos com ótima visibilidade de todos os ângulos', 'Próximo aos melhores restaurantes do Batel', 'Estacionamento coberto no shopping', 'Bilheteria aberta à tarde']
+  },
+  {
+    id: 'teatro-regina-vogue',
+    title: 'Teatro Regina Vogue • Shopping Estação',
+    subtitle: 'Rebouças • Musicais Infantis & Humor',
+    location: 'Rebouças • Curitiba',
+    category: 'teatros',
+    categories: ['teatros', 'eventos'],
+    topic: 'teatros',
+    discount: 'TEATRO INFANTIL & HUMOR',
+    rating: 4.8,
+    reviewsCount: 2300,
+    duration: '1h20m',
+    price: 25.00,
+    originalPrice: 40.00,
+    isFree: false,
+    paymentTerms: 'Desconto Família',
+    lat: -25.4380,
+    lng: -49.2660,
+    image: 'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Referência em teatro para toda a família em Curitiba! Localizado no piso superior do Shopping Estação, oferece programação variada nos fins de semana com musicais infantis, espetáculos de mágica, stand-up comedy e peças adultas à noite.',
+    features: ['Estrutura no Shopping Estação', 'Programação infantil reforçada nos fins de semana', 'Facilidade de acesso e estacionamento', 'Stand-up comedy e peças de humor à noite', 'Descontos para famílias e estudantes']
+  },
+
+  // --- EVENTOS ---
   {
     id: 'festival-teatro-cwb',
     title: 'Festival de Teatro de Curitiba (Mostra Oficial & Fringe)',
@@ -246,6 +376,58 @@ export const ATTRACTIONS = [
     description: 'O coral de Natal mais emocionante do Brasil! As janelas do histórico Palácio Avenida se acendem no calçadão da Rua XV de Novembro com centenas de crianças cantando clássicos natalinos acompanhadas por projeções luminosas 3D.',
     features: ['Mais de 100 crianças cantando nas janelas iluminadas', 'Show de luzes e projeção mapeada 3D na fachada', 'Tradição natalina de mais de 30 anos em Curitiba', 'Acesso gratuito no calçadão das Flores', 'Injeção de espírito natalino mágico']
   },
+  {
+    id: 'feira-inverno-osorio',
+    title: 'Feira Especial de Inverno da Praça Osório',
+    subtitle: 'Praça Osório • Junho a Julho',
+    location: 'Praça Osório • Curitiba',
+    category: 'eventos',
+    categories: ['eventos', 'gastronomia', 'promocionais'],
+    topic: 'eventos',
+    discount: 'ENTRADA LIVRE',
+    rating: 4.8,
+    reviewsCount: 3500,
+    duration: 'Manhã e Noite',
+    price: 0.00,
+    originalPrice: 0.00,
+    isFree: true,
+    paymentTerms: 'Acesso Gratuito à Feira',
+    lat: -25.4330,
+    lng: -49.2760,
+    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'A feira de inverno mais charmosa da capital paranaense! A Praça Osório ganha dezenas de barracas de vestuário em lã, gorros, mantas e uma praça gastronômica aquecida oferecendo Quentão com gemada ou vinho quente e Pinhão cozido.',
+    features: ['Gastronomia típica de inverno (Pinhão e Quentão)', 'Barracas de malhas, Lãs e Artesanato', 'Iluminação e decoração temática de inverno', 'Localizado no início do calçadão da Rua XV', 'Entrada livre todos os dias das 10h às 21h']
+  },
+  {
+    id: 'oficina-de-musica',
+    title: 'Oficina de Música de Curitiba (Festival de Verão)',
+    subtitle: 'Vários Teatros & Parques • Janeiro',
+    location: 'Teatros & Parques • Curitiba',
+    category: 'eventos',
+    categories: ['eventos', 'shows', 'cultura'],
+    topic: 'eventos',
+    discount: 'GRATUITO & POPULAR',
+    rating: 4.9,
+    reviewsCount: 3100,
+    duration: '2 Semanas em Janeiro',
+    price: 15.00,
+    originalPrice: 25.00,
+    isFree: false,
+    paymentTerms: 'Concertos Gratuitos e Populares',
+    lat: -25.4280,
+    lng: -49.2660,
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O maior festival de verão de música erudita e popular do Sul do Brasil! Realizado há mais de 40 anos em janeiro, reúne professores internacionais, concertos sinfônicos no Guaíra, jam sessions de jazz nos bares e aulas públicas.',
+    features: ['Concertos eruditos e populares de alto nível', 'Professores e músicos renomados do mundo todo', 'Jam sessions nos bares do Largo da Ordem', 'Apresentações gratuitas nos parques da cidade', 'Mais de 200 cursos e oficinas musicais']
+  },
+
+  // --- ATRAÇÕES CLÁSSICAS ---
   {
     id: 'jardim-botanico',
     title: 'Jardim Botânico de Curitiba & Jardim das Sensações',
@@ -402,7 +584,7 @@ export const ATTRACTIONS = [
     subtitle: 'Lapa • Patrimônio Histórico RMC',
     location: 'Lapa • Região Metropolitana',
     category: 'agencias',
-    categories: ['agencias', 'cultura', 'tours'],
+    categories: ['agencias', 'cultura', 'tours', 'teatros'],
     topic: 'agencias',
     discount: 'OFERTA AGÊNCIA',
     rating: 4.8,
