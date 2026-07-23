@@ -656,10 +656,9 @@ export const ATTRACTIONS = [
     paymentTerms: 'Acesso Gratuito',
     lat: -25.3780,
     lng: -49.2820,
-    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
+    image: '/images/parque-tangua.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
-      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=90&v=tangua_park_lake'
+      '/images/parque-tangua.jpg'
     ],
     description: 'O pôr do sol mais espetacular de Curitiba! Construído no local de duas antigas pedreiras unidas por um túnel escavado na rocha de 45 metros. Possui mirante em formato de castelo com jardins franceses, cascata artificial de 65m caindo sobre o lago e ancoradouro.',
     features: ['O pôr do sol mais famoso da cidade', 'Túnel na rocha com passarela suspensa', 'Cascata artificial de 65 metros', 'Bistrô do Tanguá com café colonial', 'Ciclovia e pistas de caminhada']

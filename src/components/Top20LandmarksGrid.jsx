@@ -16,10 +16,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque Ecológico',
     icon: Trees,
     color: '#059669',
-    image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/jardim-botanico.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80'
+      '/images/jardim-botanico.jpg'
     ],
     location: 'Bairro Jardim Botânico • Eng. Ostoja Roguski, s/n',
     howToGet: 'Linha Turismo (Parada 1) ou BRT Centenário / Campo Comprido (Estação Botânico)',
@@ -44,8 +43,7 @@ export const TOP_20_LANDMARKS = [
     isHotel: true,
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80'
     ],
     location: 'Batel • Av. Jaume II, Praça da Espanha',
     howToGet: 'Táxi / Uber a 5 min do Centro ou Linha Turismo (Parada Praça da Espanha)',
@@ -56,8 +54,8 @@ export const TOP_20_LANDMARKS = [
     duration: 'Hospedagem 5★',
     isFree: false,
     priceVal: 420.0,
-    description: 'O melhor endereço de hospedagem de Curitiba! Localizado no bairro nobre do Batel em frente à arborizada Praça da Espanha. Oferece suítes amplas climatizadas, SPA exclusivo com massagens, piscina aquecida coberta, sauna e o internacional Restaurante Catanzaro.',
-    tip: 'Escolha suítes nos andares superiores para ter uma vista panorâmica incrível do pôr do sol na Praça da Espanha.'
+    description: 'O melhor endereço de hospedagem de Curitiba! Localizado no bairro nobre do Batel em frente à arborizada Praça da Espanha.',
+    tip: 'Escolha suítes nos andares superiores para ter uma vista panorâmica incrível.'
   },
   {
     id: 'mon',
@@ -67,9 +65,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Cultura & Arte',
     icon: Eye,
     color: '#7c3aed',
-    image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/mon-olho.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80'
+      '/images/mon-olho.jpg'
     ],
     location: 'Centro Cívico • Marechal Hermes, 999',
     howToGet: 'Linha Turismo (Parada MON) ou Ônibus Interbairros I / Ahu-Los Angeles',
@@ -80,7 +78,7 @@ export const TOP_20_LANDMARKS = [
     duration: '3 horas',
     isFree: false,
     priceVal: 30.0,
-    description: 'Um dos maiores complexos de arte da América Latina projetado pelo renomado arquiteto Oscar Niemeyer. Conhecido nacionalmente como o "Museu do Olho" devido ao imponente anexo de 30 metros de altura.',
+    description: 'Um dos maiores complexos de arte da América Latina projetado pelo renomado arquiteto Oscar Niemeyer.',
     tip: 'O gramado atrás do museu (Parcão) é o ponto oficial de encontro de cães e piqueniques à tarde.'
   },
   {
@@ -91,9 +89,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Teatro & Shows',
     icon: Compass,
     color: '#d97706',
-    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/opera-de-arame.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80'
+      '/images/opera-de-arame.jpg'
     ],
     location: 'Pilarzinho / Abranches • R. João Gava, 970',
     howToGet: 'Linha Turismo (Parada Ópera de Arame) ou Ônibus Mateus Leme / Nilo Peçanha',
@@ -104,7 +102,7 @@ export const TOP_20_LANDMARKS = [
     duration: '2 horas',
     isFree: false,
     priceVal: 15.0,
-    description: 'Construída em apenas 75 dias com tubos de aço e teto transparente de policarbonato, a Ópera de Arame flutua sobre o lago de uma antiga pedreira desativada cercada pela vegetação da Mata Atlântica.',
+    description: 'Construída em apenas 75 dias com tubos de aço e teto transparente de policarbonato, a Ópera de Arame flutua sobre o lago de uma antiga pedreira.',
     tip: 'Aproveite o café panorâmico no deck do lago ouvindo os shows de Jazz ao vivo flutuantes.'
   },
   {
@@ -115,10 +113,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque & Vista 360°',
     icon: Sparkles,
     color: '#ea580c',
-    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
+    image: '/images/parque-tangua.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
-      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=90&v=tangua_park_lake'
+      '/images/parque-tangua.jpg'
     ],
     location: 'Taboão / Pilarzinho • R. Oswaldo Maciel, s/n',
     howToGet: 'Linha Turismo (Parada Parque Tanguá) ou Ônibus Nilo Peçanha',
