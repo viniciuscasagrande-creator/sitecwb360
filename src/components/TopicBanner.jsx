@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, Ticket, Utensils, Sparkles, Music, Drama, Calendar, Beer, MapPin, CheckCircle2 } from 'lucide-react';
+import { Trees, Compass, Ticket, Utensils, Sparkles, Music, Drama, Calendar, Beer, Hotel, MapPin, CheckCircle2 } from 'lucide-react';
 
 const TOPIC_DETAILS = {
   parques: {
@@ -66,6 +66,17 @@ const TOPIC_DETAILS = {
       { label: "Botequim Histórico", val: "Bar do Alemão de 1979" },
       { label: "Patrimônio Gastronômico", val: "Carne de Onça na Mesa" },
       { label: "Torneiras de Chopp", val: "+30 no We Are Bastards" }
+    ]
+  },
+  hoteis: {
+    title: "Hotéis, Pousadas & Hospedagens em Curitiba e RMC",
+    subtitle: "Hospede-se nos hotéis 5 estrelas do Batel, pousadas pé na areia na Ilha do Mel ou refúgios no Caminho do Vinho.",
+    bgGradient: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)",
+    icon: Hotel,
+    stats: [
+      { label: "Localização Nobre", val: "Praça da Espanha & Batel" },
+      { label: "Praia & Natureza", val: "Pousadas Ilha do Mel" },
+      { label: "Polo Enoturístico", val: "Chalés no Caminho do Vinho" }
     ]
   },
   tours: {

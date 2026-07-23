@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Sparkles, Trees, Compass, Ticket, Utensils, Percent, MapPin, HelpCircle,
-  Music, Drama, Calendar, Building2, Beer 
+  Music, Drama, Calendar, Building2, Beer, Hotel 
 } from 'lucide-react';
 import { UNIFIED_NAV_ITEMS } from '../data/attractions';
 
@@ -16,6 +16,7 @@ const ICON_MAP = {
   Utensils,
   Beer,
   Building2,
+  Hotel,
   Percent,
   MapPin,
   HelpCircle

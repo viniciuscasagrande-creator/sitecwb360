@@ -9,6 +9,7 @@ export const UNIFIED_NAV_ITEMS = [
   { id: 'gastronomia', label: 'Gastronomia CWB', icon: 'Utensils', desc: 'Santa Felicidade, Mercado Municipal, Terrazza 40, Bar do Alemão e Barreado' },
   { id: 'bares', label: 'Bares & Pubs', icon: 'Beer', desc: 'Bar do Alemão, Porks, We Are Bastards, Mercearia Fantinato, Bossa Bar e Pubs RMC' },
   { id: 'agencias', label: 'Agências & Região Metr.', icon: 'Building2', desc: 'Caminho do Vinho SJP, Ilha do Mel, Vila Velha, Lapa, Traslados CWB e Cotações' },
+  { id: 'hoteis', label: 'Hotéis & Hospedagem', icon: 'Hotel', desc: 'Radisson Batel, Nomaa Boutique, Bourbon, Rayon, Pousadas Ilha do Mel e RMC' },
   { id: 'ofertas', label: 'Ofertas & Cupons', icon: 'Percent', desc: 'Passeios com descontos exclusivos e benefícios de ingressos' },
   { id: 'roteiros', label: 'Roteiros Prontos', icon: 'MapPin', desc: 'Cronogramas dia-a-dia para 1, 3 ou 5 dias, Família e Romântico' },
   { id: 'guia', label: 'Guia Prático & Dicas', icon: 'HelpCircle', desc: 'Transporte nos Tubos BRT, Clima das 4 estações e Mascote Capivara' },
@@ -29,6 +30,16 @@ export const HERO_SLIDES = [
     ctaText: 'Ver Detalhes do Passeio'
   },
   {
+    id: 'radisson-hotel-curitiba',
+    title: 'Radisson Hotel Curitiba • Luxo 5 Estrelas na Praça da Espanha',
+    tagline: 'Onde o Conforto Encontra o Estilo de Vida de Curitiba',
+    badge: '🏨 Hotelaria Premium no Batel',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80',
+    description: 'Hospede-se com elegância em frente à icônica Praça da Espanha no Batel, com SPA completo, piscina aquecida e café da manhã internacional.',
+    price: 'A partir de R$ 420,00',
+    ctaText: 'Reservar Hospedagem'
+  },
+  {
     id: 'trem-serra-verde',
     title: 'Passeio de Trem Serra Verde Express',
     tagline: 'Mata Atlântica & Barreado Típico em Morretes',
@@ -47,31 +58,174 @@ export const HERO_SLIDES = [
     description: 'Saboreie o autêntico Chopp Submarino acompanhado do caneco souvenir de Steinhäger e a famosa Carne de Onça no coração do Centro Histórico.',
     price: 'A partir de R$ 45,00',
     ctaText: 'Conhecer Bar do Alemão'
-  },
-  {
-    id: 'pedreira-shows',
-    title: 'Pedreira Paulo Leminski • Shows Nacionais & Internacionais',
-    tagline: 'O Maior Palco a Céu Aberto da América Latina',
-    badge: '🎵 Polo de Shows & Festivais',
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1600&q=80',
-    description: 'Assista a grandes turnês de rock, pop e festivais inesquecíveis na majestosa pedreira cercada por paredões de rocha de 30 metros.',
-    price: 'Consulte Programação',
-    ctaText: 'Ver Agenda de Shows'
   }
 ];
 
 export const BRAND_LANDMARKS = [
   { id: 'jardim-botanico', name: 'Jardim Botânico', icon: 'Trees', desc: 'Estufa icônica em ferro e vidro estilo Palácio de Cristal de Londres' },
   { id: 'mon', name: 'Museu Oscar Niemeyer', icon: 'Eye', desc: 'O famoso Museu do Olho com arquitetura futurista de Niemeyer' },
+  { id: 'radisson-hotel-curitiba', name: 'Radisson Batel', icon: 'Hotel', desc: 'Hotelaria de luxo 5 estrelas em frente à Praça da Espanha' },
   { id: 'bar-do-alemao', name: 'Bar do Alemão', icon: 'Beer', desc: 'Chopp Submarino com canequinho e carne de onça no Largo da Ordem' },
   { id: 'teatro-guaira', name: 'Teatro Guaíra', icon: 'Drama', desc: 'Complexo das artes cênicas, orquestra sinfônica e balé' },
   { id: 'pedreira-shows', name: 'Pedreira Leminski', icon: 'Music', desc: 'Maior palco de shows a céu aberto cercado por rochas' },
   { id: 'torre', name: 'Torre Panorâmica', icon: 'TowerControl', desc: 'Mirante 360° com visão contemplativa para toda a região metropolitana' },
   { id: 'opera', name: 'Ópera de Arame', icon: 'Landmark', desc: 'Teatro tubular transparente integrado à natureza e ao lago da pedreira' },
-  { id: 'paco', name: 'Paço da Liberdade', icon: 'Building2', desc: 'Patrimônio histórico cultural tombado com café e arquitetura Art Nouveau' },
 ];
 
 export const ATTRACTIONS = [
+  // --- HOTÉIS & HOSPEDAGEM ---
+  {
+    id: 'radisson-hotel-curitiba',
+    title: 'Radisson Hotel Curitiba • 5 Estrelas no Batel',
+    subtitle: 'Praça da Espanha / Batel • Curitiba',
+    location: 'Batel • Curitiba',
+    category: 'hoteis',
+    categories: ['hoteis', 'pacotes', 'promocionais'],
+    topic: 'hoteis',
+    discount: 'RESERVA COM CAFÉ INCLUÍDO',
+    rating: 4.9,
+    reviewsCount: 3800,
+    duration: 'Diária com Check-in 14h',
+    price: 420.00,
+    originalPrice: 490.00,
+    isFree: false,
+    paymentTerms: 'Em até 4x sem juros no Cartão',
+    lat: -25.4380,
+    lng: -49.2890,
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Um dos hotéis de luxo mais sofisticados de Curitiba! Localizado estrategicamente em frente à arborizada Praça da Espanha no bairro nobre do Batel. Oferece suítes amplas climatizadas, SPA exclusivo com massagens, piscina aquecida coberta, sauna e o internacional Restaurante Catanzaro.',
+    features: ['Localização nobre em frente à Praça da Espanha', 'Piscina aquecida coberta e SPA relaxante', 'Restaurante Catanzaro com cozinha internacional', 'Café da manhã buffet completo estilo continental', 'Estac. valet com manobrista 24h']
+  },
+  {
+    id: 'nomaa-hotel-boutique',
+    title: 'Nomaa Hotel • Hotel Boutique Contemporâneo 5★',
+    subtitle: 'Batel • Design & Gastronomia',
+    location: 'Batel • Curitiba',
+    category: 'hoteis',
+    categories: ['hoteis', 'gastronomia'],
+    topic: 'hoteis',
+    discount: 'HOTEL BOUTIQUE PREMIADO',
+    rating: 5.0,
+    reviewsCount: 2900,
+    duration: 'Diária com Brunch',
+    price: 680.00,
+    originalPrice: 780.00,
+    isFree: false,
+    paymentTerms: 'Serviço Personalizado de Concierge',
+    lat: -25.4410,
+    lng: -49.2860,
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O primeiro hotel boutique autoral de Curitiba! Premiado internacionalmente pelo design moderno e atendimento ultra personalizado. Abriga o aclamado Restaurante Nomade com brunch aos finais de semana e quartos equipados com lençóis de algodão egípcio e cafeteira Nespresso.',
+    features: ['Design de interiores assinado por arquitetos renomados', 'Restaurante Nomade com alta gastronomia e brunch', 'Lençóis de algodão egípcio 600 fios e amenidades de luxo', 'Academia de última geração TechnoGym', 'Bicicletas cortesia para passeios pelo Batel']
+  },
+  {
+    id: 'bourbon-curitiba-hotel',
+    title: 'Bourbon Curitiba Hotel & Suites • Centro Histórico',
+    subtitle: 'Centro • Praça Tiradentes / Paço',
+    location: 'Centro Histórico • Curitiba',
+    category: 'hoteis',
+    categories: ['hoteis', 'cultura', 'promocionais'],
+    topic: 'hoteis',
+    discount: '15% OFF NO SITE',
+    rating: 4.8,
+    reviewsCount: 4100,
+    duration: 'Diária Executiva',
+    price: 360.00,
+    originalPrice: 420.00,
+    isFree: false,
+    paymentTerms: 'Próximo à Parada Linha Turismo',
+    lat: -25.4290,
+    lng: -49.2700,
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Tradição e excelência no coração financeiro e cultural de Curitiba! A poucos passos da Praça Tiradentes, Paço da Liberdade e da Feira do Largo da Ordem. Possui área de lazer completa com piscina coberta climatizada, sauna e o famoso Restaurante 99.',
+    features: ['Localização central perfeita a 100m da Linha Turismo', 'Piscina coberta climatizada e fitness center', 'Famoso buffet de Feijoada aos sábados no Restaurante 99', 'Suítes espaçosas com isolamento acústico', 'Centro de convenções executivo completo']
+  },
+  {
+    id: 'rayon-hotel-curitiba',
+    title: 'Grand Hotel Rayon & SPA Hai Yo 5★',
+    subtitle: 'Centro / Batel • Gastronomia Asiática',
+    location: 'Centro / Batel • Curitiba',
+    category: 'hoteis',
+    categories: ['hoteis', 'gastronomia', 'cupons'],
+    topic: 'hoteis',
+    discount: 'PAC PACOTE ROMÂNTICO',
+    rating: 4.9,
+    reviewsCount: 3200,
+    duration: 'Diária com SPA',
+    price: 490.00,
+    originalPrice: 580.00,
+    isFree: false,
+    paymentTerms: 'Serviço de Quarto 24h',
+    lat: -25.4350,
+    lng: -49.2780,
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Símbolo de imponência e refinamento corporativo e de lazer! O Grand Hotel Rayon se destaca pela gastronomia asiática de padrão internacional do Restaurante Hai Yo e o exclusivo SPA com terapias de bem-estar corporais e faciais.',
+    features: ['Restaurante oriental renomado Hai Yo no lobby', 'SPA Hai Yo com massagens relaxantes e banheiras', 'Acomodações de luxo com vista para o skyline', 'Próximo aos shoppings Curitiba e Pátio Batel', 'Atendimento de concierge VIP']
+  },
+  {
+    id: 'pousada-ilha-do-mel',
+    title: 'Pousada de Charme Ilha do Mel (Encantadas / Farol)',
+    subtitle: 'Ilha do Mel • Pousada Pé na Areia',
+    location: 'Ilha do Mel • Litoral RMC',
+    category: 'hoteis',
+    categories: ['hoteis', 'agencias', 'tours'],
+    topic: 'hoteis',
+    discount: 'PACOTE COM TRAVESSIA',
+    rating: 4.9,
+    reviewsCount: 2600,
+    duration: 'Diária com Café Caiçara',
+    price: 290.00,
+    originalPrice: 350.00,
+    isFree: false,
+    paymentTerms: 'Transfer de Barco Incluído',
+    lat: -25.5600,
+    lng: -48.3300,
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Refúgio paradisíaco pé na areia na Ilha do Mel! Bangalôs de madeira rústica e confortável integrados à restinga nativa a poucos passos do mar. Oferece café da manhã caiçara reforçado com frutas tropicais, tapiocas feitas na hora e deck de redes.',
+    features: ['Pousada pé na areia a 50 metros da praia', 'Café da manhã caiçara completo com frutas nativas', 'Deck de descanso com redes sob as árvores', 'Quartos climatizados com frigobar e varanda', 'Trilhas diretas para a Gruta de Encantadas']
+  },
+  {
+    id: 'pousada-caminho-do-vinho',
+    title: 'Pousada Rural Caminho do Vinho (São José dos Pinhais RMC)',
+    subtitle: 'São José dos Pinhais • Hospedagem de Charme RMC',
+    location: 'São José dos Pinhais • RMC',
+    category: 'hoteis',
+    categories: ['hoteis', 'agencias', 'gastronomia'],
+    topic: 'hoteis',
+    discount: 'CAFÉ COLONIAL DA ROÇA',
+    rating: 4.8,
+    reviewsCount: 1950,
+    duration: 'Diária de Campo',
+    price: 230.00,
+    originalPrice: 280.00,
+    isFree: false,
+    paymentTerms: 'Estac. no Local Gratuito',
+    lat: -25.5680,
+    lng: -49.1920,
+    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Hospede-se no sossego do campo na Região Metropolitana de Curitiba! Chalés aconchegantes cercados por vinhedos e araucárias no Caminho do Vinho. Inclui farto café colonial com pães caseiros da roça, queijos coloniais e geleias de amora.',
+    features: ['Chalés rústicos em meio à natureza e vinhedos', 'Café colonial farto com receitas tradicionais italianas', 'Próximo a mais de 10 adegas e cantinas coloniais', 'Passeios a cavalo e caminhadas ecológicas', 'Clima de serra relaxante a 20min de Curitiba']
+  },
+
   // --- BARES & PUBS ---
   {
     id: 'bar-do-alemao',
@@ -93,8 +247,7 @@ export const ATTRACTIONS = [
     lng: -49.2725,
     image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1538488881022-4728e396e965?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Tradicionalíssimo botequim germânico fundado em 1979 no coração do Largo da Ordem! Famoso mundialmente pelo autêntico Chopp Submarino (caneco com canecozinho de Steinhäger que o cliente leva de lembrança) e a tradicional Carne de Onça paranaense, Eisbein (joelho de porco) e Kassler com chucrute.',
     features: ['Canecozinho de Steinhäger como souvenir oficial', 'Carne de Onça tombada como patrimônio imaterial', 'Pratos germânicos artesanais (Eisbein, Wurst)', 'Atendimento rápido em salão para 800 pessoas', 'Localizado no paralelepípedo do Largo da Ordem']
@@ -124,156 +277,6 @@ export const ATTRACTIONS = [
     description: 'Rede de bares curitibana de maior sucesso no Brasil! Especializada em petiscos artesanais de carne suína (Torresmo de Rolo, Pernil com Queijo, Costelinha ao Barbecue) acompanhados de mais de 10 torneiras de chopps artesanais locais com preços ultra acessíveis.',
     features: ['Torresmo de rolo crocante feito na hora', 'Sanduíches de pernil suculento na baguete', 'Chopp artesanal paranaense a partir de R$ 12', 'Ambiente pet friendly e descontraído nas calçadas', 'Sem taxa de serviço ou couvert artístico']
   },
-  {
-    id: 'we-are-bastards',
-    title: 'We Are Bastards Pub • Bastards Brewery',
-    subtitle: 'Água Verde • Cervejaria Artesanal',
-    location: 'Água Verde • Curitiba',
-    category: 'bares',
-    categories: ['bares', 'shows', 'cupons'],
-    topic: 'bares',
-    discount: '30 TORNEIRAS DE CHOPP',
-    rating: 4.9,
-    reviewsCount: 3900,
-    duration: '3 a 4 horas',
-    price: 35.00,
-    originalPrice: 45.00,
-    isFree: false,
-    paymentTerms: 'Réguas de Degustação Disponíveis',
-    lat: -25.4520,
-    lng: -49.2780,
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O templo do chopp artesanal de Curitiba no bairro Água Verde! Pub oficial da premiada cervejaria Bastards Brewery com 30 torneiras de chopp, decoração industrial marcante, arcade de jogos retrô, hambúrgueres artesanais e shows de rock autoral.',
-    features: ['30 torneiras com chopps autorais e convidados', 'Régua de degustação com 5 estilos de cerveja', 'Espaço amplo de 1.000m² com jogos de fliperama', 'Cozinha com burgers de carne Angus e de costela', 'Shows ao vivo de rock e blues nos fins de semana']
-  },
-  {
-    id: 'mercearia-fantinato',
-    title: 'Mercearia Fantinato • A Famosa Carne de Onça na Mesa',
-    subtitle: 'Bom Retiro • Botequim Histórico de 1953',
-    location: 'Bom Retiro • Curitiba',
-    category: 'bares',
-    categories: ['bares', 'gastronomia', 'restaurantes'],
-    topic: 'bares',
-    discount: 'PATRIMÔNIO GASTRONÔMICO',
-    rating: 4.9,
-    reviewsCount: 3100,
-    duration: '2 horas',
-    price: 48.00,
-    originalPrice: 58.00,
-    isFree: false,
-    paymentTerms: 'Preparo Ritualístico na Mesa',
-    lat: -25.4180,
-    lng: -49.2750,
-    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O botequim mais autêntico de Curitiba desde 1953! Famoso pelo ritual único onde o garçom prepara a famosa Carne de Onça (patinho magro moído, conhaque, azeite, cebola roxa bem picadinha, cebolinha e páprica) na frente do cliente sobre fatias de broa preta paranaense.',
-    features: ['Preparação da Carne de Onça ao vivo na mesa', 'Botequim histórico preservado desde 1953', 'Cachaças artesanais paranaenses envelhecidas em carvalho', 'Porções de pernil assado e bolinhos de bacalhau', 'Atendimento caloroso e tradicional']
-  },
-  {
-    id: 'bossa-bar',
-    title: 'Bossa Bar • Noite Carioca & Samba no Batel',
-    subtitle: 'Batel • Balada & Gastrobar',
-    location: 'Batel • Curitiba',
-    category: 'bares',
-    categories: ['bares', 'shows', 'eventos'],
-    topic: 'bares',
-    discount: 'CAIPIRINHA EM JARRA',
-    rating: 4.7,
-    reviewsCount: 2800,
-    duration: 'Noite Inteira',
-    price: 40.00,
-    originalPrice: 55.00,
-    isFree: false,
-    paymentTerms: 'Ingresso / Nomes na Lista',
-    lat: -25.4395,
-    lng: -49.2835,
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O pedaço mais animado do Rio de Janeiro no coração do Batel! Bar e balada carioca decorado com o calçadão de Copacabana, famoso pelos shows de samba retrô, pagode anos 90, caipirinhas servidas em jarras e atmosfera contagiosa de festa.',
-    features: ['Decoração inspirada nos arcos da Lapa e Copacabana', 'Shows de samba de raiz e pagode nostálgico', 'Caipirinhas gigantes para compartilhar em jarras', 'Pista de dança animada até de madrugada', 'Localização nobre no Batel']
-  },
-  {
-    id: 'tork-n-roll',
-    title: 'Tork n\' Roll • Maior Complexo de Rock das Américas',
-    subtitle: 'Rebouças • Rock, Blues & Gastronomia',
-    location: 'Rebouças • Curitiba',
-    category: 'bares',
-    categories: ['bares', 'shows', 'gastronomia'],
-    topic: 'bares',
-    discount: 'ENTRADA LIVRE ATÉ 20H',
-    rating: 4.8,
-    reviewsCount: 3600,
-    duration: 'Noite Inteira',
-    price: 25.00,
-    originalPrice: 35.00,
-    isFree: false,
-    paymentTerms: 'Couvert / Shows de Rock',
-    lat: -25.4480,
-    lng: -49.2630,
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Um espaço gigantesco de 3.000 m² dedicado à cultura do rock, blues e motociclismo! Conta com palco gigante para bandas cover e autorais, praça de alimentação com churrasco estilo americano (brisket e pork ribs defumados) e torneiras de chopp.',
-    features: ['Espaço coberto de 3.000m² com estacionamento', 'Estações de churrasco de defumação barbecue americano', 'Estúdio de tatuagem e barbearia no local', 'Shows com as melhores bandas cover de rock do Brasil', 'Torneiras de chopp artesanal local']
-  },
-  {
-    id: 'bar-do-victor',
-    title: 'Bar & Petiscaria do Victor (Frutos do Mar)',
-    subtitle: 'São Lourenço & Praça da Espanha',
-    location: 'São Lourenço • Curitiba',
-    category: 'bares',
-    categories: ['bares', 'gastronomia', 'restaurantes'],
-    topic: 'bares',
-    discount: 'CAMARÃO À GREGA LENDÁRIO',
-    rating: 4.9,
-    reviewsCount: 3400,
-    duration: '2 a 3 horas',
-    price: 75.00,
-    originalPrice: 90.00,
-    isFree: false,
-    paymentTerms: 'Petiscos de Frutos do Mar',
-    lat: -25.3980,
-    lng: -49.2640,
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Referência absoluta em pescados e frutos do mar em formato de bar desde 1969! Famoso pelo lendário Camarão à Grega no espeto com queijo derretido, pastéis crocantes de siri e porções de lula à dorê acompanhadas de chopp trincando de gelado.',
-    features: ['Lendário Camarão à Grega servido no espeto de madeira', 'Pastéis artesanais recheados com siri e camarão', 'Carta de vinhos brancos e chopp trincando', 'Ambiente náutico acolhedor', 'Tradição familiar paranaense de +50 anos']
-  },
-  {
-    id: 'choripan-tapajos',
-    title: 'Choripan • Linguiças Artesanais & Gastronomia Latina',
-    subtitle: 'Rua Tapajós (Mercês) & Água Verde',
-    location: 'Mercês • Curitiba',
-    category: 'bares',
-    categories: ['bares', 'gastronomia', 'cupons'],
-    topic: 'bares',
-    discount: 'CHORIPÁN + CHOPP R$ 29',
-    rating: 4.8,
-    reviewsCount: 3000,
-    duration: '2 horas',
-    price: 22.00,
-    originalPrice: 28.00,
-    isFree: false,
-    paymentTerms: 'Sem Taxa de Couvert',
-    lat: -25.4210,
-    lng: -49.2820,
-    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O bar de inspiração argentina e uruguaia mais descolado de Curitiba! Especializado em sanduíches de choripán com linguiças artesanais exclusivas (frango com queijo coalho, suína com pimenta biquinho, bovina e vegetariana) e chimichurri secreto.',
-    features: ['Linguiças artesanais exclusivas de produção própria', 'Molho chimichurri autêntico receita uruguaia', 'Cachaças infusionadas com frutas e especiarias', 'Mesas ao ar livre estilo deck urbano', 'Opções vegetarianas e veganas de choripán']
-  },
 
   // --- SHOWS ---
   {
@@ -300,56 +303,6 @@ export const ATTRACTIONS = [
     ],
     description: 'O maior palco a céu aberto da América Latina! Localizado em uma antiga pedreira cercada por imponentes paredões de rocha de 30 metros. Já recebeu lendas mundiais do rock e da música nacional como Paul McCartney, Iron Maiden, Pearl Jam e grandes festivais.',
     features: ['Capacidade para 25 mil pessoas', 'Paredões naturais de rocha de 30m', 'Arena de grandes festivais de música', 'Estrutura completa de bares e alimentação', 'Acesso fácil via ônibus e aplicativo']
-  },
-  {
-    id: 'hard-rock-shows',
-    title: 'Hard Rock Cafe Curitiba • Shows & Rock ao Vivo',
-    subtitle: 'Batel • Gastronomia & Músicas',
-    location: 'Batel • Curitiba',
-    category: 'shows',
-    categories: ['shows', 'gastronomia', 'cupons', 'bares'],
-    topic: 'shows',
-    discount: 'SHOWS DIÁRIOS',
-    rating: 4.9,
-    reviewsCount: 4800,
-    duration: '3 a 4 horas',
-    price: 40.00,
-    originalPrice: 50.00,
-    isFree: false,
-    paymentTerms: 'Couvert / Reserva de Mesa',
-    lat: -25.4390,
-    lng: -49.2840,
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'A maior unidade do Hard Rock Cafe do Brasil e a terceira maior do mundo! Oferece shows diários de bandas de rock, acervo histórico com guitarras e figurinos originais de astros mundiais e o autêntico Legendary Burger.',
-    features: ['Banda ao vivo todas as noites', 'Memorabília original de lendas do Rock', 'Hambúrgueres artesanais lendários', 'Ambiente climatizado no Batel', 'Loja oficial Rock Shop']
-  },
-  {
-    id: 'vale-da-musica-shows',
-    title: 'Vale da Música Flutuante • Palco da Ópera de Arame',
-    subtitle: 'Pilarzinho • Música Instrumental',
-    location: 'Pilarzinho • Curitiba',
-    category: 'shows',
-    categories: ['shows', 'cultura', 'parques'],
-    topic: 'shows',
-    discount: 'INCLUÍDO NO INGRESSO',
-    rating: 4.9,
-    reviewsCount: 3900,
-    duration: '2 a 3 horas',
-    price: 15.00,
-    originalPrice: 20.00,
-    isFree: false,
-    paymentTerms: 'Couvert Artístico no Lago',
-    lat: -25.3846,
-    lng: -49.2764,
-    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O único palco flutuante sobre um lago no Brasil! Projeto cultural permanente da Ópera de Arame com apresentações contínuas de Jazz, MPB, Blues e Música Clássica ao longo de todo o dia, enquanto você aprecia a natureza e o café.',
-    features: ['Palco flutuante no meio do lago da pedreira', 'Apresentações diárias ininterruptas de Jazz e MPB', 'Restaurante e Café da Ópera no deck', 'Cachoeira de fundo com carpas flutuantes', 'Ambiente contemplativo mágico']
   },
 
   // --- TEATROS ---
@@ -378,31 +331,6 @@ export const ATTRACTIONS = [
     description: 'O maior e mais imponente complexo teatral do Paraná! Abriga o Auditório Bento Munhoz da Rocha Neto (Guairão com 2.173 lugares), Guairinha, Miniauditório e a sede do renomado Balé Teatro Guaíra e Orquestra Sinfônica do Paraná.',
     features: ['Guairão com 2.173 lugares e acústica perfeita', 'Sede da Orquestra Sinfônica do Paraná', 'Sede do prestigiado Balé Teatro Guaíra', 'Painel de Poty Lazzarotto na fachada', 'Localizado na histórica Praça Santos Andrade']
   },
-  {
-    id: 'teatro-paiol',
-    title: 'Teatro Paiol (Antigo Depósito de Pólvora de 1906)',
-    subtitle: 'Prado Velho • Patrimônio Histórico',
-    location: 'Prado Velho • Curitiba',
-    category: 'teatros',
-    categories: ['teatros', 'cultura'],
-    topic: 'teatros',
-    discount: 'PATRIMÔNIO CULTURAL',
-    rating: 4.8,
-    reviewsCount: 2100,
-    duration: '2 horas',
-    price: 20.00,
-    originalPrice: 30.00,
-    isFree: false,
-    paymentTerms: 'Ingresso com Acesso Total',
-    lat: -25.4490,
-    lng: -49.2610,
-    image: 'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Símbolo da transformação cultural de Curitiba! Antigo depósito de pólvora do Exército construído em 1906 e transformado em teatro arena em 1971 inaugurado por Vinicius de Moraes. Possui acústica intimista e palco circular fantástico.',
-    features: ['Construção circular histórica de 1906 em tijolos à vista', 'Inaugurado pelo poetista Vinicius de Moraes', 'Palco arena de proximidade com o público', 'Shows de MPB, Bossa Nova e peças de vanguarda', 'Estac. próximo no bairro Prado Velho']
-  },
 
   // --- EVENTOS ---
   {
@@ -429,31 +357,6 @@ export const ATTRACTIONS = [
     ],
     description: 'O maior festival de artes cênicas da América Latina! Todos os anos, entre março e abril, Curitiba recebe mais de 400 espetáculos teatrais, estréias nacionais, musicais e performances de rua na Mostra Fringe e Guritiba.',
     features: ['Mais de 400 espetáculos em 2 semanas', 'Mostra Oficial com grandes nomes do teatro brasileiro', 'Fringe com peças gratuitas e de rua nas praças', 'Gastronomia do Gastronix no pátio', 'Ponto de encontro de artistas do Brasil todo']
-  },
-  {
-    id: 'natal-palacio-avenida',
-    title: 'Espetáculo de Natal do Palácio Avenida',
-    subtitle: 'Rua XV de Novembro • Dezembro',
-    location: 'Calçadão da Rua XV • Curitiba',
-    category: 'eventos',
-    categories: ['eventos', 'cultura', 'shows'],
-    topic: 'eventos',
-    discount: 'ENTRADA LIVRE A CÉU ABERTO',
-    rating: 5.0,
-    reviewsCount: 7900,
-    duration: '1h30m de Apresentação',
-    price: 0.00,
-    originalPrice: 0.00,
-    isFree: true,
-    paymentTerms: 'Acesso Livre no Calçadão',
-    lat: -25.4300,
-    lng: -49.2710,
-    image: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O coral de Natal mais emocionante do Brasil! As janelas do histórico Palácio Avenida se acendem no calçadão da Rua XV de Novembro com centenas de crianças cantando clássicos natalinos acompanhadas por projeções luminosas 3D.',
-    features: ['Mais de 100 crianças cantando nas janelas iluminadas', 'Show de luzes e projeção mapeada 3D na fachada', 'Tradição natalina de mais de 30 anos em Curitiba', 'Acesso gratuito no calçadão das Flores', 'Injeção de espírito natalino mágico']
   },
 
   // --- ATRAÇÕES CLÁSSICAS ---
@@ -538,7 +441,7 @@ export const ATTRACTIONS = [
     subtitle: 'São José dos Pinhais • Polo Enoturístico RMC',
     location: 'São José dos Pinhais • RMC',
     category: 'agencias',
-    categories: ['agencias', 'gastronomia', 'tours', 'pacotes', 'promocionais', 'bares'],
+    categories: ['agencias', 'gastronomia', 'tours', 'pacotes', 'promocionais', 'bares', 'hoteis'],
     topic: 'agencias',
     discount: '15% OFF AGÊNCIA',
     rating: 4.9,
@@ -563,7 +466,7 @@ export const ATTRACTIONS = [
     subtitle: 'Litoral Paranaense • Natureza & Praias',
     location: 'Pontal do Sul / Ilha do Mel',
     category: 'agencias',
-    categories: ['agencias', 'tours', 'pacotes', 'cupons'],
+    categories: ['agencias', 'tours', 'pacotes', 'cupons', 'hoteis'],
     topic: 'agencias',
     discount: 'AGÊNCIA EXCLUSIVO',
     rating: 5.0,
@@ -638,7 +541,7 @@ export const ATTRACTIONS = [
     subtitle: 'São José dos Pinhais / Hotéis Curitiba',
     location: 'Aeroporto CWB / Hotéis Curitiba',
     category: 'agencias',
-    categories: ['agencias', 'pacotes'],
+    categories: ['agencias', 'pacotes', 'hoteis'],
     topic: 'agencias',
     discount: 'RESERVA 24H',
     rating: 5.0,
