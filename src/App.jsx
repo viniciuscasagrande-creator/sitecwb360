@@ -9,6 +9,7 @@ import TopicBanner from './components/TopicBanner';
 import RoteirosSection from './components/RoteirosSection';
 import GuiaPraticoSection from './components/GuiaPraticoSection';
 import AgenciasSection from './components/AgenciasSection';
+import HoteisSection from './components/HoteisSection';
 import AgenciaCotacaoModal from './components/AgenciaCotacaoModal';
 import AttractionDetailModal from './components/AttractionDetailModal';
 import CartModal from './components/CartModal';
@@ -46,7 +47,7 @@ export default function App() {
   const filteredAttractions = useMemo(() => {
     return ATTRACTIONS.filter((item) => {
       // Navigation tab filter
-      if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia' && activeTopicTab !== 'agencias') {
+      if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia' && activeTopicTab !== 'agencias' && activeTopicTab !== 'hoteis') {
         if (activeTopicTab === 'ofertas') {
           if (!item.discount && !item.categories?.includes('promocionais') && !item.categories?.includes('cupons')) {
             return false;
@@ -124,7 +125,7 @@ export default function App() {
       <main style={{ flex: 1 }}>
         
         {/* Topic Context Banner for specific topic views */}
-        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'shows' || activeTopicTab === 'teatros' || activeTopicTab === 'eventos' || activeTopicTab === 'bares' || activeTopicTab === 'hoteis' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
+        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'shows' || activeTopicTab === 'teatros' || activeTopicTab === 'eventos' || activeTopicTab === 'bares' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
           <TopicBanner topicId={activeTopicTab} />
         )}
 
@@ -139,6 +140,12 @@ export default function App() {
             attractions={ATTRACTIONS}
             onClickDetail={setActiveAttraction}
             onOpenQuote={handleOpenAgencyQuote}
+          />
+        ) : activeTopicTab === 'hoteis' ? (
+          /* Dedicated Screen: Hotelaria & Pousadas */
+          <HoteisSection
+            attractions={ATTRACTIONS}
+            onClickDetail={setActiveAttraction}
           />
         ) : activeTopicTab === 'roteiros' ? (
           /* Dedicated Screen: Roteiros Prontos */
@@ -165,8 +172,6 @@ export default function App() {
                   ? "Festivais, Feiras & Eventos Especiais"
                   : activeTopicTab === 'bares'
                   ? "Bares, Choperias & Pubs em Curitiba e Região Metropolitana"
-                  : activeTopicTab === 'hoteis'
-                  ? "Hotéis, Pousadas & Hospedagens em Curitiba e Região Metropolitana"
                   : activeTopicTab === 'tours'
                   ? "Tours, Passeios de Trem & Linha Turismo"
                   : activeTopicTab === 'gastronomia'
