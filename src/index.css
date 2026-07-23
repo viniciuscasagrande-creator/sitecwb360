@@ -41,7 +41,6 @@ img, video {
 /* Touch Target Standard (Minimum 44px height for touch ergonomics) */
 button, a, input, select, textarea {
   touch-action: manipulation;
-  min-height: 44px;
 }
 
 /* Custom Scrollbars */
@@ -86,7 +85,33 @@ button, a, input, select, textarea {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
 }
 
-/* 2. Mobile-First Responsive Breakpoints (@media queries) */
+/* Navigation Tabs Mobile vs Desktop Responsive Behavior */
+.nav-mobile-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px 10px;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile-scroll {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow-x: visible !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-mobile-scroll {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* Mobile Typography & Layout Utilities */
 @media (max-width: 640px) {
   h1 {
     font-size: 22px !important;
@@ -110,38 +135,5 @@ button, a, input, select, textarea {
     width: 100% !important;
     height: 190px !important;
     min-width: 100% !important;
-  }
-
-  /* Header & Navigation Adaptations */
-  .mobile-header-stack {
-    flex-direction: column !important;
-    gap: 12px !important;
-    align-items: stretch !important;
-  }
-  .mobile-search-full {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Hero Slider Mobile Adaptations */
-  .mobile-hero-container {
-    height: 420px !important;
-    border-radius: 16px !important;
-  }
-  .mobile-hero-padding {
-    padding: 20px 16px !important;
-  }
-
-  /* Modal Mobile Responsive Container */
-  .mobile-modal-box {
-    width: 95% !important;
-    max-height: 92vh !important;
-    padding: 16px !important;
-    border-radius: 20px !important;
-  }
-
-  /* Grid Layout Fallbacks */
-  .mobile-grid-1col {
-    grid-template-columns: 1fr !important;
   }
 }

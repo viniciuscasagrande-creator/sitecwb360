@@ -31,16 +31,14 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
       width: '100%',
       padding: '8px 0'
     }}>
-      <div style={{ 
-        maxWidth: '1280px', 
-        margin: '0 auto', 
-        padding: '0 16px', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        gap: '8px 10px'
-      }}>
+      <div 
+        className="hide-scrollbar nav-mobile-scroll"
+        style={{ 
+          maxWidth: '1280px', 
+          margin: '0 auto', 
+          padding: '0 16px'
+        }}
+      >
         {UNIFIED_NAV_ITEMS.map((item) => {
           const IconComp = ICON_MAP[item.icon] || Sparkles;
           const isActive = activeTab === item.id;
@@ -55,6 +53,7 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
                 justifyContent: 'center',
                 gap: '8px',
                 height: '40px',
+                minHeight: '40px',
                 padding: '0 16px',
                 fontSize: '13px',
                 fontWeight: isActive ? '800' : '600',
@@ -65,6 +64,7 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
                 boxShadow: isActive ? '0 4px 12px rgba(0, 168, 150, 0.35)' : 'none',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
+                flexShrink: 0,
                 transition: 'all 0.2s ease',
                 outline: 'none'
               }}
