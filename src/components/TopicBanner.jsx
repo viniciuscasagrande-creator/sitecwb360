@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, Ticket, Utensils, Sparkles, Music, Drama, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
+import { Trees, Compass, Ticket, Utensils, Sparkles, Music, Drama, Calendar, Beer, MapPin, CheckCircle2 } from 'lucide-react';
 
 const TOPIC_DETAILS = {
   parques: {
@@ -55,6 +55,17 @@ const TOPIC_DETAILS = {
       { label: "Maior Festival", val: "Festival de Teatro de CWB" },
       { label: "Espetáculo de Natal", val: "Palácio Avenida (Rua XV)" },
       { label: "Feiras Especiais", val: "Praça Osório & Largo" }
+    ]
+  },
+  bares: {
+    title: "Bares, Choperias & Pubs de Curitiba e RMC",
+    subtitle: "Do lendário Chopp Submarino do Bar do Alemão ao torresmo de rolo do Porks e os pubs do Água Verde.",
+    bgGradient: "linear-gradient(135deg, #78350f 0%, #d97706 100%)",
+    icon: Beer,
+    stats: [
+      { label: "Botequim Histórico", val: "Bar do Alemão de 1979" },
+      { label: "Patrimônio Gastronômico", val: "Carne de Onça na Mesa" },
+      { label: "Torneiras de Chopp", val: "+30 no We Are Bastards" }
     ]
   },
   tours: {

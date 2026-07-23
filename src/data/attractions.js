@@ -7,6 +7,7 @@ export const UNIFIED_NAV_ITEMS = [
   { id: 'eventos', label: 'Eventos', icon: 'Calendar', desc: 'Festival de Teatro CWB, Natal Palácio Avenida, Oficina de Música e Feira da Osório' },
   { id: 'tours', label: 'Tours & Passeios', icon: 'Ticket', desc: 'Linha Turismo Double-Decker, Trem para Morretes e Walking Tours' },
   { id: 'gastronomia', label: 'Gastronomia CWB', icon: 'Utensils', desc: 'Santa Felicidade, Mercado Municipal, Terrazza 40, Bar do Alemão e Barreado' },
+  { id: 'bares', label: 'Bares & Pubs', icon: 'Beer', desc: 'Bar do Alemão, Porks, We Are Bastards, Mercearia Fantinato, Bossa Bar e Pubs RMC' },
   { id: 'agencias', label: 'Agências & Região Metr.', icon: 'Building2', desc: 'Caminho do Vinho SJP, Ilha do Mel, Vila Velha, Lapa, Traslados CWB e Cotações' },
   { id: 'ofertas', label: 'Ofertas & Cupons', icon: 'Percent', desc: 'Passeios com descontos exclusivos e benefícios de ingressos' },
   { id: 'roteiros', label: 'Roteiros Prontos', icon: 'MapPin', desc: 'Cronogramas dia-a-dia para 1, 3 ou 5 dias, Família e Romântico' },
@@ -38,6 +39,16 @@ export const HERO_SLIDES = [
     ctaText: 'Garantir Ingresso de Trem'
   },
   {
+    id: 'bar-do-alemao',
+    title: 'Bar do Alemão • Chopp Submarino & Carne de Onça',
+    tagline: 'O Bar Mais Icônico do Largo da Ordem',
+    badge: '🍺 Choperia Germânica desde 1979',
+    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80',
+    description: 'Saboreie o autêntico Chopp Submarino acompanhado do caneco souvenir de Steinhäger e a famosa Carne de Onça no coração do Centro Histórico.',
+    price: 'A partir de R$ 45,00',
+    ctaText: 'Conhecer Bar do Alemão'
+  },
+  {
     id: 'pedreira-shows',
     title: 'Pedreira Paulo Leminski • Shows Nacionais & Internacionais',
     tagline: 'O Maior Palco a Céu Aberto da América Latina',
@@ -46,22 +57,13 @@ export const HERO_SLIDES = [
     description: 'Assista a grandes turnês de rock, pop e festivais inesquecíveis na majestosa pedreira cercada por paredões de rocha de 30 metros.',
     price: 'Consulte Programação',
     ctaText: 'Ver Agenda de Shows'
-  },
-  {
-    id: 'teatro-guaira',
-    title: 'Teatro Guaíra • Grande Auditório Bento Munhoz',
-    tagline: 'O Templo das Artes Cênicas do Paraná',
-    badge: '🎭 Orquestra & Balé Teatro Guaíra',
-    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1600&q=80',
-    description: 'Viva emoções únicas com espetáculos de dança, sinfônicas e peças aclamadas no maior complexo teatral público da América Latina.',
-    price: 'A partir de R$ 30,00',
-    ctaText: 'Garantir Ingresso de Teatro'
   }
 ];
 
 export const BRAND_LANDMARKS = [
   { id: 'jardim-botanico', name: 'Jardim Botânico', icon: 'Trees', desc: 'Estufa icônica em ferro e vidro estilo Palácio de Cristal de Londres' },
   { id: 'mon', name: 'Museu Oscar Niemeyer', icon: 'Eye', desc: 'O famoso Museu do Olho com arquitetura futurista de Niemeyer' },
+  { id: 'bar-do-alemao', name: 'Bar do Alemão', icon: 'Beer', desc: 'Chopp Submarino com canequinho e carne de onça no Largo da Ordem' },
   { id: 'teatro-guaira', name: 'Teatro Guaíra', icon: 'Drama', desc: 'Complexo das artes cênicas, orquestra sinfônica e balé' },
   { id: 'pedreira-shows', name: 'Pedreira Leminski', icon: 'Music', desc: 'Maior palco de shows a céu aberto cercado por rochas' },
   { id: 'torre', name: 'Torre Panorâmica', icon: 'TowerControl', desc: 'Mirante 360° com visão contemplativa para toda a região metropolitana' },
@@ -70,6 +72,209 @@ export const BRAND_LANDMARKS = [
 ];
 
 export const ATTRACTIONS = [
+  // --- BARES & PUBS ---
+  {
+    id: 'bar-do-alemao',
+    title: 'Bar do Alemão • Choperia Germânica & Chopp Submarino',
+    subtitle: 'Largo da Ordem • Centro Histórico',
+    location: 'Centro Histórico • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'gastronomia', 'restaurantes', 'cupons'],
+    topic: 'bares',
+    discount: 'CHOPP SUBMARINO COM SOUVENIR',
+    rating: 4.9,
+    reviewsCount: 5800,
+    duration: '2 a 3 horas',
+    price: 45.00,
+    originalPrice: 52.00,
+    isFree: false,
+    paymentTerms: 'Chopp Submarino + Porção Típica',
+    lat: -25.4285,
+    lng: -49.2725,
+    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1538488881022-4728e396e965?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Tradicionalíssimo botequim germânico fundado em 1979 no coração do Largo da Ordem! Famoso mundialmente pelo autêntico Chopp Submarino (caneco com canecozinho de Steinhäger que o cliente leva de lembrança) e a tradicional Carne de Onça paranaense, Eisbein (joelho de porco) e Kassler com chucrute.',
+    features: ['Canecozinho de Steinhäger como souvenir oficial', 'Carne de Onça tombada como patrimônio imaterial', 'Pratos germânicos artesanais (Eisbein, Wurst)', 'Atendimento rápido em salão para 800 pessoas', 'Localizado no paralelepípedo do Largo da Ordem']
+  },
+  {
+    id: 'porks-porco-chope',
+    title: 'Porks • Porco & Chope (Várias Unidades CWB & RMC)',
+    subtitle: 'Batel, Vicente Machado, Itupava & RMC',
+    location: 'Batel / Vicente Machado • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'gastronomia', 'cupons', 'promocionais'],
+    topic: 'bares',
+    discount: 'CHOPP ARTESANAL R$ 12',
+    rating: 4.8,
+    reviewsCount: 4200,
+    duration: '2 horas',
+    price: 25.00,
+    originalPrice: 35.00,
+    isFree: false,
+    paymentTerms: 'Sem Cobrança de 10% ou Couvert',
+    lat: -25.4380,
+    lng: -49.2820,
+    image: 'https://images.unsplash.com/photo-1538488881022-4728e396e965?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1538488881022-4728e396e965?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Rede de bares curitibana de maior sucesso no Brasil! Especializada em petiscos artesanais de carne suína (Torresmo de Rolo, Pernil com Queijo, Costelinha ao Barbecue) acompanhados de mais de 10 torneiras de chopps artesanais locais com preços ultra acessíveis.',
+    features: ['Torresmo de rolo crocante feito na hora', 'Sanduíches de pernil suculento na baguete', 'Chopp artesanal paranaense a partir de R$ 12', 'Ambiente pet friendly e descontraído nas calçadas', 'Sem taxa de serviço ou couvert artístico']
+  },
+  {
+    id: 'we-are-bastards',
+    title: 'We Are Bastards Pub • Bastards Brewery',
+    subtitle: 'Água Verde • Cervejaria Artesanal',
+    location: 'Água Verde • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'shows', 'cupons'],
+    topic: 'bares',
+    discount: '30 TORNEIRAS DE CHOPP',
+    rating: 4.9,
+    reviewsCount: 3900,
+    duration: '3 a 4 horas',
+    price: 35.00,
+    originalPrice: 45.00,
+    isFree: false,
+    paymentTerms: 'Réguas de Degustação Disponíveis',
+    lat: -25.4520,
+    lng: -49.2780,
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O templo do chopp artesanal de Curitiba no bairro Água Verde! Pub oficial da premiada cervejaria Bastards Brewery com 30 torneiras de chopp, decoração industrial marcante, arcade de jogos retrô, hambúrgueres artesanais e shows de rock autoral.',
+    features: ['30 torneiras com chopps autorais e convidados', 'Régua de degustação com 5 estilos de cerveja', 'Espaço amplo de 1.000m² com jogos de fliperama', 'Cozinha com burgers de carne Angus e de costela', 'Shows ao vivo de rock e blues nos fins de semana']
+  },
+  {
+    id: 'mercearia-fantinato',
+    title: 'Mercearia Fantinato • A Famosa Carne de Onça na Mesa',
+    subtitle: 'Bom Retiro • Botequim Histórico de 1953',
+    location: 'Bom Retiro • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'gastronomia', 'restaurantes'],
+    topic: 'bares',
+    discount: 'PATRIMÔNIO GASTRONÔMICO',
+    rating: 4.9,
+    reviewsCount: 3100,
+    duration: '2 horas',
+    price: 48.00,
+    originalPrice: 58.00,
+    isFree: false,
+    paymentTerms: 'Preparo Ritualístico na Mesa',
+    lat: -25.4180,
+    lng: -49.2750,
+    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O botequim mais autêntico de Curitiba desde 1953! Famoso pelo ritual único onde o garçom prepara a famosa Carne de Onça (patinho magro moído, conhaque, azeite, cebola roxa bem picadinha, cebolinha e páprica) na frente do cliente sobre fatias de broa preta paranaense.',
+    features: ['Preparação da Carne de Onça ao vivo na mesa', 'Botequim histórico preservado desde 1953', 'Cachaças artesanais paranaenses envelhecidas em carvalho', 'Porções de pernil assado e bolinhos de bacalhau', 'Atendimento caloroso e tradicional']
+  },
+  {
+    id: 'bossa-bar',
+    title: 'Bossa Bar • Noite Carioca & Samba no Batel',
+    subtitle: 'Batel • Balada & Gastrobar',
+    location: 'Batel • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'shows', 'eventos'],
+    topic: 'bares',
+    discount: 'CAIPIRINHA EM JARRA',
+    rating: 4.7,
+    reviewsCount: 2800,
+    duration: 'Noite Inteira',
+    price: 40.00,
+    originalPrice: 55.00,
+    isFree: false,
+    paymentTerms: 'Ingresso / Nomes na Lista',
+    lat: -25.4395,
+    lng: -49.2835,
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O pedaço mais animado do Rio de Janeiro no coração do Batel! Bar e balada carioca decorado com o calçadão de Copacabana, famoso pelos shows de samba retrô, pagode anos 90, caipirinhas servidas em jarras e atmosfera contagiosa de festa.',
+    features: ['Decoração inspirada nos arcos da Lapa e Copacabana', 'Shows de samba de raiz e pagode nostálgico', 'Caipirinhas gigantes para compartilhar em jarras', 'Pista de dança animada até de madrugada', 'Localização nobre no Batel']
+  },
+  {
+    id: 'tork-n-roll',
+    title: 'Tork n\' Roll • Maior Complexo de Rock das Américas',
+    subtitle: 'Rebouças • Rock, Blues & Gastronomia',
+    location: 'Rebouças • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'shows', 'gastronomia'],
+    topic: 'bares',
+    discount: 'ENTRADA LIVRE ATÉ 20H',
+    rating: 4.8,
+    reviewsCount: 3600,
+    duration: 'Noite Inteira',
+    price: 25.00,
+    originalPrice: 35.00,
+    isFree: false,
+    paymentTerms: 'Couvert / Shows de Rock',
+    lat: -25.4480,
+    lng: -49.2630,
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Um espaço gigantesco de 3.000 m² dedicado à cultura do rock, blues e motociclismo! Conta com palco gigante para bandas cover e autorais, praça de alimentação com churrasco estilo americano (brisket e pork ribs defumados) e torneiras de chopp.',
+    features: ['Espaço coberto de 3.000m² com estacionamento', 'Estações de churrasco de defumação barbecue americano', 'Estúdio de tatuagem e barbearia no local', 'Shows com as melhores bandas cover de rock do Brasil', 'Torneiras de chopp artesanal local']
+  },
+  {
+    id: 'bar-do-victor',
+    title: 'Bar & Petiscaria do Victor (Frutos do Mar)',
+    subtitle: 'São Lourenço & Praça da Espanha',
+    location: 'São Lourenço • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'gastronomia', 'restaurantes'],
+    topic: 'bares',
+    discount: 'CAMARÃO À GREGA LENDÁRIO',
+    rating: 4.9,
+    reviewsCount: 3400,
+    duration: '2 a 3 horas',
+    price: 75.00,
+    originalPrice: 90.00,
+    isFree: false,
+    paymentTerms: 'Petiscos de Frutos do Mar',
+    lat: -25.3980,
+    lng: -49.2640,
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Referência absoluta em pescados e frutos do mar em formato de bar desde 1969! Famoso pelo lendário Camarão à Grega no espeto com queijo derretido, pastéis crocantes de siri e porções de lula à dorê acompanhadas de chopp trincando de gelado.',
+    features: ['Lendário Camarão à Grega servido no espeto de madeira', 'Pastéis artesanais recheados com siri e camarão', 'Carta de vinhos brancos e chopp trincando', 'Ambiente náutico acolhedor', 'Tradição familiar paranaense de +50 anos']
+  },
+  {
+    id: 'choripan-tapajos',
+    title: 'Choripan • Linguiças Artesanais & Gastronomia Latina',
+    subtitle: 'Rua Tapajós (Mercês) & Água Verde',
+    location: 'Mercês • Curitiba',
+    category: 'bares',
+    categories: ['bares', 'gastronomia', 'cupons'],
+    topic: 'bares',
+    discount: 'CHORIPÁN + CHOPP R$ 29',
+    rating: 4.8,
+    reviewsCount: 3000,
+    duration: '2 horas',
+    price: 22.00,
+    originalPrice: 28.00,
+    isFree: false,
+    paymentTerms: 'Sem Taxa de Couvert',
+    lat: -25.4210,
+    lng: -49.2820,
+    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O bar de inspiração argentina e uruguaia mais descolado de Curitiba! Especializado em sanduíches de choripán com linguiças artesanais exclusivas (frango com queijo coalho, suína com pimenta biquinho, bovina e vegetariana) e chimichurri secreto.',
+    features: ['Linguiças artesanais exclusivas de produção própria', 'Molho chimichurri autêntico receita uruguaia', 'Cachaças infusionadas com frutas e especiarias', 'Mesas ao ar livre estilo deck urbano', 'Opções vegetarianas e veganas de choripán']
+  },
+
   // --- SHOWS ---
   {
     id: 'pedreira-shows',
@@ -91,8 +296,7 @@ export const ATTRACTIONS = [
     lng: -49.2750,
     image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'O maior palco a céu aberto da América Latina! Localizado em uma antiga pedreira cercada por imponentes paredões de rocha de 30 metros. Já recebeu lendas mundiais do rock e da música nacional como Paul McCartney, Iron Maiden, Pearl Jam e grandes festivais.',
     features: ['Capacidade para 25 mil pessoas', 'Paredões naturais de rocha de 30m', 'Arena de grandes festivais de música', 'Estrutura completa de bares e alimentação', 'Acesso fácil via ônibus e aplicativo']
@@ -103,7 +307,7 @@ export const ATTRACTIONS = [
     subtitle: 'Batel • Gastronomia & Músicas',
     location: 'Batel • Curitiba',
     category: 'shows',
-    categories: ['shows', 'gastronomia', 'cupons'],
+    categories: ['shows', 'gastronomia', 'cupons', 'bares'],
     topic: 'shows',
     discount: 'SHOWS DIÁRIOS',
     rating: 4.9,
@@ -146,56 +350,6 @@ export const ATTRACTIONS = [
     ],
     description: 'O único palco flutuante sobre um lago no Brasil! Projeto cultural permanente da Ópera de Arame com apresentações contínuas de Jazz, MPB, Blues e Música Clássica ao longo de todo o dia, enquanto você aprecia a natureza e o café.',
     features: ['Palco flutuante no meio do lago da pedreira', 'Apresentações diárias ininterruptas de Jazz e MPB', 'Restaurante e Café da Ópera no deck', 'Cachoeira de fundo com carpas flutuantes', 'Ambiente contemplativo mágico']
-  },
-  {
-    id: 'live-curitiba-shows',
-    title: 'Live Curitiba • Arena de Shows & Eventos',
-    subtitle: 'Novo Mundo • Sertanejo, Pagode & Pop',
-    location: 'Novo Mundo • Curitiba',
-    category: 'shows',
-    categories: ['shows', 'eventos', 'promocionais'],
-    topic: 'shows',
-    discount: 'PONTOS DE VENDA ONLINE',
-    rating: 4.8,
-    reviewsCount: 3400,
-    duration: 'Noite Inteira',
-    price: 60.00,
-    originalPrice: 80.00,
-    isFree: false,
-    paymentTerms: 'Pista, Camarote & Mesas VIP',
-    lat: -25.4780,
-    lng: -49.2890,
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Uma das maiores e mais modernas casas de espetáculos do Sul do Brasil! Palco frequente das maiores turnês de sertanejo, pagode, funk e pop nacional, contando com sistema de sonorização de última geração e camarotes privativos.',
-    features: ['Capacidade para 10 mil espectadores', 'Camarotes VIP suspensos', 'Estacionamento privativo com segurança', 'Grandes turnês de sertanejo e pop', 'Climatização de alta performance']
-  },
-  {
-    id: 'santa-marta-shows',
-    title: 'Santa Marta Bar • Feijoada com Samba & Sertanejo',
-    subtitle: 'Batel • Gastrobar & Música ao Vivo',
-    location: 'Batel • Curitiba',
-    category: 'shows',
-    categories: ['shows', 'gastronomia'],
-    topic: 'shows',
-    discount: 'SÁBADO DE FEIJOADA',
-    rating: 4.7,
-    reviewsCount: 2900,
-    duration: '3 a 5 horas',
-    price: 35.00,
-    originalPrice: 45.00,
-    isFree: false,
-    paymentTerms: 'Couvert & Buffet de Feijoada',
-    lat: -25.4385,
-    lng: -49.2815,
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O gastrobar sertanejo mais premiado de Curitiba! Famoso pelas noites vibrantes com duplas sertanejas ao vivo, pagode aos domingos e a concorrida Feijoada com Samba aos sábados no coração do Batel.',
-    features: ['Feijoada completa com roda de samba nos sábados', 'Shows sertanejos de terça a domingo', 'Carta de drinks artesanais e chopp gelado', 'Localização privilegiada no Batel', 'Ambiente rústico elegante']
   },
 
   // --- TEATROS ---
@@ -249,81 +403,6 @@ export const ATTRACTIONS = [
     description: 'Símbolo da transformação cultural de Curitiba! Antigo depósito de pólvora do Exército construído em 1906 e transformado em teatro arena em 1971 inaugurado por Vinicius de Moraes. Possui acústica intimista e palco circular fantástico.',
     features: ['Construção circular histórica de 1906 em tijolos à vista', 'Inaugurado pelo poetista Vinicius de Moraes', 'Palco arena de proximidade com o público', 'Shows de MPB, Bossa Nova e peças de vanguarda', 'Estac. próximo no bairro Prado Velho']
   },
-  {
-    id: 'teatro-positivo',
-    title: 'Teatro Positivo • Maior Teatro Privado do Paraná',
-    subtitle: 'Campo Comprido • Universidade Positivo',
-    location: 'Campo Comprido • Curitiba',
-    category: 'teatros',
-    categories: ['teatros', 'shows', 'promocionais'],
-    topic: 'teatros',
-    discount: 'INGRESSOS ONLINE',
-    rating: 4.9,
-    reviewsCount: 4100,
-    duration: '2 a 3 horas',
-    price: 50.00,
-    originalPrice: 70.00,
-    isFree: false,
-    paymentTerms: 'Plateia Inferior e Superior',
-    lat: -25.4460,
-    lng: -49.3520,
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Inspirado no Teatro Epidauro da Grécia Antiga! O Teatro Positivo conta com 2.400 lugares e tecnologia acústica internacional. É o principal palco de grandes espetáculos musicais da Broadway, óperas e comédias de destaque nacional.',
-    features: ['2.400 assentos estofados hiper confortáveis', 'Arquitetura inspirada na Grécia Antiga', 'Estacionamento amplo no campus universitário', 'Conforto térmico e acessibilidade nota 10', 'Grandes musicais e comédias em cartaz']
-  },
-  {
-    id: 'teatro-fernanda-montenegro',
-    title: 'Teatro Fernanda Montenegro • Shopping Novo Batel',
-    subtitle: 'Batel • Teatro & Comédias',
-    location: 'Batel • Curitiba',
-    category: 'teatros',
-    categories: ['teatros', 'cultura'],
-    topic: 'teatros',
-    discount: 'TEATRO BATEL',
-    rating: 4.7,
-    reviewsCount: 1850,
-    duration: '1h30m',
-    price: 35.00,
-    originalPrice: 50.00,
-    isFree: false,
-    paymentTerms: 'Bilheteria no Shopping',
-    lat: -25.4370,
-    lng: -49.2830,
-    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Localizado dentro do Shopping Novo Batel, homenageia a maior atriz do cinema e teatro brasileiro! Sala acolhedora de 500 lugares famosa pelas temporadas de teatro comédia, dramas premiados e estréias do Festival de Teatro de Curitiba.',
-    features: ['Localizado no Shopping Novo Batel com segurança', '500 assentos com ótima visibilidade de todos os ângulos', 'Próximo aos melhores restaurantes do Batel', 'Estacionamento coberto no shopping', 'Bilheteria aberta à tarde']
-  },
-  {
-    id: 'teatro-regina-vogue',
-    title: 'Teatro Regina Vogue • Shopping Estação',
-    subtitle: 'Rebouças • Musicais Infantis & Humor',
-    location: 'Rebouças • Curitiba',
-    category: 'teatros',
-    categories: ['teatros', 'eventos'],
-    topic: 'teatros',
-    discount: 'TEATRO INFANTIL & HUMOR',
-    rating: 4.8,
-    reviewsCount: 2300,
-    duration: '1h20m',
-    price: 25.00,
-    originalPrice: 40.00,
-    isFree: false,
-    paymentTerms: 'Desconto Família',
-    lat: -25.4380,
-    lng: -49.2660,
-    image: 'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Referência em teatro para toda a família em Curitiba! Localizado no piso superior do Shopping Estação, oferece programação variada nos fins de semana com musicais infantis, espetáculos de mágica, stand-up comedy e peças adultas à noite.',
-    features: ['Estrutura no Shopping Estação', 'Programação infantil reforçada nos fins de semana', 'Facilidade de acesso e estacionamento', 'Stand-up comedy e peças de humor à noite', 'Descontos para famílias e estudantes']
-  },
 
   // --- EVENTOS ---
   {
@@ -375,56 +454,6 @@ export const ATTRACTIONS = [
     ],
     description: 'O coral de Natal mais emocionante do Brasil! As janelas do histórico Palácio Avenida se acendem no calçadão da Rua XV de Novembro com centenas de crianças cantando clássicos natalinos acompanhadas por projeções luminosas 3D.',
     features: ['Mais de 100 crianças cantando nas janelas iluminadas', 'Show de luzes e projeção mapeada 3D na fachada', 'Tradição natalina de mais de 30 anos em Curitiba', 'Acesso gratuito no calçadão das Flores', 'Injeção de espírito natalino mágico']
-  },
-  {
-    id: 'feira-inverno-osorio',
-    title: 'Feira Especial de Inverno da Praça Osório',
-    subtitle: 'Praça Osório • Junho a Julho',
-    location: 'Praça Osório • Curitiba',
-    category: 'eventos',
-    categories: ['eventos', 'gastronomia', 'promocionais'],
-    topic: 'eventos',
-    discount: 'ENTRADA LIVRE',
-    rating: 4.8,
-    reviewsCount: 3500,
-    duration: 'Manhã e Noite',
-    price: 0.00,
-    originalPrice: 0.00,
-    isFree: true,
-    paymentTerms: 'Acesso Gratuito à Feira',
-    lat: -25.4330,
-    lng: -49.2760,
-    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'A feira de inverno mais charmosa da capital paranaense! A Praça Osório ganha dezenas de barracas de vestuário em lã, gorros, mantas e uma praça gastronômica aquecida oferecendo Quentão com gemada ou vinho quente e Pinhão cozido.',
-    features: ['Gastronomia típica de inverno (Pinhão e Quentão)', 'Barracas de malhas, Lãs e Artesanato', 'Iluminação e decoração temática de inverno', 'Localizado no início do calçadão da Rua XV', 'Entrada livre todos os dias das 10h às 21h']
-  },
-  {
-    id: 'oficina-de-musica',
-    title: 'Oficina de Música de Curitiba (Festival de Verão)',
-    subtitle: 'Vários Teatros & Parques • Janeiro',
-    location: 'Teatros & Parques • Curitiba',
-    category: 'eventos',
-    categories: ['eventos', 'shows', 'cultura'],
-    topic: 'eventos',
-    discount: 'GRATUITO & POPULAR',
-    rating: 4.9,
-    reviewsCount: 3100,
-    duration: '2 Semanas em Janeiro',
-    price: 15.00,
-    originalPrice: 25.00,
-    isFree: false,
-    paymentTerms: 'Concertos Gratuitos e Populares',
-    lat: -25.4280,
-    lng: -49.2660,
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'O maior festival de verão de música erudita e popular do Sul do Brasil! Realizado há mais de 40 anos em janeiro, reúne professores internacionais, concertos sinfônicos no Guaíra, jam sessions de jazz nos bares e aulas públicas.',
-    features: ['Concertos eruditos e populares de alto nível', 'Professores e músicos renomados do mundo todo', 'Jam sessions nos bares do Largo da Ordem', 'Apresentações gratuitas nos parques da cidade', 'Mais de 200 cursos e oficinas musicais']
   },
 
   // --- ATRAÇÕES CLÁSSICAS ---
@@ -509,7 +538,7 @@ export const ATTRACTIONS = [
     subtitle: 'São José dos Pinhais • Polo Enoturístico RMC',
     location: 'São José dos Pinhais • RMC',
     category: 'agencias',
-    categories: ['agencias', 'gastronomia', 'tours', 'pacotes', 'promocionais'],
+    categories: ['agencias', 'gastronomia', 'tours', 'pacotes', 'promocionais', 'bares'],
     topic: 'agencias',
     discount: '15% OFF AGÊNCIA',
     rating: 4.9,
@@ -759,7 +788,7 @@ export const ATTRACTIONS = [
     subtitle: 'Bigorrilho • Gastronomia de Altitude',
     location: 'Bigorrilho • Curitiba',
     category: 'gastronomia',
-    categories: ['gastronomia', 'restaurantes', 'cupons', 'shows'],
+    categories: ['gastronomia', 'restaurantes', 'cupons', 'shows', 'bares'],
     topic: 'gastronomia',
     discount: '15% OFF',
     rating: 5.0,
@@ -777,31 +806,6 @@ export const ATTRACTIONS = [
     ],
     description: 'O primeiro restaurante panorâmico de Curitiba! Localizado na cobertura de um edifício no Bigorrilho, oferece alta gastronomia franco-italiana com paredes inteiramente em vidro que proporcionam uma vista deslumbrante em 360 graus da cidade iluminada à noite.',
     features: ['Vista skyline 360° da cidade', 'Menu de alta gastronomia internacional', 'Carta de vinhos selecionados com +400 rótulos', 'Ambiente romântico e exclusivo', 'Confeitaria panorâmica 360']
-  },
-  {
-    id: 'bar-do-alemao',
-    title: 'Bar do Alemão • Choperia & Gastronomia Germânica',
-    subtitle: 'Largo da Ordem • Centro Histórico',
-    location: 'Centro Histórico • Curitiba',
-    category: 'gastronomia',
-    categories: ['gastronomia', 'restaurantes', 'conhecendo', 'cupons'],
-    topic: 'gastronomia',
-    discount: '12% OFF',
-    rating: 4.8,
-    reviewsCount: 3900,
-    duration: '2 horas',
-    price: 45.00,
-    originalPrice: 52.00,
-    isFree: false,
-    paymentTerms: 'Chopp Submarino + Porção Típica',
-    lat: -25.4285,
-    lng: -49.2725,
-    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Tradicionalíssimo botequim germânico fundado em 1979 no coração do Largo da Ordem! Famoso pelo autêntico Chopp Submarino (caneco com canecozinho de Steinhäger que o cliente leva de lembrança) e iguarias como Carne de Onça paranaense, Eisbein (joelho de porco) e Kassler.',
-    features: ['Tradicional Chopp Submarino com caneco souvenir', 'Famosa Carne de Onça tombada patrimônio cultural', 'Pratos típicos alemães (Eisbein, Wurst)', 'Música ao vivo e atmosfera festiva', 'Localizado no calçadão histórico']
   },
   {
     id: 'mercado-municipal',
