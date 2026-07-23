@@ -1,23 +1,23 @@
 export const CATEGORIES = [
-  { id: 'all', label: 'Todos', icon: 'Sparkles' },
-  { id: 'pacotes', label: 'Pacotes', icon: 'Ticket' },
-  { id: 'promocionais', label: 'Promocionais', icon: 'Percent' },
-  { id: 'cupons', label: 'Cupons de desconto', icon: 'Tag' },
-  { id: 'parques', label: 'Parques', icon: 'Trees' },
-  { id: 'conhecendo', label: 'Conhecendo Curitiba', icon: 'Compass' },
-  { id: 'restaurantes', label: 'Restaurantes', icon: 'Utensils' },
-  { id: 'shows', label: 'Shows e Espetáculos', icon: 'Music' },
+  { id: 'all', label: 'Todos os Passeios', icon: 'Sparkles' },
+  { id: 'pacotes', label: 'Pacotes & Tours', icon: 'Ticket' },
+  { id: 'promocionais', label: 'Ofertas & Promoções', icon: 'Percent' },
+  { id: 'cupons', label: 'Cupons de Desconto', icon: 'Tag' },
+  { id: 'parques', label: 'Parques & Natureza', icon: 'Trees' },
+  { id: 'conhecendo', label: 'Cultura & História', icon: 'Compass' },
+  { id: 'restaurantes', label: 'Gastronomia CWB', icon: 'Utensils' },
+  { id: 'shows', label: 'Shows & Espetáculos', icon: 'Music' },
 ];
 
 export const BRAND_LANDMARKS = [
-  { id: 'jardim-botanico', name: 'Jardim Botânico', icon: 'Trees', desc: 'Estufa icônica em ferro e vidro estilo Palácio de Cristal' },
-  { id: 'mon', name: 'Museu Oscar Niemeyer', icon: 'Eye', desc: 'O famoso Museu do Olho com arquitetura futurista' },
-  { id: 'bonde', name: 'Bonde Elétrico', icon: 'Train', desc: 'Símbolo da mobilidade e do calçadão da Rua XV' },
-  { id: 'torre', name: 'Torre Panorâmica', icon: 'TowerControl', desc: 'Mirante 360° com vista para toda a cidade' },
-  { id: 'capivara', name: 'Capivara', icon: 'Smile', desc: 'Mascote oficial e habitual moradora dos parques' },
-  { id: 'opera', name: 'Ópera de Arame', icon: 'Landmark', desc: 'Teatro tubular integrado à natureza e lago' },
-  { id: 'flor', name: 'Flor do Parque', icon: 'Flower2', desc: 'Flora exuberante dos parques e alamedas floridas' },
-  { id: 'paco', name: 'Paço da Liberdade', icon: 'Building2', desc: 'Patrimônio histórico cultural e café histórico' },
+  { id: 'jardim-botanico', name: 'Jardim Botânico', icon: 'Trees', desc: 'Estufa icônica em ferro e vidro estilo Palácio de Cristal de Londres' },
+  { id: 'mon', name: 'Museu Oscar Niemeyer', icon: 'Eye', desc: 'O famoso Museu do Olho com arquitetura futurista de Niemeyer' },
+  { id: 'bonde', name: 'Bonde Elétrico', icon: 'Train', desc: 'Símbolo da mobilidade urbana e do calçadão da Rua XV de Novembro' },
+  { id: 'torre', name: 'Torre Panorâmica', icon: 'TowerControl', desc: 'Mirante 360° com visão contemplativa para toda a região metropolitana' },
+  { id: 'capivara', name: 'Capivara CWB', icon: 'Smile', desc: 'Mascote carismática oficial e moradora ilustre dos parques curitibanos' },
+  { id: 'opera', name: 'Ópera de Arame', icon: 'Landmark', desc: 'Teatro tubular transparente integrado à natureza e ao lago da pedreira' },
+  { id: 'flor', name: 'Flor do Parque', icon: 'Flower2', desc: 'Exuberância da flora nativa das alamedas floridas e pinheiros de Curitiba' },
+  { id: 'paco', name: 'Paço da Liberdade', icon: 'Building2', desc: 'Patrimônio histórico cultural tombado com café e arquitetura Art Nouveau' },
 ];
 
 export const ATTRACTIONS = [
@@ -29,8 +29,8 @@ export const ATTRACTIONS = [
     category: 'parques',
     categories: ['parques', 'pacotes', 'conhecendo'],
     discount: '33% OFF',
-    rating: 4.8,
-    reviewsCount: 170,
+    rating: 4.9,
+    reviewsCount: 210,
     duration: '2 a 3 horas',
     price: 39.90,
     originalPrice: 59.90,
@@ -44,8 +44,8 @@ export const ATTRACTIONS = [
       'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Um belíssimo e recém-planejado parque no bairro Abranches, celebrando o legado ecológico de Curitiba com lagos, ciclovias e áreas de contemplação. Homenagem ao urbanista Jaime Lerner, o parque integra mata nativa preservada com mirantes sustentáveis.',
-    features: ['Acessibilidade total', 'Estacão de bicicletas', 'Área pet friendly', 'Lanchonete sustentável']
+    description: 'Um belíssimo e recém-planejado parque no bairro Abranches, celebrando o legado ecológico de Curitiba com lagos, ciclovias e áreas de contemplação. Homenagem ao urbanista e ex-governador Jaime Lerner, o parque integra mata nativa preservada de araucárias com mirantes sustentáveis.',
+    features: ['Acessibilidade universal', 'Estação de bicicletas', 'Área pet friendly', 'Lanchonete sustentável com produtos locais', 'Wi-Fi gratuito']
   },
   {
     id: 'jardim-botanico',
@@ -56,7 +56,7 @@ export const ATTRACTIONS = [
     categories: ['parques', 'conhecendo'],
     discount: null,
     rating: 4.9,
-    reviewsCount: 3200,
+    reviewsCount: 3840,
     duration: '2 a 3 horas',
     price: 0,
     originalPrice: null,
@@ -69,20 +69,20 @@ export const ATTRACTIONS = [
       'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'O cartão-postal mais famoso de Curitiba. Possui estufa de ferro e vidro inspirada no Palácio de Cristal de Londres, jardins geométricos no estilo francês e o Jardim das Sensações.',
-    features: ['Estufa climatizada', 'Jardim das Sensações', 'Museu Botânico', 'Visitas guiadas']
+    description: 'O cartão-postal mais famoso de Curitiba. Inaugurado em 1991, possui uma marcante estufa de ferro e vidro inspirada no Palácio de Cristal de Londres, jardins geométricos no estilo francês, o Jardim das Sensações (trilha de olhos vendados com aromas e texturas) e o Museu Botânico.',
+    features: ['Estufa climatizada com flora tropical', 'Jardim das Sensações', 'Museu Botânico Nacional', 'Visitas guiadas gratuitas', 'Pista de caminhada']
   },
   {
     id: 'city-tour-linha-turismo',
-    title: 'City Tour Linha Turismo',
+    title: 'City Tour Linha Turismo Curitiba',
     subtitle: 'Centro • Curitiba',
     location: 'Centro • Curitiba',
-    category: 'conhecendo',
-    categories: ['conhecendo', 'pacotes', 'promocionais'],
+    category: 'pacotes',
+    categories: ['pacotes', 'conhecendo', 'promocionais'],
     discount: '25% OFF',
     rating: 4.8,
-    reviewsCount: 1250,
-    duration: 'Dia todo',
+    reviewsCount: 1420,
+    duration: 'Dia todo (Validade 24h)',
     price: 50.00,
     originalPrice: 66.00,
     isFree: false,
@@ -94,69 +94,19 @@ export const ATTRACTIONS = [
       'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Linha de ônibus especial panorâmico de andar duplo que percorre os 26 principais pontos turísticos da cidade. O bilhete permite embarques ilimitados em um período de 24h.',
-    features: ['Ônibus panorâmico', 'Áudio-guia multilingue', '26 paradas turísticas', 'Wi-Fi a bordo']
-  },
-  {
-    id: 'jantar-madalosso',
-    title: 'Jantar Madalosso Santa Felicidade',
-    subtitle: 'Santa Felicidade • Curitiba',
-    location: 'Santa Felicidade • Curitiba',
-    category: 'restaurantes',
-    categories: ['restaurantes', 'promocionais', 'cupons'],
-    discount: '17% OFF',
-    rating: 4.7,
-    reviewsCount: 860,
-    duration: '3 horas',
-    price: 99.90,
-    originalPrice: 120.00,
-    isFree: false,
-    paymentTerms: 'Pague em até 3x',
-    lat: -25.4055,
-    lng: -49.3300,
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Tradicional rodízio italiano no bairro gastronômico de Santa Felicidade. Desfrute de frango a passarinho, polenta crocante, risotos e mais de 10 variedades de massas artesanais.',
-    features: ['Rodízio completo', 'Vinhos da casa inclusos', 'Espaço kids', 'Estacamento gratuito']
-  },
-  {
-    id: 'opera-de-arame-acustico',
-    title: 'Ópera de Arame Acústico',
-    subtitle: 'Abranches • Curitiba',
-    location: 'Abranches • Curitiba',
-    category: 'shows',
-    categories: ['shows', 'promocionais', 'pacotes'],
-    discount: '36% OFF',
-    rating: 4.8,
-    reviewsCount: 420,
-    duration: '2 horas',
-    price: 90.00,
-    originalPrice: 140.00,
-    isFree: false,
-    paymentTerms: '12x Sem Juros',
-    lat: -25.3850,
-    lng: -49.2764,
-    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80'
-    ],
-    description: 'Teatro espetacular construído em tubos de aço sobre um lago de uma antiga pedreira. O palco flutuante e a iluminação noturna proporcionam uma atmosfera mágica e inesquecível.',
-    features: ['Palco sobre as águas', 'Restaurante do Lago', 'Vale da Música', 'Arquitetura única']
+    description: 'Linha de ônibus panorâmico de andar duplo que percorre os 26 principais pontos turísticos da capital paranaense. O bilhete é reutilizável com embarques e desembarques ilimitados durante o período de 24 horas.',
+    features: ['Ônibus panorâmico open-top', 'Áudio-guia em 3 idiomas (PT/EN/ES)', '26 paradas turísticas', 'Wi-Fi a bordo']
   },
   {
     id: 'serra-verde-express',
-    title: 'Serra Verde Express: Curitiba-Morretes',
-    subtitle: 'Rodoviária • Curitiba',
-    location: 'Rodoviária • Curitiba',
+    title: 'Passeio de Trem Serra Verde Express',
+    subtitle: 'Estação Ferroviária • Curitiba',
+    location: 'Estação Ferroviária • Curitiba',
     category: 'pacotes',
     categories: ['pacotes', 'promocionais', 'conhecendo'],
     discount: '27% OFF',
     rating: 4.9,
-    reviewsCount: 4200,
+    reviewsCount: 4650,
     duration: 'Dia todo',
     price: 219.00,
     originalPrice: 299.00,
@@ -169,8 +119,33 @@ export const ATTRACTIONS = [
       'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Considerada uma das viagens de trem mais bonitas do mundo pelo The Wall Street Journal. Atravessa a vertiginosa Ponte do Viaduto do Carvalho e desce a Serra do Mar até a histórica Morretes com almoço típico de barreado.',
-    features: ['Serviço de bordo', 'Almoço de Barreado incluso', 'Guia turístico bilíngue', 'Transfers inclusos']
+    description: 'Eleita uma das viagens de trem mais espetaculares do mundo pelo The Wall Street Journal. O trajeto desce a preserved Reserva de Mata Atlântica da Serra do Mar paranaense, atravessando a vertiginosa Ponte do Viaduto do Carvalho até a cidade histórica de Morretes, com almoço típico de Barreado incluso.',
+    features: ['Serviço de bordo com lanche e bebidas', 'Almoço de Barreado típico em Morretes', 'Guia turístico credenciado', 'Transfer de retorno em van executiva']
+  },
+  {
+    id: 'opera-de-arame-acustico',
+    title: 'Ópera de Arame & Vale da Música',
+    subtitle: 'Abranches • Curitiba',
+    location: 'Abranches • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'promocionais', 'pacotes'],
+    discount: '36% OFF',
+    rating: 4.8,
+    reviewsCount: 530,
+    duration: '2 a 3 horas',
+    price: 90.00,
+    originalPrice: 140.00,
+    isFree: false,
+    paymentTerms: 'Pague em até 6x',
+    lat: -25.3850,
+    lng: -49.2764,
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Teatro espetacular construído com estruturas de tubos de aço e teto transparente sobre as águas cristalinas do lago de uma antiga pedreira desativada. O projeto conta com o festival itinerante Vale da Música, apresentando música instrumental ao vivo no palco flutuante.',
+    features: ['Palco flutuante sobre o lago', 'Restaurante do Lago Ópera', 'Palco flutuante do Vale da Música', 'Arquitetura integrada à pedreira']
   },
   {
     id: 'museu-oscar-niemeyer',
@@ -181,7 +156,7 @@ export const ATTRACTIONS = [
     categories: ['conhecendo', 'pacotes'],
     discount: '25% OFF',
     rating: 4.9,
-    reviewsCount: 2800,
+    reviewsCount: 3100,
     duration: '3 a 4 horas',
     price: 30.00,
     originalPrice: 40.00,
@@ -193,19 +168,92 @@ export const ATTRACTIONS = [
     gallery: [
       'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Conhecido nacionalmente como o "Museu do Olho", abriga exposições de artes visuais, arquitetura, design e a icônica torre em formato de olho desenhada por Oscar Niemeyer.',
-    features: ['Exposições internacionais', 'Café MON', 'Loja de souvenirs', 'Parque de esculturas']
+    description: 'Conhecido internacionalmente como o "Museu do Olho", é um dos maiores complexos de arte da América Latina. Projetado pelo mestre Oscar Niemeyer, abriga um acervo de mais de 14 mil obras de artes visuais, design, arquitetura e escultura.',
+    features: ['Exposições nacionais e internacionais', 'Café gourmet MON', 'Loja oficial de souvenirs', 'Parque de esculturas externas (Parcão)']
+  },
+  {
+    id: 'jantar-madalosso',
+    title: 'Rodízio Italiano Restaurante Madalosso',
+    subtitle: 'Santa Felicidade • Curitiba',
+    location: 'Santa Felicidade • Curitiba',
+    category: 'restaurantes',
+    categories: ['restaurantes', 'promocionais', 'cupons'],
+    discount: '17% OFF',
+    rating: 4.8,
+    reviewsCount: 1120,
+    duration: '3 horas',
+    price: 99.90,
+    originalPrice: 120.00,
+    isFree: false,
+    paymentTerms: 'Pague em até 3x',
+    lat: -25.4055,
+    lng: -49.3300,
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Reconhecido pelo Guinness Book como o maior restaurante das Américas. Localizado no bairro gastronômico de Santa Felicidade, serve o mais autêntico rodízio da culinária italiana paranaense: frango a passarinho, polenta crocante, risoto de frango e massas recheadas feitas à mão.',
+    features: ['Rodízio tradicional completo', 'Carta de vinhos e vinícola própria', 'Espaço Kids gratuito', 'Estacamento próprio para 900 carros']
+  },
+  {
+    id: 'parque-tangua',
+    title: 'Parque Tanguá & Mirante do Pôr do Sol',
+    subtitle: 'Pilarzinho • Curitiba',
+    location: 'Pilarzinho • Curitiba',
+    category: 'parques',
+    categories: ['parques', 'conhecendo'],
+    discount: null,
+    rating: 4.9,
+    reviewsCount: 2950,
+    duration: '2 horas',
+    price: 0,
+    originalPrice: null,
+    isFree: true,
+    paymentTerms: 'Entrada Gratuita',
+    lat: -25.3789,
+    lng: -49.2818,
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Construído sobre duas pedreiras desativadas, o Parque Tanguá é célebre por oferecer o pôr do sol mais bonito de Curitiba. Conta com mirante no topo da pedreira, cascata de 45 metros de altura, túnel escavado na rocha conectando os lagos e jardim estilo francês.',
+    features: ['Mirante elevado de contemplação', 'Cascata artificial de 45m', 'Túnel de acesso entre os lagos', 'Bistrô do parque', 'Ciclovia e pista de caminhada']
+  },
+  {
+    id: 'parque-barigui',
+    title: 'Parque Barigui',
+    subtitle: 'Bigorrilho • Curitiba',
+    location: 'Bigorrilho • Curitiba',
+    category: 'parques',
+    categories: ['parques', 'conhecendo'],
+    discount: null,
+    rating: 4.8,
+    reviewsCount: 4200,
+    duration: '3 a 4 horas',
+    price: 0,
+    originalPrice: null,
+    isFree: true,
+    paymentTerms: 'Entrada Gratuita',
+    lat: -25.4241,
+    lng: -49.3082,
+    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O Parque Barigui é o parque urbano mais frequentado pelos curitibanos. Com 1,4 milhão de metros quadrados, abriga um enorme lago natural onde vive o famoso grupo de capivaras da cidade, além do Museu do Automóvel e centro de exposições Expo Renault Barigui.',
+    features: ['Habitat natural de capivaras', 'Pista asfaltada de 5km para corrida/bike', 'Museu do Automóvel', 'Quiosques de churrasco e restaurantes']
   },
   {
     id: 'torre-panorámica',
-    title: 'Torre Panorâmica de Curitiba',
+    title: 'Torre Panorâmica das Mercês',
     subtitle: 'Mercês • Curitiba',
     location: 'Mercês • Curitiba',
     category: 'conhecendo',
     categories: ['conhecendo', 'cupons'],
     discount: null,
-    rating: 4.6,
-    reviewsCount: 1100,
+    rating: 4.7,
+    reviewsCount: 1840,
     duration: '1 hora',
     price: 10.00,
     originalPrice: null,
@@ -217,31 +265,176 @@ export const ATTRACTIONS = [
     gallery: [
       'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Com 109 metros de altura, a torre de telefonia oferece uma visão panorâmica em 360° de toda a região metropolitana de Curitiba e das montanhas da Serra do Mar.',
-    features: ['Mirante 360°', 'Painel cerâmico de Poty Lazzarotto', 'Museu do Telefone', 'Binóculos panorâmicos']
+    description: 'Com 109 metros de altura (equivalente a um prédio de 40 andares), a torre de telecomunicações é o ponto mais alto da cidade e oferece uma deslumbrante vista panorâmica em 360° de Curitiba, com mapa em relevo de Poty Lazzarotto e o Museu do Telefone no piso térreo.',
+    features: ['Mirante em 360° envidraçado', 'Painel cerâmico de Poty Lazzarotto', 'Museu do Telefone', 'Visão ampla da Serra do Mar']
+  },
+  {
+    id: 'parque-tingui-memorial-ucraniano',
+    title: 'Parque Tingui & Memorial Ucraniano',
+    subtitle: 'São João • Curitiba',
+    location: 'São João • Curitiba',
+    category: 'parques',
+    categories: ['parques', 'conhecendo'],
+    discount: null,
+    rating: 4.8,
+    reviewsCount: 1650,
+    duration: '2 horas',
+    price: 0,
+    originalPrice: null,
+    isFree: true,
+    paymentTerms: 'Entrada Gratuita',
+    lat: -25.3955,
+    lng: -49.3031,
+    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Parque linear margeando o Rio Barigui que abriga o icônico Memorial Ucraniano. A capela em estilo de madeira da Serra da Ucrânia é uma réplica fiel da igreja de São Miguel em Mallet (PR), com exposição de pêssankas (ovos pintados à mão) e artesanato folclórico.',
+    features: ['Réplica da Capela de São Miguel', 'Exposição permanente de Pêssankas', 'Casa típica em tronco de madeira', 'Ponte de madeira sobre o lago']
+  },
+  {
+    id: 'bosque-alemao',
+    title: 'Bosque Alemão & Trilha de João e Maria',
+    subtitle: 'Vista Alegre • Curitiba',
+    location: 'Vista Alegre • Curitiba',
+    category: 'parques',
+    categories: ['parques', 'conhecendo'],
+    discount: null,
+    rating: 4.7,
+    reviewsCount: 1980,
+    duration: '2 horas',
+    price: 0,
+    originalPrice: null,
+    isFree: true,
+    paymentTerms: 'Entrada Gratuita',
+    lat: -25.4098,
+    lng: -49.2891,
+    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Bosque comemorativo da cultura germânica. Conta com a Trilha do Conto dos Irmãos Grimm narrando a história de João e Maria em painéis cerâmicos, a Casa da Bruxa (biblioteca infantil com hora do conto) e a Torre dos Filósofos com mirante sobre a mata.',
+    features: ['Trilha infantil dos Irmãos Grimm', 'Casa da Bruxa com contação de histórias', 'Torre dos Filósofos (mirante)', 'Portal Germânico']
+  },
+  {
+    id: 'mercado-municipal-curitiba',
+    title: 'Mercado Municipal de Curitiba',
+    subtitle: 'Centro • Curitiba',
+    location: 'Centro • Curitiba',
+    category: 'restaurantes',
+    categories: ['restaurantes', 'conhecendo', 'cupons'],
+    discount: '15% OFF',
+    rating: 4.8,
+    reviewsCount: 3500,
+    duration: '2 a 3 horas',
+    price: 45.00,
+    originalPrice: 55.00,
+    isFree: false,
+    paymentTerms: 'Pague no local ou no app',
+    lat: -25.4361,
+    lng: -49.2589,
+    image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Fundado em 1958, é o principal centro de compras e gastronomia de Curitiba. Conta com o 1º Setor de Orgânicos do Brasil, restaurantes de gastronomia internacional, empórios de queijos nobres, vinhos, café artesanal e temperos do mundo todo.',
+    features: ['Setor de Orgânicos pioneiro no Brasil', 'Restaurantes japoneses, árabes e italianos', 'Especiarias e produtos da colônia', 'Cafés especiais paranaenses']
+  },
+  {
+    id: 'feira-largo-da-ordem',
+    title: 'Feira de Artesanato do Largo da Ordem',
+    subtitle: 'Centro Histórico • Curitiba',
+    location: 'Centro Histórico • Curitiba',
+    category: 'conhecendo',
+    categories: ['conhecendo', 'restaurantes'],
+    discount: null,
+    rating: 4.9,
+    reviewsCount: 2900,
+    duration: 'Manhã de Domingo (8h às 14h)',
+    price: 0,
+    originalPrice: null,
+    isFree: true,
+    paymentTerms: 'Entrada Gratuita',
+    lat: -25.4281,
+    lng: -49.2719,
+    image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Realizada todos os domingos no coração do Centro Histórico de Curitiba. Reúne mais de 1.000 artesãos oferecendo arte em madeira, pintura, cerâmica, antiguidades e barracas gastronômicas com o famoso pastel de feira e pierogi ucraniano.',
+    features: ['Mais de 1.000 barracas de artesanato', 'Gastronomia típica (Pierogi, Pastel, Quentão)', 'Apresentações culturais de rua', 'Arquitetura colonial preservada']
+  },
+  {
+    id: 'paco-da-liberdade-sesc',
+    title: 'Paço da Liberdade SESC',
+    subtitle: 'Centro • Curitiba',
+    location: 'Centro • Curitiba',
+    category: 'conhecendo',
+    categories: ['conhecendo', 'cupons'],
+    discount: null,
+    rating: 4.8,
+    reviewsCount: 1400,
+    duration: '1 a 2 horas',
+    price: 0,
+    originalPrice: null,
+    isFree: true,
+    paymentTerms: 'Entrada Gratuita',
+    lat: -25.4294,
+    lng: -49.2704,
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Único prédio de Curitiba tombado pelo IPHAN em nível nacional. Antiga sede da Prefeitura Municipal inaugurada em 1916, possui elegante arquitetura eclética e neoclássica. Hoje abriga centro cultural do SESC com biblioteca digital, cinema e o sofisticado Café do Paço.',
+    features: ['Prédio histórico tombado pelo IPHAN', 'Café do Paço com baristas premiados', 'Salas de exposições de artes visuais', 'Biblioteca e estúdio musical']
+  },
+  {
+    id: 'hard-rock-cafe-curitiba',
+    title: 'Hard Rock Cafe Curitiba',
+    subtitle: 'Batel • Curitiba',
+    location: 'Batel • Curitiba',
+    category: 'restaurantes',
+    categories: ['restaurantes', 'shows', 'promocionais'],
+    discount: '20% OFF',
+    rating: 4.7,
+    reviewsCount: 2200,
+    duration: '2 a 3 horas',
+    price: 85.00,
+    originalPrice: 106.25,
+    isFree: false,
+    paymentTerms: 'Pague em até 3x',
+    lat: -25.4385,
+    lng: -49.2810,
+    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O maior Hard Rock Cafe da América Latina, localizado no cosmopolita bairro do Batel. Oferece pratos icônicos da culinária americana (Original Legendary Burger, rib-eye e sobremesas), acompanhados por um museu com memorabílias originais de estrelas do rock mundial e shows ao vivo.',
+    features: ['Maior unidade da América Latina', 'Memorabílias autênticas de astros do Rock', 'Shows de rock ao vivo', 'Rock Shop com produtos oficiais']
   }
 ];
 
 export const HERO_SLIDES = [
   {
-    badge: 'DESTAQUE',
-    title: 'Curitiba 360: Viva a Cidade em Todos os Sentidos',
-    subtitle: 'Conectando você às melhores experiências da capital ecológica: shows, parques, gastronomia e passeios integrados.',
+    badge: 'DESTAQUE ECOLÓGICO',
+    title: 'Curitiba 360°: Viva a Capital Verde do Brasil',
+    subtitle: 'Conectando você às melhores experiências da capital ecológica: shows na Ópera, paradas no Jardim Botânico, gastronomia e passeios integrados.',
     image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1600&q=80',
-    ctaText: 'Explorar Experiências'
+    ctaText: 'Explorar Atrações'
   },
   {
     badge: 'OFERTA DA SEMANA',
     title: 'Passeio Encantador na Serra do Mar',
-    subtitle: 'Desconto exclusivo de 27% no passeio de trem Curitiba-Morretes com almoço de Barreado incluso.',
+    subtitle: 'Desconto exclusivo de 27% no famoso passeio de trem Curitiba-Morretes com almoço de Barreado típico incluso.',
     image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1600&q=80',
     ctaText: 'Garantir Ingresso'
   },
   {
     badge: 'CULTURA & ARTE',
     title: 'Noites Mágicas na Ópera de Arame',
-    subtitle: 'Aproveite shows acústicos sobre as águas cristalinas do lago da pedreira.',
+    subtitle: 'Aproveite shows acústicos sobre as águas cristalinas do lago da pedreira com o Vale da Música.',
     image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1600&q=80',
     ctaText: 'Ver Programação'
   }
 ];
+
