@@ -5,6 +5,9 @@ import AttractionSlider from './components/AttractionSlider';
 import OfficialBrandSection from './components/OfficialBrandSection';
 import ImperdiveisSection from './components/ImperdiveisSection';
 import NearbySection from './components/NearbySection';
+import TopicBanner from './components/TopicBanner';
+import RoteirosSection from './components/RoteirosSection';
+import GuiaPraticoSection from './components/GuiaPraticoSection';
 import AttractionDetailModal from './components/AttractionDetailModal';
 import CartModal from './components/CartModal';
 import LoginModal from './components/LoginModal';
@@ -14,6 +17,7 @@ import Footer from './components/Footer';
 import { ATTRACTIONS } from './data/attractions';
 
 export default function App() {
+  const [activeTopicTab, setActiveTopicTab] = useState('home'); // home, parques, cultura, tours, gastronomia, roteiros, guia
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeAttraction, setActiveAttraction] = useState(null);
@@ -22,9 +26,24 @@ export default function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isAboutBrandOpen, setIsAboutBrandOpen] = useState(false);
 
-  // Filtered Attractions
+  // Handle Topic selection
+  const handleSelectTopicTab = (tabId) => {
+    setActiveTopicTab(tabId);
+    // Reset category filter when switching main topic tabs
+    setSelectedCategory('all');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Filtered Attractions according to both Topic & Category & Search
   const filteredAttractions = useMemo(() => {
     return ATTRACTIONS.filter((item) => {
+      // Topic tab filter
+      if (activeTopicTab !== 'home' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia') {
+        if (item.topic !== activeTopicTab && !item.categories?.includes(activeTopicTab)) {
+          return false;
+        }
+      }
+
       // Category filter
       const matchesCategory =
         selectedCategory === 'all' ||
@@ -41,7 +60,7 @@ export default function App() {
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [activeTopicTab, selectedCategory, searchQuery]);
 
   // Featured sections
   const imperdiveisAttractions = useMemo(() => {
@@ -71,6 +90,7 @@ export default function App() {
   };
 
   const handleClearFilters = () => {
+    setActiveTopicTab('home');
     setSelectedCategory('all');
     setSearchQuery('');
   };
@@ -78,8 +98,10 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', display: 'flex', flexDirection: 'column' }}>
       
-      {/* Header */}
+      {/* Header with Navigation Tabs */}
       <Header
+        activeTopicTab={activeTopicTab}
+        onSelectTopicTab={handleSelectTopicTab}
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
         searchQuery={searchQuery}
@@ -94,54 +116,77 @@ export default function App() {
       {/* Main Content */}
       <main style={{ flex: 1 }}>
         
-        {/* Hero Carousel (Only shown when no search is active) */}
-        {!searchQuery && selectedCategory === 'all' && (
+        {/* Topic Context Banner for specific topic views */}
+        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
+          <TopicBanner topicId={activeTopicTab} />
+        )}
+
+        {/* Hero Carousel (Shown on Home view when no search query) */}
+        {activeTopicTab === 'home' && !searchQuery && selectedCategory === 'all' && (
           <HeroCarousel onSelectAttraction={setActiveAttraction} />
         )}
 
-        {/* Dynamic Attraction Slider / Grid */}
-        <AttractionSlider
-          title={
-            selectedCategory !== 'all' || searchQuery
-              ? `Resultados da busca (${filteredAttractions.length})`
-              : "O que fazer em Curitiba"
-          }
-          subtitle={
-            selectedCategory === 'all' && !searchQuery
-              ? "Explore as principais atrações ecológicas e experiências da capital paranaense."
-              : "Exibindo os melhores passeios correspondentes aos seus filtros."
-          }
-          attractions={filteredAttractions}
-          onClickDetail={setActiveAttraction}
-        />
+        {/* Dedicated Screen: Roteiros Prontos */}
+        {activeTopicTab === 'roteiros' ? (
+          <RoteirosSection onClickDetail={setActiveAttraction} />
+        ) : activeTopicTab === 'guia' ? (
+          /* Dedicated Screen: Guia Prático CWB */
+          <GuiaPraticoSection />
+        ) : (
+          /* Standard Attraction Grid/Slider View for Home or Topic Filter Views */
+          <>
+            <AttractionSlider
+              title={
+                selectedCategory !== 'all' || searchQuery
+                  ? `Resultados da busca (${filteredAttractions.length})`
+                  : activeTopicTab === 'parques'
+                  ? "Parques, Bosques & Natureza em Curitiba"
+                  : activeTopicTab === 'cultura'
+                  ? "Museus, Teatros & Patrimônio Histórico"
+                  : activeTopicTab === 'tours'
+                  ? "Tours, Passeios de Trem & Linha Turismo"
+                  : activeTopicTab === 'gastronomia'
+                  ? "Restaurantes, Polos Gastronômicos & Mercados"
+                  : "O Que Fazer em Curitiba • Atrações em Destaque 360°"
+              }
+              subtitle={
+                selectedCategory === 'all' && !searchQuery
+                  ? "Explore as melhores atrações ecológicas, culturais e gastronômicas da capital paranaense."
+                  : "Exibindo os melhores passeios correspondentes aos seus filtros."
+              }
+              attractions={filteredAttractions}
+              onClickDetail={setActiveAttraction}
+            />
 
-        {/* Official Brand Section */}
-        {!searchQuery && selectedCategory === 'all' && (
-          <OfficialBrandSection
-            onOpenMap={() => {
-              const nearbyEl = document.getElementById('nearby-section');
-              if (nearbyEl) nearbyEl.scrollIntoView({ behavior: 'smooth' });
-            }}
-            onOpenAboutBrand={() => setIsAboutBrandOpen(true)}
-            onFilterLandmark={(landmarkName) => setSearchQuery(landmarkName)}
-          />
+            {/* Official Brand Section (Only on Home) */}
+            {activeTopicTab === 'home' && !searchQuery && selectedCategory === 'all' && (
+              <OfficialBrandSection
+                onOpenMap={() => {
+                  const nearbyEl = document.getElementById('nearby-section');
+                  if (nearbyEl) nearbyEl.scrollIntoView({ behavior: 'smooth' });
+                }}
+                onOpenAboutBrand={() => setIsAboutBrandOpen(true)}
+                onFilterLandmark={(landmarkName) => setSearchQuery(landmarkName)}
+              />
+            )}
+
+            {/* Imperdíveis Section (Only on Home) */}
+            {activeTopicTab === 'home' && !searchQuery && selectedCategory === 'all' && (
+              <ImperdiveisSection
+                attractions={imperdiveisAttractions}
+                onClickDetail={setActiveAttraction}
+              />
+            )}
+
+            {/* Nearby / Geolocation Section */}
+            <div id="nearby-section">
+              <NearbySection
+                attractions={ATTRACTIONS}
+                onClickDetail={setActiveAttraction}
+              />
+            </div>
+          </>
         )}
-
-        {/* Imperdíveis Section */}
-        {!searchQuery && selectedCategory === 'all' && (
-          <ImperdiveisSection
-            attractions={imperdiveisAttractions}
-            onClickDetail={setActiveAttraction}
-          />
-        )}
-
-        {/* Nearby / Geolocation Section */}
-        <div id="nearby-section">
-          <NearbySection
-            attractions={ATTRACTIONS}
-            onClickDetail={setActiveAttraction}
-          />
-        </div>
 
       </main>
 

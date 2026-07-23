@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from './Logo';
+import NavigationTabs from './NavigationTabs';
 import { 
   Search, User, ShoppingCart, Ticket, Percent, Tag, Trees, 
   Compass, Utensils, Music, Sparkles, Globe, X, PhoneCall, Building2, UserCheck
@@ -11,6 +12,8 @@ const ICON_MAP = {
 };
 
 export default function Header({ 
+  activeTopicTab,
+  onSelectTopicTab,
   selectedCategory, 
   onSelectCategory, 
   searchQuery, 
@@ -188,62 +191,58 @@ export default function Header({
         </div>
       </div>
 
-      {/* Category Navigation Bar - PERFECTLY CENTERED */}
-      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
-        <div style={{ 
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          padding: '12px 20px', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          gap: '12px', 
-          flexWrap: 'wrap' 
-        }}>
-          {CATEGORIES.map((cat) => {
-            const IconComponent = ICON_MAP[cat.icon] || Sparkles;
-            const isActive = selectedCategory === cat.id;
+      {/* Main Topic Screens Navigation Bar */}
+      <NavigationTabs
+        activeTab={activeTopicTab}
+        onSelectTab={onSelectTopicTab}
+      />
 
-            return (
-              <button
-                key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '9px 18px',
-                  borderRadius: '9999px',
-                  fontSize: '13px',
-                  fontWeight: isActive ? '800' : '600',
-                  whiteSpace: 'nowrap',
-                  backgroundColor: isActive ? '#eff6ff' : '#f8fafc',
-                  color: isActive ? '#2563eb' : '#475569',
-                  border: isActive ? '2px solid #2563eb' : '1px solid #cbd5e1',
-                  boxShadow: isActive ? '0 4px 12px rgba(37,99,235,0.2)' : '0 1px 3px rgba(0,0,0,0.02)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseOver={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.borderColor = '#94a3b8';
-                    e.currentTarget.style.backgroundColor = '#f1f5f9';
-                  }
-                }}
-                onMouseOut={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.borderColor = '#cbd5e1';
-                    e.currentTarget.style.backgroundColor = '#f8fafc';
-                  }
-                }}
-              >
-                <IconComponent size={16} color={isActive ? '#2563eb' : '#00a896'} />
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
+      {/* Secondary Category Pills Filter (Only when on home or attraction catalog view) */}
+      {(activeTopicTab === 'home' || activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
+        <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
+          <div style={{ 
+            maxWidth: '1280px', 
+            margin: '0 auto', 
+            padding: '10px 20px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '10px', 
+            flexWrap: 'wrap' 
+          }}>
+            {CATEGORIES.map((cat) => {
+              const IconComponent = ICON_MAP[cat.icon] || Sparkles;
+              const isActive = selectedCategory === cat.id;
+
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => onSelectCategory(cat.id)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '7px 15px',
+                    borderRadius: '9999px',
+                    fontSize: '12px',
+                    fontWeight: isActive ? '800' : '600',
+                    whiteSpace: 'nowrap',
+                    backgroundColor: isActive ? '#eff6ff' : '#f8fafc',
+                    color: isActive ? '#2563eb' : '#475569',
+                    border: isActive ? '2px solid #2563eb' : '1px solid #cbd5e1',
+                    boxShadow: isActive ? '0 2px 8px rgba(37,99,235,0.15)' : 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <IconComponent size={14} color={isActive ? '#2563eb' : '#00a896'} />
+                  <span>{cat.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Active Filter Bar if selected */}
       {(selectedCategory !== 'all' || searchQuery) && (
@@ -285,5 +284,3 @@ export default function Header({
     </header>
   );
 }
-
-
