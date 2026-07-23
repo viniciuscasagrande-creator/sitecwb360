@@ -18,7 +18,7 @@ export default function Logo({ size = 'md', className = '' }) {
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* Official Curitiba 360° Horizontal Header Logo */}
+      {/* Official Curitiba 360° Horizontal Header Logo with Rounded Corners */}
       <img 
         src="/logos/curitiba360_official_header_logo.png" 
         alt="Curitiba 360 Logo Oficial" 
@@ -26,6 +26,8 @@ export default function Logo({ size = 'md', className = '' }) {
           height: currentHeight,
           width: 'auto',
           objectFit: 'contain',
+          borderRadius: '18px',
+          padding: '2px',
           filter: 'drop-shadow(0 4px 16px rgba(0, 168, 150, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1))',
           transition: 'transform 0.3s ease, filter 0.3s ease',
           display: 'block'
