@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Sparkles, X, Send, User, ChevronRight, RefreshCw, Compass, MapPin, Star } from 'lucide-react';
+import { Bot, Sparkles, X, Send, User, ChevronRight, RefreshCw, Compass, MapPin, Star, ShoppingBag, Utensils, Music, Trees, Hotel, Ticket } from 'lucide-react';
 import { ATTRACTIONS } from '../data/attractions';
 
 const QUICK_SUGGESTIONS = [
-  "🌲 Quais os parques imperdíveis de Curitiba?",
-  "🍺 Onde comer Carne de Onça e tomar Chopp Submarino?",
+  "🛍️ Quais os melhores Shoppings de Curitiba?",
+  "🌲 Quais os parques imperdíveis?",
+  "🍺 Bares para tomar Chopp Submarino e Carne de Onça?",
+  "🍝 Onde comer o tradicional rodízio em Santa Felicidade?",
   "🏨 Recomende hotéis 5 estrelas no Batel",
   "🚂 Como funciona o passeio de trem para Morretes?",
-  "🎭 Qual a programação de shows e teatros?",
+  "🎭 Programação de shows, festivais e teatros",
   "🚌 Como andar na Linha Turismo e nos Tubos BRT?"
 ];
 
@@ -19,7 +21,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
     {
       id: 1,
       sender: 'ai',
-      text: 'Olá! Sou o **Assistente Virtual Curitiba 360**, seu guia virtual especialista em Curitiba e Região Metropolitana! 🌲✨\n\nPosso te ajudar a encontrar parques, bares, hotéis, shows, passeios de trem e restaurantes típicos. O que você gostaria de explorar hoje?',
+      text: 'Olá! Sou o **Assistente Virtual Curitiba 360**, seu guia inteligente e interativo para a Capital Ecológica e Região Metropolitana! 🌲✨\n\nEstou pronto para te ajudar com orientações completas sobre **Shoppings, Bares, Restaurantes, Parques, Shows, Teatros, Hotéis, Passeios de Trem e Traslados**. Como posso te ajudar agora?',
       recommendations: []
     }
   ]);
@@ -36,39 +38,50 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
     }
   }, [messages, isOpen]);
 
-  // AI Response Generator
+  // Comprehensive AI Guide Response Engine
   const generateAIResponse = (userText) => {
     const textLower = userText.toLowerCase().trim();
     let replyText = "";
     let recommendations = [];
 
-    if (textLower.includes('parque') || textLower.includes('botanico') || textLower.includes('barigui') || textLower.includes('tangua') || textLower.includes('capivara') || textLower.includes('natureza')) {
-      replyText = "Curitiba é a Capital Ecológica do Brasil! 🌿 Os principais parques imperdíveis são:\n\n1. **Jardim Botânico**: A famosa estufa de vidro estilo Palácio de Cristal de Londres (Entrada 100% Grátis).\n2. **Parque Barigui**: O lar oficial das capivaras e das alamedas de caminhada no lago.\n3. **Parque Tanguá**: O pôr do sol mais espetacular da cidade com cascata de 65m.";
+    // SHOPPING & COMPRAS
+    if (textLower.includes('shopping') || textLower.includes('compra') || textLower.includes('loja') || textLower.includes('mueller') || textLower.includes('patio batel') || textLower.includes('estacao') || textLower.includes('souvenir')) {
+      replyText = "Curitiba possui shoppings incríveis e feiras tradicionais de compras! 🛍️✨\n\n1. **Pátio Batel**: O shopping mais luxuoso do Sul, com grifes internacionais, salas de cinema VIP e polo gastronômico.\n2. **Shopping Mueller**: O primeiro shopping de Curitiba (fundado em 1983 no Centro Cívico).\n3. **Shopping Estação**: Integrado à antiga Estação Ferroviária com o Museu Ferroviário e Teatro Regina Vogue.\n4. **Feira do Largo da Ordem**: Todos os domingos com mais de 1.000 artesãos no Centro Histórico.";
+      recommendations = ATTRACTIONS.filter(a => a.category === 'cultura' || a.category === 'gastronomia').slice(0, 3);
+    }
+    // PARQUES & NATUREZA
+    else if (textLower.includes('parque') || textLower.includes('botanico') || textLower.includes('barigui') || textLower.includes('tangua') || textLower.includes('capivara') || textLower.includes('natureza') || textLower.includes('bosque')) {
+      replyText = "Curitiba é a Capital Ecológica com mais de 50m² de área verde por habitante! 🌿 Capivaras e araucárias te esperam:\n\n1. **Jardim Botânico**: A estufa de vidro icônica inspirada no Palácio de Cristal de Londres (Entrada 100% Grátis).\n2. **Parque Barigui**: O maior parque da cidade e lar oficial do bando de capivaras mascotes.\n3. **Parque Tanguá**: Mirante em formato de castelo com o pôr do sol mais espetacular de Curitiba e cascata de 65m.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'parques' || a.id === 'jardim-botanico' || a.id === 'parque-tangua' || a.id === 'parque-barigui').slice(0, 3);
     } 
-    else if (textLower.includes('bar') || textLower.includes('chopp') || textLower.includes('cerveja') || textLower.includes('onca') || textLower.includes('alemao') || textLower.includes('porks') || textLower.includes('pub')) {
-      replyText = "A vida noturna e os botequins de Curitiba são lendários! 🍺 Confira as melhores opções:\n\n1. **Bar do Alemão**: O Chopp Submarino no Largo da Ordem com canequinho souvenir e Carne de Onça.\n2. **Porks - Porco & Chope**: Torresmo de rolo crocante e chopps a R$ 12.\n3. **We Are Bastards Pub**: 30 torneiras de chopp artesanal e rock no Água Verde.";
+    // BARES, CHOPP & BOTEQUINS
+    else if (textLower.includes('bar') || textLower.includes('chopp') || textLower.includes('cerveja') || textLower.includes('onca') || textLower.includes('alemao') || textLower.includes('porks') || textLower.includes('pub') || textLower.includes('noite')) {
+      replyText = "A vida noturna e os botequins curitibanos são famosos mundialmente! 🍺🥩\n\n1. **Bar do Alemão**: O lendário Chopp Submarino no Largo da Ordem (você ganha o canequinho souvenir) com a autêntica Carne de Onça.\n2. **Porks - Porco & Chope**: Torresmo de rolo estalando de crocante e chopp artesanal paranaense a R$ 12.\n3. **We Are Bastards Pub**: 30 torneiras de chopp artesanal, fliperama retrô e rock no Água Verde.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'bares' || a.topic === 'bares').slice(0, 3);
     }
-    else if (textLower.includes('hotel') || textLower.includes('pousada') || textLower.includes('hospedagem') || textLower.includes('batel') || textLower.includes('quarto') || textLower.includes('dormir')) {
-      replyText = "Aqui estão as hospedagens mais bem avaliadas de Curitiba e região! 🏨\n\n1. **Radisson Hotel Curitiba 5★**: Luxo na Praça da Espanha (Batel) com SPA e piscina aquecida.\n2. **Nomaa Hotel Boutique 5★**: Design contemporâneo e café da manhã premiado.\n3. **Pousada Ilha do Mel**: Refúgio pé na areia com café caiçara.";
-      recommendations = ATTRACTIONS.filter(a => a.category === 'hoteis' || a.topic === 'hoteis').slice(0, 3);
-    }
-    else if (textLower.includes('show') || textLower.includes('teatro') || textLower.includes('musica') || textLower.includes('pedreira') || textLower.includes('guaira') || textLower.includes('paiol') || textLower.includes('evento')) {
-      replyText = "Curitiba é um grande polo cultural! 🎭🎵 Confira os palcos principais:\n\n1. **Pedreira Paulo Leminski**: Maior palco a céu aberto das Américas para grandes shows internacionais.\n2. **Teatro Guaíra (Guairão)**: 2.173 lugares e sede da Orquestra Sinfônica.\n3. **Vale da Música**: Palco flutuante no lago da Ópera de Arame com Jazz e MPB diários.";
-      recommendations = ATTRACTIONS.filter(a => a.category === 'shows' || a.category === 'teatros' || a.category === 'eventos').slice(0, 3);
-    }
-    else if (textLower.includes('trem') || textLower.includes('serra') || textLower.includes('morretes') || textLower.includes('linha turismo') || textLower.includes('passeio') || textLower.includes('agencia') || textLower.includes('ilha do mel') || textLower.includes('vinho')) {
-      replyText = "Os passeios mais procurados pelos viajantes em Curitiba e RMC! 🚂🏖️\n\n1. **Trem Serra Verde Express**: Viagem espetacular pela Mata Atlântica até Morretes com almoço de Barreado.\n2. **Linha Turismo (Double-Decker)**: Ônibus de 2 andares cobrindo 26 atrações com 5 reembarques.\n3. **Tour Caminho do Vinho (SJP)**: Visita guiada a adegas artesanais com degustação ilimitada.";
-      recommendations = ATTRACTIONS.filter(a => a.category === 'tours' || a.category === 'agencias' || a.id === 'trem-serra-verde').slice(0, 3);
-    }
-    else if (textLower.includes('restaurante') || textLower.includes('comida') || textLower.includes('comer') || textLower.includes('gastronomia') || textLower.includes('madalosso') || textLower.includes('barreado')) {
-      replyText = "Prepare o paladar para a gastronomia paranaense! 🍝😋\n\n1. **Restaurante Família Madalosso**: O maior restaurante das Américas em Santa Felicidade com rodízio italiano farto.\n2. **Terrazza 40**: Restaurante panorâmico 360° no topo do edifício no Bigorrilho.\n3. **Mercado Municipal**: Pastel de Bacalhau e setor de orgânicos.";
+    // RESTAURANTES & GASTRONOMIA
+    else if (textLower.includes('restaurante') || textLower.includes('comida') || textLower.includes('comer') || textLower.includes('gastronomia') || textLower.includes('madalosso') || textLower.includes('barreado') || textLower.includes('santa felicidade') || textLower.includes('terrazza')) {
+      replyText = "Prepare o paladar para um banquete gastronômico inesquecível! 🍝😋\n\n1. **Família Madalosso (Santa Felicidade)**: O maior restaurante das Américas com o autêntico rodízio italiano (frango a passarinho, polenta frita e massas).\n2. **Terrazza 40**: O primeiro restaurante panorâmico 360° no topo do edifício no Bigorrilho.\n3. **Mercado Municipal de Curitiba**: Famoso pelo Pastel de Bacalhau gigante e o Setor de Orgânicos.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'gastronomia' || a.id === 'restaurante-madalosso' || a.id === 'restaurante-terrazza40').slice(0, 3);
     }
+    // HOTÉIS & HOSPEDAGEM
+    else if (textLower.includes('hotel') || textLower.includes('pousada') || textLower.includes('hospedagem') || textLower.includes('batel') || textLower.includes('quarto') || textLower.includes('dormir')) {
+      replyText = "Encontre a hospedagem perfeita em Curitiba e Região Metropolitana! 🏨✨\n\n1. **Radisson Hotel Curitiba 5★**: Luxo na Praça da Espanha (Batel) com SPA, piscina aquecida coberta e restaurante internacional.\n2. **Nomaa Hotel Boutique 5★**: Design moderno autoral com lençóis de algodão egípcio e brunch premiado.\n3. **Pousada Ilha do Mel (Encantadas)**: Pousada de charme pé na areia com café caiçara.";
+      recommendations = ATTRACTIONS.filter(a => a.category === 'hoteis' || a.topic === 'hoteis').slice(0, 3);
+    }
+    // SHOWS, TEATROS & EVENTOS
+    else if (textLower.includes('show') || textLower.includes('teatro') || textLower.includes('musica') || textLower.includes('pedreira') || textLower.includes('guaira') || textLower.includes('paiol') || textLower.includes('evento') || textLower.includes('festival')) {
+      replyText = "Curitiba respira cultura, grandes turnês e festivais! 🎭🎵\n\n1. **Pedreira Paulo Leminski**: O maior palco a céu aberto da América Latina encravado na rocha para turnês mundiais.\n2. **Teatro Guaíra (Guairão)**: 2.173 lugares e palco da Orquestra Sinfônica do Paraná.\n3. **Vale da Música**: O palco flutuante no lago da Ópera de Arame com apresentações diárias de Jazz e MPB.\n4. **Festival de Teatro de Curitiba**: O maior festival cênico do país em março/abril.";
+      recommendations = ATTRACTIONS.filter(a => a.category === 'shows' || a.category === 'teatros' || a.category === 'eventos').slice(0, 3);
+    }
+    // TOURS, TREM MORRETES & RMC
+    else if (textLower.includes('trem') || textLower.includes('serra') || textLower.includes('morretes') || textLower.includes('linha turismo') || textLower.includes('passeio') || textLower.includes('agencia') || textLower.includes('ilha do mel') || textLower.includes('vinho') || textLower.includes('lapa') || textLower.includes('vila velha')) {
+      replyText = "Aventuras inesquecíveis na capital e na Região Metropolitana! 🚂🏖️\n\n1. **Trem Serra Verde Express**: Eleito um dos passeios de trem mais bonitos do mundo pela Serra do Mar até Morretes.\n2. **Linha Turismo Double-Decker**: Ônibus panorâmico de 2 andares que percorre 26 atrações com 5 reembarques.\n3. **Tour Caminho do Vinho (SJP)**: Visita guiada a mais de 5 adegas italianas com degustação livre.\n4. **Tour Parque de Vila Velha**: As taças milenares de arenito e furnas.";
+      recommendations = ATTRACTIONS.filter(a => a.category === 'tours' || a.category === 'agencias' || a.id === 'trem-serra-verde').slice(0, 3);
+    }
     else {
-      replyText = `Entendi sua dúvida sobre "${userText}"! 🌲✨ O portal Curitiba 360° reúne todas as informações oficiais sobre passeios, parques, feiras, gastronomia e hospedagem na capital e Região Metropolitana. Posso filtrar atrações específicas para você!`;
-      recommendations = ATTRACTIONS.slice(0, 2);
+      replyText = `Com certeza! Posso te orientar em detalhe sobre "${userText}"! 🌲✨ O portal **Curitiba 360°** é o seu guia definitivo para a Capital Ecológica. Você prefere dicas de gastronomia, parques, vida noturna, hotéis ou passeios pela região?`;
+      recommendations = ATTRACTIONS.slice(0, 3);
     }
 
     return { replyText, recommendations };
@@ -101,7 +114,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
       };
       setMessages(prev => [...prev, aiMsg]);
       setIsTyping(false);
-    }, 600);
+    }, 550);
   };
 
   return (
@@ -145,9 +158,9 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
           position: 'absolute',
           bottom: '76px',
           right: 0,
-          width: '380px',
+          width: '390px',
           maxWidth: 'calc(100vw - 32px)',
-          height: '540px',
+          height: '560px',
           maxHeight: 'calc(100vh - 120px)',
           backgroundColor: '#ffffff',
           borderRadius: '24px',
@@ -187,7 +200,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
                   <span style={{ backgroundColor: '#22c55e', color: '#ffffff', fontSize: '10px', fontWeight: '800', padding: '2px 6px', borderRadius: '4px' }}>ONLINE</span>
                 </div>
                 <p style={{ fontSize: '11px', color: '#cbd5e1', marginTop: '1px' }}>
-                  IA Especialista em Curitiba & RMC
+                  IA Guia Especialista • Parques, Bares, Shoppings & RMC
                 </p>
               </div>
             </div>
@@ -232,7 +245,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
                     lineHeight: '1.5',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     border: msg.sender === 'user' ? 'none' : '1px solid #e2e8f0',
-                    maxWidth: '88%',
+                    maxWidth: '90%',
                     whiteSpace: 'pre-line'
                   }}
                 >
@@ -241,9 +254,9 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
 
                 {/* AI Attraction Recommendations inside chat */}
                 {msg.recommendations && msg.recommendations.length > 0 && (
-                  <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '90%' }}>
+                  <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '92%' }}>
                     <span style={{ fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                      ★ Atrações Recomendadas pela IA:
+                      ★ Guia Recomendado pela IA:
                     </span>
                     {msg.recommendations.map(rec => (
                       <div
@@ -291,7 +304,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
             {isTyping && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#ffffff', padding: '10px 16px', borderRadius: '16px', border: '1px solid #e2e8f0', width: 'fit-content' }}>
                 <RefreshCw size={14} color="#00a896" className="animate-spin" />
-                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>Assistente Virtual Curitiba 360 está pensando...</span>
+                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>Assistente Virtual Curitiba 360 está digitando...</span>
               </div>
             )}
 
@@ -312,7 +325,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
                   backgroundColor: '#eff6ff',
                   border: '1px solid #bfdbfe',
                   borderRadius: '9999px',
-                  padding: '4px 12px',
+                  padding: '5px 14px',
                   cursor: 'pointer',
                   flexShrink: 0
                 }}
@@ -326,7 +339,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
           <div style={{ padding: '12px', backgroundColor: '#ffffff', borderTop: '1px solid #cbd5e1', display: 'flex', gap: '8px', alignItems: 'center' }}>
             <input
               type="text"
-              placeholder="Pergunte algo sobre Curitiba para a IA..."
+              placeholder="Pergunte sobre shoppings, bares, parques, hotéis..."
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               onKeyDown={(e) => {
