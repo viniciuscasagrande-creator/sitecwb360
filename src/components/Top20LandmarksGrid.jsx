@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Trees, Eye, Compass, Sparkles, Navigation, Landmark, Train, TowerControl as Tower,
   Smile, Flower2, Utensils, ShoppingBag, Music, Drama, Bus, Beer, Wine, CheckCircle2,
-  Clock, MapPin, Ticket, ExternalLink, ChevronRight, Info, Star, Maximize2
+  Clock, MapPin, Ticket, ExternalLink, ChevronRight, Info, Star, Maximize2, Hotel
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { ATTRACTIONS } from '../data/attractions';
@@ -34,8 +34,34 @@ export const TOP_20_LANDMARKS = [
     tip: 'O melhor horário para fotos com luz perfeita na estufa é entre 16h30 e 18h no pôr do sol.'
   },
   {
-    id: 'mon',
+    id: 'radisson-hotel-curitiba',
     number: 2,
+    title: 'Radisson Hotel Curitiba 5★',
+    subtitle: 'Hospedagem de Luxo na Praça da Espanha (Batel)',
+    category: 'Hotelaria & SPA 5★',
+    icon: Hotel,
+    color: '#00a896',
+    isHotel: true,
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    location: 'Batel • Av. Jaume II, Praça da Espanha',
+    howToGet: 'Táxi / Uber a 5 min do Centro ou Linha Turismo (Parada Praça da Espanha)',
+    hours: 'Recepção & Concierge 24 horas • Check-in 14h / Check-out 12h',
+    price: 'Diária a partir de R$ 420,00',
+    rating: 4.9,
+    reviewsCount: 4500,
+    duration: 'Hospedagem 5★',
+    isFree: false,
+    priceVal: 420.0,
+    description: 'O melhor endereço de hospedagem de Curitiba! Localizado no bairro nobre do Batel em frente à arborizada Praça da Espanha. Oferece suítes amplas climatizadas, SPA exclusivo com massagens, piscina aquecida coberta, sauna e o internacional Restaurante Catanzaro.',
+    tip: 'Escolha suítes nos andares superiores para ter uma vista panorâmica incrível do pôr do sol na Praça da Espanha.'
+  },
+  {
+    id: 'mon',
+    number: 3,
     title: 'Museu Oscar Niemeyer (MON)',
     subtitle: 'O Famoso "Museu do Olho"',
     category: 'Cultura & Arte',
@@ -59,7 +85,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'opera-de-arame',
-    number: 3,
+    number: 4,
     title: 'Ópera de Arame & Vale da Música',
     subtitle: 'Teatro Tubular sobre o Lago',
     category: 'Teatro & Shows',
@@ -83,7 +109,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'tangua',
-    number: 4,
+    number: 5,
     title: 'Parque Tanguá',
     subtitle: 'Mirante do Castelo & Cascata de 65m',
     category: 'Parque & Vista 360°',
@@ -106,8 +132,33 @@ export const TOP_20_LANDMARKS = [
     tip: 'Eleito o pôr do sol mais bonito de Curitiba no mirante do castelo sobre a antiga pedreira.'
   },
   {
+    id: 'nomaa-hotel-boutique',
+    number: 6,
+    title: 'Nomaa Hotel Boutique 5★',
+    subtitle: 'Design Contemporâneo & Gastronomia Nomade',
+    category: 'Hotel Boutique 5★',
+    icon: Hotel,
+    color: '#00a896',
+    isHotel: true,
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    location: 'Batel • R. Gutemberg, 168',
+    howToGet: 'Táxi / Uber no coração do Batel',
+    hours: 'Recepção 24 horas • Brunch aos finais de semana',
+    price: 'Diária a partir de R$ 680,00',
+    rating: 5.0,
+    reviewsCount: 2900,
+    duration: 'Hospedagem Boutique',
+    isFree: false,
+    priceVal: 680.0,
+    description: 'O primeiro hotel boutique autoral de Curitiba! Premiado internacionalmente pelo design moderno e atendimento ultra personalizado. Abriga o aclamado Restaurante Nomade com brunch aos finais de semana e quartos com lençóis de algodão egípcio 600 fios.',
+    tip: 'Não deixe de experimentar o concorrido Brunch do Restaurante Nomade aos sábados e domingos.'
+  },
+  {
     id: 'barigui',
-    number: 5,
+    number: 7,
     title: 'Parque Barigui',
     subtitle: 'Recanto das Capivaras & Lago Maior',
     category: 'Lazer & Natureza',
@@ -131,7 +182,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'largo-da-ordem',
-    number: 6,
+    number: 8,
     title: 'Centro Histórico & Largo da Ordem',
     subtitle: 'Casarões Coloniais & Feira de Artesanato',
     category: 'História & Tradição',
@@ -155,7 +206,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'trem-serra-verde',
-    number: 7,
+    number: 9,
     title: 'Passeio de Trem Serra Verde Express',
     subtitle: 'Curitiba a Morretes pela Mata Atlântica',
     category: 'Tour Ferroviário',
@@ -178,8 +229,33 @@ export const TOP_20_LANDMARKS = [
     tip: 'Reserve os assentos do lado esquerdo do trem no sentido Morretes para ver o abismo da Ponte São João.'
   },
   {
+    id: 'bourbon-curitiba-hotel',
+    number: 10,
+    title: 'Bourbon Curitiba Hotel & Suites 5★',
+    subtitle: 'Tradição & Conforto no Centro Histórico',
+    category: 'Hotelaria Executiva 5★',
+    icon: Hotel,
+    color: '#00a896',
+    isHotel: true,
+    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80'
+    ],
+    location: 'Centro Histórico • Cândido Lopes, 102',
+    howToGet: 'A 100m da Praça Tiradentes e da Linha Turismo',
+    hours: 'Atendimento 24h • Feijoada aos Sábados',
+    price: 'Diária a partir de R$ 360,00',
+    rating: 4.8,
+    reviewsCount: 4100,
+    duration: 'Hospedagem Histórica',
+    isFree: false,
+    priceVal: 360.0,
+    description: 'Tradição e excelência no coração financeiro e cultural de Curitiba! A poucos passos da Praça Tiradentes, Paço da Liberdade e da Feira do Largo da Ordem. Possui área de lazer completa com piscina coberta climatizada e a famosa Feijoada do Restaurante 99.',
+    tip: 'Desfrute do buffet de Feijoada tradicional aos sábados acompanhada de chorinho ao vivo.'
+  },
+  {
     id: 'torre-panoramica',
-    number: 8,
+    number: 11,
     title: 'Torre Panorâmica de Curitiba',
     subtitle: 'Mirante 360° a 109 metros de Altura',
     category: 'Mirante & Skyline',
@@ -203,7 +279,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'bosque-alemao',
-    number: 9,
+    number: 12,
     title: 'Bosque Alemão & Trilha de João e Maria',
     subtitle: 'Torre dos Filósofos & Casa da Bruxa',
     category: 'Cultura Étnica',
@@ -227,7 +303,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'praca-do-japao',
-    number: 10,
+    number: 13,
     title: 'Praça do Japão & Memorial Oriental',
     subtitle: 'Cerejeiras, Lagos de Carpas & Templo',
     category: 'Praça Histórica',
@@ -251,7 +327,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'santa-felicidade',
-    number: 11,
+    number: 14,
     title: 'Bairro Italiano de Santa Felicidade',
     subtitle: 'Gastronomia Típica & Família Madalosso',
     category: 'Polo Gastronômico',
@@ -275,7 +351,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'mercado-municipal',
-    number: 12,
+    number: 15,
     title: 'Mercado Municipal de Curitiba',
     subtitle: 'Pastel de Bacalhau & Setor Orgânico',
     category: 'Gastronomia & Compras',
@@ -299,7 +375,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'pedreira-paulo-leminski',
-    number: 13,
+    number: 16,
     title: 'Pedreira Paulo Leminski',
     subtitle: 'Maior Palco a Céu Aberto da América Latina',
     category: 'Arena de Shows',
@@ -323,7 +399,7 @@ export const TOP_20_LANDMARKS = [
   },
   {
     id: 'teatro-guaira',
-    number: 14,
+    number: 17,
     title: 'Teatro Guaíra (Guairão)',
     subtitle: 'Sede da Orquestra Sinfônica do Paraná',
     category: 'Artes Cênicas',
@@ -346,100 +422,29 @@ export const TOP_20_LANDMARKS = [
     tip: 'Visite o auditório Guairão com seus 2.173 lugares e acústica perfeita projetada nos anos 70.'
   },
   {
-    id: 'passeio-publico',
-    number: 15,
-    title: 'Passeio Público de Curitiba',
-    subtitle: 'O Primeiro Parque da Cidade (Fundado em 1886)',
-    category: 'Patrimônio Histórico',
-    icon: Trees,
-    color: '#16a34a',
-    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80'
-    ],
-    location: 'Centro • R. Presidente Faria, s/n',
-    howToGet: 'Linha Turismo (Parada Passeio Público) ou a pé do Centro Cívico',
-    hours: 'Terça a Domingo: 06h às 20h (Segunda fechado para manutenção)',
-    price: 'ENTRADA 100% GRATUITA',
-    rating: 4.7,
-    reviewsCount: 4800,
-    duration: '1 a 2 horas',
-    isFree: true,
-    priceVal: 0,
-    description: 'O parque mais antigo de Curitiba, criado pelo Presidente da Província em 1886! Foi o primeiro zoológico da cidade e conserva portões de ferro importados da França.',
-    tip: 'Possui minizoológico com aves exóticas, aquário e pedalinhos no lago central.'
-  },
-  {
-    id: 'praca-santos-andrade',
-    number: 16,
-    title: 'Praça Santos Andrade & Prédio Histórico da UFPR',
-    subtitle: 'O Berço Universitário do Brasil',
-    category: 'Arquitetura Histórica',
-    icon: Landmark,
-    color: '#1e3a8a',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80'
-    ],
-    location: 'Centro • Praça Santos Andrade',
-    howToGet: 'A pé a 5 min da R. XV de Novembro ou Ônibus Círculo Militar',
-    hours: 'Praça aberta 24h • Visitação ao prédio histórico conforme eventos acadêmicos',
-    price: 'ACESSO LIVRE E GRATUITO',
-    rating: 4.8,
-    reviewsCount: 4200,
-    duration: '1 hora',
-    isFree: true,
-    priceVal: 0,
-    description: 'Marco arquitetônico neoclássico construído em 1912! Sede histórica da primeira universidade do Brasil, ladeada pelo Teatro Guaíra e a fonte iluminada.',
-    tip: 'Visite a fachada neoclássica iluminada à noite em frente à fonte luminosa central.'
-  },
-  {
-    id: 'bosque-papa',
-    number: 17,
-    title: 'Bosque João Paulo II (Memorial Polonês)',
-    subtitle: 'Casas de Troncos Originais de 1871',
-    category: 'Memorial Étnico',
-    icon: Trees,
-    color: '#059669',
-    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80'
-    ],
-    location: 'Centro Cívico • R. Mateus Leme, s/n (Atrás do MON)',
-    howToGet: 'Linha Turismo (Parada Memorial Polonês) ou a pé a partir do MON Olho',
-    hours: 'Terça a Domingo: 09h às 18h',
-    price: 'ENTRADA 100% GRATUITA',
-    rating: 4.8,
-    reviewsCount: 5300,
-    duration: '1 a 2 horas',
-    isFree: true,
-    priceVal: 0,
-    description: 'Inaugurado em 1980 durante a visita do Papa João Paulo II! Composto por 7 casas de troncos de encaixe sem pregos construídas pelos pioneiros imigrantes poloneses em 1871.',
-    tip: 'Experimente as tortas típicas polonesas (Krowka e Maślaniki) na loja de artesanato das casinhas.'
-  },
-  {
-    id: 'bar-do-alemao',
+    id: 'pousada-ilha-do-mel',
     number: 18,
-    title: 'Bar do Alemão • Choperia Germânica',
-    subtitle: 'Chopp Submarino & Carne de Onça',
-    category: 'Botequim Tradicional',
-    icon: Beer,
-    color: '#d97706',
-    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+    title: 'Pousadas de Charme Ilha do Mel',
+    subtitle: 'Refúgio Pé na Areia no Litoral do Paraná',
+    category: 'Pousada de Praia & Natureza',
+    icon: Hotel,
+    color: '#00a896',
+    isHotel: true,
+    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80'
     ],
-    location: 'Centro Histórico • R. Dr. Claudino dos Santos, 63',
-    howToGet: 'Linha Turismo (Parada Largo da Ordem) ou a pé da Praça Tiradentes',
-    hours: 'Segunda a Domingo: 11h às 02h da manhã',
-    price: 'Chopp Submarino com canequinho R$ 32,00',
+    location: 'Ilha do Mel • Praia das Encantadas / Farol',
+    howToGet: 'Barco de Travessia a partir de Pontal do Sul ou Paranaguá',
+    hours: 'Recepção 24h nas Pousadas • Barcos das 07h às 19h',
+    price: 'Diária a partir de R$ 290,00',
     rating: 4.9,
-    reviewsCount: 6100,
-    duration: '2 a 3 horas',
+    reviewsCount: 3800,
+    duration: 'Hospedagem Ecológica',
     isFree: false,
-    priceVal: 32.0,
-    description: 'A choperia mais tradicional de Curitiba fundada em 1979! Conhecida pelo Chopp Submarino (chopp claro com caneco em miniatura de Steinhäger) e pratos típicos alemães.',
-    tip: 'Guarde o pequeno canequinho de porcelana de Steinhäger que afunda dentro da caneca de chopp.'
+    priceVal: 290.0,
+    description: 'Um santuário ecológico sem carros! Pousadas rústicas de charme em praias paradisíacas com café da manhã caiçara reforçado e acesso à Gruta de Encantadas e ao Farol das Conchas.',
+    tip: 'Caminhe até o Farol das Conchas ao nascer do sol para uma vista deslumbrante do oceano.'
   },
   {
     id: 'linha-turismo',
@@ -497,7 +502,6 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
 
   // Helper to trigger full modal
   const handleTriggerFullModal = (item) => {
-    // Check if attraction exists in ATTRACTIONS dataset, or merge with rich defaults
     const foundInDataset = ATTRACTIONS.find(a => a.id === item.id || a.title.toLowerCase().includes(item.id));
     
     const fullAttractionObject = {
@@ -505,9 +509,9 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
       title: item.title,
       subtitle: item.subtitle,
       location: item.location,
-      category: foundInDataset?.category || 'parques',
+      category: item.isHotel ? 'hoteis' : (foundInDataset?.category || 'parques'),
       categories: foundInDataset?.categories || [item.category],
-      topic: foundInDataset?.topic || 'parques',
+      topic: item.isHotel ? 'hoteis' : (foundInDataset?.topic || 'parques'),
       rating: item.rating || foundInDataset?.rating || 4.9,
       reviewsCount: item.reviewsCount || foundInDataset?.reviewsCount || 2500,
       duration: item.duration || foundInDataset?.duration || '2 horas',
@@ -524,14 +528,14 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
         `Localização: ${item.location}`,
         `Como Chegar: ${item.howToGet}`,
         `Horários: ${item.hours}`,
-        `Ingressos / Entrada: ${item.price}`,
+        `Preço / Diária: ${item.price}`,
         `Dica Especialista: ${item.tip}`
       ],
       howToGet: item.howToGet,
       hours: item.hours,
       tip: item.tip,
       ticketTypes: foundInDataset?.ticketTypes || [
-        { name: 'Ingresso Individual / Passaporte', price: item.priceVal || 0, desc: 'Acesso completo às instalações e áreas de visitação' }
+        { name: item.isHotel ? 'Reserva de Diária / Quarto' : 'Ingresso Individual / Passaporte', price: item.priceVal || 0, desc: 'Acesso completo com confirmação imediata' }
       ]
     };
 
@@ -559,14 +563,14 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
           gap: '6px'
         }}>
           <Star size={14} fill="#00a896" />
-          <span>GUIA OFICIAL DOS 20 PRINCIPAIS PONTOS TURÍSTICOS</span>
+          <span>GUIA OFICIAL DOS 20 PRINCIPAIS PONTOS TURÍSTICOS & HOSPEDAGENS</span>
         </span>
 
         <h2 style={{ fontSize: '32px', fontWeight: '900', color: '#0f172a', marginTop: '12px', marginBottom: '8px' }}>
-          Os 20 Pontos Turísticos Imperdíveis de Curitiba
+          Os 20 Pontos Turísticos e Hospedagens Imperdíveis de Curitiba
         </h2>
         <p style={{ fontSize: '15px', color: '#64748b', lineHeight: '1.6' }}>
-          Guia completo com localização, como chegar, horários de funcionamento, preços e dicas de especialistas para você planejar a viagem perfeita. Clique em qualquer ponto para abrir a ficha técnica em alta definição.
+          Guia completo com fotos em alta definição dos locais reais, localização exata, como chegar, horários e hotéis selecionados. Clique em qualquer card para abrir o modal de informações completas.
         </p>
       </div>
 
@@ -588,7 +592,7 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                border: isSelected ? `2px solid ${item.color}` : '1px solid #e2e8f0',
+                border: item.isHotel ? '2px solid #00a896' : (isSelected ? `2px solid ${item.color}` : '1px solid #e2e8f0'),
                 boxShadow: isSelected ? `0 10px 25px rgba(0,0,0,0.12)` : '0 4px 12px rgba(0,0,0,0.03)',
                 cursor: 'pointer',
                 display: 'flex',
@@ -624,6 +628,28 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                   <span style={{ color: '#00a896' }}>#{item.number}</span>
                 </div>
 
+                {/* Hotel Priority Gold Badge */}
+                {item.isHotel && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '12px',
+                    right: '12px',
+                    backgroundColor: '#00a896',
+                    color: '#ffffff',
+                    fontSize: '11px',
+                    fontWeight: '800',
+                    padding: '4px 10px',
+                    borderRadius: '6px',
+                    boxShadow: '0 2px 8px rgba(0,168,150,0.4)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}>
+                    <Hotel size={13} />
+                    <span>HOSPEDAGEM 5★</span>
+                  </div>
+                )}
+
                 {/* Category Badge */}
                 <div style={{
                   position: 'absolute',
@@ -638,24 +664,6 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                   borderRadius: '6px'
                 }}>
                   {item.category}
-                </div>
-
-                {/* Full Screen Icon */}
-                <div style={{
-                  position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(15,23,42,0.65)',
-                  backdropFilter: 'blur(4px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#ffffff'
-                }}>
-                  <Maximize2 size={15} />
                 </div>
               </div>
 
@@ -717,7 +725,7 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                     width: '100%',
                     height: '40px',
                     borderRadius: '10px',
-                    backgroundColor: '#2563eb',
+                    backgroundColor: item.isHotel ? '#00a896' : '#2563eb',
                     color: '#ffffff',
                     fontSize: '12px',
                     fontWeight: '800',
@@ -727,17 +735,17 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '6px',
-                    boxShadow: '0 4px 12px rgba(37,99,235,0.25)',
+                    boxShadow: item.isHotel ? '0 4px 12px rgba(0,168,150,0.3)' : '0 4px 12px rgba(37,99,235,0.25)',
                     transition: 'all 0.2s ease'
                   }}
                   onMouseOver={(e) => {
-                    e.currentTarget.style.backgroundColor = '#1d4ed8';
+                    e.currentTarget.style.opacity = '0.9';
                   }}
                   onMouseOut={(e) => {
-                    e.currentTarget.style.backgroundColor = '#2563eb';
+                    e.currentTarget.style.opacity = '1';
                   }}
                 >
-                  <span>Ver Informações Completas</span>
+                  <span>{item.isHotel ? 'Reservar Hospedagem 5★' : 'Ver Informações Completas'}</span>
                   <ChevronRight size={15} />
                 </button>
               </div>
@@ -765,8 +773,8 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
           
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-              <span style={{ backgroundColor: '#00a896', color: '#ffffff', fontWeight: '900', fontSize: '12px', padding: '3px 10px', borderRadius: '6px' }}>
-                FICHA TÉCNICA #{activeItem.number}
+              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '12px', padding: '3px 10px', borderRadius: '6px' }}>
+                {activeItem.isHotel ? 'HOSPEDAGEM DE LUXO 5★' : `FICHA TÉCNICA #${activeItem.number}`}
               </span>
               <span style={{ color: '#cbd5e1', fontSize: '13px', fontWeight: '600' }}>
                 {activeItem.category}
@@ -804,7 +812,7 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
               <div style={{ backgroundColor: '#1e293b', padding: '12px 16px', borderRadius: '12px' }}>
                 <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <Clock size={13} color="#f59e0b" />
-                  <span>Horários de Funcionamento</span>
+                  <span>Horários / Recepção</span>
                 </div>
                 <div style={{ fontSize: '13px', fontWeight: '600', color: '#cbd5e1' }}>
                   {activeItem.hours}
