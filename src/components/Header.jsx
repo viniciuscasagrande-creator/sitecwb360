@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
-import { Search, User, ShoppingCart, Sparkles, X, Building2 } from 'lucide-react';
+import { Search, User, ShoppingCart, Sparkles, X, Building2, Globe, ChevronDown } from 'lucide-react';
 
 export default function Header({ 
   activeTopicTab,
@@ -15,6 +15,17 @@ export default function Header({
   onClearFilters,
   totalResults
 }) {
+  const [currentLang, setCurrentLang] = useState('pt'); // 'pt', 'en', 'es'
+  const [isLangOpen, setIsLangOpen] = useState(false);
+
+  const LANGUAGES = [
+    { code: 'pt', label: 'Português', flag: '🇧🇷', currency: 'BRL (R$)' },
+    { code: 'en', label: 'English', flag: '🇺🇸', currency: 'USD ($)' },
+    { code: 'es', label: 'Español', flag: '🇪🇸', currency: 'EUR (€)' }
+  ];
+
+  const activeLangObj = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
+
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
       
@@ -37,10 +48,80 @@ export default function Header({
             </a>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#1e293b', padding: '3px 10px', borderRadius: '6px', color: '#ffffff', fontWeight: '700', fontSize: '11px' }}>
-              <span>🇧🇷 BR (R$)</span>
-            </div>
+          {/* Language Selector Dropdown (Português, Inglês, Espanhol) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', position: 'relative' }}>
+            
+            <button
+              onClick={() => setIsLangOpen(!isLangOpen)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                backgroundColor: '#1e293b',
+                color: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.15)',
+                padding: '4px 12px',
+                borderRadius: '8px',
+                fontWeight: '700',
+                fontSize: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                outline: 'none'
+              }}
+              title="Selecionar Idioma / Select Language / Seleccionar Idioma"
+            >
+              <Globe size={14} color="#00a896" />
+              <span>{activeLangObj.flag} {activeLangObj.label} ({activeLangObj.code.toUpperCase()})</span>
+              <ChevronDown size={14} color="#94a3b8" />
+            </button>
+
+            {/* Dropdown Menu */}
+            {isLangOpen && (
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '32px',
+                  right: 0,
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #334155',
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.35)',
+                  padding: '6px',
+                  zIndex: 3000,
+                  minWidth: '160px'
+                }}
+                className="animate-fade-in"
+              >
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setCurrentLang(lang.code);
+                      setIsLangOpen(false);
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      width: '100%',
+                      padding: '8px 12px',
+                      borderRadius: '6px',
+                      fontSize: '12px',
+                      fontWeight: currentLang === lang.code ? '800' : '500',
+                      color: currentLang === lang.code ? '#ffffff' : '#cbd5e1',
+                      backgroundColor: currentLang === lang.code ? '#00a896' : 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left'
+                    }}
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
           </div>
         </div>
       </div>
@@ -61,7 +142,13 @@ export default function Header({
             <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
             <input
               type="text"
-              placeholder="O que você quer fazer em Curitiba? Pesquise parques, restaurantes, hotéis..."
+              placeholder={
+                currentLang === 'en'
+                  ? "What to do in Curitiba? Search parks, bars, hotels..."
+                  : currentLang === 'es'
+                  ? "¿Qué hacer en Curitiba? Buscar parques, bares, hoteles..."
+                  : "O que você quer fazer em Curitiba? Pesquise parques, restaurantes, hotéis..."
+              }
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               style={{
@@ -126,7 +213,7 @@ export default function Header({
               title="Ver meu carrinho de ingressos"
             >
               <ShoppingCart size={18} color="#00a896" />
-              <span>Carrinho</span>
+              <span>{currentLang === 'en' ? 'Cart' : currentLang === 'es' ? 'Carrito' : 'Carrinho'}</span>
               {cartCount > 0 && (
                 <span style={{
                   backgroundColor: '#ea580c',
@@ -179,7 +266,7 @@ export default function Header({
               }}
             >
               <User size={18} />
-              <span>Entrar / Cadastrar</span>
+              <span>{currentLang === 'en' ? 'Log In / Register' : currentLang === 'es' ? 'Ingresar / Registrarse' : 'Entrar / Cadastrar'}</span>
             </button>
 
           </div>
@@ -197,7 +284,7 @@ export default function Header({
         <div style={{ backgroundColor: '#f1f5f9', borderTop: '1px solid #e2e8f0', padding: '8px 20px' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '13px', color: '#475569' }}>
             <div>
-              <span>Filtro de pesquisa: </span>
+              <span>{currentLang === 'en' ? 'Search filter: ' : currentLang === 'es' ? 'Filtro de búsqueda: ' : 'Filtro de pesquisa: '}</span>
               <strong style={{ color: '#2563eb' }}>
                 "{searchQuery}"
               </strong>
@@ -217,7 +304,7 @@ export default function Header({
                 textDecoration: 'underline'
               }}
             >
-              Limpar busca
+              {currentLang === 'en' ? 'Clear search' : currentLang === 'es' ? 'Limpiar búsqueda' : 'Limpar busca'}
             </button>
           </div>
         </div>
