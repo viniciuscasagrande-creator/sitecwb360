@@ -33,7 +33,7 @@ export default function Header({
               style={{ color: '#94a3b8', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', fontWeight: '500' }}
             >
               <Building2 size={13} color="#00a896" />
-              <span>Seja Parceiro</span>
+              <span>Seja Parceiro 360</span>
             </a>
           </div>
 
@@ -42,141 +42,149 @@ export default function Header({
               <PhoneCall size={13} />
               <span>Suporte 24h</span>
             </a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#1e293b', padding: '2px 8px', borderRadius: '4px', color: '#ffffff', fontWeight: '700', fontSize: '11px' }}>
+              <span>🇧🇷 BR (R$)</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Header Tier - Mobile First Responsive Flex */}
-      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '10px 16px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      {/* Main Header Tier */}
+      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '12px 16px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           
-          {/* Row 1: Logo + User & Cart Action Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '12px' }}>
+          {/* Mobile Layout (<768px): Stacks Logo & Buttons on Row 1, Search on Row 2 */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             
-            {/* Logo */}
-            <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-              <Logo size="md" />
-            </a>
+            {/* Logo & Action Buttons Container */}
+            <div className="flex items-center justify-between w-full md:w-auto gap-3">
+              {/* Logo */}
+              <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                <Logo size="md" />
+              </a>
 
-            {/* Action Buttons */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
-              
-              {/* Cart Button */}
-              <button
-                onClick={onOpenCart}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  height: '40px',
-                  minHeight: '40px',
-                  padding: '0 12px',
-                  borderRadius: '10px',
-                  backgroundColor: '#f1f5f9',
-                  color: '#0f172a',
-                  fontWeight: '700',
-                  fontSize: '13px',
-                  border: '1px solid #cbd5e1',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  outline: 'none'
-                }}
-                title="Carrinho de ingressos"
-              >
-                <ShoppingCart size={18} color="#00a896" />
-                <span className="hidden sm:inline">Carrinho</span>
-                {cartCount > 0 && (
-                  <span style={{
-                    backgroundColor: '#ea580c',
-                    color: '#ffffff',
-                    fontSize: '11px',
-                    fontWeight: '800',
-                    borderRadius: '9999px',
-                    height: '20px',
-                    minWidth: '20px',
+              {/* Action Buttons (Carrinho + Entrar) */}
+              <div className="flex items-center gap-2 flex-shrink-0">
+                
+                {/* Carrinho Button */}
+                <button
+                  onClick={onOpenCart}
+                  style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '0 5px'
-                  }}>
-                    {cartCount}
-                  </span>
-                )}
-              </button>
+                    gap: '6px',
+                    height: '42px',
+                    minHeight: '42px',
+                    padding: '0 14px',
+                    borderRadius: '10px',
+                    backgroundColor: '#f1f5f9',
+                    color: '#0f172a',
+                    fontWeight: '700',
+                    fontSize: '13px',
+                    border: '1px solid #cbd5e1',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    outline: 'none'
+                  }}
+                  title="Ver meu carrinho de ingressos"
+                >
+                  <ShoppingCart size={18} color="#00a896" />
+                  <span>Carrinho</span>
+                  {cartCount > 0 && (
+                    <span style={{
+                      backgroundColor: '#ea580c',
+                      color: '#ffffff',
+                      fontSize: '11px',
+                      fontWeight: '800',
+                      borderRadius: '9999px',
+                      height: '20px',
+                      minWidth: '20px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '0 6px',
+                      boxShadow: '0 2px 6px rgba(234,88,12,0.4)'
+                    }}>
+                      {cartCount}
+                    </span>
+                  )}
+                </button>
 
-              {/* Login Button */}
-              <button
-                onClick={onOpenLogin}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  height: '40px',
-                  minHeight: '40px',
-                  padding: '0 14px',
-                  borderRadius: '10px',
-                  backgroundColor: '#2563eb',
-                  color: '#ffffff',
-                  fontWeight: '700',
-                  fontSize: '13px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 3px 10px rgba(37,99,235,0.25)',
-                  transition: 'all 0.2s ease',
-                  outline: 'none'
-                }}
-              >
-                <User size={18} />
-                <span>Entrar</span>
-              </button>
+                {/* Login / Cadastrar Button */}
+                <button
+                  onClick={onOpenLogin}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    height: '42px',
+                    minHeight: '42px',
+                    padding: '0 14px',
+                    borderRadius: '10px',
+                    backgroundColor: '#2563eb',
+                    color: '#ffffff',
+                    fontWeight: '700',
+                    fontSize: '13px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxShadow: '0 3px 10px rgba(37,99,235,0.25)',
+                    transition: 'all 0.2s ease',
+                    outline: 'none',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  <User size={18} />
+                  <span>Entrar / Cadastrar</span>
+                </button>
 
+              </div>
             </div>
 
-          </div>
+            {/* Search Bar Input (100% width on mobile, max 560px on desktop) */}
+            <div className="w-full md:flex-1 md:max-w-xl md:mx-auto relative">
+              <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896', zIndex: 2 }} />
+              <input
+                type="text"
+                placeholder="Pesquise shows, parques, gastronomia, hotéis..."
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                style={{
+                  width: '100%',
+                  height: '44px',
+                  minHeight: '44px',
+                  padding: '0 40px 0 44px',
+                  borderRadius: '9999px',
+                  border: '2px solid #cbd5e1',
+                  backgroundColor: '#f8fafc',
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  outline: 'none',
+                  transition: 'all 0.25s ease',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00a896';
+                  e.target.style.backgroundColor = '#ffffff';
+                  e.target.style.boxShadow = '0 0 0 4px rgba(0,168,150,0.15)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#cbd5e1';
+                  e.target.style.backgroundColor = '#f8fafc';
+                  e.target.style.boxShadow = '0 2px 6px rgba(0,0,0,0.03)';
+                }}
+              />
+              {searchQuery && (
+                <button 
+                  onClick={() => onSearchChange('')}
+                  style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer', zIndex: 2 }}
+                >
+                  <X size={18} />
+                </button>
+              )}
+            </div>
 
-          {/* Row 2: Search Bar Always Visible & 100% Width on Mobile */}
-          <div style={{ width: '100%', position: 'relative' }}>
-            <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896', zIndex: 2 }} />
-            <input
-              type="text"
-              placeholder="Pesquise shows, parques, gastronomia, hotéis..."
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              style={{
-                width: '100%',
-                height: '44px',
-                minHeight: '44px',
-                padding: '0 40px 0 44px',
-                borderRadius: '9999px',
-                border: '2px solid #cbd5e1',
-                backgroundColor: '#f8fafc',
-                fontSize: '14px',
-                fontWeight: '500',
-                outline: 'none',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = '#00a896';
-                e.target.style.backgroundColor = '#ffffff';
-                e.target.style.boxShadow = '0 0 0 4px rgba(0,168,150,0.15)';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = '#cbd5e1';
-                e.target.style.backgroundColor = '#f8fafc';
-                e.target.style.boxShadow = '0 2px 6px rgba(0,0,0,0.03)';
-              }}
-            />
-            {searchQuery && (
-              <button 
-                onClick={() => onSearchChange('')}
-                style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer', zIndex: 2 }}
-              >
-                <X size={18} />
-              </button>
-            )}
           </div>
 
         </div>
