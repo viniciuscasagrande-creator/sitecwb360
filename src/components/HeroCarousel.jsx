@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { HERO_SLIDES } from '../data/attractions';
 
 export default function HeroCarousel({ onSelectAttraction }) {
@@ -23,17 +23,21 @@ export default function HeroCarousel({ onSelectAttraction }) {
   const slide = HERO_SLIDES[currentSlide];
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '24px auto 0', padding: '0 20px' }}>
-      <div style={{
-        position: 'relative',
-        borderRadius: '24px',
-        overflow: 'hidden',
-        minHeight: '380px',
-        display: 'flex',
-        alignItems: 'center',
-        boxShadow: '0 12px 30px rgba(0,0,0,0.15)',
-        backgroundColor: '#0f172a'
-      }}>
+    <div style={{ maxWidth: '1280px', margin: '16px auto 0', padding: '0 16px' }}>
+      <div 
+        className="mobile-hero-container"
+        style={{
+          position: 'relative',
+          borderRadius: '20px',
+          overflow: 'hidden',
+          minHeight: '280px',
+          height: '300px',
+          display: 'flex',
+          alignItems: 'center',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+          backgroundColor: '#0f172a'
+        }}
+      >
         {/* Background Image with Overlay */}
         <div style={{
           position: 'absolute',
@@ -49,17 +53,20 @@ export default function HeroCarousel({ onSelectAttraction }) {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 60%, rgba(15, 23, 42, 0.1) 100%)'
+          background: 'linear-gradient(to right, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.55) 60%, rgba(15, 23, 42, 0.15) 100%)'
         }} />
 
         {/* Content Box */}
-        <div style={{
-          position: 'relative',
-          zIndex: 10,
-          padding: '48px 40px',
-          maxWidth: '680px',
-          color: '#ffffff'
-        }}>
+        <div 
+          className="mobile-hero-padding"
+          style={{
+            position: 'relative',
+            zIndex: 10,
+            padding: '28px 36px',
+            maxWidth: '640px',
+            color: '#ffffff'
+          }}
+        >
           {/* Badge */}
           <div style={{
             display: 'inline-block',
@@ -67,22 +74,22 @@ export default function HeroCarousel({ onSelectAttraction }) {
             color: '#ffffff',
             fontSize: '11px',
             fontWeight: '800',
-            letterSpacing: '1px',
-            padding: '4px 12px',
+            letterSpacing: '0.5px',
+            padding: '3px 10px',
             borderRadius: '6px',
-            marginBottom: '16px',
+            marginBottom: '10px',
             textTransform: 'uppercase',
-            boxShadow: '0 2px 8px rgba(37,99,235,0.4)'
+            boxShadow: '0 2px 6px rgba(37,99,235,0.4)'
           }}>
             {slide.badge}
           </div>
 
           {/* Title */}
           <h1 style={{
-            fontSize: '36px',
+            fontSize: '26px',
             fontWeight: '800',
             lineHeight: '1.25',
-            marginBottom: '16px',
+            marginBottom: '8px',
             textShadow: '0 2px 10px rgba(0,0,0,0.5)'
           }}>
             {slide.title}
@@ -90,14 +97,48 @@ export default function HeroCarousel({ onSelectAttraction }) {
 
           {/* Subtitle */}
           <p style={{
-            fontSize: '16px',
+            fontSize: '14px',
             color: '#cbd5e1',
-            marginBottom: '28px',
-            lineHeight: '1.6',
-            maxWidth: '560px'
+            marginBottom: '16px',
+            lineHeight: '1.5',
+            maxWidth: '520px',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
           }}>
-            {slide.subtitle}
+            {slide.tagline || slide.description}
           </p>
+
+          {/* CTA Button */}
+          {slide.ctaText && (
+            <button
+              onClick={() => {
+                if (onSelectAttraction) onSelectAttraction(slide);
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                height: '38px',
+                padding: '0 18px',
+                borderRadius: '10px',
+                backgroundColor: '#00a896',
+                color: '#ffffff',
+                fontSize: '13px',
+                fontWeight: '800',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,168,150,0.35)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#028090'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#00a896'}
+            >
+              <span>{slide.ctaText}</span>
+              <ArrowRight size={15} />
+            </button>
+          )}
         </div>
 
         {/* Navigation Arrows */}
@@ -105,11 +146,11 @@ export default function HeroCarousel({ onSelectAttraction }) {
           onClick={prevSlide}
           style={{
             position: 'absolute',
-            left: '16px',
+            left: '12px',
             top: '50%',
             transform: 'translateY(-50%)',
-            width: '44px',
-            height: '44px',
+            width: '38px',
+            height: '38px',
             borderRadius: '50%',
             backgroundColor: 'rgba(255, 255, 255, 0.25)',
             backdropFilter: 'blur(4px)',
@@ -125,18 +166,18 @@ export default function HeroCarousel({ onSelectAttraction }) {
           onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.45)'}
           onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)'}
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} />
         </button>
 
         <button
           onClick={nextSlide}
           style={{
             position: 'absolute',
-            right: '16px',
+            right: '12px',
             top: '50%',
             transform: 'translateY(-50%)',
-            width: '44px',
-            height: '44px',
+            width: '38px',
+            height: '38px',
             borderRadius: '50%',
             backgroundColor: 'rgba(255, 255, 255, 0.25)',
             backdropFilter: 'blur(4px)',
@@ -152,16 +193,16 @@ export default function HeroCarousel({ onSelectAttraction }) {
           onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.45)'}
           onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)'}
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={20} />
         </button>
 
         {/* Pagination Dots */}
         <div style={{
           position: 'absolute',
-          bottom: '20px',
-          right: '32px',
+          bottom: '16px',
+          right: '24px',
           display: 'flex',
-          gap: '8px',
+          gap: '6px',
           zIndex: 20
         }}>
           {HERO_SLIDES.map((_, idx) => (
@@ -169,8 +210,8 @@ export default function HeroCarousel({ onSelectAttraction }) {
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               style={{
-                width: idx === currentSlide ? '24px' : '10px',
-                height: '10px',
+                width: idx === currentSlide ? '20px' : '8px',
+                height: '8px',
                 borderRadius: '9999px',
                 backgroundColor: idx === currentSlide ? '#ffffff' : 'rgba(255,255,255,0.4)',
                 border: 'none',
