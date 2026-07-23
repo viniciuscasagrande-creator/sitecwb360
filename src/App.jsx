@@ -15,7 +15,7 @@ import AttractionDetailModal from './components/AttractionDetailModal';
 import CartModal from './components/CartModal';
 import LoginModal from './components/LoginModal';
 import BrandAboutModal from './components/BrandAboutModal';
-import WhatsAppButton from './components/WhatsAppButton';
+import AIAssistantWidget from './components/AIAssistantWidget';
 import Footer from './components/Footer';
 import { ATTRACTIONS, UNIFIED_NAV_ITEMS } from './data/attractions';
 
@@ -221,8 +221,8 @@ export default function App() {
 
       </main>
 
-      {/* Floating WhatsApp Support Button */}
-      <WhatsAppButton />
+      {/* Floating CWB360 AI Assistant Button */}
+      <AIAssistantWidget onSelectAttraction={setActiveAttraction} />
 
       {/* Footer */}
       <Footer onOpenAboutBrand={() => setIsAboutBrandOpen(true)} />
