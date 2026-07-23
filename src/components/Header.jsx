@@ -1,21 +1,11 @@
 import React from 'react';
 import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
-import { 
-  Search, User, ShoppingCart, Ticket, Percent, Tag, Trees, 
-  Compass, Utensils, Music, Sparkles, Globe, X, PhoneCall, Building2, UserCheck
-} from 'lucide-react';
-import { CATEGORIES } from '../data/attractions';
-
-const ICON_MAP = {
-  Sparkles, Ticket, Percent, Tag, Trees, Compass, Utensils, Music
-};
+import { Search, User, ShoppingCart, Sparkles, X, PhoneCall, Building2, UserCheck } from 'lucide-react';
 
 export default function Header({ 
   activeTopicTab,
   onSelectTopicTab,
-  selectedCategory, 
-  onSelectCategory, 
   searchQuery, 
   onSearchChange,
   cartCount,
@@ -58,7 +48,7 @@ export default function Header({
         </div>
       </div>
 
-      {/* Main Header Tier - Standardized Button Heights & Alignment */}
+      {/* Main Header Tier - Balanced & Clean */}
       <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '12px 20px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
           
@@ -111,7 +101,7 @@ export default function Header({
             )}
           </div>
 
-          {/* User & Cart Action Buttons (Standardized Height: 42px) */}
+          {/* User & Cart Action Buttons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
             
             {/* Cart Button */}
@@ -198,90 +188,21 @@ export default function Header({
         </div>
       </div>
 
-      {/* Main Topic Screens Navigation Bar */}
+      {/* SINGLE UNIFIED NAVIGATION BAR (No Duplicate Row Below!) */}
       <NavigationTabs
         activeTab={activeTopicTab}
         onSelectTab={onSelectTopicTab}
       />
 
-      {/* Secondary Category Pills Filter (Standardized Height: 36px & Uniform Padding) */}
-      {(activeTopicTab === 'home' || activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
-        <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
-          <div style={{ 
-            maxWidth: '1280px', 
-            margin: '0 auto', 
-            padding: '10px 20px', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            gap: '8px', 
-            flexWrap: 'wrap' 
-          }}>
-            {CATEGORIES.map((cat) => {
-              const IconComponent = ICON_MAP[cat.icon] || Sparkles;
-              const isActive = selectedCategory === cat.id;
-
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => onSelectCategory(cat.id)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    height: '36px',
-                    padding: '0 16px',
-                    borderRadius: '9999px',
-                    fontSize: '13px',
-                    fontWeight: isActive ? '800' : '600',
-                    whiteSpace: 'nowrap',
-                    backgroundColor: isActive ? '#eff6ff' : '#f8fafc',
-                    color: isActive ? '#2563eb' : '#475569',
-                    border: isActive ? '2px solid #2563eb' : '1px solid #cbd5e1',
-                    boxShadow: isActive ? '0 2px 8px rgba(37,99,235,0.15)' : 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    outline: 'none'
-                  }}
-                  onMouseOver={(e) => {
-                    if (!isActive) {
-                      e.currentTarget.style.borderColor = '#94a3b8';
-                      e.currentTarget.style.backgroundColor = '#f1f5f9';
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    if (!isActive) {
-                      e.currentTarget.style.borderColor = '#cbd5e1';
-                      e.currentTarget.style.backgroundColor = '#f8fafc';
-                    }
-                  }}
-                >
-                  <IconComponent size={15} color={isActive ? '#2563eb' : '#00a896'} />
-                  <span>{cat.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Active Filter Status Bar */}
-      {(selectedCategory !== 'all' || searchQuery) && (
+      {/* Active Search / Filter Notification Bar */}
+      {searchQuery && (
         <div style={{ backgroundColor: '#f1f5f9', borderTop: '1px solid #e2e8f0', padding: '8px 20px' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '13px', color: '#475569' }}>
             <div>
-              <span>Filtros ativos: </span>
-              {selectedCategory !== 'all' && (
-                <strong style={{ color: '#2563eb', marginRight: '8px' }}>
-                  Categoria: {CATEGORIES.find(c => c.id === selectedCategory)?.label}
-                </strong>
-              )}
-              {searchQuery && (
-                <strong style={{ color: '#2563eb' }}>
-                  Busca: "{searchQuery}"
-                </strong>
-              )}
+              <span>Filtro de pesquisa: </span>
+              <strong style={{ color: '#2563eb' }}>
+                "{searchQuery}"
+              </strong>
               <span style={{ marginLeft: '12px', color: '#64748b' }}>
                 ({totalResults} {totalResults === 1 ? 'atração encontrada' : 'atrações encontradas'})
               </span>
@@ -298,7 +219,7 @@ export default function Header({
                 textDecoration: 'underline'
               }}
             >
-              Limpar filtros
+              Limpar busca
             </button>
           </div>
         </div>

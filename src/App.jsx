@@ -14,11 +14,10 @@ import LoginModal from './components/LoginModal';
 import BrandAboutModal from './components/BrandAboutModal';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
-import { ATTRACTIONS } from './data/attractions';
+import { ATTRACTIONS, UNIFIED_NAV_ITEMS } from './data/attractions';
 
 export default function App() {
-  const [activeTopicTab, setActiveTopicTab] = useState('home'); // home, parques, cultura, tours, gastronomia, roteiros, guia
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [activeTopicTab, setActiveTopicTab] = useState('all'); // all, parques, cultura, tours, gastronomia, ofertas, roteiros, guia
   const [searchQuery, setSearchQuery] = useState('');
   const [activeAttraction, setActiveAttraction] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -26,29 +25,26 @@ export default function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isAboutBrandOpen, setIsAboutBrandOpen] = useState(false);
 
-  // Handle Topic selection
+  // Handle Topic / Navigation Tab selection
   const handleSelectTopicTab = (tabId) => {
     setActiveTopicTab(tabId);
-    // Reset category filter when switching main topic tabs
-    setSelectedCategory('all');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Filtered Attractions according to both Topic & Category & Search
+  // Filtered Attractions according to Unified Navigation Tab & Search
   const filteredAttractions = useMemo(() => {
     return ATTRACTIONS.filter((item) => {
-      // Topic tab filter
-      if (activeTopicTab !== 'home' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia') {
-        if (item.topic !== activeTopicTab && !item.categories?.includes(activeTopicTab)) {
-          return false;
+      // Navigation tab filter
+      if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia') {
+        if (activeTopicTab === 'ofertas') {
+          if (!item.discount && !item.categories?.includes('promocionais') && !item.categories?.includes('cupons')) {
+            return false;
+          }
+        } else {
+          const matchesTopic = item.topic === activeTopicTab || item.category === activeTopicTab || item.categories?.includes(activeTopicTab);
+          if (!matchesTopic) return false;
         }
       }
-
-      // Category filter
-      const matchesCategory =
-        selectedCategory === 'all' ||
-        item.category === selectedCategory ||
-        (item.categories && item.categories.includes(selectedCategory));
 
       // Search query filter
       const q = searchQuery.toLowerCase().trim();
@@ -58,9 +54,9 @@ export default function App() {
         item.location.toLowerCase().includes(q) ||
         item.description.toLowerCase().includes(q);
 
-      return matchesCategory && matchesSearch;
+      return matchesSearch;
     });
-  }, [activeTopicTab, selectedCategory, searchQuery]);
+  }, [activeTopicTab, searchQuery]);
 
   // Featured sections
   const imperdiveisAttractions = useMemo(() => {
@@ -90,20 +86,19 @@ export default function App() {
   };
 
   const handleClearFilters = () => {
-    setActiveTopicTab('home');
-    setSelectedCategory('all');
+    setActiveTopicTab('all');
     setSearchQuery('');
   };
+
+  const activeTabMeta = UNIFIED_NAV_ITEMS.find(i => i.id === activeTopicTab);
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', display: 'flex', flexDirection: 'column' }}>
       
-      {/* Header with Navigation Tabs */}
+      {/* Header with Single Unified Navigation Bar */}
       <Header
         activeTopicTab={activeTopicTab}
         onSelectTopicTab={handleSelectTopicTab}
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         cartCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
@@ -121,8 +116,8 @@ export default function App() {
           <TopicBanner topicId={activeTopicTab} />
         )}
 
-        {/* Hero Carousel (Shown on Home view when no search query) */}
-        {activeTopicTab === 'home' && !searchQuery && selectedCategory === 'all' && (
+        {/* Hero Carousel (Shown on 'all' view when no search query) */}
+        {activeTopicTab === 'all' && !searchQuery && (
           <HeroCarousel onSelectAttraction={setActiveAttraction} />
         )}
 
@@ -133,11 +128,11 @@ export default function App() {
           /* Dedicated Screen: Guia Prático CWB */
           <GuiaPraticoSection />
         ) : (
-          /* Standard Attraction Grid/Slider View for Home or Topic Filter Views */
+          /* Standard Attraction Grid/Slider View */
           <>
             <AttractionSlider
               title={
-                selectedCategory !== 'all' || searchQuery
+                searchQuery
                   ? `Resultados da busca (${filteredAttractions.length})`
                   : activeTopicTab === 'parques'
                   ? "Parques, Bosques & Natureza em Curitiba"
@@ -147,19 +142,21 @@ export default function App() {
                   ? "Tours, Passeios de Trem & Linha Turismo"
                   : activeTopicTab === 'gastronomia'
                   ? "Restaurantes, Polos Gastronômicos & Mercados"
+                  : activeTopicTab === 'ofertas'
+                  ? "Ofertas, Promoções & Cupons de Desconto"
                   : "O Que Fazer em Curitiba • Atrações em Destaque 360°"
               }
               subtitle={
-                selectedCategory === 'all' && !searchQuery
-                  ? "Explore as melhores atrações ecológicas, culturais e gastronômicas da capital paranaense."
+                !searchQuery
+                  ? activeTabMeta?.desc || "Explore as melhores atrações da capital paranaense."
                   : "Exibindo os melhores passeios correspondentes aos seus filtros."
               }
               attractions={filteredAttractions}
               onClickDetail={setActiveAttraction}
             />
 
-            {/* Official Brand Section (Only on Home) */}
-            {activeTopicTab === 'home' && !searchQuery && selectedCategory === 'all' && (
+            {/* Official Brand Section (Only on 'all' home view) */}
+            {activeTopicTab === 'all' && !searchQuery && (
               <OfficialBrandSection
                 onOpenMap={() => {
                   const nearbyEl = document.getElementById('nearby-section');
@@ -170,8 +167,8 @@ export default function App() {
               />
             )}
 
-            {/* Imperdíveis Section (Only on Home) */}
-            {activeTopicTab === 'home' && !searchQuery && selectedCategory === 'all' && (
+            {/* Imperdíveis Section (Only on 'all' home view) */}
+            {activeTopicTab === 'all' && !searchQuery && (
               <ImperdiveisSection
                 attractions={imperdiveisAttractions}
                 onClickDetail={setActiveAttraction}
