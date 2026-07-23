@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Logo({ size = 'md', variant = 'default', className = '' }) {
   const heights = {
-    sm: '68px',
-    md: '100px',
-    lg: '145px'
+    sm: '60px',
+    md: '90px',
+    lg: '130px'
   };
 
   const currentHeight = heights[size] || heights.md;
@@ -15,17 +15,16 @@ export default function Logo({ size = 'md', variant = 'default', className = '' 
       style={{ 
         display: 'inline-flex', 
         alignItems: 'center', 
-        gap: '16px',
+        gap: '14px',
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* High-Definition Gemini Logo Image */}
+      {/* Pure Logo Image without button/card wrapper */}
       <div style={{
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        transition: 'all 0.3s ease'
+        justifyContent: 'center'
       }}>
         <img 
           src="/logos/gemini_logo.jpg" 
@@ -34,36 +33,32 @@ export default function Logo({ size = 'md', variant = 'default', className = '' 
             height: currentHeight,
             width: 'auto',
             objectFit: 'contain',
-            borderRadius: '12px',
-            boxShadow: '0 4px 20px rgba(0, 168, 150, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1)',
-            filter: 'drop-shadow(0 2px 8px rgba(0, 168, 150, 0.2))',
-            transition: 'transform 0.3s ease, boxShadow 0.3s ease',
+            borderRadius: '8px',
+            transition: 'transform 0.3s ease',
             display: 'block'
           }} 
           onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 168, 150, 0.4)';
+            e.currentTarget.style.transform = 'scale(1.04)';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 168, 150, 0.25)';
           }}
         />
       </div>
 
-      {/* Optional Secondary Brand Label */}
+      {/* Optional Secondary Brand Text */}
       {variant === 'with-text' && (
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
           <span style={{ 
-            fontSize: size === 'lg' ? '28px' : size === 'sm' ? '18px' : '24px', 
+            fontSize: size === 'lg' ? '26px' : size === 'sm' ? '16px' : '22px', 
             fontWeight: '900', 
             color: '#0f172a',
             letterSpacing: '-0.5px'
           }}>
-            CURITIBA <span style={{ color: '#00a896', textShadow: '0 0 12px rgba(0,168,150,0.35)' }}>360°</span>
+            CURITIBA <span style={{ color: '#00a896' }}>360°</span>
           </span>
           <span style={{ 
-            fontSize: size === 'lg' ? '13px' : '11px', 
+            fontSize: size === 'lg' ? '12px' : '10px', 
             fontWeight: '800', 
             color: '#2563eb', 
             letterSpacing: '1.2px', 
@@ -76,6 +71,7 @@ export default function Logo({ size = 'md', variant = 'default', className = '' 
     </div>
   );
 }
+
 
 
 
