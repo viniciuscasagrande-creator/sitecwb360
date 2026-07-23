@@ -36,7 +36,7 @@ const TOPIC_DETAILS = {
     ]
   },
   gastronomia: {
-    title: "Gastronomia CWB, Polo Italiano & Cerveja Artesanal",
+    title: "Polo Italiano, Sabores Típicos & Cerveja Artesanal",
     subtitle: "Do rodízio no maior restaurante das Américas ao tradicional Barreado na panela de barro.",
     bgGradient: "linear-gradient(135deg, #7c2d12 0%, #c2410c 100%)",
     icon: Utensils,
