@@ -35,6 +35,20 @@ export default function App() {
   // Handle Topic / Navigation Tab selection
   const handleSelectTopicTab = (tabId) => {
     setActiveTopicTab(tabId);
+    setSearchQuery(''); // clear search query when switching tab
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
+    if (query.trim()) {
+      setActiveTopicTab('all'); // switch to 'all' so search is global across all categories
+    }
+  };
+
+  const handleFilterLandmark = (landmarkName) => {
+    setActiveTopicTab('all');
+    setSearchQuery(landmarkName);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -43,10 +57,32 @@ export default function App() {
     setIsAgencyQuoteOpen(true);
   };
 
-  // Filtered Attractions according to Unified Navigation Tab & Search
+  // Filtered Attractions with Broad Fuzzy/Multi-Word Search Matching
   const filteredAttractions = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+    const searchWords = q.split(/\s+/).filter(Boolean);
+
     return ATTRACTIONS.filter((item) => {
-      // Navigation tab filter
+      // If user typed a search query, search globally across all fields
+      if (q) {
+        const fullContent = [
+          item.title,
+          item.subtitle || '',
+          item.location,
+          item.description,
+          item.category,
+          item.topic || '',
+          ...(item.categories || []),
+          ...(item.features || []),
+          ...(item.tags || [])
+        ].join(' ').toLowerCase();
+
+        // Match if exact substring exists OR if all search words match in the content
+        const matchesSearch = fullContent.includes(q) || searchWords.every(word => fullContent.includes(word));
+        return matchesSearch;
+      }
+
+      // Navigation tab filter (when no search query is typed)
       if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia' && activeTopicTab !== 'agencias' && activeTopicTab !== 'hoteis') {
         if (activeTopicTab === 'ofertas') {
           if (!item.discount && !item.categories?.includes('promocionais') && !item.categories?.includes('cupons')) {
@@ -58,15 +94,7 @@ export default function App() {
         }
       }
 
-      // Search query filter
-      const q = searchQuery.toLowerCase().trim();
-      const matchesSearch =
-        !q ||
-        item.title.toLowerCase().includes(q) ||
-        item.location.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q);
-
-      return matchesSearch;
+      return true;
     });
   }, [activeTopicTab, searchQuery]);
 
@@ -112,7 +140,7 @@ export default function App() {
         activeTopicTab={activeTopicTab}
         onSelectTopicTab={handleSelectTopicTab}
         searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+        onSearchChange={handleSearchChange}
         cartCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenLogin={() => setIsLoginOpen(true)}
@@ -125,7 +153,7 @@ export default function App() {
       <main style={{ flex: 1 }}>
         
         {/* Topic Context Banner for specific topic views */}
-        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'shows' || activeTopicTab === 'teatros' || activeTopicTab === 'eventos' || activeTopicTab === 'bares' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
+        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'shows' || activeTopicTab === 'teatros' || activeTopicTab === 'eventos' || activeTopicTab === 'bares' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && !searchQuery && (
           <TopicBanner topicId={activeTopicTab} />
         )}
 
@@ -135,22 +163,22 @@ export default function App() {
         )}
 
         {/* Dedicated Screen: Agências de Turismo & Região Metropolitana */}
-        {activeTopicTab === 'agencias' ? (
+        {activeTopicTab === 'agencias' && !searchQuery ? (
           <AgenciasSection
             attractions={ATTRACTIONS}
             onClickDetail={setActiveAttraction}
             onOpenQuote={handleOpenAgencyQuote}
           />
-        ) : activeTopicTab === 'hoteis' ? (
+        ) : activeTopicTab === 'hoteis' && !searchQuery ? (
           /* Dedicated Screen: Hotelaria & Pousadas */
           <HoteisSection
             attractions={ATTRACTIONS}
             onClickDetail={setActiveAttraction}
           />
-        ) : activeTopicTab === 'roteiros' ? (
+        ) : activeTopicTab === 'roteiros' && !searchQuery ? (
           /* Dedicated Screen: Roteiros Prontos */
           <RoteirosSection onClickDetail={setActiveAttraction} />
-        ) : activeTopicTab === 'guia' ? (
+        ) : activeTopicTab === 'guia' && !searchQuery ? (
           /* Dedicated Screen: Guia Prático CWB */
           <GuiaPraticoSection />
         ) : (
@@ -159,7 +187,7 @@ export default function App() {
             <AttractionSlider
               title={
                 searchQuery
-                  ? `Resultados da busca (${filteredAttractions.length})`
+                  ? `Resultados para "${searchQuery}" (${filteredAttractions.length})`
                   : activeTopicTab === 'parques'
                   ? "Parques, Bosques & Natureza em Curitiba"
                   : activeTopicTab === 'cultura'
@@ -181,15 +209,15 @@ export default function App() {
                   : "O Que Fazer em Curitiba • Atrações em Destaque 360°"
               }
               subtitle={
-                !searchQuery
-                  ? activeTabMeta?.desc || "Explore as melhores atrações da capital paranaense."
-                  : "Exibindo os melhores passeios correspondentes aos seus filtros."
+                searchQuery
+                  ? `Exibindo todas as atrações, shows, passeios e experiências relacionadas a "${searchQuery}".`
+                  : activeTabMeta?.desc || "Explore as melhores atrações da capital paranaense."
               }
               attractions={filteredAttractions}
               onClickDetail={setActiveAttraction}
             />
 
-            {/* Official Brand Section (Only on 'all' home view) */}
+            {/* Official Brand Section (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
               <OfficialBrandSection
                 onOpenMap={() => {
@@ -197,11 +225,11 @@ export default function App() {
                   if (nearbyEl) nearbyEl.scrollIntoView({ behavior: 'smooth' });
                 }}
                 onOpenAboutBrand={() => setIsAboutBrandOpen(true)}
-                onFilterLandmark={(landmarkName) => setSearchQuery(landmarkName)}
+                onFilterLandmark={handleFilterLandmark}
               />
             )}
 
-            {/* Imperdíveis Section (Only on 'all' home view) */}
+            {/* Imperdíveis Section (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
               <ImperdiveisSection
                 attractions={imperdiveisAttractions}
