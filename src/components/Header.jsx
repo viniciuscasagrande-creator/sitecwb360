@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import { 
   Search, User, ShoppingCart, Ticket, Percent, Tag, Trees, 
-  Compass, Utensils, Music, Sparkles, Globe, X, Menu, PhoneCall, Building2, UserCheck
+  Compass, Utensils, Music, Sparkles, Globe, X, PhoneCall, Building2, UserCheck
 } from 'lucide-react';
 import { CATEGORIES } from '../data/attractions';
 
@@ -24,59 +24,59 @@ export default function Header({
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
       
-      {/* Top Utility Bar - Decolar Inspired */}
-      <div style={{ backgroundColor: '#0f172a', color: '#cbd5e1', fontSize: '12px', padding: '6px 20px', borderBottom: '1px solid #1e293b' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <span style={{ color: '#00a896', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
+      {/* Top Utility Bar - Decolar Inspired & Perfectly Centered */}
+      <div style={{ backgroundColor: '#0f172a', color: '#cbd5e1', fontSize: '12px', padding: '8px 20px', borderBottom: '1px solid #1e293b' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+            <span style={{ color: '#00a896', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '6px', letterSpacing: '0.3px' }}>
               <Sparkles size={14} />
               <span>Portal Oficial Curitiba 360°</span>
             </span>
-            <span style={{ display: 'none', mdDisplay: 'inline', color: '#64748b' }}>|</span>
-            <a href="#parceiro" onClick={(e) => { e.preventDefault(); alert("Formulário de Seja Parceiro Comercial 360° em breve!"); }} style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Building2 size={13} color="#00a896" />
+            <span style={{ color: '#334155' }}>|</span>
+            <a href="#parceiro" onClick={(e) => { e.preventDefault(); alert("Formulário de Seja Parceiro Comercial 360° em breve!"); }} style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
+              <Building2 size={14} color="#00a896" />
               <span>Seja Parceiro 360</span>
             </a>
-            <a href="#agencia" onClick={(e) => { e.preventDefault(); alert("Painel de Agente de Vendas em breve!"); }} style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <UserCheck size={13} color="#2563eb" />
+            <a href="#agencia" onClick={(e) => { e.preventDefault(); alert("Painel de Agente de Vendas em breve!"); }} style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
+              <UserCheck size={14} color="#2563eb" />
               <span>Agente de Vendas</span>
             </a>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <a href="https://wa.me/5541999999999" target="_blank" rel="noreferrer" style={{ color: '#22c55e', textDecoration: 'none', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <PhoneCall size={13} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <a href="https://wa.me/5541999999999" target="_blank" rel="noreferrer" style={{ color: '#22c55e', textDecoration: 'none', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <PhoneCall size={14} />
               <span>Suporte 24h</span>
             </a>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#1e293b', padding: '2px 8px', borderRadius: '4px', color: '#ffffff', fontWeight: '600' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#1e293b', padding: '3px 10px', borderRadius: '6px', color: '#ffffff', fontWeight: '700', fontSize: '11px' }}>
               <span>🇧🇷 BR (R$)</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar Tier */}
-      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '14px 20px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
+      {/* Main Header Tier - Balanced Layout */}
+      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '12px 20px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px' }}>
           
-          {/* Decolar-Style Prominent Brand Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* Official Brand Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <Logo size="md" />
             </a>
           </div>
 
-          {/* Central Decolar-Style Search Input */}
-          <div style={{ flex: '1', maxWidth: '520px', position: 'relative' }}>
-            <Search size={19} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
+          {/* Centralized Search Bar */}
+          <div style={{ flex: '1', maxWidth: '580px', margin: '0 auto', position: 'relative' }}>
+            <Search size={19} style={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
             <input
               type="text"
-              placeholder="O que você quer fazer em Curitiba? Pesquise parques, trem, shows..."
+              placeholder="O que você quer fazer em Curitiba? Pesquise parques, restaurantes, passeios..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               style={{
                 width: '100%',
-                padding: '12px 18px 12px 46px',
+                padding: '12px 20px 12px 48px',
                 borderRadius: '9999px',
                 border: '2px solid #cbd5e1',
                 backgroundColor: '#f8fafc',
@@ -100,25 +100,24 @@ export default function Header({
             {searchQuery && (
               <button 
                 onClick={() => onSearchChange('')}
-                style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer' }}
+                style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer' }}
               >
                 <X size={18} />
               </button>
             )}
           </div>
 
-          {/* User & Cart Action Bar */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* User & Cart Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
             
             {/* Cart Button */}
             <button
               onClick={onOpenCart}
               style={{
-                position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '10px 16px',
+                padding: '10px 18px',
                 borderRadius: '12px',
                 backgroundColor: '#f1f5f9',
                 color: '#0f172a',
@@ -133,7 +132,7 @@ export default function Header({
               title="Ver meu carrinho de ingressos"
             >
               <ShoppingCart size={20} color="#00a896" />
-              <span style={{ display: 'none', smDisplay: 'inline' }}>Meu Carrinho</span>
+              <span>Carrinho</span>
               {cartCount > 0 && (
                 <span style={{
                   backgroundColor: '#ea580c',
@@ -154,7 +153,7 @@ export default function Header({
               )}
             </button>
 
-            {/* Login / Minha Conta Button */}
+            {/* Login / Account Button */}
             <button
               onClick={onOpenLogin}
               style={{
@@ -189,9 +188,18 @@ export default function Header({
         </div>
       </div>
 
-      {/* Category Navigation Bar */}
-      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #f1f5f9' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '10px', overflowX: 'auto' }} className="hide-scrollbar">
+      {/* Category Navigation Bar - PERFECTLY CENTERED */}
+      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
+        <div style={{ 
+          maxWidth: '1280px', 
+          margin: '0 auto', 
+          padding: '12px 20px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          gap: '12px', 
+          flexWrap: 'wrap' 
+        }}>
           {CATEGORIES.map((cat) => {
             const IconComponent = ICON_MAP[cat.icon] || Sparkles;
             const isActive = selectedCategory === cat.id;
@@ -204,20 +212,32 @@ export default function Header({
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '8px 16px',
+                  padding: '9px 18px',
                   borderRadius: '9999px',
                   fontSize: '13px',
-                  fontWeight: isActive ? '700' : '500',
+                  fontWeight: isActive ? '800' : '600',
                   whiteSpace: 'nowrap',
-                  backgroundColor: isActive ? '#eff6ff' : '#ffffff',
-                  color: isActive ? '#2563eb' : '#64748b',
-                  border: isActive ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                  boxShadow: isActive ? '0 2px 6px rgba(37,99,235,0.15)' : 'none',
+                  backgroundColor: isActive ? '#eff6ff' : '#f8fafc',
+                  color: isActive ? '#2563eb' : '#475569',
+                  border: isActive ? '2px solid #2563eb' : '1px solid #cbd5e1',
+                  boxShadow: isActive ? '0 4px 12px rgba(37,99,235,0.2)' : '0 1px 3px rgba(0,0,0,0.02)',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
+                onMouseOver={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.borderColor = '#94a3b8';
+                    e.currentTarget.style.backgroundColor = '#f1f5f9';
+                  }
+                }}
+                onMouseOut={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.borderColor = '#cbd5e1';
+                    e.currentTarget.style.backgroundColor = '#f8fafc';
+                  }
+                }}
               >
-                <IconComponent size={16} color={isActive ? '#2563eb' : '#94a3b8'} />
+                <IconComponent size={16} color={isActive ? '#2563eb' : '#00a896'} />
                 <span>{cat.label}</span>
               </button>
             );
@@ -265,4 +285,5 @@ export default function Header({
     </header>
   );
 }
+
 
