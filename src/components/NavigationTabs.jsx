@@ -31,16 +31,21 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
       width: '100%',
       padding: '8px 0'
     }}>
-      <div style={{ 
-        maxWidth: '1280px', 
-        margin: '0 auto', 
-        padding: '0 16px', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        gap: '8px 10px'
-      }}>
+      <div 
+        className="hide-scrollbar"
+        style={{ 
+          maxWidth: '1280px', 
+          margin: '0 auto', 
+          padding: '0 16px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'flex-start',
+          flexWrap: 'nowrap',
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          gap: '8px'
+        }}
+      >
         {UNIFIED_NAV_ITEMS.map((item) => {
           const IconComp = ICON_MAP[item.icon] || Sparkles;
           const isActive = activeTab === item.id;
@@ -55,31 +60,33 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
                 justifyContent: 'center',
                 gap: '8px',
                 height: '40px',
+                minHeight: '40px',
                 padding: '0 16px',
                 fontSize: '13px',
                 fontWeight: isActive ? '800' : '600',
                 color: isActive ? '#ffffff' : '#cbd5e1',
-                backgroundColor: isActive ? '#00a896' : 'rgba(255, 255, 255, 0.07)',
+                backgroundColor: isActive ? '#00a896' : 'rgba(255, 255, 255, 0.08)',
                 borderRadius: '9999px',
-                border: isActive ? '1px solid #00a896' : '1px solid rgba(255, 255, 255, 0.12)',
+                border: isActive ? '1px solid #00a896' : '1px solid rgba(255, 255, 255, 0.14)',
                 boxShadow: isActive ? '0 4px 12px rgba(0, 168, 150, 0.35)' : 'none',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
+                flexShrink: 0,
                 transition: 'all 0.2s ease',
                 outline: 'none'
               }}
               onMouseOver={(e) => {
                 if (!isActive) {
                   e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.16)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
                 }
               }}
               onMouseOut={(e) => {
                 if (!isActive) {
                   e.currentTarget.style.color = '#cbd5e1';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.07)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.14)';
                 }
               }}
               title={item.desc}
