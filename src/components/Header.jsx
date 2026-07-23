@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
-import { Search, User, ShoppingCart, Sparkles, X, PhoneCall, Building2 } from 'lucide-react';
+import { Search, User, ShoppingCart, Sparkles, X, Building2 } from 'lucide-react';
 
 export default function Header({ 
   activeTopicTab,
@@ -38,10 +38,6 @@ export default function Header({
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <a href="https://wa.me/5541999999999" target="_blank" rel="noreferrer" style={{ color: '#22c55e', textDecoration: 'none', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <PhoneCall size={14} />
-              <span>Suporte 24h</span>
-            </a>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#1e293b', padding: '3px 10px', borderRadius: '6px', color: '#ffffff', fontWeight: '700', fontSize: '11px' }}>
               <span>🇧🇷 BR (R$)</span>
             </div>
