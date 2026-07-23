@@ -226,6 +226,34 @@ export const ATTRACTIONS = [
     features: ['Chalés rústicos em meio à natureza e vinhedos', 'Café colonial farto com receitas tradicionais italianas', 'Próximo a mais de 10 adegas e cantinas coloniais', 'Passeios a cavalo e caminhadas ecológicas', 'Clima de serra relaxante a 20min de Curitiba']
   },
 
+  // --- RUA DA MÚSICA & PALCO FLUTUANTE ---
+  {
+    id: 'rua-da-musica',
+    title: 'Rua da Música • Vale da Música & Palco Flutuante',
+    subtitle: 'Parque das Pedreiras • Ópera de Arame',
+    location: 'Pilarzinho / Abranches • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'cultura', 'teatros', 'tours', 'rua da musica', 'pedreira', 'opera de arame'],
+    topic: 'shows',
+    discount: 'ESPETÁCULO MUSICAL DIÁRIO',
+    rating: 4.9,
+    reviewsCount: 3850,
+    duration: 'Passaporte Diário (10h às 18h)',
+    price: 15.00,
+    originalPrice: 20.00,
+    isFree: false,
+    paymentTerms: 'Palco Flutuante no Lago da Ópera',
+    lat: -25.3848,
+    lng: -49.2764,
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'A Rua da Música e o Vale da Música formam o inovador polo de música ao vivo a céu aberto de Curitiba no Parque das Pedreiras! Um palco flutuante no meio do lago da Ópera de Arame com apresentações contínuas de Jazz, MPB, música instrumental e Bossa Nova rodeado pela mata nativa e paredões de rocha.',
+    features: ['Palco flutuante no lago da Ópera de Arame com shows contínuos', 'Apresentações de música instrumental diárias (Jazz, MPB, Bossa Nova)', 'Caminhada cultural pela Rua da Música com obras de arte e passadeiras de aço', 'Caminho das Pedras e restaurante panorâmico com vista para a cascata', 'Integrado ao complexo do Parque das Pedreiras / Pedreira Paulo Leminski']
+  },
+
   // --- BARES & PUBS ---
   {
     id: 'bar-do-alemao',

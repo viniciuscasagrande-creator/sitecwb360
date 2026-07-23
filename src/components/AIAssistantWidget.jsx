@@ -84,10 +84,10 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
       replyText = "Encontre a hospedagem perfeita em Curitiba e Região Metropolitana! 🏨✨\n\n1. **Radisson Hotel Curitiba 5★**: Luxo na Praça da Espanha (Batel) com SPA e piscina aquecida.\n2. **Nomaa Hotel Boutique 5★**: Design moderno autoral com brunch premiado.\n3. **Pousada Ilha do Mel (Encantadas)**: Pousada de charme pé na areia com café caiçara.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'hoteis' || a.topic === 'hoteis').slice(0, 3);
     }
-    // SHOWS, TEATROS & EVENTOS
-    else if (textLower.includes('show') || textLower.includes('teatro') || textLower.includes('musica') || textLower.includes('pedreira') || textLower.includes('guaira') || textLower.includes('evento')) {
-      replyText = "Curitiba respira cultura, grandes turnês e festivais! 🎭🎵\n\n1. **Pedreira Paulo Leminski**: O maior palco a céu aberto da América Latina encravado na rocha para turnês mundiais.\n2. **Teatro Guaíra (Guairão)**: 2.173 lugares e palco da Orquestra Sinfônica do Paraná.\n3. **Vale da Música**: O palco flutuante no lago da Ópera de Arame com Jazz e MPB diários.";
-      recommendations = ATTRACTIONS.filter(a => a.category === 'shows' || a.category === 'teatros' || a.category === 'eventos').slice(0, 3);
+    // SHOWS, TEATROS & RUA DA MÚSICA
+    else if (textLower.includes('show') || textLower.includes('teatro') || textLower.includes('musica') || textLower.includes('pedreira') || textLower.includes('guaira') || textLower.includes('evento') || textLower.includes('rua da musica') || textLower.includes('vale da musica')) {
+      replyText = "Curitiba respira cultura, música ao vivo e grandes espetáculos! 🎭🎵\n\n1. **Rua da Música & Vale da Música**: O inconfundível palco flutuante no lago da Ópera de Arame com apresentações diárias a céu aberto (Jazz, MPB e Bossa Nova).\n2. **Pedreira Paulo Leminski**: O maior palco ao ar livre da América Latina para turnês internacionais.\n3. **Teatro Guaíra (Guairão)**: Sede da Orquestra Sinfônica do Paraná com 2.173 lugares.";
+      recommendations = ATTRACTIONS.filter(a => a.id === 'rua-da-musica' || a.category === 'shows' || a.category === 'teatros').slice(0, 3);
     }
     // TOURS, TREM MORRETES & RMC
     else if (textLower.includes('trem') || textLower.includes('serra') || textLower.includes('morretes') || textLower.includes('linha turismo') || textLower.includes('passeio') || textLower.includes('train')) {
