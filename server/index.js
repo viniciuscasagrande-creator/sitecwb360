@@ -291,6 +291,11 @@ app.post('/api/agencies', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Curitiba 360 Visual API running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Curitiba 360 Visual API running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
+
