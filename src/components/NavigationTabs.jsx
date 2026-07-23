@@ -4,6 +4,7 @@ import {
   Music, Drama, Calendar, Building2, Beer, Hotel 
 } from 'lucide-react';
 import { UNIFIED_NAV_ITEMS } from '../data/attractions';
+import { useLanguage } from '../context/LanguageContext';
 
 const ICON_MAP = {
   Sparkles,
@@ -23,6 +24,8 @@ const ICON_MAP = {
 };
 
 export default function NavigationTabs({ activeTab, onSelectTab }) {
+  const { t } = useLanguage();
+
   return (
     <nav style={{ 
       backgroundColor: '#0f172a', 
@@ -42,6 +45,7 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
         {UNIFIED_NAV_ITEMS.map((item) => {
           const IconComp = ICON_MAP[item.icon] || Sparkles;
           const isActive = activeTab === item.id;
+          const translatedLabel = t(`nav.${item.id}`) || item.label;
 
           return (
             <button
@@ -85,7 +89,7 @@ export default function NavigationTabs({ activeTab, onSelectTab }) {
               title={item.desc}
             >
               <IconComp size={15} style={{ flexShrink: 0 }} color={isActive ? '#ffffff' : '#00a896'} />
-              <span style={{ whiteSpace: 'nowrap' }}>{item.label}</span>
+              <span style={{ whiteSpace: 'nowrap' }}>{translatedLabel}</span>
             </button>
           );
         })}

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MapPin, Navigation, Compass, Sparkles, Eye, Trees, CheckCircle2, ArrowRight, Filter, Beer, Hotel, Music, Utensils, Building2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function NearbySection({ attractions, onClickDetail }) {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all'); // all, parques, bares, hoteis, shows, gastronomia, agencias
   const [userCoords, setUserCoords] = useState({ lat: -25.4284, lng: -49.2733 });
   const [gpsStatus, setGpsStatus] = useState('GPS Centro Curitiba');
@@ -37,9 +39,6 @@ export default function NearbySection({ attractions, onClickDetail }) {
     return dist.toFixed(1);
   };
 
-  // Map latitude/longitude to map percentage coordinates (0% to 100%)
-  // Curitiba Lat bounds: -25.36 (top) to -25.58 (bottom)
-  // Curitiba Lng bounds: -49.34 (left) to -49.16 (right)
   const getPinPosition = (lat, lng) => {
     const minLat = -25.36;
     const maxLat = -25.58;
@@ -79,13 +78,13 @@ export default function NearbySection({ attractions, onClickDetail }) {
             gap: '6px'
           }}>
             <Navigation size={14} />
-            <span>Geolocalização Interativa em Tempo Real</span>
+            <span>Geolocalização Interativa</span>
           </span>
           <h2 style={{ fontSize: '30px', fontWeight: '900', color: '#0f172a', marginTop: '8px', marginBottom: '4px' }}>
-            Mapa de Atrações & Perto de Você
+            {t('mapSectionTitle')}
           </h2>
           <p style={{ fontSize: '15px', color: '#64748b', maxWidth: '700px' }}>
-            Clique em qualquer ponto do mapa para ver distâncias e fotos em tempo real.
+            {t('mapSectionSubtitle')}
           </p>
         </div>
 
@@ -129,17 +128,17 @@ export default function NearbySection({ attractions, onClickDetail }) {
       }} className="hide-scrollbar">
         <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '6px', paddingRight: '8px', flexShrink: 0 }}>
           <Filter size={15} color="#00a896" />
-          <span>Filtrar no Mapa:</span>
+          <span>Filtrar:</span>
         </div>
 
         {[
-          { id: 'all', label: 'Todos os Pontos' },
-          { id: 'parques', label: '🌲 Parques' },
-          { id: 'bares', label: '🍺 Bares & Pubs' },
-          { id: 'hoteis', label: '🏨 Hotéis' },
-          { id: 'shows', label: '🎵 Shows & Teatros' },
-          { id: 'gastronomia', label: '🍝 Gastronomia' },
-          { id: 'agencias', label: '🚌 RMC & Tours' }
+          { id: 'all', label: t('mapFilterAll') },
+          { id: 'parques', label: t('mapFilterParks') },
+          { id: 'bares', label: t('mapFilterBars') },
+          { id: 'hoteis', label: t('mapFilterHotels') },
+          { id: 'shows', label: t('mapFilterShows') },
+          { id: 'gastronomia', label: t('mapFilterFood') },
+          { id: 'agencias', label: t('mapFilterTours') }
         ].map(cat => (
           <button
             key={cat.id}
@@ -167,7 +166,7 @@ export default function NearbySection({ attractions, onClickDetail }) {
       {/* Main Map & Interactive Details Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
         
-        {/* Modern Vector Map Canvas (Span 2 cols on Large Screens) */}
+        {/* Modern Vector Map Canvas */}
         <div className="lg:col-span-2" style={{
           position: 'relative',
           borderRadius: '24px',
@@ -192,7 +191,6 @@ export default function NearbySection({ attractions, onClickDetail }) {
             `,
             backgroundSize: '100% 100%, 36px 36px, 36px 36px'
           }}>
-            {/* Simulated River Curves */}
             <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.3 }}>
               <path d="M 0 100 Q 200 300, 400 150 T 900 400" fill="none" stroke="#3b82f6" strokeWidth="18" strokeLinecap="round" />
               <path d="M 100 0 Q 300 400, 600 200 T 800 600" fill="none" stroke="#00a896" strokeWidth="14" opacity="0.4" />
@@ -220,11 +218,11 @@ export default function NearbySection({ attractions, onClickDetail }) {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#2563eb' }} />
-              <span>Você</span>
+              <span>{t('yourLocation')}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#00a896' }} />
-              <span>Pontos Curitiba</span>
+              <span>{t('pointsOnMap')}</span>
             </div>
           </div>
 
@@ -256,7 +254,7 @@ export default function NearbySection({ attractions, onClickDetail }) {
                 gap: '4px'
               }}>
                 <Navigation size={13} color="#ffffff" />
-                <span>Sua Posição</span>
+                <span>{t('yourLocation')}</span>
               </div>
             </div>
 
@@ -332,10 +330,10 @@ export default function NearbySection({ attractions, onClickDetail }) {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Sparkles size={16} color="#00a896" />
-              <span>Clique nos pins para navegar pelo mapa</span>
+              <span>Curitiba 360 Map</span>
             </div>
             <div style={{ fontWeight: '800', color: '#00a896' }}>
-              {filteredAttractions.length} Pontos no Mapa
+              {filteredAttractions.length} {t('pointsOnMap')}
             </div>
           </div>
 
@@ -367,7 +365,7 @@ export default function NearbySection({ attractions, onClickDetail }) {
                   gap: '4px'
                 }}>
                   <MapPin size={13} />
-                  <span>{getDistance(selectedAttraction.lat, selectedAttraction.lng)} km de você</span>
+                  <span>{getDistance(selectedAttraction.lat, selectedAttraction.lng)} {t('kmFromYou')}</span>
                 </span>
 
                 <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>
@@ -405,16 +403,6 @@ export default function NearbySection({ attractions, onClickDetail }) {
               <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '16px', lineHeight: '1.5' }}>
                 {selectedAttraction.description.substring(0, 130)}...
               </p>
-
-              {/* Key Features Bullet List */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '20px' }}>
-                {selectedAttraction.features?.slice(0, 3).map((ft, i) => (
-                  <div key={i} style={{ fontSize: '12px', color: '#334155', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <CheckCircle2 size={14} color="#00a896" />
-                    <span>{ft}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Card Action Button */}
@@ -440,7 +428,7 @@ export default function NearbySection({ attractions, onClickDetail }) {
               onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
               onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
             >
-              <span>Ver Passeio Completo</span>
+              <span>{t('viewFullTour')}</span>
               <ArrowRight size={16} />
             </button>
           </div>

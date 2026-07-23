@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
 import { Search, User, ShoppingCart, Sparkles, X, Building2, Globe, ChevronDown } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Header({ 
   activeTopicTab,
@@ -15,13 +16,13 @@ export default function Header({
   onClearFilters,
   totalResults
 }) {
-  const [currentLang, setCurrentLang] = useState('pt'); // 'pt', 'en', 'es'
+  const { currentLang, setCurrentLang, t } = useLanguage();
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   const LANGUAGES = [
-    { code: 'pt', label: 'Português', flag: '🇧🇷', currency: 'BRL (R$)' },
-    { code: 'en', label: 'English', flag: '🇺🇸', currency: 'USD ($)' },
-    { code: 'es', label: 'Español', flag: '🇪🇸', currency: 'EUR (€)' }
+    { code: 'pt', label: 'Português', flag: '🇧🇷' },
+    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' }
   ];
 
   const activeLangObj = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
@@ -35,7 +36,7 @@ export default function Header({
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
             <span style={{ color: '#00a896', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '6px', letterSpacing: '0.3px' }}>
               <Sparkles size={14} />
-              <span>Portal Oficial Curitiba 360°</span>
+              <span>{t('officialPortal')}</span>
             </span>
             <span style={{ color: '#334155' }}>|</span>
             <a 
@@ -44,7 +45,7 @@ export default function Header({
               style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}
             >
               <Building2 size={14} color="#00a896" />
-              <span>Seja Parceiro 360</span>
+              <span>{t('partnerLink')}</span>
             </a>
           </div>
 
@@ -68,7 +69,7 @@ export default function Header({
                 transition: 'all 0.2s ease',
                 outline: 'none'
               }}
-              title="Selecionar Idioma / Select Language / Seleccionar Idioma"
+              title="Select Language / Selecionar Idioma"
             >
               <Globe size={14} color="#00a896" />
               <span>{activeLangObj.flag} {activeLangObj.label} ({activeLangObj.code.toUpperCase()})</span>
@@ -142,13 +143,7 @@ export default function Header({
             <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
             <input
               type="text"
-              placeholder={
-                currentLang === 'en'
-                  ? "What to do in Curitiba? Search parks, bars, hotels..."
-                  : currentLang === 'es'
-                  ? "¿Qué hacer en Curitiba? Buscar parques, bares, hoteles..."
-                  : "O que você quer fazer em Curitiba? Pesquise parques, restaurantes, hotéis..."
-              }
+              placeholder={t('searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               style={{
@@ -210,10 +205,10 @@ export default function Header({
               }}
               onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#e2e8f0'}
               onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#f1f5f9'}
-              title="Ver meu carrinho de ingressos"
+              title={t('cart')}
             >
               <ShoppingCart size={18} color="#00a896" />
-              <span>{currentLang === 'en' ? 'Cart' : currentLang === 'es' ? 'Carrito' : 'Carrinho'}</span>
+              <span>{t('cart')}</span>
               {cartCount > 0 && (
                 <span style={{
                   backgroundColor: '#ea580c',
@@ -266,7 +261,7 @@ export default function Header({
               }}
             >
               <User size={18} />
-              <span>{currentLang === 'en' ? 'Log In / Register' : currentLang === 'es' ? 'Ingresar / Registrarse' : 'Entrar / Cadastrar'}</span>
+              <span>{t('loginRegister')}</span>
             </button>
 
           </div>
@@ -284,12 +279,12 @@ export default function Header({
         <div style={{ backgroundColor: '#f1f5f9', borderTop: '1px solid #e2e8f0', padding: '8px 20px' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '13px', color: '#475569' }}>
             <div>
-              <span>{currentLang === 'en' ? 'Search filter: ' : currentLang === 'es' ? 'Filtro de búsqueda: ' : 'Filtro de pesquisa: '}</span>
+              <span>{t('searchFilter')}: </span>
               <strong style={{ color: '#2563eb' }}>
                 "{searchQuery}"
               </strong>
               <span style={{ marginLeft: '12px', color: '#64748b' }}>
-                ({totalResults} {totalResults === 1 ? 'resultado' : 'resultados'})
+                ({totalResults} {totalResults === 1 ? t('resultCount') : t('resultsCount')})
               </span>
             </div>
             <button
@@ -304,7 +299,7 @@ export default function Header({
                 textDecoration: 'underline'
               }}
             >
-              {currentLang === 'en' ? 'Clear search' : currentLang === 'es' ? 'Limpiar búsqueda' : 'Limpar busca'}
+              {t('clearSearch')}
             </button>
           </div>
         </div>

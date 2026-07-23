@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Sparkles, X, Send, User, ChevronRight, RefreshCw, Compass, MapPin, Star, ShoppingBag, Utensils, Music, Trees, Hotel, Ticket } from 'lucide-react';
 import { ATTRACTIONS } from '../data/attractions';
+import { useLanguage } from '../context/LanguageContext';
 
 const QUICK_SUGGESTIONS = [
   "🛍️ Quais os melhores Shoppings de Curitiba?",
@@ -14,17 +15,23 @@ const QUICK_SUGGESTIONS = [
 ];
 
 export default function AIAssistantWidget({ onSelectAttraction }) {
+  const { t, currentLang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [inputQuery, setInputQuery] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      sender: 'ai',
-      text: 'Olá! Sou o **Assistente Virtual Curitiba 360**, seu guia inteligente e interativo para a Capital Ecológica e Região Metropolitana! 🌲✨\n\nEstou pronto para te ajudar com orientações completas sobre **Shoppings, Bares, Restaurantes, Parques, Shows, Teatros, Hotéis, Passeios de Trem e Traslados**. Como posso te ajudar agora?',
-      recommendations: []
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
+
+  // Set initial welcome message based on language
+  useEffect(() => {
+    setMessages([
+      {
+        id: 1,
+        sender: 'ai',
+        text: t('aiGreeting'),
+        recommendations: []
+      }
+    ]);
+  }, [currentLang]);
 
   const messagesEndRef = useRef(null);
 
@@ -46,37 +53,45 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
 
     // SHOPPING & COMPRAS
     if (textLower.includes('shopping') || textLower.includes('compra') || textLower.includes('loja') || textLower.includes('mueller') || textLower.includes('patio batel') || textLower.includes('estacao') || textLower.includes('souvenir')) {
-      replyText = "Curitiba possui shoppings incríveis e feiras tradicionais de compras! 🛍️✨\n\n1. **Pátio Batel**: O shopping mais luxuoso do Sul, com grifes internacionais, salas de cinema VIP e polo gastronômico.\n2. **Shopping Mueller**: O primeiro shopping de Curitiba (fundado em 1983 no Centro Cívico).\n3. **Shopping Estação**: Integrado à antiga Estação Ferroviária com o Museu Ferroviário e Teatro Regina Vogue.\n4. **Feira do Largo da Ordem**: Todos os domingos com mais de 1.000 artesãos no Centro Histórico.";
+      replyText = currentLang === 'en'
+        ? "Curitiba has amazing malls and traditional crafts fairs! 🛍️✨\n\n1. **Pátio Batel**: The most luxurious mall in South Brazil with VIP cinemas & fine dining.\n2. **Shopping Mueller**: The first shopping mall in Curitiba.\n3. **Shopping Estação**: Integrated with the historical railway station and Railway Museum.\n4. **Largo da Ordem Sunday Fair**: Over 1,000 artisans in the Historical Center every Sunday."
+        : currentLang === 'es'
+        ? "¡Curitiba tiene centros comerciales increíbles y ferias artesanales! 🛍️✨\n\n1. **Pátio Batel**: El centro comercial más lujoso con cines VIP y gastronomía fina.\n2. **Shopping Mueller**: El primer centro comercial de Curitiba.\n3. **Shopping Estação**: Integrado a la estación de tren histórica.\n4. **Feria del Largo da Ordem**: Todos los domingos en el Centro Histórico."
+        : "Curitiba possui shoppings incríveis e feiras tradicionais de compras! 🛍️✨\n\n1. **Pátio Batel**: O shopping mais luxuoso do Sul, com grifes internacionais, salas de cinema VIP e polo gastronômico.\n2. **Shopping Mueller**: O primeiro shopping de Curitiba (fundado em 1983 no Centro Cívico).\n3. **Shopping Estação**: Integrado à antiga Estação Ferroviária com o Museu Ferroviário e Teatro Regina Vogue.\n4. **Feira do Largo da Ordem**: Todos os domingos com mais de 1.000 artesãos no Centro Histórico.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'cultura' || a.category === 'gastronomia').slice(0, 3);
     }
     // PARQUES & NATUREZA
-    else if (textLower.includes('parque') || textLower.includes('botanico') || textLower.includes('barigui') || textLower.includes('tangua') || textLower.includes('capivara') || textLower.includes('natureza') || textLower.includes('bosque')) {
-      replyText = "Curitiba é a Capital Ecológica com mais de 50m² de área verde por habitante! 🌿 Capivaras e araucárias te esperam:\n\n1. **Jardim Botânico**: A estufa de vidro icônica inspirada no Palácio de Cristal de Londres (Entrada 100% Grátis).\n2. **Parque Barigui**: O maior parque da cidade e lar oficial do bando de capivaras mascotes.\n3. **Parque Tanguá**: Mirante em formato de castelo com o pôr do sol mais espetacular de Curitiba e cascata de 65m.";
+    else if (textLower.includes('parque') || textLower.includes('botanico') || textLower.includes('barigui') || textLower.includes('tangua') || textLower.includes('capivara') || textLower.includes('natureza') || textLower.includes('bosque') || textLower.includes('park')) {
+      replyText = currentLang === 'en'
+        ? "Curitiba is the Ecological Capital of Brazil with 50m² of green space per habitant! 🌿 Capybaras await you:\n\n1. **Botanical Garden**: Iconic glass greenhouse inspired by London Crystal Palace (100% Free).\n2. **Barigui Park**: Largest park in the city and home of capybaras.\n3. **Tanguá Park**: Spectacular sunset viewpoint with a 65m waterfall."
+        : currentLang === 'es'
+        ? "¡Curitiba es la Capital Ecológica de Brasil con 50m² de área verde por habitante! 🌿 Carpinchos te esperan:\n\n1. **Jardín Botánico**: Estufa de vidrio icónica inspirada en el Palacio de Cristal de Londres (100% Gratis).\n2. **Parque Barigui**: El parque más grande de la ciudad y hogar de carpinchos.\n3. **Parque Tanguá**: Mirador espectacular al atardecer con cascada de 65m."
+        : "Curitiba é a Capital Ecológica com mais de 50m² de área verde por habitante! 🌿 Capivaras e araucárias te esperam:\n\n1. **Jardim Botânico**: A estufa de vidro icônica inspirada no Palácio de Cristal de Londres (Entrada 100% Grátis).\n2. **Parque Barigui**: O maior parque da cidade e lar oficial do bando de capivaras mascotes.\n3. **Parque Tanguá**: Mirante em formato de castelo com o pôr do sol mais espetacular de Curitiba e cascata de 65m.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'parques' || a.id === 'jardim-botanico' || a.id === 'parque-tangua' || a.id === 'parque-barigui').slice(0, 3);
     } 
     // BARES, CHOPP & BOTEQUINS
-    else if (textLower.includes('bar') || textLower.includes('chopp') || textLower.includes('cerveja') || textLower.includes('onca') || textLower.includes('alemao') || textLower.includes('porks') || textLower.includes('pub') || textLower.includes('noite')) {
+    else if (textLower.includes('bar') || textLower.includes('chopp') || textLower.includes('cerveja') || textLower.includes('onca') || textLower.includes('alemao') || textLower.includes('porks') || textLower.includes('pub') || textLower.includes('beer')) {
       replyText = "A vida noturna e os botequins curitibanos são famosos mundialmente! 🍺🥩\n\n1. **Bar do Alemão**: O lendário Chopp Submarino no Largo da Ordem (você ganha o canequinho souvenir) com a autêntica Carne de Onça.\n2. **Porks - Porco & Chope**: Torresmo de rolo estalando de crocante e chopp artesanal paranaense a R$ 12.\n3. **We Are Bastards Pub**: 30 torneiras de chopp artesanal, fliperama retrô e rock no Água Verde.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'bares' || a.topic === 'bares').slice(0, 3);
     }
     // RESTAURANTES & GASTRONOMIA
-    else if (textLower.includes('restaurante') || textLower.includes('comida') || textLower.includes('comer') || textLower.includes('gastronomia') || textLower.includes('madalosso') || textLower.includes('barreado') || textLower.includes('santa felicidade') || textLower.includes('terrazza')) {
-      replyText = "Prepare o paladar para um banquete gastronômico inesquecível! 🍝😋\n\n1. **Família Madalosso (Santa Felicidade)**: O maior restaurante das Américas com o autêntico rodízio italiano (frango a passarinho, polenta frita e massas).\n2. **Terrazza 40**: O primeiro restaurante panorâmico 360° no topo do edifício no Bigorrilho.\n3. **Mercado Municipal de Curitiba**: Famoso pelo Pastel de Bacalhau gigante e o Setor de Orgânicos.";
+    else if (textLower.includes('restaurante') || textLower.includes('comida') || textLower.includes('comer') || textLower.includes('gastronomia') || textLower.includes('madalosso') || textLower.includes('barreado') || textLower.includes('food')) {
+      replyText = "Prepare o paladar para um banquete gastronômico inesquecível! 🍝😋\n\n1. **Família Madalosso (Santa Felicidade)**: O maior restaurante das Américas com o autêntico rodízio italiano.\n2. **Terrazza 40**: O primeiro restaurante panorâmico 360° no topo do edifício no Bigorrilho.\n3. **Mercado Municipal de Curitiba**: Famoso pelo Pastel de Bacalhau gigante.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'gastronomia' || a.id === 'restaurante-madalosso' || a.id === 'restaurante-terrazza40').slice(0, 3);
     }
     // HOTÉIS & HOSPEDAGEM
-    else if (textLower.includes('hotel') || textLower.includes('pousada') || textLower.includes('hospedagem') || textLower.includes('batel') || textLower.includes('quarto') || textLower.includes('dormir')) {
-      replyText = "Encontre a hospedagem perfeita em Curitiba e Região Metropolitana! 🏨✨\n\n1. **Radisson Hotel Curitiba 5★**: Luxo na Praça da Espanha (Batel) com SPA, piscina aquecida coberta e restaurante internacional.\n2. **Nomaa Hotel Boutique 5★**: Design moderno autoral com lençóis de algodão egípcio e brunch premiado.\n3. **Pousada Ilha do Mel (Encantadas)**: Pousada de charme pé na areia com café caiçara.";
+    else if (textLower.includes('hotel') || textLower.includes('pousada') || textLower.includes('hospedagem') || textLower.includes('batel') || textLower.includes('stay')) {
+      replyText = "Encontre a hospedagem perfeita em Curitiba e Região Metropolitana! 🏨✨\n\n1. **Radisson Hotel Curitiba 5★**: Luxo na Praça da Espanha (Batel) com SPA e piscina aquecida.\n2. **Nomaa Hotel Boutique 5★**: Design moderno autoral com brunch premiado.\n3. **Pousada Ilha do Mel (Encantadas)**: Pousada de charme pé na areia com café caiçara.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'hoteis' || a.topic === 'hoteis').slice(0, 3);
     }
     // SHOWS, TEATROS & EVENTOS
-    else if (textLower.includes('show') || textLower.includes('teatro') || textLower.includes('musica') || textLower.includes('pedreira') || textLower.includes('guaira') || textLower.includes('paiol') || textLower.includes('evento') || textLower.includes('festival')) {
-      replyText = "Curitiba respira cultura, grandes turnês e festivais! 🎭🎵\n\n1. **Pedreira Paulo Leminski**: O maior palco a céu aberto da América Latina encravado na rocha para turnês mundiais.\n2. **Teatro Guaíra (Guairão)**: 2.173 lugares e palco da Orquestra Sinfônica do Paraná.\n3. **Vale da Música**: O palco flutuante no lago da Ópera de Arame com apresentações diárias de Jazz e MPB.\n4. **Festival de Teatro de Curitiba**: O maior festival cênico do país em março/abril.";
+    else if (textLower.includes('show') || textLower.includes('teatro') || textLower.includes('musica') || textLower.includes('pedreira') || textLower.includes('guaira') || textLower.includes('evento')) {
+      replyText = "Curitiba respira cultura, grandes turnês e festivais! 🎭🎵\n\n1. **Pedreira Paulo Leminski**: O maior palco a céu aberto da América Latina encravado na rocha para turnês mundiais.\n2. **Teatro Guaíra (Guairão)**: 2.173 lugares e palco da Orquestra Sinfônica do Paraná.\n3. **Vale da Música**: O palco flutuante no lago da Ópera de Arame com Jazz e MPB diários.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'shows' || a.category === 'teatros' || a.category === 'eventos').slice(0, 3);
     }
     // TOURS, TREM MORRETES & RMC
-    else if (textLower.includes('trem') || textLower.includes('serra') || textLower.includes('morretes') || textLower.includes('linha turismo') || textLower.includes('passeio') || textLower.includes('agencia') || textLower.includes('ilha do mel') || textLower.includes('vinho') || textLower.includes('lapa') || textLower.includes('vila velha')) {
-      replyText = "Aventuras inesquecíveis na capital e na Região Metropolitana! 🚂🏖️\n\n1. **Trem Serra Verde Express**: Eleito um dos passeios de trem mais bonitos do mundo pela Serra do Mar até Morretes.\n2. **Linha Turismo Double-Decker**: Ônibus panorâmico de 2 andares que percorre 26 atrações com 5 reembarques.\n3. **Tour Caminho do Vinho (SJP)**: Visita guiada a mais de 5 adegas italianas com degustação livre.\n4. **Tour Parque de Vila Velha**: As taças milenares de arenito e furnas.";
+    else if (textLower.includes('trem') || textLower.includes('serra') || textLower.includes('morretes') || textLower.includes('linha turismo') || textLower.includes('passeio') || textLower.includes('train')) {
+      replyText = "Aventuras inesquecíveis na capital e na Região Metropolitana! 🚂🏖️\n\n1. **Trem Serra Verde Express**: Eleito um dos passeios de trem mais bonitos do mundo pela Serra do Mar até Morretes.\n2. **Linha Turismo Double-Decker**: Ônibus panorâmico de 2 andares que percorre 26 atrações com 5 reembarques.\n3. **Tour Caminho do Vinho (SJP)**: Visita guiada a adegas italianas com degustação livre.";
       recommendations = ATTRACTIONS.filter(a => a.category === 'tours' || a.category === 'agencias' || a.id === 'trem-serra-verde').slice(0, 3);
     }
     else {
@@ -140,14 +155,14 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
         }}
         onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
         onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-        title="Assistente Virtual Curitiba 360"
+        title={t('aiName')}
       >
         <div style={{ position: 'relative' }}>
           <Bot size={26} color="#ffffff" />
           <span style={{ position: 'absolute', top: '-4px', right: '-4px', width: '10px', height: '10px', backgroundColor: '#22c55e', borderRadius: '50%', border: '2px solid #ffffff' }} />
         </div>
         <span style={{ fontSize: '14px', fontWeight: '800', letterSpacing: '0.3px', whiteSpace: 'nowrap' }}>
-          {isOpen ? 'Fechar IA' : 'IA Curitiba 360'}
+          {isOpen ? 'Close' : 'IA Curitiba 360'}
         </span>
         <Sparkles size={18} color="#f59e0b" />
       </button>
@@ -196,11 +211,11 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#ffffff' }}>Assistente Virtual Curitiba 360</h4>
-                  <span style={{ backgroundColor: '#22c55e', color: '#ffffff', fontSize: '10px', fontWeight: '800', padding: '2px 6px', borderRadius: '4px' }}>ONLINE</span>
+                  <h4 style={{ fontSize: '15px', fontWeight: '900', color: '#ffffff' }}>{t('aiName')}</h4>
+                  <span style={{ backgroundColor: '#22c55e', color: '#ffffff', fontSize: '10px', fontWeight: '800', padding: '2px 6px', borderRadius: '4px' }}>{t('aiBadge')}</span>
                 </div>
                 <p style={{ fontSize: '11px', color: '#cbd5e1', marginTop: '1px' }}>
-                  IA Guia Especialista • Parques, Bares, Shoppings & RMC
+                  {t('aiSubtitle')}
                 </p>
               </div>
             </div>
@@ -256,7 +271,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
                 {msg.recommendations && msg.recommendations.length > 0 && (
                   <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '92%' }}>
                     <span style={{ fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                      ★ Guia Recomendado pela IA:
+                      {t('aiRecommended')}
                     </span>
                     {msg.recommendations.map(rec => (
                       <div
@@ -286,7 +301,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
                           </h5>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
                             <span style={{ color: '#2563eb', fontWeight: '700' }}>
-                              {rec.isFree ? 'Grátis' : `R$ ${rec.price.toFixed(2).replace('.', ',')}`}
+                              {rec.isFree ? t('free') : `R$ ${rec.price.toFixed(2).replace('.', ',')}`}
                             </span>
                             <span>•</span>
                             <span>★ {rec.rating}</span>
@@ -304,7 +319,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
             {isTyping && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#ffffff', padding: '10px 16px', borderRadius: '16px', border: '1px solid #e2e8f0', width: 'fit-content' }}>
                 <RefreshCw size={14} color="#00a896" className="animate-spin" />
-                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>Assistente Virtual Curitiba 360 está digitando...</span>
+                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600' }}>{t('aiThinking')}</span>
               </div>
             )}
 
@@ -339,7 +354,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
           <div style={{ padding: '12px', backgroundColor: '#ffffff', borderTop: '1px solid #cbd5e1', display: 'flex', gap: '8px', alignItems: 'center' }}>
             <input
               type="text"
-              placeholder="Pergunte sobre shoppings, bares, parques, hotéis..."
+              placeholder={t('aiPlaceholder')}
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               onKeyDown={(e) => {

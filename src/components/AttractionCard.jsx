@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Star, Clock, Heart, MapPin } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function AttractionCard({ attraction, onClickDetail }) {
+  const { t } = useLanguage();
   const [isFavorite, setIsFavorite] = useState(false);
 
   const toggleFavorite = (e) => {
@@ -117,13 +119,13 @@ export default function AttractionCard({ attraction, onClickDetail }) {
               <Star size={13} color="#f59e0b" fill="#f59e0b" />
               <span style={{ fontSize: '12px', fontWeight: '700', color: '#92400e' }}>{attraction.rating}</span>
             </div>
-            <span style={{ fontSize: '12px', color: '#64748b' }}>DE {attraction.reviewsCount} avaliações</span>
+            <span style={{ fontSize: '12px', color: '#64748b' }}>({attraction.reviewsCount})</span>
           </div>
 
           {/* Duration */}
           <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748b', fontWeight: '600', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
             <Clock size={13} color="#64748b" />
-            <span>DURAÇÃO DA ATRAÇÃO: <strong style={{ color: '#334155' }}>{attraction.duration}</strong></span>
+            <span>{attraction.duration}</span>
           </div>
         </div>
 
@@ -138,7 +140,7 @@ export default function AttractionCard({ attraction, onClickDetail }) {
 
             {attraction.isFree ? (
               <div style={{ fontSize: '16px', fontWeight: '800', color: '#16a34a' }}>
-                GRÁTIS
+                {t('free')}
               </div>
             ) : (
               <div>
@@ -151,18 +153,15 @@ export default function AttractionCard({ attraction, onClickDetail }) {
           </div>
 
           <div style={{ textAlign: 'right' }}>
-            <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '500', marginBottom: '2px' }}>
-              {attraction.paymentTerms || 'Pague em até 3x'}
-            </span>
             <button
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '32px',
+                height: '34px',
                 padding: '0 14px',
                 fontSize: '12px',
-                fontWeight: '700',
+                fontWeight: '800',
                 color: '#2563eb',
                 backgroundColor: '#eff6ff',
                 borderRadius: '8px',
@@ -177,7 +176,7 @@ export default function AttractionCard({ attraction, onClickDetail }) {
                 e.currentTarget.style.backgroundColor = '#eff6ff';
               }}
             >
-              Ver detalhes
+              {t('viewDetails')}
             </button>
           </div>
         </div>
