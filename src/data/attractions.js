@@ -506,9 +506,9 @@ export const ATTRACTIONS = [
     paymentTerms: 'Vans + Barco de Travessia Incluído',
     lat: -25.5600,
     lng: -48.3300,
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=90&v=vilavelha_rocks_real',
     gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=90&v=vilavelha_rocks_real'
     ],
     description: 'Serviço de agência receptiva com transporte executivo de Curitiba até o embarcadouro de Pontal do Sul + bilhetes de barco rápido para a Ilha do Mel (Praia de Encantadas e Farol das Conchas). Acompanhamento de guia especializado em ecoturismo.',
     features: ['Embarque na porta do hotel em Curitiba', 'Bilhete de barco de travessia ida e volta incluído', 'Trilha guiada até o Farol das Conchas & Gruta de Encantadas', 'Tempo livre para banho de mar e gastronomia caiçara', 'Equipamento de segurança e seguro viagem']
@@ -656,9 +656,10 @@ export const ATTRACTIONS = [
     paymentTerms: 'Acesso Gratuito',
     lat: -25.3780,
     lng: -49.2820,
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
     gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
+      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=90&v=tangua_park_lake'
     ],
     description: 'O pôr do sol mais espetacular de Curitiba! Construído no local de duas antigas pedreiras unidas por um túnel escavado na rocha de 45 metros. Possui mirante em formato de castelo com jardins franceses, cascata artificial de 65m caindo sobre o lago e ancoradouro.',
     features: ['O pôr do sol mais famoso da cidade', 'Túnel na rocha com passarela suspensa', 'Cascata artificial de 65 metros', 'Bistrô do Tanguá com café colonial', 'Ciclovia e pistas de caminhada']

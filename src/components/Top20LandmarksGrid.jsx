@@ -115,9 +115,10 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque & Vista 360°',
     icon: Sparkles,
     color: '#ea580c',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
     gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=90&v=tangua_park_castle_real',
+      'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=90&v=tangua_park_lake'
     ],
     location: 'Taboão / Pilarzinho • R. Oswaldo Maciel, s/n',
     howToGet: 'Linha Turismo (Parada Parque Tanguá) ou Ônibus Nilo Peçanha',
