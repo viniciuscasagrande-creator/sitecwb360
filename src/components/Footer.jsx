@@ -12,8 +12,8 @@ export default function Footer({ onOpenAboutBrand }) {
           
           {/* Column 1: Brand Info */}
           <div>
-            <div style={{ backgroundColor: '#ffffff', display: 'inline-block', padding: '6px 12px', borderRadius: '10px', marginBottom: '16px' }}>
-              <Logo size="md" />
+            <div style={{ backgroundColor: '#ffffff', display: 'inline-block', padding: '8px 16px', borderRadius: '12px', marginBottom: '16px', boxShadow: '0 4px 14px rgba(0,0,0,0.2)' }}>
+              <Logo size="md" variant="with-text" />
             </div>
             <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#94a3b8', maxWidth: '320px' }}>
               Conectando turistas e moradores locais às melhores atrações, eventos culturais e experiências gastronômicas de Curitiba e região metropolitana.
