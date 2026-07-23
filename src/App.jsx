@@ -8,6 +8,8 @@ import NearbySection from './components/NearbySection';
 import TopicBanner from './components/TopicBanner';
 import RoteirosSection from './components/RoteirosSection';
 import GuiaPraticoSection from './components/GuiaPraticoSection';
+import AgenciasSection from './components/AgenciasSection';
+import AgenciaCotacaoModal from './components/AgenciaCotacaoModal';
 import AttractionDetailModal from './components/AttractionDetailModal';
 import CartModal from './components/CartModal';
 import LoginModal from './components/LoginModal';
@@ -17,13 +19,17 @@ import Footer from './components/Footer';
 import { ATTRACTIONS, UNIFIED_NAV_ITEMS } from './data/attractions';
 
 export default function App() {
-  const [activeTopicTab, setActiveTopicTab] = useState('all'); // all, parques, cultura, tours, gastronomia, ofertas, roteiros, guia
+  const [activeTopicTab, setActiveTopicTab] = useState('all'); // all, parques, cultura, tours, gastronomia, agencias, ofertas, roteiros, guia
   const [searchQuery, setSearchQuery] = useState('');
   const [activeAttraction, setActiveAttraction] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isAboutBrandOpen, setIsAboutBrandOpen] = useState(false);
+  
+  // Agency Quote Modal State
+  const [isAgencyQuoteOpen, setIsAgencyQuoteOpen] = useState(false);
+  const [agencyQuoteDefaultType, setAgencyQuoteDefaultType] = useState('passeio');
 
   // Handle Topic / Navigation Tab selection
   const handleSelectTopicTab = (tabId) => {
@@ -31,11 +37,16 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleOpenAgencyQuote = (type = 'passeio') => {
+    setAgencyQuoteDefaultType(type);
+    setIsAgencyQuoteOpen(true);
+  };
+
   // Filtered Attractions according to Unified Navigation Tab & Search
   const filteredAttractions = useMemo(() => {
     return ATTRACTIONS.filter((item) => {
       // Navigation tab filter
-      if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia') {
+      if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia' && activeTopicTab !== 'agencias') {
         if (activeTopicTab === 'ofertas') {
           if (!item.discount && !item.categories?.includes('promocionais') && !item.categories?.includes('cupons')) {
             return false;
@@ -60,7 +71,7 @@ export default function App() {
 
   // Featured sections
   const imperdiveisAttractions = useMemo(() => {
-    return ATTRACTIONS.filter(a => a.discount || a.category === 'pacotes').slice(0, 4);
+    return ATTRACTIONS.filter(a => a.discount || a.category === 'pacotes' || a.category === 'agencias').slice(0, 4);
   }, []);
 
   const handleAddToCart = (newItem) => {
@@ -104,6 +115,7 @@ export default function App() {
         cartCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenLogin={() => setIsLoginOpen(true)}
+        onOpenAgencyQuote={handleOpenAgencyQuote}
         onClearFilters={handleClearFilters}
         totalResults={filteredAttractions.length}
       />
@@ -121,8 +133,15 @@ export default function App() {
           <HeroCarousel onSelectAttraction={setActiveAttraction} />
         )}
 
-        {/* Dedicated Screen: Roteiros Prontos */}
-        {activeTopicTab === 'roteiros' ? (
+        {/* Dedicated Screen: Agências de Turismo & Região Metropolitana */}
+        {activeTopicTab === 'agencias' ? (
+          <AgenciasSection
+            attractions={ATTRACTIONS}
+            onClickDetail={setActiveAttraction}
+            onOpenQuote={handleOpenAgencyQuote}
+          />
+        ) : activeTopicTab === 'roteiros' ? (
+          /* Dedicated Screen: Roteiros Prontos */
           <RoteirosSection onClickDetail={setActiveAttraction} />
         ) : activeTopicTab === 'guia' ? (
           /* Dedicated Screen: Guia Prático CWB */
@@ -219,6 +238,12 @@ export default function App() {
       <BrandAboutModal
         isOpen={isAboutBrandOpen}
         onClose={() => setIsAboutBrandOpen(false)}
+      />
+
+      <AgenciaCotacaoModal
+        isOpen={isAgencyQuoteOpen}
+        onClose={() => setIsAgencyQuoteOpen(false)}
+        defaultType={agencyQuoteDefaultType}
       />
 
     </div>

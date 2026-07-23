@@ -11,6 +11,7 @@ export default function Header({
   cartCount,
   onOpenCart,
   onOpenLogin,
+  onOpenAgencyQuote,
   onClearFilters,
   totalResults
 }) {
@@ -26,11 +27,19 @@ export default function Header({
               <span>Portal Oficial Curitiba 360°</span>
             </span>
             <span style={{ color: '#334155' }}>|</span>
-            <a href="#parceiro" onClick={(e) => { e.preventDefault(); alert("Formulário de Seja Parceiro Comercial 360° em breve!"); }} style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
+            <a 
+              href="#parceiro" 
+              onClick={(e) => { e.preventDefault(); onOpenAgencyQuote ? onOpenAgencyQuote('parceiro') : onSelectTopicTab('agencias'); }} 
+              style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}
+            >
               <Building2 size={14} color="#00a896" />
               <span>Seja Parceiro 360</span>
             </a>
-            <a href="#agencia" onClick={(e) => { e.preventDefault(); alert("Painel de Agente de Vendas em breve!"); }} style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
+            <a 
+              href="#agencia" 
+              onClick={(e) => { e.preventDefault(); onOpenAgencyQuote ? onOpenAgencyQuote('agente') : onSelectTopicTab('agencias'); }} 
+              style={{ color: '#94a3b8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}
+            >
               <UserCheck size={14} color="#2563eb" />
               <span>Agente de Vendas</span>
             </a>
@@ -188,7 +197,7 @@ export default function Header({
         </div>
       </div>
 
-      {/* SINGLE UNIFIED NAVIGATION BAR (No Duplicate Row Below!) */}
+      {/* SINGLE UNIFIED NAVIGATION BAR */}
       <NavigationTabs
         activeTab={activeTopicTab}
         onSelectTab={onSelectTopicTab}
