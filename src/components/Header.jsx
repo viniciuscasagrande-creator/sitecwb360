@@ -62,7 +62,7 @@ export default function Header({
           {/* Decolar-Style Prominent Brand Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <Logo size="md" variant="with-text" />
+              <Logo size="md" />
             </a>
           </div>
 

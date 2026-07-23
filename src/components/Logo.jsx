@@ -1,76 +1,48 @@
 import React from 'react';
 
-export default function Logo({ size = 'md', variant = 'default', className = '' }) {
+export default function Logo({ size = 'md', className = '' }) {
   const heights = {
-    sm: '60px',
-    md: '90px',
-    lg: '130px'
+    sm: '68px',
+    md: '96px',
+    lg: '135px'
   };
 
   const currentHeight = heights[size] || heights.md;
 
   return (
     <div 
-      className={`group flex items-center gap-4 select-none cursor-pointer transition-all duration-300 ${className}`} 
+      className={`group flex items-center select-none cursor-pointer transition-all duration-300 ${className}`} 
       style={{ 
         display: 'inline-flex', 
-        alignItems: 'center', 
-        gap: '14px',
+        alignItems: 'center',
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* Pure Logo Image without button/card wrapper */}
-      <div style={{
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <img 
-          src="/logos/gemini_logo.jpg" 
-          alt="Curitiba 360 Logo Oficial" 
-          style={{ 
-            height: currentHeight,
-            width: 'auto',
-            objectFit: 'contain',
-            borderRadius: '8px',
-            transition: 'transform 0.3s ease',
-            display: 'block'
-          }} 
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'scale(1.04)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-          }}
-        />
-      </div>
-
-      {/* Optional Secondary Brand Text */}
-      {variant === 'with-text' && (
-        <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-          <span style={{ 
-            fontSize: size === 'lg' ? '26px' : size === 'sm' ? '16px' : '22px', 
-            fontWeight: '900', 
-            color: '#0f172a',
-            letterSpacing: '-0.5px'
-          }}>
-            CURITIBA <span style={{ color: '#00a896' }}>360°</span>
-          </span>
-          <span style={{ 
-            fontSize: size === 'lg' ? '12px' : '10px', 
-            fontWeight: '800', 
-            color: '#2563eb', 
-            letterSpacing: '1.2px', 
-            textTransform: 'uppercase' 
-          }}>
-            Portal Oficial de Turismo
-          </span>
-        </div>
-      )}
+      {/* Pure Transparent Official Logo Artwork */}
+      <img 
+        src="/logos/logo_cropped_transparent.png" 
+        alt="Curitiba 360 Logo Oficial" 
+        style={{ 
+          height: currentHeight,
+          width: 'auto',
+          objectFit: 'contain',
+          filter: 'drop-shadow(0 4px 14px rgba(0, 168, 150, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08))',
+          transition: 'transform 0.3s ease, filter 0.3s ease',
+          display: 'block'
+        }} 
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'scale(1.06)';
+          e.currentTarget.style.filter = 'drop-shadow(0 6px 20px rgba(0, 168, 150, 0.55))';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.filter = 'drop-shadow(0 4px 14px rgba(0, 168, 150, 0.35))';
+        }}
+      />
     </div>
   );
 }
+
 
 
 
