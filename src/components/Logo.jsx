@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Logo({ size = 'md', variant = 'default', className = '' }) {
   const heights = {
-    sm: '85px',
-    md: '115px',
-    lg: '155px'
+    sm: '68px',
+    md: '100px',
+    lg: '145px'
   };
 
   const currentHeight = heights[size] || heights.md;
@@ -19,7 +19,7 @@ export default function Logo({ size = 'md', variant = 'default', className = '' 
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* Pure Transparent Logo Artwork (+60% Size, Zero Background Box) */}
+      {/* High-Definition Gemini Logo Image */}
       <div style={{
         position: 'relative',
         display: 'flex',
@@ -28,23 +28,25 @@ export default function Logo({ size = 'md', variant = 'default', className = '' 
         transition: 'all 0.3s ease'
       }}>
         <img 
-          src="/logos/logo_pure_transparent.png" 
+          src="/logos/gemini_logo.jpg" 
           alt="Curitiba 360 Logo Oficial" 
           style={{ 
             height: currentHeight,
             width: 'auto',
             objectFit: 'contain',
-            filter: 'drop-shadow(0 6px 18px rgba(0, 168, 150, 0.45)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))',
-            transition: 'transform 0.3s ease, filter 0.3s ease',
+            borderRadius: '12px',
+            boxShadow: '0 4px 20px rgba(0, 168, 150, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1)',
+            filter: 'drop-shadow(0 2px 8px rgba(0, 168, 150, 0.2))',
+            transition: 'transform 0.3s ease, boxShadow 0.3s ease',
             display: 'block'
           }} 
           onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.filter = 'drop-shadow(0 10px 28px rgba(0, 168, 150, 0.65))';
+            e.currentTarget.style.transform = 'scale(1.05)';
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 168, 150, 0.4)';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.filter = 'drop-shadow(0 6px 18px rgba(0, 168, 150, 0.45))';
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 168, 150, 0.25)';
           }}
         />
       </div>
@@ -74,6 +76,7 @@ export default function Logo({ size = 'md', variant = 'default', className = '' 
     </div>
   );
 }
+
 
 
 
