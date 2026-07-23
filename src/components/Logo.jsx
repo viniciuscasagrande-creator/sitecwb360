@@ -4,7 +4,7 @@ export default function Logo({ size = 'md', className = '' }) {
   const heights = {
     sm: '68px',
     md: '96px',
-    lg: '135px'
+    lg: '140px'
   };
 
   const currentHeight = heights[size] || heights.md;
@@ -18,30 +18,31 @@ export default function Logo({ size = 'md', className = '' }) {
         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* Pure Transparent Official Logo Artwork */}
+      {/* Official Curitiba 360° Horizontal Header Logo */}
       <img 
-        src="/logos/logo_cropped_transparent.png" 
+        src="/logos/curitiba360_official_header_logo.png" 
         alt="Curitiba 360 Logo Oficial" 
         style={{ 
           height: currentHeight,
           width: 'auto',
           objectFit: 'contain',
-          filter: 'drop-shadow(0 4px 14px rgba(0, 168, 150, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08))',
+          filter: 'drop-shadow(0 4px 16px rgba(0, 168, 150, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1))',
           transition: 'transform 0.3s ease, filter 0.3s ease',
           display: 'block'
         }} 
         onMouseOver={(e) => {
           e.currentTarget.style.transform = 'scale(1.06)';
-          e.currentTarget.style.filter = 'drop-shadow(0 6px 20px rgba(0, 168, 150, 0.55))';
+          e.currentTarget.style.filter = 'drop-shadow(0 8px 24px rgba(0, 168, 150, 0.55))';
         }}
         onMouseOut={(e) => {
           e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.filter = 'drop-shadow(0 4px 14px rgba(0, 168, 150, 0.35))';
+          e.currentTarget.style.filter = 'drop-shadow(0 4px 16px rgba(0, 168, 150, 0.35))';
         }}
       />
     </div>
   );
 }
+
 
 
 
