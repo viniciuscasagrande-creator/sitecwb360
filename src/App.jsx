@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import Header from './components/Header';
 import HeroCarousel from './components/HeroCarousel';
 import AttractionSlider from './components/AttractionSlider';
+import Top20LandmarksGrid from './components/Top20LandmarksGrid';
 import OfficialBrandSection from './components/OfficialBrandSection';
 import ImperdiveisSection from './components/ImperdiveisSection';
 import NearbySection from './components/NearbySection';
@@ -216,6 +217,11 @@ export default function App() {
               attractions={filteredAttractions}
               onClickDetail={setActiveAttraction}
             />
+
+            {/* TOP 20 PRINCIPAIS PONTOS TURÍSTICOS GRID (Only on 'all' home view when no search query) */}
+            {activeTopicTab === 'all' && !searchQuery && (
+              <Top20LandmarksGrid onClickDetail={setActiveAttraction} />
+            )}
 
             {/* Official Brand Section (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
