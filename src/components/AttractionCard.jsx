@@ -130,7 +130,7 @@ export default function AttractionCard({ attraction, onClickDetail }) {
         {/* Price & Action */}
         <div style={{ borderTop: '1px dashed #e2e8f0', paddingTop: '12px', marginTop: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            {attraction.originalPrice && (
+            {attraction.originalPrice && attraction.originalPrice > 0 && (
               <span style={{ fontSize: '12px', color: '#94a3b8', textDecoration: 'line-through', marginRight: '6px' }}>
                 R$ {attraction.originalPrice.toFixed(2).replace('.', ',')}
               </span>
@@ -151,20 +151,30 @@ export default function AttractionCard({ attraction, onClickDetail }) {
           </div>
 
           <div style={{ textAlign: 'right' }}>
-            <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '500' }}>
+            <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '500', marginBottom: '2px' }}>
               {attraction.paymentTerms || 'Pague em até 3x'}
             </span>
             <button
               style={{
-                marginTop: '2px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '32px',
+                padding: '0 14px',
                 fontSize: '12px',
                 fontWeight: '700',
                 color: '#2563eb',
                 backgroundColor: '#eff6ff',
-                padding: '4px 10px',
-                borderRadius: '6px',
+                borderRadius: '8px',
                 border: 'none',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#dbeafe';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#eff6ff';
               }}
             >
               Ver detalhes

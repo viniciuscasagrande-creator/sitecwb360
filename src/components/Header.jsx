@@ -27,10 +27,10 @@ export default function Header({
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
       
-      {/* Top Utility Bar - Decolar Inspired & Perfectly Centered */}
+      {/* Top Utility Bar - Aligned & Centered */}
       <div style={{ backgroundColor: '#0f172a', color: '#cbd5e1', fontSize: '12px', padding: '8px 20px', borderBottom: '1px solid #1e293b' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <span style={{ color: '#00a896', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '6px', letterSpacing: '0.3px' }}>
               <Sparkles size={14} />
               <span>Portal Oficial Curitiba 360°</span>
@@ -46,7 +46,7 @@ export default function Header({
             </a>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <a href="https://wa.me/5541999999999" target="_blank" rel="noreferrer" style={{ color: '#22c55e', textDecoration: 'none', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <PhoneCall size={14} />
               <span>Suporte 24h</span>
@@ -58,11 +58,11 @@ export default function Header({
         </div>
       </div>
 
-      {/* Main Header Tier - Balanced Layout */}
+      {/* Main Header Tier - Standardized Button Heights & Alignment */}
       <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '12px 20px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
           
-          {/* Official Brand Logo */}
+          {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <Logo size="md" />
@@ -70,8 +70,8 @@ export default function Header({
           </div>
 
           {/* Centralized Search Bar */}
-          <div style={{ flex: '1', maxWidth: '580px', margin: '0 auto', position: 'relative' }}>
-            <Search size={19} style={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
+          <div style={{ flex: '1', maxWidth: '560px', margin: '0 auto', position: 'relative' }}>
+            <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
             <input
               type="text"
               placeholder="O que você quer fazer em Curitiba? Pesquise parques, restaurantes, passeios..."
@@ -79,11 +79,12 @@ export default function Header({
               onChange={(e) => onSearchChange(e.target.value)}
               style={{
                 width: '100%',
-                padding: '12px 20px 12px 48px',
+                height: '44px',
+                padding: '0 40px 0 44px',
                 borderRadius: '9999px',
                 border: '2px solid #cbd5e1',
                 backgroundColor: '#f8fafc',
-                fontSize: '14px',
+                fontSize: '13px',
                 fontWeight: '500',
                 outline: 'none',
                 transition: 'all 0.25s ease',
@@ -103,38 +104,41 @@ export default function Header({
             {searchQuery && (
               <button 
                 onClick={() => onSearchChange('')}
-                style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer' }}
+                style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer' }}
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             )}
           </div>
 
-          {/* User & Cart Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+          {/* User & Cart Action Buttons (Standardized Height: 42px) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
             
             {/* Cart Button */}
             <button
               onClick={onOpenCart}
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '8px',
-                padding: '10px 18px',
-                borderRadius: '12px',
+                height: '42px',
+                padding: '0 18px',
+                borderRadius: '10px',
                 backgroundColor: '#f1f5f9',
                 color: '#0f172a',
                 fontWeight: '700',
-                fontSize: '14px',
+                fontSize: '13px',
                 border: '1px solid #cbd5e1',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                outline: 'none'
               }}
               onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#e2e8f0'}
               onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#f1f5f9'}
               title="Ver meu carrinho de ingressos"
             >
-              <ShoppingCart size={20} color="#00a896" />
+              <ShoppingCart size={18} color="#00a896" />
               <span>Carrinho</span>
               {cartCount > 0 && (
                 <span style={{
@@ -145,7 +149,7 @@ export default function Header({
                   borderRadius: '9999px',
                   height: '20px',
                   minWidth: '20px',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   padding: '0 6px',
@@ -160,19 +164,22 @@ export default function Header({
             <button
               onClick={onOpenLogin}
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '8px',
+                height: '42px',
+                padding: '0 20px',
+                borderRadius: '10px',
                 backgroundColor: '#2563eb',
                 color: '#ffffff',
-                padding: '10px 20px',
-                borderRadius: '12px',
                 fontWeight: '700',
-                fontSize: '14px',
+                fontSize: '13px',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(37,99,235,0.3)',
-                transition: 'all 0.2s ease'
+                boxShadow: '0 4px 12px rgba(37,99,235,0.25)',
+                transition: 'all 0.2s ease',
+                outline: 'none'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.backgroundColor = '#1d4ed8';
@@ -197,7 +204,7 @@ export default function Header({
         onSelectTab={onSelectTopicTab}
       />
 
-      {/* Secondary Category Pills Filter (Only when on home or attraction catalog view) */}
+      {/* Secondary Category Pills Filter (Standardized Height: 36px & Uniform Padding) */}
       {(activeTopicTab === 'home' || activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
         <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
           <div style={{ 
@@ -207,7 +214,7 @@ export default function Header({
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
-            gap: '10px', 
+            gap: '8px', 
             flexWrap: 'wrap' 
           }}>
             {CATEGORIES.map((cat) => {
@@ -219,12 +226,14 @@ export default function Header({
                   key={cat.id}
                   onClick={() => onSelectCategory(cat.id)}
                   style={{
-                    display: 'flex',
+                    display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: '6px',
-                    padding: '7px 15px',
+                    height: '36px',
+                    padding: '0 16px',
                     borderRadius: '9999px',
-                    fontSize: '12px',
+                    fontSize: '13px',
                     fontWeight: isActive ? '800' : '600',
                     whiteSpace: 'nowrap',
                     backgroundColor: isActive ? '#eff6ff' : '#f8fafc',
@@ -232,10 +241,23 @@ export default function Header({
                     border: isActive ? '2px solid #2563eb' : '1px solid #cbd5e1',
                     boxShadow: isActive ? '0 2px 8px rgba(37,99,235,0.15)' : 'none',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    outline: 'none'
+                  }}
+                  onMouseOver={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = '#94a3b8';
+                      e.currentTarget.style.backgroundColor = '#f1f5f9';
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = '#cbd5e1';
+                      e.currentTarget.style.backgroundColor = '#f8fafc';
+                    }
                   }}
                 >
-                  <IconComponent size={14} color={isActive ? '#2563eb' : '#00a896'} />
+                  <IconComponent size={15} color={isActive ? '#2563eb' : '#00a896'} />
                   <span>{cat.label}</span>
                 </button>
               );
@@ -244,7 +266,7 @@ export default function Header({
         </div>
       )}
 
-      {/* Active Filter Bar if selected */}
+      {/* Active Filter Status Bar */}
       {(selectedCategory !== 'all' || searchQuery) && (
         <div style={{ backgroundColor: '#f1f5f9', borderTop: '1px solid #e2e8f0', padding: '8px 20px' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '13px', color: '#475569' }}>

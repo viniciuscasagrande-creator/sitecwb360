@@ -214,8 +214,8 @@ export default function RoteirosSection({ onClickDetail }) {
           </p>
         </div>
 
-        {/* Roteiro Selection Tabs */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '32px' }}>
+        {/* Roteiro Selection Tabs (Standardized Height: 42px) */}
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '32px' }}>
           {ROTEIROS.map((rot) => {
             const isActive = selectedRoteiro.id === rot.id;
 
@@ -224,19 +224,22 @@ export default function RoteirosSection({ onClickDetail }) {
                 key={rot.id}
                 onClick={() => setSelectedRoteiro(rot)}
                 style={{
-                  padding: '12px 22px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  height: '42px',
+                  padding: '0 20px',
+                  borderRadius: '10px',
+                  fontSize: '13px',
                   fontWeight: isActive ? '800' : '600',
                   backgroundColor: isActive ? '#2563eb' : '#ffffff',
                   color: isActive ? '#ffffff' : '#334155',
                   border: isActive ? '2px solid #2563eb' : '1px solid #cbd5e1',
-                  boxShadow: isActive ? '0 4px 14px rgba(37,99,235,0.3)' : '0 2px 4px rgba(0,0,0,0.03)',
+                  boxShadow: isActive ? '0 4px 14px rgba(37,99,235,0.25)' : '0 2px 4px rgba(0,0,0,0.03)',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
+                  outline: 'none'
                 }}
               >
                 <span>{rot.title.split('•')[0]}</span>
