@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, Ticket, Utensils, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
+import { Trees, Compass, Ticket, Utensils, Sparkles, Music, Drama, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 
 const TOPIC_DETAILS = {
   parques: {
@@ -22,6 +22,39 @@ const TOPIC_DETAILS = {
       { label: "Museus & Teatros", val: "+20 Espaços Culturais" },
       { label: "Monumento IPHAN", val: "Paço da Liberdade" },
       { label: "Maior Feira ao Ar Livre", val: "Feira do Largo da Ordem" }
+    ]
+  },
+  shows: {
+    title: "Shows & Concertos ao Vivo",
+    subtitle: "Do palco da Pedreira Paulo Leminski ao Vale da Música e Hard Rock Cafe.",
+    bgGradient: "linear-gradient(135deg, #831843 0%, #be185d 100%)",
+    icon: Music,
+    stats: [
+      { label: "Maior Palco a Céu Aberto", val: "Pedreira Paulo Leminski" },
+      { label: "Palco Flutuante", val: "Vale da Música na Ópera" },
+      { label: "Shows Diários", val: "Hard Rock Cafe Batel" }
+    ]
+  },
+  teatros: {
+    title: "Teatros & Espetáculos das Artes Cênicas",
+    subtitle: "Guaíra, Paiol, Ópera de Arame e salas históricas da capital paranaense.",
+    bgGradient: "linear-gradient(135deg, #312e81 0%, #4338ca 100%)",
+    icon: Drama,
+    stats: [
+      { label: "Maior Auditório", val: "Guairão (2.173 lugares)" },
+      { label: "Teatro Arena Histórico", val: "Teatro Paiol de 1906" },
+      { label: "Estrutura Tubular", val: "Ópera de Arame" }
+    ]
+  },
+  eventos: {
+    title: "Eventos, Festivais & Grandes Espetáculos",
+    subtitle: "Festival de Teatro de Curitiba, Natal no Palácio Avenida e feiras sazonais.",
+    bgGradient: "linear-gradient(135deg, #065f46 0%, #059669 100%)",
+    icon: Calendar,
+    stats: [
+      { label: "Maior Festival", val: "Festival de Teatro de CWB" },
+      { label: "Espetáculo de Natal", val: "Palácio Avenida (Rua XV)" },
+      { label: "Feiras Especiais", val: "Praça Osório & Largo" }
     ]
   },
   tours: {

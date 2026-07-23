@@ -2,6 +2,9 @@ export const UNIFIED_NAV_ITEMS = [
   { id: 'all', label: 'Todos os Passeios', icon: 'Sparkles', desc: 'Destaques principais, imperdíveis e atrações próximas' },
   { id: 'parques', label: 'Parques & Natureza', icon: 'Trees', desc: 'Bosques, estufas, recanto das capivaras e mirantes ecológicos' },
   { id: 'cultura', label: 'Cultura & Patrimônio', icon: 'Compass', desc: 'Museu do Olho, Ópera de Arame, Centro Histórico e Memoriais Étnicos' },
+  { id: 'shows', label: 'Shows', icon: 'Music', desc: 'Pedreira Paulo Leminski, Hard Rock Cafe e Vale da Música Flutuante' },
+  { id: 'teatros', label: 'Teatros', icon: 'Drama', desc: 'Teatro Guaíra, Teatro Paiol, Ópera de Arame e Teatro São João' },
+  { id: 'eventos', label: 'Eventos', icon: 'Calendar', desc: 'Festival de Teatro de Curitiba, Natal Palácio Avenida e Feiras da Praça Osório' },
   { id: 'tours', label: 'Tours & Passeios', icon: 'Ticket', desc: 'Linha Turismo Double-Decker, Trem para Morretes e Walking Tours' },
   { id: 'gastronomia', label: 'Gastronomia CWB', icon: 'Utensils', desc: 'Santa Felicidade, Mercado Municipal, Terrazza 40, Bar do Alemão e Barreado' },
   { id: 'agencias', label: 'Agências & Região Metr.', icon: 'Building2', desc: 'Caminho do Vinho SJP, Ilha do Mel, Vila Velha, Lapa, Traslados CWB e Cotações' },
@@ -35,39 +38,214 @@ export const HERO_SLIDES = [
     ctaText: 'Garantir Ingresso de Trem'
   },
   {
-    id: 'restaurante-madalosso',
-    title: 'Rodízio Italiano no Família Madalosso',
-    tagline: 'Polo Gastronômico de Santa Felicidade',
-    badge: '🏆 Maior Restaurante das Américas',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80',
-    description: 'Saboreie o lendário frango a passarinho, polenta frita crocante e massas artesanais ilimitadas no maior polo gastronômico italiano do Brasil.',
-    price: 'A partir de R$ 89,90',
-    ctaText: 'Reservar Experiência'
+    id: 'pedreira-shows',
+    title: 'Pedreira Paulo Leminski • Shows Nacionais & Internacionais',
+    tagline: 'O Maior Palco a Céu Aberto da América Latina',
+    badge: '🎵 Polo de Shows & Festivais',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1600&q=80',
+    description: 'Assista a grandes turnês de rock, pop e festivais inesquecíveis na majestosa pedreira cercada por paredões de rocha de 30 metros.',
+    price: 'Consulte Programação',
+    ctaText: 'Ver Agenda de Shows'
   },
   {
-    id: 'caminho-do-vinho',
-    title: 'Tour Rota do Vinho em São José dos Pinhais',
-    tagline: 'Adega Colonial, Queijos & Café Colonial RMC',
-    badge: '🍷 Mais Vendido RMC',
-    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80',
-    description: 'Explore o charmoso Caminho do Vinho na Região Metropolitana com degustação de vinhos artesanais, salames coloniais e um farto café colonial da roça.',
-    price: 'A partir de R$ 95,00',
-    ctaText: 'Reservar Tour de Agência'
+    id: 'teatro-guaira',
+    title: 'Teatro Guaíra • Grande Auditório Bento Munhoz',
+    tagline: 'O Templo das Artes Cênicas do Paraná',
+    badge: '🎭 Orquestra & Balé Teatro Guaíra',
+    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1600&q=80',
+    description: 'Viva emoções únicas com espetáculos de dança, sinfônicas e peças aclamadas no maior complexo teatral público da América Latina.',
+    price: 'A partir de R$ 30,00',
+    ctaText: 'Garantir Ingresso de Teatro'
   }
 ];
 
 export const BRAND_LANDMARKS = [
   { id: 'jardim-botanico', name: 'Jardim Botânico', icon: 'Trees', desc: 'Estufa icônica em ferro e vidro estilo Palácio de Cristal de Londres' },
   { id: 'mon', name: 'Museu Oscar Niemeyer', icon: 'Eye', desc: 'O famoso Museu do Olho com arquitetura futurista de Niemeyer' },
-  { id: 'bonde', name: 'Bonde Elétrico', icon: 'Train', desc: 'Símbolo da mobilidade urbana e do calçadão da Rua XV de Novembro' },
+  { id: 'teatro-guaira', name: 'Teatro Guaíra', icon: 'Drama', desc: 'Complexo das artes cênicas, orquestra sinfônica e balé' },
+  { id: 'pedreira-shows', name: 'Pedreira Leminski', icon: 'Music', desc: 'Maior palco de shows a céu aberto cercado por rochas' },
   { id: 'torre', name: 'Torre Panorâmica', icon: 'TowerControl', desc: 'Mirante 360° com visão contemplativa para toda a região metropolitana' },
-  { id: 'capivara', name: 'Capivara CWB', icon: 'Smile', desc: 'Mascote carismática oficial e moradora ilustre dos parques curitibanos' },
   { id: 'opera', name: 'Ópera de Arame', icon: 'Landmark', desc: 'Teatro tubular transparente integrado à natureza e ao lago da pedreira' },
-  { id: 'flor', name: 'Flor do Parque', icon: 'Flower2', desc: 'Exuberância da flora nativa das alamedas floridas e pinheiros de Curitiba' },
   { id: 'paco', name: 'Paço da Liberdade', icon: 'Building2', desc: 'Patrimônio histórico cultural tombado com café e arquitetura Art Nouveau' },
 ];
 
 export const ATTRACTIONS = [
+  {
+    id: 'pedreira-shows',
+    title: 'Pedreira Paulo Leminski • Shows & Festivais 360°',
+    subtitle: 'Abranches / Pilarzinho • Curitiba',
+    location: 'Abranches • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'cultura', 'promocionais'],
+    topic: 'shows',
+    discount: 'AGENDA DE SHOWS',
+    rating: 5.0,
+    reviewsCount: 6200,
+    duration: 'Noite Inteira',
+    price: 120.00,
+    originalPrice: 150.00,
+    isFree: false,
+    paymentTerms: 'Ingresso Oficial com Meia-Entrada',
+    lat: -25.3840,
+    lng: -49.2750,
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O maior palco a céu aberto da América Latina! Localizado em uma antiga pedreira cercada por imponentes paredões de rocha de 30 metros. Já recebeu lendas mundiais do rock e da música nacional como Paul McCartney, Iron Maiden, Pearl Jam e grandes festivais.',
+    features: ['Capacidade para 25 mil pessoas', 'Paredões naturais de rocha de 30m', 'Arena de grandes festivais de música', 'Estrutura completa de bares e alimentação', 'Acesso fácil via ônibus e aplicativo']
+  },
+  {
+    id: 'hard-rock-shows',
+    title: 'Hard Rock Cafe Curitiba • Shows & Rock ao Vivo',
+    subtitle: 'Batel • Gastronomia & Músicas',
+    location: 'Batel • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'gastronomia', 'cupons'],
+    topic: 'shows',
+    discount: 'SHOWS DIÁRIOS',
+    rating: 4.9,
+    reviewsCount: 4800,
+    duration: '3 a 4 horas',
+    price: 40.00,
+    originalPrice: 50.00,
+    isFree: false,
+    paymentTerms: 'Couvert / Reserva de Mesa',
+    lat: -25.4390,
+    lng: -49.2840,
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'A maior unidade do Hard Rock Cafe do Brasil e a terceira maior do mundo! Oferece shows diários de bandas de rock, acervo histórico com guitarras e figurinos originais de astros mundiais e o autêntico Legendary Burger.',
+    features: ['Banda ao vivo todas as noites', 'Memorabília original de lendas do Rock', 'Hambúrgueres artesanais lendários', 'Ambiente climatizado no Batel', 'Loja oficial Rock Shop']
+  },
+  {
+    id: 'vale-da-musica-shows',
+    title: 'Vale da Música Flutuante • Palco da Ópera de Arame',
+    subtitle: 'Pilarzinho • Música Instrumental',
+    location: 'Pilarzinho • Curitiba',
+    category: 'shows',
+    categories: ['shows', 'cultura', 'parques'],
+    topic: 'shows',
+    discount: 'INCLUÍDO NO INGRESSO',
+    rating: 4.9,
+    reviewsCount: 3900,
+    duration: '2 a 3 horas',
+    price: 15.00,
+    originalPrice: 20.00,
+    isFree: false,
+    paymentTerms: 'Couvert Artístico no Lago',
+    lat: -25.3846,
+    lng: -49.2764,
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O único palco flutuante sobre um lago no Brasil! Projeto cultural permanente da Ópera de Arame com apresentações contínuas de Jazz, MPB, Blues e Música Clássica ao longo de todo o dia, enquanto você aprecia a natureza e o café.',
+    features: ['Palco flutuante no meio do lago da pedreira', 'Apresentações diárias ininterruptas de Jazz e MPB', 'Restaurante e Café da Ópera no deck', 'Cachoeira de fundo com carpas flutuantes', 'Ambiente contemplativo mágico']
+  },
+  {
+    id: 'teatro-guaira',
+    title: 'Teatro Guaíra (Auditório Bento Munhoz da Rocha)',
+    subtitle: 'Centro • Praça Santos Andrade',
+    location: 'Centro • Curitiba',
+    category: 'teatros',
+    categories: ['teatros', 'cultura', 'promocionais'],
+    topic: 'teatros',
+    discount: 'MEIA-ENTRADA DISPONÍVEL',
+    rating: 5.0,
+    reviewsCount: 5400,
+    duration: '2 a 3 horas',
+    price: 30.00,
+    originalPrice: 60.00,
+    isFree: false,
+    paymentTerms: 'Bilheteria Oficial e Venda Online',
+    lat: -25.4280,
+    lng: -49.2660,
+    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O maior e mais imponente complexo teatral do Paraná! Abriga o Auditório Bento Munhoz da Rocha Neto (Guairão com 2.173 lugares), Guairinha, Miniauditório e a sede do renomado Balé Teatro Guaíra e Orquestra Sinfônica do Paraná.',
+    features: ['Guairão com 2.173 lugares e acústica perfeita', 'Sede da Orquestra Sinfônica do Paraná', 'Sede do prestigiado Balé Teatro Guaíra', 'Painel de Poty Lazzarotto na fachada', 'Localizado na histórica Praça Santos Andrade']
+  },
+  {
+    id: 'teatro-paiol',
+    title: 'Teatro Paiol (Antigo Depósito de Pólvora de 1906)',
+    subtitle: 'Prado Velho • Patrimônio Histórico',
+    location: 'Prado Velho • Curitiba',
+    category: 'teatros',
+    categories: ['teatros', 'cultura'],
+    topic: 'teatros',
+    discount: 'PATRIMÔNIO CULTURAL',
+    rating: 4.8,
+    reviewsCount: 2100,
+    duration: '2 horas',
+    price: 20.00,
+    originalPrice: 30.00,
+    isFree: false,
+    paymentTerms: 'Ingresso com Acesso Total',
+    lat: -25.4490,
+    lng: -49.2610,
+    image: 'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'Símbolo da transformação cultural de Curitiba! Antigo depósito de pólvora do Exército construído em 1906 e transformado em teatro arena em 1971 inaugurado por Vinicius de Moraes. Possui acústica intimista e palco circular fantástico.',
+    features: ['Construção circular histórica de 1906 em tijolos à vista', 'Inaugurado pelo poetista Vinicius de Moraes', 'Palco arena de proximidade com o público', 'Shows de MPB, Bossa Nova e peças de vanguarda', 'Estac. próximo no bairro Prado Velho']
+  },
+  {
+    id: 'festival-teatro-cwb',
+    title: 'Festival de Teatro de Curitiba (Mostra Oficial & Fringe)',
+    subtitle: 'Vários Teatros de Curitiba • Março/Abril',
+    location: 'Circuito Teatral • Curitiba',
+    category: 'eventos',
+    categories: ['eventos', 'teatros', 'cultura', 'promocionais'],
+    topic: 'eventos',
+    discount: 'FESTIVAL ANUAL',
+    rating: 5.0,
+    reviewsCount: 6800,
+    duration: 'Eventos Durante 2 Semanas',
+    price: 25.00,
+    originalPrice: 50.00,
+    isFree: false,
+    paymentTerms: 'Ingresso por Espetáculo',
+    lat: -25.4284,
+    lng: -49.2733,
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O maior festival de artes cênicas da América Latina! Todos os anos, entre março e abril, Curitiba recebe mais de 400 espetáculos teatrais, estréias nacionais, musicais e performances de rua na Mostra Fringe e Guritiba.',
+    features: ['Mais de 400 espetáculos em 2 semanas', 'Mostra Oficial com grandes nomes do teatro brasileiro', 'Fringe com peças gratuitas e de rua nas praças', 'Gastronomia do Gastronix no pátio', 'Ponto de encontro de artistas do Brasil todo']
+  },
+  {
+    id: 'natal-palacio-avenida',
+    title: 'Espetáculo de Natal do Palácio Avenida',
+    subtitle: 'Rua XV de Novembro • Dezembro',
+    location: 'Calçadão da Rua XV • Curitiba',
+    category: 'eventos',
+    categories: ['eventos', 'cultura', 'shows'],
+    topic: 'eventos',
+    discount: 'ENTRADA LIVRE A CÉU ABERTO',
+    rating: 5.0,
+    reviewsCount: 7900,
+    duration: '1h30m de Apresentação',
+    price: 0.00,
+    originalPrice: 0.00,
+    isFree: true,
+    paymentTerms: 'Acesso Livre no Calçadão',
+    lat: -25.4300,
+    lng: -49.2710,
+    image: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1200&q=80'
+    ],
+    description: 'O coral de Natal mais emocionante do Brasil! As janelas do histórico Palácio Avenida se acendem no calçadão da Rua XV de Novembro com centenas de crianças cantando clássicos natalinos acompanhadas por projeções luminosas 3D.',
+    features: ['Mais de 100 crianças cantando nas janelas iluminadas', 'Show de luzes e projeção mapeada 3D na fachada', 'Tradição natalina de mais de 30 anos em Curitiba', 'Acesso gratuito no calçadão das Flores', 'Injeção de espírito natalino mágico']
+  },
   {
     id: 'jardim-botanico',
     title: 'Jardim Botânico de Curitiba & Jardim das Sensações',
@@ -88,9 +266,7 @@ export const ATTRACTIONS = [
     lng: -49.2397,
     image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Cartão-postal número um de Curitiba! Criado em 1991 em estilo francês, possui a icônica estufa em estrutura metálica e vidro abrigando exemplares da flora da Floresta Atlântica. Conta com o Jardim das Sensações, orquidário, lago com carpas e alamedas floridas ideais para caminhadas contemplativas.',
     features: ['Estufa Art Nouveau em vidro', 'Jardim das Sensações sensorial', 'Orquidário e Museu Botânico', 'Wi-Fi público e acessibilidade completa', 'Estac. público no local']
@@ -101,7 +277,7 @@ export const ATTRACTIONS = [
     subtitle: 'Pilarzinho / Abranches • Curitiba',
     location: 'Pilarzinho • Curitiba',
     category: 'cultura',
-    categories: ['cultura', 'conhecendo', 'shows', 'pacotes'],
+    categories: ['cultura', 'teatros', 'shows', 'pacotes'],
     topic: 'cultura',
     discount: '25% OFF',
     rating: 4.8,
@@ -115,8 +291,7 @@ export const ATTRACTIONS = [
     lng: -49.2764,
     image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Uma obra-prima da arquitetura brasileira! Construída com tubos de aço e teto transparente de policarbonato no fundo de uma antiga pedreira desativada, sobre um lago habitado por carpas e cisnes. Abriga o Vale da Música com apresentações ao vivo sobre o lago flutuante.',
     features: ['Vale da Música flutuante', 'Palco de Grandes Shows e Festivais', 'Cachoeira artificial espetacular', 'Restaurante e Café da Ópera', 'Passarela de vidro suspensa']
@@ -141,8 +316,7 @@ export const ATTRACTIONS = [
     lng: -49.2670,
     image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Um dos maiores complexos de arte da América Latina! Projetado pelo célebre arquiteto Oscar Niemeyer, a torre audaciosa em formato de Olho Humano abriga exposições de artes visuais, design, arquitetura e fotografia nacionais e internacionais.',
     features: ['Torre Olho de 30m de altura', 'Mais de 35 mil m² de área', 'Café MON e Loja de Design', 'Parcão para caminhadas ao ar livre', 'Quarta-feira entrada gratuita']
@@ -250,7 +424,7 @@ export const ATTRACTIONS = [
   {
     id: 'transfer-aeroporto-afonso-pena',
     title: 'Traslado Executivo Privativo Aeroporto Afonso Pena (CWB)',
-    subtitle: 'São José dos Pinhais <-> Hotéis de Curitiba',
+    subtitle: 'São José dos Pinhais / Hotéis Curitiba',
     location: 'Aeroporto CWB / Hotéis Curitiba',
     category: 'agencias',
     categories: ['agencias', 'pacotes'],
@@ -292,8 +466,7 @@ export const ATTRACTIONS = [
     lng: -49.2562,
     image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Eleito um dos passeios de trem mais bonitos do mundo pela The Guardian e Wall Street Journal! Atravesse a exuberante Mata Atlântica da Serra do Mar Paranaense sobre viadutos centenários, abismos e cachoeiras até a histórica cidade de Morretes, com almoço com Barreado típico incluído.',
     features: ['Viaduto do Carvalho suspenso', 'Almoço de Barreado tradicional em Morretes', 'Guia turístico bilíngue a bordo', 'Serviço de bordo com lanches e bebidas', 'Vagões temáticos e pet friendly']
@@ -318,8 +491,7 @@ export const ATTRACTIONS = [
     lng: -49.3330,
     image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Certificado pelo Guinness World Records como o maior restaurante das Américas! Fundado em 1963 no coração do bairro italiano de Santa Felicidade, serve o mais autêntico rodízio italiano com frango a passarinho, polenta frita crocante, radici com bacon, lasanha e mais de 10 tipos de massas artesanais.',
     features: ['Maior restaurante das Américas (4.600 lugares)', 'Rodízio ilimitado de massas e frango', 'Estacionamento gratuito para 900 carros', 'Espaço kids com monitores', 'Adega de vinhos artesanais paranaenses']
@@ -344,8 +516,7 @@ export const ATTRACTIONS = [
     lng: -49.2820,
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'O pôr do sol mais espetacular de Curitiba! Construído no local de duas antigas pedreiras unidas por um túnel escavado na rocha de 45 metros. Possui mirante em formato de castelo com jardins franceses, cascata artificial de 65m caindo sobre o lago e ancoradouro.',
     features: ['O pôr do sol mais famoso da cidade', 'Túnel na rocha com passarela suspensa', 'Cascata artificial de 65 metros', 'Bistrô do Tanguá com café colonial', 'Ciclovia e pistas de caminhada']
@@ -370,8 +541,7 @@ export const ATTRACTIONS = [
     lng: -49.3080,
     image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'O parque mais frequentado e amado pelos curitibanos! Com 1,4 milhão de m², possui um imenso lago central habitação oficial do bando de capivaras mascotes da cidade. Conta com o Expo Unimed, Museu do Automóvel, pistas de caminhada, academias e quiosques.',
     features: ['Lar oficial do grupo de Capivaras', 'Pistas iluminadas para caminhada e corrida', 'Museu do Automóvel de Curitiba', 'Aluguel de patins e bicicletas', 'Restaurantes e churrasqueiras livres']
@@ -396,8 +566,7 @@ export const ATTRACTIONS = [
     lng: -49.2945,
     image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1477959858617-67f30ac4ce78?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'A única torre de telefonia do Brasil com mirante aberto à visitação pública! Com 109 metros de altura (equivalente a 40 andares), oferece uma visão panorâmica circular de 360 graus sobre toda a mancha urbana de Curitiba e a serra no horizonte, acompanhada do painel de Poty Lazzarotto.',
     features: ['Mirante em 360° a 109m de altura', 'Painel em relevo do artista Poty Lazzarotto', 'Museu do Telefone no térreo', 'Lunetas de observação astronômica', 'Posto de Informações Turísticas']
@@ -422,8 +591,7 @@ export const ATTRACTIONS = [
     lng: -49.2920,
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'O primeiro restaurante panorâmico de Curitiba! Localizado na cobertura de um edifício no Bigorrilho, oferece alta gastronomia franco-italiana com paredes inteiramente em vidro que proporcionam uma vista deslumbrante em 360 graus da cidade iluminada à noite.',
     features: ['Vista skyline 360° da cidade', 'Menu de alta gastronomia internacional', 'Carta de vinhos selecionados com +400 rótulos', 'Ambiente romântico e exclusivo', 'Confeitaria panorâmica 360']
@@ -448,8 +616,7 @@ export const ATTRACTIONS = [
     lng: -49.2725,
     image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1538488881022-4728e396e965?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'Tradicionalíssimo botequim germânico fundado em 1979 no coração do Largo da Ordem! Famoso pelo autêntico Chopp Submarino (caneco com canecozinho de Steinhäger que o cliente leva de lembrança) e iguarias como Carne de Onça paranaense, Eisbein (joelho de porco) e Kassler.',
     features: ['Tradicional Chopp Submarino com caneco souvenir', 'Famosa Carne de Onça tombada patrimônio cultural', 'Pratos típicos alemães (Eisbein, Wurst)', 'Música ao vivo e atmosfera festiva', 'Localizado no calçadão histórico']
@@ -474,8 +641,7 @@ export const ATTRACTIONS = [
     lng: -49.2580,
     image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'O principal centro de compras de especiarias e gastronomia de Curitiba desde 1958! Abriga o primeiro Setor de Orgânicos do Brasil. Famoso pelas barracas de queijo, vinhos, castanhas e a concorrida praça de alimentação com o famoso Pastel de Bacalhau e restaurantes asiáticos e contemporâneos.',
     features: ['Primeiro mercado de alimentos orgânicos do país', 'Famoso Pastel de Bacalhau gigante', 'Feira de produtos orientais e mediterrâneos', 'Restaurantes variados na praça superior', 'Estacionamento coberto no local']
@@ -486,7 +652,7 @@ export const ATTRACTIONS = [
     subtitle: 'Centro Histórico • Domingo das 9h às 14h',
     location: 'Centro Histórico • Curitiba',
     category: 'cultura',
-    categories: ['cultura', 'conhecendo', 'restaurantes', 'promocionais'],
+    categories: ['cultura', 'eventos', 'restaurantes', 'promocionais'],
     topic: 'cultura',
     discount: 'ENTRADA LIVRE',
     rating: 4.9,
@@ -500,8 +666,7 @@ export const ATTRACTIONS = [
     lng: -49.2718,
     image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'A maior feira a céu aberto do Sul do Brasil! Todos os domingos, mais de 1.000 feirantes e artesãos ocupam os paralelepípedos do Centro Histórico oferecendo antiguidades, artesanato em madeira, pinturas, roupas e barracas gastronômicas com pastel com caldo de cana, pierogi polonês e empanadas.',
     features: ['Mais de 1.000 barracas de arte e artesanato', 'Pierogi polonês e pastel tradicional', 'Apresentações musicais e artistas de rua', 'Carros antigos e antiguidades no pátio', 'Próximo à Igreja da Ordem Terceira']
@@ -526,8 +691,7 @@ export const ATTRACTIONS = [
     lng: -49.2710,
     image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80'
     ],
     description: 'A melhor forma de conhecer os principais pontos turísticos de Curitiba! O famoso ônibus panorâmico de dois andares (Double-Decker) passa por 26 atrações com áudio informativo multilíngue. O bilhete permite 5 reembarques em qualquer parada ao longo do dia.',
     features: ['Ônibus panorâmico de 2 andares', 'Percorre 26 pontos turísticos de Curitiba', '5 reembarques livres incluídos', 'Áudio-guia em Português, Inglês e Espanhol', 'Saídas a cada 30 minutos']

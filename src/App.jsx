@@ -19,7 +19,7 @@ import Footer from './components/Footer';
 import { ATTRACTIONS, UNIFIED_NAV_ITEMS } from './data/attractions';
 
 export default function App() {
-  const [activeTopicTab, setActiveTopicTab] = useState('all'); // all, parques, cultura, tours, gastronomia, agencias, ofertas, roteiros, guia
+  const [activeTopicTab, setActiveTopicTab] = useState('all'); // all, parques, cultura, shows, teatros, eventos, tours, gastronomia, agencias, ofertas, roteiros, guia
   const [searchQuery, setSearchQuery] = useState('');
   const [activeAttraction, setActiveAttraction] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -71,7 +71,7 @@ export default function App() {
 
   // Featured sections
   const imperdiveisAttractions = useMemo(() => {
-    return ATTRACTIONS.filter(a => a.discount || a.category === 'pacotes' || a.category === 'agencias').slice(0, 4);
+    return ATTRACTIONS.filter(a => a.discount || a.category === 'pacotes' || a.category === 'agencias' || a.category === 'shows').slice(0, 4);
   }, []);
 
   const handleAddToCart = (newItem) => {
@@ -124,7 +124,7 @@ export default function App() {
       <main style={{ flex: 1 }}>
         
         {/* Topic Context Banner for specific topic views */}
-        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
+        {(activeTopicTab === 'parques' || activeTopicTab === 'cultura' || activeTopicTab === 'shows' || activeTopicTab === 'teatros' || activeTopicTab === 'eventos' || activeTopicTab === 'tours' || activeTopicTab === 'gastronomia') && (
           <TopicBanner topicId={activeTopicTab} />
         )}
 
@@ -157,6 +157,12 @@ export default function App() {
                   ? "Parques, Bosques & Natureza em Curitiba"
                   : activeTopicTab === 'cultura'
                   ? "Museus, Teatros & Patrimônio Histórico"
+                  : activeTopicTab === 'shows'
+                  ? "Shows & Concertos ao Vivo em Curitiba"
+                  : activeTopicTab === 'teatros'
+                  ? "Teatros & Espetáculos das Artes Cênicas"
+                  : activeTopicTab === 'eventos'
+                  ? "Festivais, Feiras & Eventos Especiais"
                   : activeTopicTab === 'tours'
                   ? "Tours, Passeios de Trem & Linha Turismo"
                   : activeTopicTab === 'gastronomia'
