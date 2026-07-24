@@ -752,43 +752,84 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
         })}
       </div>
 
-      {/* Selected Landmark Details Compact Light Ficha Técnica Panel */}
+      {/* Selected Landmark Details: Compact 460px Card (GetYourGuide Concept) */}
       {activeItem && (
         <div style={{
-          marginTop: '20px',
+          marginTop: '24px',
+          maxWidth: '460px',
+          margin: '24px auto 0',
           backgroundColor: '#ffffff',
           color: '#0f172a',
-          borderRadius: '16px',
-          padding: '16px 20px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
+          borderRadius: '20px',
+          overflow: 'hidden',
+          boxShadow: '0 16px 36px rgba(0, 0, 0, 0.1)',
           border: '1px solid #e2e8f0',
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          lgGridTemplateColumns: '1fr 260px',
-          gap: '16px',
-          alignItems: 'center'
+          position: 'relative'
         }} className="animate-fade-in">
           
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '10px', padding: '2px 8px', borderRadius: '4px' }}>
-                {activeItem.isHotel ? 'HOSPEDAGEM 5★' : `FICHA TÉCNICA #${activeItem.number}`}
-              </span>
-              <span style={{ color: '#64748b', fontSize: '12px', fontWeight: '600' }}>
-                {activeItem.category}
-              </span>
-            </div>
+          {/* Top Banner Image Header */}
+          <div style={{ position: 'relative', height: '180px', width: '100%', backgroundColor: '#f1f5f9' }}>
+            <img
+              src={activeItem.image}
+              alt={activeItem.title}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to top, rgba(15, 23, 42, 0.8) 0%, transparent 60%)'
+            }} />
 
-            <h3 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginBottom: '4px' }}>
-              {activeItem.title}
-            </h3>
-            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '12px' }}>
+            {/* Close Button */}
+            <button
+              onClick={() => setActiveItem(null)}
+              style={{
+                position: 'absolute',
+                top: '12px',
+                right: '12px',
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
+                backgroundColor: '#ffffff',
+                color: '#0f172a',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 10,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.18)'
+              }}
+              title="Fechar painel"
+            >
+              <X size={15} />
+            </button>
+
+            {/* Title Overlay */}
+            <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px', zIndex: 10, color: '#ffffff' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+                <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '10px', padding: '2px 8px', borderRadius: '4px' }}>
+                  {activeItem.isHotel ? 'HOSPEDAGEM 5★' : `FICHA TÉCNICA #${activeItem.number}`}
+                </span>
+                <span style={{ backgroundColor: 'rgba(255,255,255,0.25)', color: '#ffffff', fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '4px', backdropFilter: 'blur(4px)' }}>
+                  {activeItem.category}
+                </span>
+              </div>
+              <h3 style={{ fontSize: '18px', fontWeight: '900', lineHeight: '1.2' }}>
+                {activeItem.title}
+              </h3>
+            </div>
+          </div>
+
+          {/* Card Content Body */}
+          <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <p style={{ fontSize: '12px', color: '#64748b', margin: 0, fontWeight: '600' }}>
               {activeItem.subtitle}
             </p>
 
-            {/* Uniform Symmetrical Info Cards: Endereço & BRT */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '8px', marginBottom: '8px' }}>
-              <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '52px' }}>
+            {/* Symmetrical Info Cards: Endereço & BRT */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontSize: '10px', color: '#00a896', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <MapPin size={11} color="#00a896" />
                   <span>Endereço</span>
@@ -798,7 +839,7 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '52px' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontSize: '10px', color: '#2563eb', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <Bus size={11} color="#2563eb" />
                   <span>Acesso BRT</span>
@@ -809,36 +850,22 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
               </div>
             </div>
 
-            {/* Symmetrical Dica 360 Card */}
-            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 10px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '6px', minHeight: '44px' }}>
+            {/* Dica 360 Card */}
+            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 10px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Info size={13} color="#16a34a" style={{ flexShrink: 0 }} />
               <div style={{ fontSize: '11px', color: '#166534', fontWeight: '600', lineHeight: '1.3' }}>
                 <strong>Dica 360°:</strong> {activeItem.tip}
               </div>
             </div>
-          </div>
 
-          {/* Right Square Format Image Banner & Trigger Button */}
-          <div style={{ position: 'relative', height: '180px', width: '100%', maxWidth: '240px', margin: '0 auto', aspectRatio: '1/1', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
-            <img
-              src={activeItem.image}
-              alt={activeItem.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)'
-            }} />
+            {/* Full Width Trigger Action Button */}
             <button
               onClick={() => handleTriggerFullModal(activeItem)}
               style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                right: '10px',
-                height: '36px',
-                borderRadius: '8px',
+                marginTop: '4px',
+                width: '100%',
+                height: '38px',
+                borderRadius: '10px',
                 backgroundColor: '#00a896',
                 color: '#ffffff',
                 fontSize: '12px',
@@ -848,11 +875,15 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '6px'
+                gap: '6px',
+                boxShadow: '0 4px 12px rgba(0,168,150,0.3)',
+                transition: 'transform 0.15s ease'
               }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-1px)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
             >
-              <span>{activeItem.isHotel ? 'Reservar 5★' : 'Ver Ficha Completa'}</span>
-              <ChevronRight size={14} />
+              <span>{activeItem.isHotel ? 'Reservar Hospedagem 5★' : 'Ver Ficha Completa'}</span>
+              <ChevronRight size={15} />
             </button>
           </div>
 
