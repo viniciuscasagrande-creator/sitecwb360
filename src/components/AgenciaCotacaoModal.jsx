@@ -70,7 +70,7 @@ export default function AgenciaCotacaoModal({ isOpen, onClose, defaultType = 'pa
           </div>
 
           <button
-            onClick={() => onClose && onClose()}
+            onClick={onClose}
             style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: 'none', color: '#ffffff', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <X size={18} />

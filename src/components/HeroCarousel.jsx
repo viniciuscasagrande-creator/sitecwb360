@@ -127,10 +127,7 @@ export default function HeroCarousel({ onSelectAttraction }) {
           {/* CTA Button */}
           <button
             onClick={() => {
-              if (onSelectAttraction) {
-                const found = ATTRACTIONS.find(a => a.id === slide.id || a.title.toLowerCase().includes(slide.id));
-                onSelectAttraction(found || slide);
-              }
+              if (onSelectAttraction) onSelectAttraction(slide);
             }}
             style={{
               display: 'inline-flex',

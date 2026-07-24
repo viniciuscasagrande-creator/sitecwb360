@@ -137,7 +137,7 @@ export default function Header({
           
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters && onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); onClearFilters(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <Logo size="md" />
             </a>
           </div>
@@ -157,7 +157,7 @@ export default function Header({
             
             {/* Filter Modal Button */}
             <button
-              onClick={() => onOpenFilterModal && onOpenFilterModal()}
+              onClick={onOpenFilterModal}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -183,7 +183,7 @@ export default function Header({
             
             {/* Cart Button */}
             <button
-              onClick={() => onOpenCart && onOpenCart()}
+              onClick={onOpenCart}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -220,7 +220,7 @@ export default function Header({
                   alignItems: 'center',
                   justifyContent: 'center',
                   padding: '0 6px',
-                  marginLeft: '4px'
+                  boxShadow: '0 2px 6px rgba(234,88,12,0.4)'
                 }}>
                   {cartCount}
                 </span>
@@ -254,7 +254,7 @@ export default function Header({
               </span>
             </div>
             <button
-              onClick={() => onClearFilters && onClearFilters()}
+              onClick={onClearFilters}
               style={{
                 color: '#dc2626',
                 fontWeight: '600',

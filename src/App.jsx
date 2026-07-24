@@ -1,12 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import Header from './components/Header';
 import HeroCarousel from './components/HeroCarousel';
-import SquareCategoriesGrid from './components/SquareCategoriesGrid';
 import AttractionSlider from './components/AttractionSlider';
 import Top20LandmarksGrid from './components/Top20LandmarksGrid';
 import OfficialBrandSection from './components/OfficialBrandSection';
 import ImperdiveisSection from './components/ImperdiveisSection';
-import TrustBenefitsSection from './components/TrustBenefitsSection';
 import NearbySection from './components/NearbySection';
 import EventsCalendarSection from './components/EventsCalendarSection';
 import TopicBanner from './components/TopicBanner';
@@ -227,32 +225,29 @@ export default function App() {
               onClickDetail={setActiveAttraction}
             />
 
-            {/* Square Destination Spots (GetYourGuide Concept) */}
-            {activeTopicTab === 'all' && !searchQuery && (
-              <SquareCategoriesGrid onSelectSpot={(spotTitle) => setSearchQuery(spotTitle)} onSelectAttraction={setActiveAttraction} />
-            )}
-
-            {/* TOP 20 PRINCIPAIS PONTOS TURÍSTICOS GRID */}
+            {/* TOP 20 PRINCIPAIS PONTOS TURÍSTICOS GRID (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
               <Top20LandmarksGrid onClickDetail={setActiveAttraction} />
             )}
 
-            {/* Official Brand Section */}
+            {/* Official Brand Section (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
-              <OfficialBrandSection onOpenAboutBrand={() => setIsAboutBrandOpen(true)} onFilterLandmark={handleFilterLandmark} />
+              <OfficialBrandSection
+                onOpenMap={() => {
+                  const nearbyEl = document.getElementById('nearby-section');
+                  if (nearbyEl) nearbyEl.scrollIntoView({ behavior: 'smooth' });
+                }}
+                onOpenAboutBrand={() => setIsAboutBrandOpen(true)}
+                onFilterLandmark={handleFilterLandmark}
+              />
             )}
 
-            {/* Imperdíveis Section */}
+            {/* Imperdíveis Section (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
               <ImperdiveisSection
                 attractions={imperdiveisAttractions}
                 onClickDetail={setActiveAttraction}
               />
-            )}
-
-            {/* GetYourGuide Concept: Trust & Benefits Cards */}
-            {activeTopicTab === 'all' && !searchQuery && (
-              <TrustBenefitsSection />
             )}
 
             {/* Nearby / Geolocation Section */}

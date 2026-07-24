@@ -55,7 +55,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
             <ShoppingBag size={22} color="#00a896" />
             <h2 style={{ fontSize: '20px', fontWeight: '800', color: '#0f172a' }}>Meu Carrinho 360</h2>
           </div>
-          <button onClick={() => onClose && onClose()} style={{ border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
+          <button onClick={onClose} style={{ border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
             <X size={20} />
           </button>
         </div>
@@ -85,7 +85,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
               </div>
 
               <button
-                onClick={() => { setOrderComplete(null); if (onClose) onClose(); }}
+                onClick={() => { setOrderComplete(null); onClose(); }}
                 style={{ backgroundColor: '#00a896', color: '#ffffff', padding: '12px 24px', borderRadius: '10px', fontWeight: '800', border: 'none', cursor: 'pointer' }}
               >
                 Concluir e Voltar
@@ -95,7 +95,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
             <div style={{ textAlign: 'center', padding: '40px 0' }}>
               <ShoppingBag size={48} color="#cbd5e1" style={{ margin: '0 auto 12px' }} />
               <p style={{ fontSize: '16px', color: '#64748b', fontWeight: '600' }}>Seu carrinho está vazio.</p>
-              <button onClick={() => onClose && onClose()} style={{ marginTop: '16px', color: '#2563eb', fontWeight: '700', background: 'none', border: 'none', cursor: 'pointer' }}>
+              <button onClick={onClose} style={{ marginTop: '16px', color: '#2563eb', fontWeight: '700', background: 'none', border: 'none', cursor: 'pointer' }}>
                 Explorar atrações
               </button>
             </div>
@@ -112,9 +112,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
                         {item.ticketType} • Qtd: {item.quantity}
                       </span>
                       <strong style={{ fontSize: '14px', color: '#2563eb', display: 'block', marginTop: '4px' }}>
-                        {typeof item.price === 'number'
-                          ? `R$ ${(item.price * (item.quantity || 1)).toFixed(2).replace('.', ',')}`
-                          : String(item.price || 'Gratuito')}
+                        R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
                       </strong>
                     </div>
                     <button onClick={() => onRemoveItem(idx)} style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', padding: '6px' }}>
@@ -177,9 +175,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
                 <div>
                   <span style={{ fontSize: '12px', color: '#64748b', display: 'block' }}>Total do Pedido:</span>
                   <span style={{ fontSize: '26px', fontWeight: '800', color: '#0f172a' }}>
-                    {typeof total === 'number'
-                      ? `R$ ${total.toFixed(2).replace('.', ',')}`
-                      : String(total || 'R$ 0,00')}
+                    R$ {total.toFixed(2).replace('.', ',')}
                   </span>
                 </div>
 

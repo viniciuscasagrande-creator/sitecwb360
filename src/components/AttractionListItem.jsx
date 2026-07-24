@@ -108,9 +108,7 @@ export default function AttractionListItem({ attraction, onClickDetail }) {
                 <div style={{ textAlign: 'right' }}>
                   <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>A partir de</span>
                   <div style={{ fontSize: '20px', fontWeight: '900', color: '#2563eb', lineHeight: '1' }}>
-                    {typeof attraction.price === 'number' 
-                      ? `R$ ${attraction.price.toFixed(2).replace('.', ',')}` 
-                      : String(attraction.price || 'Consulte')}
+                    R$ {attraction.price.toFixed(2).replace('.', ',')}
                   </div>
                 </div>
               )}

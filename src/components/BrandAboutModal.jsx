@@ -29,7 +29,7 @@ export default function BrandAboutModal({ isOpen, onClose }) {
         maxHeight: '90vh',
         overflowY: 'auto'
       }}>
-        <button onClick={() => onClose && onClose()} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
           <X size={20} />
         </button>
 
@@ -58,23 +58,23 @@ export default function BrandAboutModal({ isOpen, onClose }) {
             <div style={{ backgroundColor: '#f8fafc', padding: '16px', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
               <ShieldCheck size={24} color="#2563eb" style={{ marginBottom: '8px' }} />
               <h4 style={{ fontSize: '15px', fontWeight: '800', color: '#0f172a' }}>Vouchers Digitais</h4>
-              <p style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>Ingressos com QR Code e agendamento simplificado sem pegar filas.</p>
+              <p style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>Garantia de segurança, QR Code instantâneo e agilidade sem filas.</p>
             </div>
           </div>
 
-          <div style={{ backgroundColor: '#f0fdf4', padding: '16px', borderRadius: '14px', border: '1px solid #bbf7d0', color: '#166534' }}>
-            <h4 style={{ fontSize: '15px', fontWeight: '800', color: '#15803d', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <HeartHandshake size={18} />
-              <span>Compromisso com o Visitante</span>
-            </h4>
-            <p style={{ fontSize: '13px', marginTop: '4px' }}>
+          <div style={{ backgroundColor: '#eff6ff', padding: '16px', borderRadius: '14px', border: '1px solid #bfdbfe', marginTop: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+              <Sparkles size={18} color="#2563eb" />
+              <strong style={{ color: '#1e3a8a', fontSize: '14px' }}>Conceito 360 Graos</strong>
+            </div>
+            <p style={{ fontSize: '13px', color: '#1e40af' }}>
               Abrangência total: Parques, museus de arquitetura futurista (MON), gastronomia de Santa Felicidade, passeios de trem e teatro sob as estrelas na Ópera de Arame.
             </p>
           </div>
         </div>
 
         <button
-          onClick={() => onClose && onClose()}
+          onClick={onClose}
           style={{
             width: '100%',
             backgroundColor: '#0f172a',

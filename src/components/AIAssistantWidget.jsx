@@ -301,7 +301,7 @@ export default function AIAssistantWidget({ onSelectAttraction }) {
                           </h5>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
                             <span style={{ color: '#2563eb', fontWeight: '700' }}>
-                              {rec.isFree ? t('free') : `R$ ${(rec.price || 0).toFixed(2).replace('.', ',')}`}
+                              {rec.isFree ? t('free') : `R$ ${rec.price.toFixed(2).replace('.', ',')}`}
                             </span>
                             <span>•</span>
                             <span>★ {rec.rating}</span>
