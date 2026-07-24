@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Clock, Heart, MapPin, Share2 } from 'lucide-react';
+import { Star, Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function AttractionCard({ attraction, onClickDetail }) {
@@ -9,20 +9,6 @@ export default function AttractionCard({ attraction, onClickDetail }) {
   const toggleFavorite = (e) => {
     e.stopPropagation();
     setIsFavorite(!isFavorite);
-  };
-
-  const handleShare = (e) => {
-    e.stopPropagation();
-    if (navigator.share) {
-      navigator.share({
-        title: attraction.title,
-        text: `Confira este passeio em Curitiba: ${attraction.title}`,
-        url: window.location.href
-      }).catch(() => {});
-    } else {
-      const text = encodeURIComponent(`Confira este passeio no Curitiba 360°: ${attraction.title} - ${window.location.href}`);
-      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-    }
   };
 
   return (
@@ -38,11 +24,12 @@ export default function AttractionCard({ attraction, onClickDetail }) {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        position: 'relative'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.04)',
+        transition: 'all 0.25s ease'
       }}
     >
-      {/* Image Container */}
-      <div style={{ position: 'relative', height: '210px', width: '100%', overflow: 'hidden' }}>
+      {/* Top Image Container */}
+      <div style={{ position: 'relative', height: '170px', width: '100%', overflow: 'hidden', backgroundColor: '#f1f5f9' }}>
         <img 
           src={attraction.image} 
           alt={attraction.title}
@@ -50,175 +37,95 @@ export default function AttractionCard({ attraction, onClickDetail }) {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            transition: 'transform 0.5s ease'
+            transition: 'transform 0.4s ease'
           }}
-          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
           onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
         />
         
-        {/* Discount Badge */}
-        {attraction.discount && (
-          <div style={{
-            position: 'absolute',
-            top: '12px',
-            left: '12px',
-            backgroundColor: '#ea580c',
-            color: '#ffffff',
-            fontSize: '12px',
-            fontWeight: '800',
-            padding: '4px 10px',
-            borderRadius: '6px',
-            boxShadow: '0 2px 6px rgba(234,88,12,0.3)',
-            zIndex: 2
-          }}>
-            {attraction.discount}
-          </div>
-        )}
-
-        {/* Action Buttons Top Right Overlay */}
-        <div style={{ position: 'absolute', top: '12px', right: '12px', display: 'flex', gap: '6px', zIndex: 2 }}>
-          {/* Share Button */}
-          <button
-            onClick={handleShare}
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              backdropFilter: 'blur(4px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            title="Compartilhar passeio no WhatsApp"
-          >
-            <Share2 size={16} color="#00a896" />
-          </button>
-
-          {/* Favorite Heart Button */}
-          <button
-            onClick={toggleFavorite}
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              backdropFilter: 'blur(4px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            title={isFavorite ? "Remover dos favoritos" : "Salvar nos favoritos"}
-          >
-            <Heart 
-              size={18} 
-              color={isFavorite ? '#ef4444' : '#64748b'} 
-              fill={isFavorite ? '#ef4444' : 'none'} 
-            />
-          </button>
-        </div>
-
+        {/* GetYourGuide Style Badge Top Left */}
         <div style={{
           position: 'absolute',
-          bottom: 0,
-          inset: 'auto 0 0 0',
-          height: '40px',
-          background: 'linear-gradient(to top, rgba(0,0,0,0.3), transparent)'
-        }} />
+          top: '10px',
+          left: '10px',
+          backgroundColor: attraction.discount ? '#dc2626' : '#0f172a',
+          color: '#ffffff',
+          fontSize: '11px',
+          fontWeight: '800',
+          padding: '3px 8px',
+          borderRadius: '6px',
+          boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+          zIndex: 2
+        }}>
+          {attraction.discount ? 'Esgota rápido' : 'Oficial CWB 360'}
+        </div>
+
+        {/* Favorite Heart Circle Top Right */}
+        <button
+          onClick={toggleFavorite}
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            width: '34px',
+            height: '34px',
+            borderRadius: '50%',
+            backgroundColor: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: 'none',
+            cursor: 'pointer',
+            zIndex: 2,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+            transition: 'transform 0.15s ease'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
+          onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          title={isFavorite ? "Remover dos favoritos" : "Salvar nos favoritos"}
+        >
+          <Heart 
+            size={18} 
+            color={isFavorite ? '#ef4444' : '#0f172a'} 
+            fill={isFavorite ? '#ef4444' : 'none'} 
+          />
+        </button>
       </div>
 
-      {/* Card Content */}
-      <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+      {/* GetYourGuide Style Card Body */}
+      <div style={{ padding: '14px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <div>
-          {/* Title */}
-          <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#0f172a', marginBottom: '4px', lineHeight: '1.3' }}>
+          {/* Subtitle / Category Tag Above Title */}
+          <div style={{ fontSize: '12px', color: '#64748b', fontWeight: '600', marginBottom: '4px' }}>
+            Curitiba • {attraction.category || 'Atividade'}
+          </div>
+
+          {/* Bold Title */}
+          <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#0f172a', marginBottom: '8px', lineHeight: '1.3' }}>
             {attraction.title}
           </h3>
 
-          {/* Subtitle / Location */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px', color: '#64748b', marginBottom: '8px' }}>
-            <MapPin size={14} color="#00a896" />
-            <span>{attraction.subtitle}</span>
-          </div>
-
-          {/* Rating & Availability Row */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2px', backgroundColor: '#fef3c7', padding: '2px 6px', borderRadius: '4px' }}>
-                <Star size={13} color="#f59e0b" fill="#f59e0b" />
-                <span style={{ fontSize: '12px', fontWeight: '800', color: '#92400e' }}>{attraction.rating || 4.9}</span>
-              </div>
-              <span style={{ fontSize: '12px', color: '#64748b' }}>({attraction.reviewsCount || '1.2k'})</span>
-            </div>
-
-            <span style={{ fontSize: '11px', fontWeight: '800', color: '#16a34a', backgroundColor: '#dcfce7', padding: '2px 8px', borderRadius: '9999px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16a34a' }}></span>
-              Aberto Hoje
-            </span>
-          </div>
-
-          {/* Duration */}
-          <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748b', fontWeight: '600', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Clock size={13} color="#64748b" />
-            <span>{attraction.duration || 'Visita: 2 horas'}</span>
+          {/* Meta Features Line */}
+          <div style={{ fontSize: '12px', color: '#64748b', fontWeight: '500', marginBottom: '14px' }}>
+            {attraction.duration || '2 - 3 horas'} • Evite filas • Guia PT-BR
           </div>
         </div>
 
-        {/* Price & Action */}
-        <div style={{ borderTop: '1px dashed #e2e8f0', paddingTop: '12px', marginTop: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div>
-            {attraction.originalPrice && attraction.originalPrice > 0 && (
-              <span style={{ fontSize: '12px', color: '#94a3b8', textDecoration: 'line-through', marginRight: '6px' }}>
-                R$ {attraction.originalPrice.toFixed(2).replace('.', ',')}
-              </span>
-            )}
-
-            {attraction.isFree ? (
-              <div style={{ fontSize: '16px', fontWeight: '800', color: '#16a34a' }}>
-                {t('free')}
-              </div>
-            ) : (
-              <div>
-                <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>R$</span>
-                <span style={{ fontSize: '20px', fontWeight: '800', color: '#2563eb', lineHeight: '1' }}>
-                  {attraction.price.toFixed(2).replace('.', ',')}
-                </span>
-              </div>
-            )}
+        {/* Rating & Price Row */}
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', paddingTop: '10px', borderTop: '1px solid #f1f5f9' }}>
+          {/* Rating */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', color: '#0f172a', fontWeight: '700' }}>
+            <span>{attraction.rating || '4,8'}</span>
+            <Star size={13} color="#0f172a" fill="#0f172a" />
+            <span style={{ color: '#64748b', fontWeight: '500' }}>({attraction.reviewsCount || '1.200'})</span>
           </div>
 
+          {/* Price */}
           <div style={{ textAlign: 'right' }}>
-            <button
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '34px',
-                padding: '0 14px',
-                fontSize: '12px',
-                fontWeight: '800',
-                color: '#2563eb',
-                backgroundColor: '#eff6ff',
-                borderRadius: '8px',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = '#dbeafe';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = '#eff6ff';
-              }}
-            >
-              {t('viewDetails')}
-            </button>
+            <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '600' }}>A partir de</span>
+            <span style={{ fontSize: '16px', fontWeight: '900', color: attraction.isFree ? '#16a34a' : '#0f172a' }}>
+              {attraction.isFree ? 'GRATUITO' : `R$ ${attraction.price.toFixed(0)}`}
+            </span>
           </div>
         </div>
       </div>
