@@ -124,7 +124,12 @@ export default function AttractionCard({ attraction, onClickDetail }) {
           <div style={{ textAlign: 'right' }}>
             <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '600' }}>A partir de</span>
             <span style={{ fontSize: '16px', fontWeight: '900', color: attraction.isFree ? '#16a34a' : '#0f172a' }}>
-              {attraction.isFree ? 'GRATUITO' : `R$ ${(attraction.price || 0).toFixed(0)}`}
+              {attraction.isFree
+                ? 'GRATUITO'
+                : typeof attraction.price === 'number'
+                ? `R$ ${attraction.price.toFixed(0)}`
+                : String(attraction.price || 'Consulte')
+              }
             </span>
           </div>
         </div>
