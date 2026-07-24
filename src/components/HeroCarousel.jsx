@@ -83,19 +83,6 @@ export default function HeroCarousel({ onSelectAttraction }) {
             }}>
               ⚡ OFERTA DO DIA • GANHE 15% OFF
             </div>
-
-            <div style={{
-              display: 'inline-block',
-              backgroundColor: 'rgba(255, 255, 255, 0.15)',
-              color: '#fef08a',
-              fontSize: '11px',
-              fontWeight: '800',
-              padding: '3px 10px',
-              borderRadius: '6px',
-              backdropFilter: 'blur(4px)'
-            }}>
-              🔥 ÚLTIMAS VAGAS HOJE
-            </div>
           </div>
 
           {/* Title */}
