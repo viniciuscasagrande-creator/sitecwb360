@@ -56,7 +56,7 @@ export default function OfficialBrandSection({ onOpenMap, onOpenAboutBrand, onFi
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
             <button
-              onClick={onOpenMap}
+              onClick={() => onOpenMap ? onOpenMap() : window.scrollTo({ top: document.getElementById('nearby-section')?.offsetTop || 800, behavior: 'smooth' })}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -80,7 +80,7 @@ export default function OfficialBrandSection({ onOpenMap, onOpenAboutBrand, onFi
             </button>
 
             <button
-              onClick={onOpenAboutBrand}
+              onClick={() => onOpenAboutBrand && onOpenAboutBrand()}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -108,7 +108,7 @@ export default function OfficialBrandSection({ onOpenMap, onOpenAboutBrand, onFi
         {/* Right Side: Landmark Icons Grid (2 rows x 4 cols) */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
           gap: '16px'
         }}>
           {BRAND_LANDMARKS.map((landmark) => {
@@ -116,7 +116,7 @@ export default function OfficialBrandSection({ onOpenMap, onOpenAboutBrand, onFi
             return (
               <button
                 key={landmark.id}
-                onClick={() => onFilterLandmark(landmark.name)}
+                onClick={() => onFilterLandmark && onFilterLandmark(landmark.name)}
                 style={{
                   backgroundColor: '#ffffff',
                   borderRadius: '16px',

@@ -239,7 +239,7 @@ export default function App() {
 
             {/* Official Brand Section */}
             {activeTopicTab === 'all' && !searchQuery && (
-              <OfficialBrandSection onOpenAboutBrand={() => setIsAboutBrandOpen(true)} />
+              <OfficialBrandSection onOpenAboutBrand={() => setIsAboutBrandOpen(true)} onFilterLandmark={handleFilterLandmark} />
             )}
 
             {/* Imperdíveis Section */}
