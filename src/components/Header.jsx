@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
+import AirbnbSearchBar from './AirbnbSearchBar';
 import { Search, User, ShoppingCart, Sparkles, X, Building2, Globe, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -14,6 +15,7 @@ export default function Header({
   onOpenLogin,
   onOpenAgencyQuote,
   onClearFilters,
+  onSelectAttraction,
   totalResults
 }) {
   const { currentLang, setCurrentLang, t } = useLanguage();
@@ -138,46 +140,14 @@ export default function Header({
             </a>
           </div>
 
-          {/* Search Bar */}
+          {/* Airbnb Search Bar */}
           <div style={{ flex: '1', minWidth: '260px', maxWidth: '560px', position: 'relative' }}>
-            <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#00a896' }} />
-            <input
-              type="text"
-              placeholder={t('searchPlaceholder')}
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              style={{
-                width: '100%',
-                height: '44px',
-                padding: '0 40px 0 44px',
-                borderRadius: '9999px',
-                border: '2px solid #cbd5e1',
-                backgroundColor: '#f8fafc',
-                fontSize: '13px',
-                fontWeight: '500',
-                outline: 'none',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = '#00a896';
-                e.target.style.backgroundColor = '#ffffff';
-                e.target.style.boxShadow = '0 0 0 4px rgba(0,168,150,0.15)';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = '#cbd5e1';
-                e.target.style.backgroundColor = '#f8fafc';
-                e.target.style.boxShadow = '0 2px 6px rgba(0,0,0,0.03)';
-              }}
+            <AirbnbSearchBar 
+              searchQuery={searchQuery}
+              onSearchChange={onSearchChange}
+              onSelectAttraction={onSelectAttraction}
+              onSelectTab={onSelectTopicTab}
             />
-            {searchQuery && (
-              <button 
-                onClick={() => onSearchChange('')}
-                style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', border: 'none', background: 'none', cursor: 'pointer' }}
-              >
-                <X size={16} />
-              </button>
-            )}
           </div>
 
           {/* User & Cart Action Buttons */}

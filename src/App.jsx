@@ -147,6 +147,7 @@ export default function App() {
         onOpenLogin={() => setIsLoginOpen(true)}
         onOpenAgencyQuote={handleOpenAgencyQuote}
         onClearFilters={handleClearFilters}
+        onSelectAttraction={setActiveAttraction}
         totalResults={filteredAttractions.length}
       />
 
