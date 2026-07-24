@@ -229,7 +229,7 @@ export default function App() {
 
             {/* Square Destination Spots (GetYourGuide Concept) */}
             {activeTopicTab === 'all' && !searchQuery && (
-              <SquareCategoriesGrid onSelectSpot={(spotTitle) => setSearchQuery(spotTitle)} />
+              <SquareCategoriesGrid onSelectSpot={(spotTitle) => setSearchQuery(spotTitle)} onSelectAttraction={setActiveAttraction} />
             )}
 
             {/* TOP 20 PRINCIPAIS PONTOS TURÍSTICOS GRID */}

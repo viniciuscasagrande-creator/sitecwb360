@@ -16,9 +16,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque Ecológico',
     icon: Trees,
     color: '#059669',
-    image: '/images/jardim-botanico.jpg',
+    image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      '/images/jardim-botanico.jpg'
+      'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80'
     ],
     location: 'Bairro Jardim Botânico • Eng. Ostoja Roguski, s/n',
     howToGet: 'Linha Turismo (Parada 1) ou BRT Centenário / Campo Comprido (Estação Botânico)',
@@ -65,9 +65,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Cultura & Arte',
     icon: Eye,
     color: '#7c3aed',
-    image: '/images/mon-olho.jpg',
+    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      '/images/mon-olho.jpg'
+      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80'
     ],
     location: 'Centro Cívico • Marechal Hermes, 999',
     howToGet: 'Linha Turismo (Parada MON) ou Ônibus Interbairros I / Ahu-Los Angeles',
@@ -89,9 +89,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Teatro & Shows',
     icon: Compass,
     color: '#d97706',
-    image: '/images/opera-de-arame.jpg',
+    image: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      '/images/opera-de-arame.jpg'
+      'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80'
     ],
     location: 'Pilarzinho / Abranches • R. João Gava, 970',
     howToGet: 'Linha Turismo (Parada Ópera de Arame) ou Ônibus Mateus Leme / Nilo Peçanha',
@@ -102,8 +102,8 @@ export const TOP_20_LANDMARKS = [
     duration: '2 horas',
     isFree: false,
     priceVal: 15.0,
-    description: 'Construída em apenas 75 dias com tubos de aço e teto transparente de policarbonato, a Ópera de Arame flutua sobre o lago de uma antiga pedreira.',
-    tip: 'Aproveite o café panorâmico no deck do lago ouvindo os shows de Jazz ao vivo flutuantes.'
+    description: 'Estrutura tubular de aço e placas transparentes integrada à vegetação nativa de uma antiga pedreira.',
+    tip: 'Assista a um show instrumental no palco flutuante tomando um chopp artesanal.'
   },
   {
     id: 'tangua',
@@ -113,9 +113,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque & Vista 360°',
     icon: Sparkles,
     color: '#ea580c',
-    image: '/images/parque-tangua.jpg',
+    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      '/images/parque-tangua.jpg'
+      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80'
     ],
     location: 'Taboão / Pilarzinho • R. Oswaldo Maciel, s/n',
     howToGet: 'Linha Turismo (Parada Parque Tanguá) ou Ônibus Nilo Peçanha',

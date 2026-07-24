@@ -1,4 +1,5 @@
 import React from 'react';
+import { ATTRACTIONS } from '../data/attractions';
 
 const DESTINATION_SPOTS = [
   {
@@ -39,7 +40,20 @@ const DESTINATION_SPOTS = [
   }
 ];
 
-export default function SquareCategoriesGrid({ onSelectSpot }) {
+export default function SquareCategoriesGrid({ onSelectSpot, onSelectAttraction }) {
+  const handleClick = (spot) => {
+    if (onSelectAttraction) {
+      const match = ATTRACTIONS.find(a => a.id === spot.id || a.title.toLowerCase().includes(spot.id) || a.title.toLowerCase().includes(spot.title.toLowerCase()));
+      if (match) {
+        onSelectAttraction(match);
+        return;
+      }
+    }
+    if (onSelectSpot) {
+      onSelectSpot(spot.title);
+    }
+  };
+
   return (
     <section style={{ maxWidth: '1280px', margin: '40px auto 20px', padding: '0 16px' }}>
       <h2 style={{ fontSize: '24px', fontWeight: '900', color: '#0f172a', marginBottom: '20px' }}>
@@ -50,7 +64,7 @@ export default function SquareCategoriesGrid({ onSelectSpot }) {
         {DESTINATION_SPOTS.map((spot) => (
           <div
             key={spot.id}
-            onClick={() => onSelectSpot && onSelectSpot(spot.title)}
+            onClick={() => handleClick(spot)}
             style={{
               cursor: 'pointer',
               display: 'flex',
