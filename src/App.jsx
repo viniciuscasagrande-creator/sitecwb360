@@ -6,6 +6,7 @@ import Top20LandmarksGrid from './components/Top20LandmarksGrid';
 import OfficialBrandSection from './components/OfficialBrandSection';
 import ImperdiveisSection from './components/ImperdiveisSection';
 import NearbySection from './components/NearbySection';
+import EventsCalendarSection from './components/EventsCalendarSection';
 import TopicBanner from './components/TopicBanner';
 import RoteirosSection from './components/RoteirosSection';
 import GuiaPraticoSection from './components/GuiaPraticoSection';
@@ -13,6 +14,7 @@ import AgenciasSection from './components/AgenciasSection';
 import HoteisSection from './components/HoteisSection';
 import AgenciaCotacaoModal from './components/AgenciaCotacaoModal';
 import AttractionDetailModal from './components/AttractionDetailModal';
+import FilterModal from './components/FilterModal';
 import CartModal from './components/CartModal';
 import LoginModal from './components/LoginModal';
 import BrandAboutModal from './components/BrandAboutModal';
@@ -28,6 +30,9 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isAboutBrandOpen, setIsAboutBrandOpen] = useState(false);
+  
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [appliedFilters, setAppliedFilters] = useState(null);
   
   // Agency Quote Modal State
   const [isAgencyQuoteOpen, setIsAgencyQuoteOpen] = useState(false);
@@ -148,6 +153,7 @@ export default function App() {
         onOpenAgencyQuote={handleOpenAgencyQuote}
         onClearFilters={handleClearFilters}
         onSelectAttraction={setActiveAttraction}
+        onOpenFilterModal={() => setIsFilterModalOpen(true)}
         totalResults={filteredAttractions.length}
       />
 
@@ -256,6 +262,11 @@ export default function App() {
 
       </main>
 
+      {/* Events & Shows Calendar Section (Only on 'all' home view when no search query) */}
+      {activeTopicTab === 'all' && !searchQuery && (
+        <EventsCalendarSection onClickDetail={setActiveAttraction} />
+      )}
+
       {/* Floating CWB360 AI Assistant Button */}
       <AIAssistantWidget onSelectAttraction={setActiveAttraction} />
 
@@ -271,6 +282,13 @@ export default function App() {
           onAddToCart={handleAddToCart}
         />
       )}
+
+      <FilterModal
+        isOpen={isFilterModalOpen}
+        onClose={() => setIsFilterModalOpen(false)}
+        onApplyFilters={(filters) => setAppliedFilters(filters)}
+        currentFilters={appliedFilters}
+      />
 
       <CartModal
         isOpen={isCartOpen}

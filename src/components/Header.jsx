@@ -3,7 +3,7 @@ import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
 import AirbnbSearchBar from './AirbnbSearchBar';
 import UserAccountMenu from './UserAccountMenu';
-import { Search, User, ShoppingCart, Sparkles, X, Building2, Globe, ChevronDown } from 'lucide-react';
+import { Search, User, ShoppingCart, Sparkles, X, Building2, Globe, ChevronDown, SlidersHorizontal } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Header({ 
@@ -17,6 +17,7 @@ export default function Header({
   onOpenAgencyQuote,
   onClearFilters,
   onSelectAttraction,
+  onOpenFilterModal,
   totalResults
 }) {
   const { currentLang, setCurrentLang, t } = useLanguage();
@@ -153,6 +154,32 @@ export default function Header({
 
           {/* User & Cart Action Buttons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+            
+            {/* Filter Modal Button */}
+            <button
+              onClick={onOpenFilterModal}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                height: '42px',
+                padding: '0 14px',
+                borderRadius: '10px',
+                backgroundColor: '#ffffff',
+                color: '#0f172a',
+                fontWeight: '700',
+                fontSize: '13px',
+                border: '1px solid #cbd5e1',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+              }}
+              title="Filtros Avançados"
+            >
+              <SlidersHorizontal size={16} color="#00a896" />
+              <span>Filtros</span>
+            </button>
             
             {/* Cart Button */}
             <button

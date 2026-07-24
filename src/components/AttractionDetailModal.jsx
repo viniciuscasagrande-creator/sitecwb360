@@ -1,341 +1,260 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Star, Clock, MapPin, Check, ShoppingCart, Share2, Heart } from 'lucide-react';
-import AttractionCard from './AttractionCard';
+import { 
+  X, MapPin, Clock, Ticket, Bus, CloudSun, Utensils, Hotel, 
+  HelpCircle, Star, Heart, Share2, CheckCircle2, ChevronRight, Info
+} from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-export default function AttractionDetailModal({ attraction, allAttractions, onClose, onAddToCart }) {
+export default function AttractionDetailModal({ attraction, onClose, onAddToCart }) {
+  const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState('overview'); // overview, weather, transit, nearby, faq
+  const [selectedTicketType, setSelectedTicketType] = useState('inteira');
+  const [ticketQuantity, setTicketQuantity] = useState(1);
+
   if (!attraction) return null;
 
-  const [ticketType, setTicketType] = useState('adulto');
-  const [quantity, setQuantity] = useState(1);
-  const [activePhoto, setActivePhoto] = useState(0);
-  const [addedSuccess, setAddedSuccess] = useState(false);
-
-  const ticketPrices = {
-    adulto: attraction.price,
-    meia: attraction.price > 0 ? Number((attraction.price / 2).toFixed(2)) : 0,
-    infantil: 0
+  const handleAddToCart = () => {
+    if (onAddToCart) {
+      onAddToCart({
+        ...attraction,
+        ticketType: selectedTicketType,
+        quantity: ticketQuantity,
+        totalPrice: attraction.isFree ? 0 : attraction.price * ticketQuantity
+      });
+    }
   };
-
-  const currentPrice = ticketPrices[ticketType];
-  const totalAmount = currentPrice * quantity;
-
-  const gallery = attraction.gallery && attraction.gallery.length > 0 
-    ? attraction.gallery 
-    : [attraction.image];
-
-  const handleAdd = () => {
-    const item = {
-      id: attraction.id,
-      title: attraction.title,
-      image: attraction.image,
-      ticketType: ticketType === 'adulto' ? 'Adulto' : ticketType === 'meia' ? 'Estudante / Meia' : 'Infantil',
-      unitPrice: currentPrice,
-      price: currentPrice,
-      quantity,
-      location: attraction.location
-    };
-    onAddToCart(item);
-    setAddedSuccess(true);
-    setTimeout(() => setAddedSuccess(false), 3000);
-  };
-
-  const similarAttractions = allAttractions.filter(a => a.id !== attraction.id).slice(0, 3);
 
   return (
     <div style={{
       position: 'fixed',
       inset: 0,
-      backgroundColor: 'rgba(15, 23, 42, 0.75)',
-      backdropFilter: 'blur(6px)',
-      zIndex: 2000,
-      overflowY: 'auto',
+      zIndex: 3500,
+      backgroundColor: 'rgba(15, 23, 42, 0.85)',
+      backdropFilter: 'blur(8px)',
       display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
-      padding: '24px 16px'
-    }} className="animate-fade-in">
+      padding: '16px'
+    }}>
       <div style={{
         backgroundColor: '#ffffff',
-        width: '100%',
-        maxWidth: '1100px',
         borderRadius: '24px',
-        boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+        maxWidth: '840px',
+        width: '100%',
+        maxHeight: '92vh',
         overflow: 'hidden',
-        position: 'relative',
-        margin: 'auto 0'
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+        border: '1px solid #1e293b'
       }}>
-        
-        {/* Top Header Bar inside Modal */}
-        <div style={{
-          padding: '16px 24px',
-          borderBottom: '1px solid #e2e8f0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: '#ffffff',
-          position: 'sticky',
-          top: 0,
-          zIndex: 10
-        }}>
+        {/* Top Banner Image with Close & Share Overlay */}
+        <div style={{ position: 'relative', height: '260px', width: '100%', backgroundColor: '#0f172a' }}>
+          <img
+            src={attraction.image}
+            alt={attraction.title}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)' }}
+          />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.3) 60%, transparent 100%)'
+          }} />
+
+          {/* Close Button */}
           <button
             onClick={onClose}
             style={{
+              position: 'absolute',
+              top: '16px',
+              right: '16px',
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(15, 23, 42, 0.75)',
+              color: '#ffffff',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              color: '#334155',
-              fontWeight: '700',
-              fontSize: '14px',
-              border: 'none',
-              background: 'none',
-              cursor: 'pointer'
+              justifyContent: 'center',
+              zIndex: 10
             }}
           >
-            <ArrowLeft size={18} />
-            <span>Voltar para as atrações</span>
+            <X size={20} />
           </button>
 
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <button
-              onClick={() => alert("Link da atração copiado para a área de transferência!")}
-              style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #e2e8f0', color: '#64748b', fontSize: '13px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
-            >
-              <Share2 size={16} />
-              <span>Compartilhar</span>
-            </button>
+          {/* Title & Category Banner Overlay */}
+          <div style={{ position: 'absolute', bottom: '20px', left: '24px', right: '24px', zIndex: 10, color: '#ffffff' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+              <span style={{ backgroundColor: '#00a896', color: '#ffffff', fontSize: '11px', fontWeight: '900', padding: '3px 10px', borderRadius: '6px', textTransform: 'uppercase' }}>
+                {attraction.category || 'Ponto Turístico'}
+              </span>
+              <span style={{ backgroundColor: 'rgba(255,255,255,0.2)', color: '#ffffff', fontSize: '11px', fontWeight: '800', padding: '3px 10px', borderRadius: '6px' }}>
+                ⭐ {attraction.rating || 4.9} ({attraction.reviewsCount || '1.2k'} avaliações)
+              </span>
+            </div>
+            <h2 style={{ fontSize: '24px', fontWeight: '900', lineHeight: '1.2' }}>
+              {attraction.title}
+            </h2>
           </div>
         </div>
 
-        {/* Modal Main Grid (Left Details + Right Checkout Widget) */}
-        <div style={{ padding: '24px', display: 'grid', gridTemplateColumns: '1fr', lgGridTemplateColumns: '1fr 380px', gap: '32px' }}>
+        {/* Tab Navigation Menu */}
+        <div style={{ backgroundColor: '#0f172a', padding: '0 24px', borderBottom: '1px solid #1e293b', display: 'flex', gap: '8px', overflowX: 'auto' }} className="hide-scrollbar">
+          {[
+            { id: 'overview', label: '📌 Visão Geral', icon: Info },
+            { id: 'transit', label: '🚌 Como Chegar & BRT', icon: Bus },
+            { id: 'weather', label: '🌦️ Clima em CWB', icon: CloudSun },
+            { id: 'nearby', label: '🍽️ Próximos', icon: Utensils },
+            { id: 'faq', label: '💡 Dicas & FAQ', icon: HelpCircle },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              style={{
+                padding: '14px 16px',
+                fontSize: '13px',
+                fontWeight: activeTab === tab.id ? '800' : '600',
+                color: activeTab === tab.id ? '#00a896' : '#94a3b8',
+                backgroundColor: 'transparent',
+                border: 'none',
+                borderBottom: activeTab === tab.id ? '3px solid #00a896' : '3px solid transparent',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Modal Tab Content */}
+        <div style={{ padding: '24px', overflowY: 'auto', flex: 1, backgroundColor: '#ffffff' }}>
           
-          {/* Left Column: Media & Details */}
-          <div>
-            {/* Title Block */}
-            <div style={{ marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <span style={{ backgroundColor: '#eff6ff', color: '#2563eb', fontSize: '12px', fontWeight: '700', padding: '4px 10px', borderRadius: '6px' }}>
-                  {attraction.category ? attraction.category.toUpperCase() : 'TURISMO'}
-                </span>
-                {attraction.discount && (
-                  <span style={{ backgroundColor: '#ea580c', color: '#ffffff', fontSize: '12px', fontWeight: '800', padding: '4px 10px', borderRadius: '6px' }}>
-                    {attraction.discount}
-                  </span>
-                )}
-              </div>
-
-              <h1 style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', lineHeight: '1.2', marginBottom: '8px' }}>
-                {attraction.title}
-              </h1>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px', fontSize: '14px', color: '#64748b' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Star size={16} color="#f59e0b" fill="#f59e0b" />
-                  <strong style={{ color: '#0f172a' }}>{attraction.rating}</strong>
-                  <span>({attraction.reviewsCount} avaliações)</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <MapPin size={16} color="#00a896" />
-                  <span>{attraction.location}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Clock size={16} color="#64748b" />
-                  <span>{attraction.duration}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Main Image Gallery Display */}
-            <div style={{ marginBottom: '24px' }}>
-              <div style={{ height: '360px', borderRadius: '16px', overflow: 'hidden', marginBottom: '12px', position: 'relative' }}>
-                <img 
-                  src={gallery[activePhoto]} 
-                  alt={attraction.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                />
-              </div>
-
-              {/* Thumbnails */}
-              {gallery.length > 1 && (
-                <div style={{ display: 'flex', gap: '12px' }}>
-                  {gallery.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActivePhoto(idx)}
-                      style={{
-                        width: '80px',
-                        height: '60px',
-                        borderRadius: '8px',
-                        overflow: 'hidden',
-                        border: idx === activePhoto ? '2px solid #2563eb' : '1px solid #cbd5e1',
-                        opacity: idx === activePhoto ? 1 : 0.7,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      <img src={img} alt="Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Description Section */}
-            <div style={{ marginBottom: '32px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#0f172a', marginBottom: '12px' }}>
-                Sobre esta atração
-              </h3>
-              <p style={{ fontSize: '15px', color: '#475569', lineHeight: '1.7', whiteSpace: 'pre-line' }}>
-                {attraction.description}
+          {/* OVERVIEW TAB */}
+          {activeTab === 'overview' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <p style={{ fontSize: '14px', color: '#475569', lineHeight: '1.6' }}>
+                {attraction.description || 'Uma das atrações imperdíveis de Curitiba! Excelente opção de passeio para famílias, casais e turistas de todo o Brasil.'}
               </p>
 
-              {/* Features List */}
-              {attraction.features && attraction.features.length > 0 && (
-                <div style={{ marginTop: '20px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
-                  {attraction.features.map((feat, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#334155' }}>
-                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Check size={12} color="#16a34a" />
-                      </div>
-                      <span>{feat}</span>
-                    </div>
-                  ))}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', backgroundColor: '#f8fafc', padding: '16px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Endereço / Bairro</div>
+                  <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', marginTop: '2px' }}>{attraction.location || 'Curitiba - Paraná'}</div>
                 </div>
-              )}
+
+                <div>
+                  <div style={{ fontSize: '11px', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Horário de Funcionamento</div>
+                  <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', marginTop: '2px' }}>{attraction.hours || 'Segunda a Domingo: 06h às 19h30'}</div>
+                </div>
+
+                <div>
+                  <div style={{ fontSize: '11px', color: '#64748b', fontWeight: '700', textTransform: 'uppercase' }}>Tempo Médio de Visita</div>
+                  <div style={{ fontSize: '13px', fontWeight: '800', color: '#00a896', marginTop: '2px' }}>{attraction.duration || '2 a 3 horas'}</div>
+                </div>
+              </div>
             </div>
+          )}
 
-            {/* Recommended / You might also like */}
-            {similarAttractions.length > 0 && (
-              <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '24px' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#0f172a', marginBottom: '16px' }}>
-                  Você também pode gostar
-                </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '16px' }}>
-                  {similarAttractions.map(sim => (
-                    <AttractionCard 
-                      key={sim.id} 
-                      attraction={sim} 
-                      onClickDetail={() => {}} 
-                    />
-                  ))}
+          {/* TRANSIT & TUBOS BRT TAB */}
+          {activeTab === 'transit' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '16px', borderRadius: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <Bus size={24} color="#2563eb" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <div>
+                  <h4 style={{ fontSize: '15px', fontWeight: '800', color: '#1e3a8a', marginBottom: '4px' }}>Linha Turismo & Estações Tubo BRT</h4>
+                  <p style={{ fontSize: '13px', color: '#1e40af', lineHeight: '1.5' }}>
+                    {attraction.howToGet || 'Acesse via Linha Turismo Double-Decker (embarque nos principais pontos) ou Estação Tubo BRT Centenário / Campo Comprido.'}
+                  </p>
                 </div>
               </div>
-            )}
-          </div>
-
-          {/* Right Column: Sticky Ticket Booking Widget */}
-          <div>
-            <div style={{
-              backgroundColor: '#ffffff',
-              border: '1px solid #e2e8f0',
-              borderRadius: '20px',
-              padding: '24px',
-              boxShadow: '0 10px 25px rgba(0,0,0,0.06)',
-              position: 'sticky',
-              top: '90px'
-            }}>
-              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#0f172a', marginBottom: '20px' }}>
-                Selecionar Ingressos
-              </h3>
-
-              {/* Ticket Type Select */}
-              <div style={{ marginBottom: '20px' }}>
-                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', marginBottom: '6px' }}>
-                  TIPO DO INGRESSO
-                </label>
-                <select
-                  value={ticketType}
-                  onChange={(e) => setTicketType(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px',
-                    borderRadius: '10px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#0f172a',
-                    backgroundColor: '#f8fafc',
-                    outline: 'none'
-                  }}
-                >
-                  <option value="adulto">Adulto - R$ {ticketPrices.adulto.toFixed(2).replace('.', ',')}</option>
-                  <option value="meia">Estudante / Meia - R$ {ticketPrices.meia.toFixed(2).replace('.', ',')}</option>
-                  <option value="infantil">Infantil (até 5 anos) - Grátis</option>
-                </select>
-              </div>
-
-              {/* Quantity Counter */}
-              <div style={{ marginBottom: '24px' }}>
-                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', marginBottom: '6px' }}>
-                  QUANTIDADE
-                </label>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: '10px', padding: '6px 12px' }}>
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: '#ffffff', border: '1px solid #cbd5e1', fontWeight: '800', fontSize: '18px', color: '#334155', cursor: 'pointer' }}
-                  >
-                    -
-                  </button>
-                  <span style={{ fontSize: '18px', fontWeight: '800', color: '#0f172a' }}>{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(quantity + 1)}
-                    style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: '#ffffff', border: '1px solid #cbd5e1', fontWeight: '800', fontSize: '18px', color: '#334155', cursor: 'pointer' }}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              {/* Total Calculation */}
-              <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '16px', marginBottom: '24px' }}>
-                <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '600', display: 'block' }}>Valor Total</span>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-                  <span style={{ fontSize: '32px', fontWeight: '800', color: '#2563eb' }}>
-                    R$ {totalAmount.toFixed(2).replace('.', ',')}
-                  </span>
-                  <span style={{ fontSize: '13px', color: '#64748b' }}>({quantity}x ingressos)</span>
-                </div>
-                <span style={{ fontSize: '12px', color: '#16a34a', fontWeight: '600', display: 'block', marginTop: '4px' }}>
-                  {attraction.paymentTerms || '12x Sem Juros'}
-                </span>
-              </div>
-
-              {/* Success Feedback Banner */}
-              {addedSuccess && (
-                <div style={{ backgroundColor: '#dcfce7', color: '#15803d', padding: '12px', borderRadius: '10px', fontSize: '13px', fontWeight: '700', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={18} />
-                  <span>Item adicionado ao seu carrinho!</span>
-                </div>
-              )}
-
-              {/* Add to Cart Button */}
-              <button
-                onClick={handleAdd}
-                style={{
-                  width: '100%',
-                  backgroundColor: '#2563eb',
-                  color: '#ffffff',
-                  padding: '16px',
-                  borderRadius: '12px',
-                  fontWeight: '800',
-                  fontSize: '16px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  boxShadow: '0 4px 14px rgba(37,99,235,0.35)',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-              >
-                <ShoppingCart size={20} />
-                <span>Adicionar ao Carrinho</span>
-              </button>
             </div>
-          </div>
+          )}
+
+          {/* WEATHER TAB */}
+          {activeTab === 'weather' && (
+            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '16px', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <CloudSun size={36} color="#16a34a" />
+              <div>
+                <h4 style={{ fontSize: '16px', fontWeight: '900', color: '#14532d' }}>Previsão do Tempo em Curitiba: 21°C</h4>
+                <p style={{ fontSize: '13px', color: '#166534', marginTop: '2px' }}>
+                  Clima agradável e ensolarado para passeios a céu aberto nos parques e bosques hoje.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* NEARBY TAB */}
+          {activeTab === 'nearby' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <h4 style={{ fontSize: '14px', fontWeight: '800', color: '#0f172a' }}>Gastronomia & Hotéis a menos de 1 km:</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+                <div style={{ backgroundColor: '#f8fafc', padding: '12px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Utensils size={18} color="#ea580c" />
+                  <div>
+                    <div style={{ fontSize: '12px', fontWeight: '800', color: '#0f172a' }}>Bar do Alemão</div>
+                    <div style={{ fontSize: '11px', color: '#64748b' }}>Chopp Submarino • 400m</div>
+                  </div>
+                </div>
+
+                <div style={{ backgroundColor: '#f8fafc', padding: '12px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Hotel size={18} color="#00a896" />
+                  <div>
+                    <div style={{ fontSize: '12px', fontWeight: '800', color: '#0f172a' }}>Radisson Hotel 5★</div>
+                    <div style={{ fontSize: '11px', color: '#64748b' }}>Hospedagem Batel • 800m</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* FAQ TAB */}
+          {activeTab === 'faq' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '14px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>💡 Dica Local 360°</div>
+                <div style={{ fontSize: '12px', color: '#475569' }}>
+                  {attraction.tip || 'O melhor horário para fotos com iluminação perfeita é entre 16h30 e 18h no pôr do sol.'}
+                </div>
+              </div>
+            </div>
+          )}
 
         </div>
+
+        {/* Footer Checkout CTA */}
+        <div style={{ padding: '16px 24px', backgroundColor: '#0f172a', borderTop: '1px solid #1e293b', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#ffffff' }}>
+          <div>
+            <div style={{ fontSize: '11px', color: '#94a3b8' }}>Ingressos a partir de</div>
+            <div style={{ fontSize: '20px', fontWeight: '900', color: attraction.isFree ? '#22c55e' : '#00a896' }}>
+              {attraction.isFree ? 'ENTRADA GRATUITA' : `R$ ${attraction.price.toFixed(2).replace('.', ',')}`}
+            </div>
+          </div>
+
+          <button
+            onClick={handleAddToCart}
+            style={{
+              backgroundColor: '#00a896',
+              color: '#ffffff',
+              fontWeight: '900',
+              fontSize: '13px',
+              padding: '12px 24px',
+              borderRadius: '12px',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 4px 14px rgba(0,168,150,0.4)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+          >
+            <Ticket size={16} />
+            <span>Garantir Experiência</span>
+          </button>
+        </div>
+
       </div>
     </div>
   );
