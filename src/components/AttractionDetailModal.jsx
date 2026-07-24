@@ -32,18 +32,18 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
     }}>
       <div style={{
         backgroundColor: '#ffffff',
-        borderRadius: '20px',
-        maxWidth: '440px',
+        borderRadius: '24px',
+        maxWidth: '420px',
         width: '100%',
         maxHeight: '85vh',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 16px 36px rgba(0, 0, 0, 0.12)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.12)',
         border: '1px solid #e2e8f0'
       }}>
-        {/* Compact Banner Image */}
-        <div style={{ position: 'relative', height: '130px', width: '100%', backgroundColor: '#f1f5f9' }}>
+        {/* Compact Square-Proportioned Banner Image */}
+        <div style={{ position: 'relative', height: '160px', width: '100%', backgroundColor: '#f1f5f9' }}>
           <img
             src={attraction.image}
             alt={attraction.title}

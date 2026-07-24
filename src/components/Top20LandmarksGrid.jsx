@@ -816,8 +816,8 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
             </div>
           </div>
 
-          {/* Right Compact Image Banner & Trigger Button */}
-          <div style={{ position: 'relative', height: '140px', borderRadius: '12px', overflow: 'hidden' }}>
+          {/* Right Square Format Image Banner & Trigger Button */}
+          <div style={{ position: 'relative', height: '180px', width: '100%', maxWidth: '240px', margin: '0 auto', aspectRatio: '1/1', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
             <img
               src={activeItem.image}
               alt={activeItem.title}
