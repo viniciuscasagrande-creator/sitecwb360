@@ -112,7 +112,9 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
                         {item.ticketType} • Qtd: {item.quantity}
                       </span>
                       <strong style={{ fontSize: '14px', color: '#2563eb', display: 'block', marginTop: '4px' }}>
-                        R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
+                        {typeof item.price === 'number'
+                          ? `R$ ${(item.price * (item.quantity || 1)).toFixed(2).replace('.', ',')}`
+                          : String(item.price || 'Gratuito')}
                       </strong>
                     </div>
                     <button onClick={() => onRemoveItem(idx)} style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', padding: '6px' }}>
@@ -175,7 +177,9 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
                 <div>
                   <span style={{ fontSize: '12px', color: '#64748b', display: 'block' }}>Total do Pedido:</span>
                   <span style={{ fontSize: '26px', fontWeight: '800', color: '#0f172a' }}>
-                    R$ {total.toFixed(2).replace('.', ',')}
+                    {typeof total === 'number'
+                      ? `R$ ${total.toFixed(2).replace('.', ',')}`
+                      : String(total || 'R$ 0,00')}
                   </span>
                 </div>
 

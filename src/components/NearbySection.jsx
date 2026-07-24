@@ -32,11 +32,11 @@ export default function NearbySection({ attractions, onClickDetail }) {
 
   // Calculate distance in km
   const getDistance = (lat, lng) => {
-    if (!lat || !lng) return '2.5';
+    if (typeof lat !== 'number' || typeof lng !== 'number' || isNaN(lat) || isNaN(lng)) return '2.5';
     const dLat = (lat - userCoords.lat) * 111;
     const dLng = (lng - userCoords.lng) * 100;
     const dist = Math.sqrt(dLat * dLat + dLng * dLng);
-    return dist.toFixed(1);
+    return isNaN(dist) ? '2.5' : dist.toFixed(1);
   };
 
   const getPinPosition = (lat, lng) => {
