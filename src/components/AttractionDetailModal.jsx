@@ -79,7 +79,7 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
 
           {/* Close Button */}
           <button
-            onClick={onClose}
+            onClick={() => onClose && onClose()}
             style={{
               position: 'absolute',
               top: '12px',

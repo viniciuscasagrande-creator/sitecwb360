@@ -16,7 +16,7 @@ export default function LoginModal({ isOpen, onClose }) {
     setSuccessMsg(isRegister ? 'Cadastro realizado com sucesso!' : 'Login efetuado com sucesso!');
     setTimeout(() => {
       setSuccessMsg('');
-      onClose();
+      if (onClose) onClose();
     }, 1500);
   };
 
@@ -42,7 +42,7 @@ export default function LoginModal({ isOpen, onClose }) {
         position: 'relative',
         padding: '32px'
       }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
+        <button onClick={() => onClose && onClose()} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
           <X size={20} />
         </button>
 

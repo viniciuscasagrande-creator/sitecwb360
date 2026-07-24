@@ -88,7 +88,7 @@ export default function FilterModal({ isOpen, onClose, onApplyFilters, currentFi
           </div>
 
           <button
-            onClick={onClose}
+            onClick={() => onClose && onClose()}
             style={{
               backgroundColor: 'transparent',
               border: 'none',

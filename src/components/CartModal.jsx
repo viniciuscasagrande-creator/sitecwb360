@@ -55,7 +55,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
             <ShoppingBag size={22} color="#00a896" />
             <h2 style={{ fontSize: '20px', fontWeight: '800', color: '#0f172a' }}>Meu Carrinho 360</h2>
           </div>
-          <button onClick={onClose} style={{ border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
+          <button onClick={() => onClose && onClose()} style={{ border: 'none', background: 'none', color: '#64748b', cursor: 'pointer' }}>
             <X size={20} />
           </button>
         </div>
@@ -85,7 +85,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
               </div>
 
               <button
-                onClick={() => { setOrderComplete(null); onClose(); }}
+                onClick={() => { setOrderComplete(null); if (onClose) onClose(); }}
                 style={{ backgroundColor: '#00a896', color: '#ffffff', padding: '12px 24px', borderRadius: '10px', fontWeight: '800', border: 'none', cursor: 'pointer' }}
               >
                 Concluir e Voltar
@@ -95,7 +95,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
             <div style={{ textAlign: 'center', padding: '40px 0' }}>
               <ShoppingBag size={48} color="#cbd5e1" style={{ margin: '0 auto 12px' }} />
               <p style={{ fontSize: '16px', color: '#64748b', fontWeight: '600' }}>Seu carrinho está vazio.</p>
-              <button onClick={onClose} style={{ marginTop: '16px', color: '#2563eb', fontWeight: '700', background: 'none', border: 'none', cursor: 'pointer' }}>
+              <button onClick={() => onClose && onClose()} style={{ marginTop: '16px', color: '#2563eb', fontWeight: '700', background: 'none', border: 'none', cursor: 'pointer' }}>
                 Explorar atrações
               </button>
             </div>
