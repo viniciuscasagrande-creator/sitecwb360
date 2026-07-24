@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import NavigationTabs from './NavigationTabs';
 import AirbnbSearchBar from './AirbnbSearchBar';
+import UserAccountMenu from './UserAccountMenu';
 import { Search, User, ShoppingCart, Sparkles, X, Building2, Globe, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -199,40 +200,8 @@ export default function Header({
               )}
             </button>
 
-            {/* Login / Account Button */}
-            <button
-              onClick={onOpenLogin}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                height: '42px',
-                padding: '0 18px',
-                borderRadius: '10px',
-                backgroundColor: '#2563eb',
-                color: '#ffffff',
-                fontWeight: '700',
-                fontSize: '13px',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(37,99,235,0.25)',
-                transition: 'all 0.2s ease',
-                outline: 'none',
-                whiteSpace: 'nowrap'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = '#1d4ed8';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = '#2563eb';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <User size={18} />
-              <span>{t('loginRegister')}</span>
-            </button>
+            {/* User Account Menu VIP */}
+            <UserAccountMenu onOpenLogin={onOpenLogin} onOpenCart={onOpenCart} />
 
           </div>
         </div>
