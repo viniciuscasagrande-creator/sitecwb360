@@ -188,7 +188,7 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
         {/* Compact Tab Bar */}
         <div style={{ backgroundColor: '#f8fafc', padding: '4px 8px', display: 'flex', gap: '4px', borderBottom: '1px solid #e2e8f0', overflowX: 'auto', flexShrink: 0 }} className="hide-scrollbar">
           {[
-            { id: 'overview', label: 'Ficha' },
+            { id: 'overview', label: 'Sobre' },
             { id: 'transit', label: 'Acesso BRT' },
             { id: 'weather', label: 'Clima 21°C' },
             { id: 'faq', label: 'Dica' }

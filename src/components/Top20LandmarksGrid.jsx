@@ -568,22 +568,18 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
           Os 20 Pontos Turísticos e Hospedagens Imperdíveis de Curitiba
         </h2>
         <p style={{ fontSize: '15px', color: '#64748b', lineHeight: '1.6' }}>
-          Guia completo com fotos em alta definição dos locais reais, localização exata, como chegar, horários e hotéis selecionados. Clique em qualquer card para abrir o modal de informações completas.
+          Guia completo dos 20 locais mais visitados, bonitos e renomados de Curitiba e região metropolitana.
         </p>
       </div>
 
-      {/* Grid of 20 Top Landmarks (Interactive Cards) */}
+      {/* Grid of 20 Top Landmarks (Clean Photo Cards) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {TOP_20_LANDMARKS.map((item) => {
           const IconComp = item.icon || Trees;
-          const isSelected = activeItem.id === item.id;
 
           return (
             <div
               key={item.id}
-              onClick={() => {
-                handleTriggerFullModal(item);
-              }}
               className="hover-card-rise"
               style={{
                 backgroundColor: '#ffffff',
@@ -591,7 +587,6 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 overflow: 'hidden',
                 border: item.isHotel ? '2px solid #00a896' : '1px solid #e2e8f0',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.03)',
-                cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -712,7 +707,7 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                   </p>
                 </div>
 
-                {/* Price & Action Button */}
+                {/* Price & Badge */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid #f1f5f9', paddingTop: '12px' }}>
                   <div>
                     <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '600' }}>Acesso</span>
@@ -721,33 +716,16 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                     </span>
                   </div>
 
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleTriggerFullModal(item);
-                    }}
-                    style={{
-                      height: '36px',
-                      padding: '0 14px',
-                      borderRadius: '10px',
-                      backgroundColor: item.isHotel ? '#00a896' : '#2563eb',
-                      color: '#ffffff',
-                      fontSize: '12px',
-                      fontWeight: '800',
-                      border: 'none',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      boxShadow: item.isHotel ? '0 2px 8px rgba(0,168,150,0.3)' : '0 2px 8px rgba(37,99,235,0.25)',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseOver={(e) => { e.currentTarget.style.opacity = '0.9'; }}
-                    onMouseOut={(e) => { e.currentTarget.style.opacity = '1'; }}
-                  >
-                    <span>{item.isHotel ? 'Reservar' : 'Ver Ficha'}</span>
-                    <ChevronRight size={14} />
-                  </button>
+                  <span style={{
+                    fontSize: '11px',
+                    fontWeight: '800',
+                    color: item.isHotel ? '#00a896' : '#2563eb',
+                    backgroundColor: item.isHotel ? '#e6fffa' : '#eff6ff',
+                    padding: '4px 10px',
+                    borderRadius: '6px'
+                  }}>
+                    {item.isHotel ? 'Hotel 5★' : 'Ponto Oficial'}
+                  </span>
                 </div>
               </div>
             </div>

@@ -238,10 +238,6 @@ export default function App() {
               onClickDetail={setActiveAttraction}
             />
 
-            {/* TOP 20 PRINCIPAIS PONTOS TURÍSTICOS GRID (Only on 'all' home view when no search query) */}
-            {activeTopicTab === 'all' && !searchQuery && (
-              <Top20LandmarksGrid onClickDetail={setActiveAttraction} />
-            )}
 
             {/* Official Brand Section (Only on 'all' home view when no search query) */}
             {activeTopicTab === 'all' && !searchQuery && (
@@ -303,15 +299,6 @@ export default function App() {
       {/* Footer */}
       <Footer onOpenAboutBrand={() => setIsAboutBrandOpen(true)} />
 
-      {/* Modals */}
-      {activeAttraction && (
-        <AttractionDetailModal
-          attraction={activeAttraction}
-          allAttractions={ATTRACTIONS}
-          onClose={() => setActiveAttraction(null)}
-          onAddToCart={handleAddToCart}
-        />
-      )}
 
       <FilterModal
         isOpen={isFilterModalOpen}
