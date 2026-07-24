@@ -752,82 +752,72 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
         })}
       </div>
 
-      {/* Selected Landmark Details Full Banner Panel */}
+      {/* Selected Landmark Details Compact Ficha Técnica Panel */}
       {activeItem && (
         <div style={{
-          marginTop: '32px',
+          marginTop: '20px',
           backgroundColor: '#0f172a',
           color: '#ffffff',
-          borderRadius: '24px',
-          padding: '28px 32px',
-          boxShadow: '0 16px 40px rgba(15,23,42,0.2)',
+          borderRadius: '16px',
+          padding: '16px 20px',
+          boxShadow: '0 10px 30px rgba(15,23,42,0.2)',
           border: '1px solid #1e293b',
           display: 'grid',
           gridTemplateColumns: '1fr',
-          lgGridTemplateColumns: '1fr 340px',
-          gap: '28px',
+          lgGridTemplateColumns: '1fr 280px',
+          gap: '16px',
           alignItems: 'center'
         }} className="animate-fade-in">
           
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '12px', padding: '3px 10px', borderRadius: '6px' }}>
-                {activeItem.isHotel ? 'HOSPEDAGEM DE LUXO 5★' : `FICHA TÉCNICA #${activeItem.number}`}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '10px', padding: '2px 8px', borderRadius: '4px' }}>
+                {activeItem.isHotel ? 'HOSPEDAGEM 5★' : `FICHA TÉCNICA #${activeItem.number}`}
               </span>
-              <span style={{ color: '#cbd5e1', fontSize: '13px', fontWeight: '600' }}>
+              <span style={{ color: '#cbd5e1', fontSize: '12px', fontWeight: '600' }}>
                 {activeItem.category}
               </span>
             </div>
 
-            <h3 style={{ fontSize: '26px', fontWeight: '900', marginBottom: '6px' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: '900', marginBottom: '4px' }}>
               {activeItem.title}
             </h3>
-            <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '20px' }}>
+            <p style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '12px' }}>
               {activeItem.subtitle}
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr md:1fr md:1fr', gap: '16px', marginBottom: '20px' }}>
-              <div style={{ backgroundColor: '#1e293b', padding: '12px 16px', borderRadius: '12px' }}>
-                <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <MapPin size={13} color="#00a896" />
-                  <span>Endereço / Bairro</span>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', marginBottom: '12px' }}>
+              <div style={{ backgroundColor: '#1e293b', padding: '8px 12px', borderRadius: '8px' }}>
+                <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <MapPin size={12} color="#00a896" />
+                  <span>Endereço</span>
                 </div>
-                <div style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>
+                <div style={{ fontSize: '12px', fontWeight: '700', color: '#ffffff' }}>
                   {activeItem.location}
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#1e293b', padding: '12px 16px', borderRadius: '12px' }}>
-                <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Bus size={13} color="#2563eb" />
-                  <span>Como Chegar</span>
+              <div style={{ backgroundColor: '#1e293b', padding: '8px 12px', borderRadius: '8px' }}>
+                <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Bus size={12} color="#2563eb" />
+                  <span>Acesso BRT</span>
                 </div>
-                <div style={{ fontSize: '13px', fontWeight: '600', color: '#cbd5e1' }}>
+                <div style={{ fontSize: '12px', fontWeight: '600', color: '#cbd5e1' }}>
                   {activeItem.howToGet}
-                </div>
-              </div>
-
-              <div style={{ backgroundColor: '#1e293b', padding: '12px 16px', borderRadius: '12px' }}>
-                <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: '700', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Clock size={13} color="#f59e0b" />
-                  <span>Horários / Recepção</span>
-                </div>
-                <div style={{ fontSize: '13px', fontWeight: '600', color: '#cbd5e1' }}>
-                  {activeItem.hours}
                 </div>
               </div>
             </div>
 
-            <div style={{ backgroundColor: 'rgba(0,168,150,0.12)', border: '1px solid rgba(0,168,150,0.3)', padding: '12px 16px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Info size={18} color="#00a896" style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: '13px', color: '#e6fffa', fontWeight: '600' }}>
+            <div style={{ backgroundColor: 'rgba(0,168,150,0.12)', border: '1px solid rgba(0,168,150,0.3)', padding: '8px 12px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Info size={15} color="#00a896" style={{ flexShrink: 0 }} />
+              <span style={{ fontSize: '12px', color: '#e6fffa', fontWeight: '600' }}>
                 <strong>Dica 360°:</strong> {activeItem.tip}
               </span>
             </div>
           </div>
 
-          {/* Right Image Banner & Modal Trigger Button */}
-          <div style={{ position: 'relative', height: '220px', borderRadius: '16px', overflow: 'hidden' }}>
+          {/* Right Compact Image Banner & Trigger Button */}
+          <div style={{ position: 'relative', height: '140px', borderRadius: '12px', overflow: 'hidden' }}>
             <img
               src={activeItem.image}
               alt={activeItem.title}
@@ -842,26 +832,25 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
               onClick={() => handleTriggerFullModal(activeItem)}
               style={{
                 position: 'absolute',
-                bottom: '16px',
-                left: '16px',
-                right: '16px',
-                height: '44px',
-                borderRadius: '10px',
+                bottom: '10px',
+                left: '10px',
+                right: '10px',
+                height: '36px',
+                borderRadius: '8px',
                 backgroundColor: '#00a896',
                 color: '#ffffff',
-                fontSize: '13px',
+                fontSize: '12px',
                 fontWeight: '800',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(0,168,150,0.4)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px'
+                gap: '6px'
               }}
             >
-              <span>Abrir Ficha Técnica no Modal</span>
-              <Maximize2 size={16} />
+              <span>{activeItem.isHotel ? 'Reservar 5★' : 'Ver Ficha Completa'}</span>
+              <ChevronRight size={14} />
             </button>
           </div>
 
