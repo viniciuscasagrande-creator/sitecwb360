@@ -786,31 +786,33 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
               {activeItem.subtitle}
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', marginBottom: '12px' }}>
-              <div style={{ backgroundColor: '#f8fafc', padding: '8px 12px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '700', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            {/* Compact Proportional Info Cards: Endereço & BRT */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px', marginBottom: '10px' }}>
+              <div style={{ backgroundColor: '#ffffff', padding: '8px 12px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)' }}>
+                <div style={{ fontSize: '10px', color: '#00a896', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <MapPin size={12} color="#00a896" />
                   <span>Endereço</span>
                 </div>
-                <div style={{ fontSize: '12px', fontWeight: '700', color: '#0f172a' }}>
+                <div style={{ fontSize: '12px', fontWeight: '800', color: '#0f172a' }}>
                   {activeItem.location}
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#f8fafc', padding: '8px 12px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '700', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ backgroundColor: '#ffffff', padding: '8px 12px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)' }}>
+                <div style={{ fontSize: '10px', color: '#2563eb', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <Bus size={12} color="#2563eb" />
                   <span>Acesso BRT</span>
                 </div>
-                <div style={{ fontSize: '12px', fontWeight: '600', color: '#334155' }}>
+                <div style={{ fontSize: '12px', fontWeight: '700', color: '#334155' }}>
                   {activeItem.howToGet}
                 </div>
               </div>
             </div>
 
-            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 12px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Info size={15} color="#16a34a" style={{ flexShrink: 0 }} />
-              <span style={{ fontSize: '12px', color: '#166534', fontWeight: '600' }}>
+            {/* Compact Dica 360 Card */}
+            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 12px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Info size={14} color="#16a34a" style={{ flexShrink: 0 }} />
+              <span style={{ fontSize: '11px', color: '#166534', fontWeight: '700' }}>
                 <strong>Dica 360°:</strong> {activeItem.tip}
               </span>
             </div>

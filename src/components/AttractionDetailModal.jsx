@@ -140,14 +140,20 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
                 {attraction.description || 'Ponto turístico imperdível de Curitiba! Excelente opção de passeio para toda a família.'}
               </p>
 
-              <div style={{ backgroundColor: '#f8fafc', padding: '12px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', fontSize: '12px' }}>
-                <div>
-                  <span style={{ color: '#64748b', fontWeight: '700', fontSize: '11px', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Local / Bairro</span>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px' }}>
+                <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                  <span style={{ color: '#00a896', fontWeight: '800', fontSize: '10px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
+                    <MapPin size={12} color="#00a896" />
+                    <span>Endereço</span>
+                  </span>
                   <div style={{ fontWeight: '800', color: '#0f172a' }}>{attraction.location || 'Curitiba'}</div>
                 </div>
 
-                <div>
-                  <span style={{ color: '#64748b', fontWeight: '700', fontSize: '11px', textTransform: 'uppercase', display: 'block', marginBottom: '2px' }}>Horários</span>
+                <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                  <span style={{ color: '#2563eb', fontWeight: '800', fontSize: '10px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
+                    <Clock size={12} color="#2563eb" />
+                    <span>Horários</span>
+                  </span>
                   <div style={{ fontWeight: '800', color: '#0f172a' }}>{attraction.hours || '06h às 19h30'}</div>
                 </div>
               </div>
@@ -155,30 +161,36 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
           )}
 
           {activeTab === 'transit' && (
-            <div style={{ backgroundColor: '#eff6ff', padding: '12px 14px', borderRadius: '12px', border: '1px solid #bfdbfe', color: '#1e40af', fontSize: '13px', lineHeight: '1.5' }}>
-              <strong>🚌 Acesso BRT / Linha Turismo:</strong>
-              <p style={{ marginTop: '4px' }}>{attraction.howToGet || 'Embarque na Linha Turismo Double-Decker ou utilize a Estação Tubo BRT mais próxima.'}</p>
+            <div style={{ backgroundColor: '#ffffff', padding: '10px 12px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)', color: '#1e40af', fontSize: '12px', lineHeight: '1.4' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#2563eb', fontWeight: '800', marginBottom: '4px' }}>
+                <Bus size={14} color="#2563eb" />
+                <span>Acesso BRT / Linha Turismo:</span>
+              </div>
+              <p style={{ color: '#334155', fontWeight: '600' }}>{attraction.howToGet || 'Embarque na Linha Turismo Double-Decker ou utilize a Estação Tubo BRT mais próxima.'}</p>
             </div>
           )}
 
           {activeTab === 'weather' && (
-            <div style={{ backgroundColor: '#f0fdf4', padding: '12px 14px', borderRadius: '12px', border: '1px solid #bbf7d0', color: '#166534', fontSize: '13px' }}>
-              <strong>🌦️ Clima em Curitiba: 21°C Ensolarado</strong>
-              <p style={{ marginTop: '4px' }}>Condição climática ideal para passeios e fotos ao ar livre nos parques.</p>
+            <div style={{ backgroundColor: '#f0fdf4', padding: '10px 12px', borderRadius: '12px', border: '1px solid #bbf7d0', color: '#166534', fontSize: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '800', marginBottom: '4px' }}>
+                <CloudSun size={15} color="#16a34a" />
+                <span>Clima em Curitiba: 21°C Ensolarado</span>
+              </div>
+              <p style={{ color: '#15803d', fontWeight: '600' }}>Condição climática ideal para passeios e fotos ao ar livre nos parques.</p>
             </div>
           )}
 
           {activeTab === 'nearby' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px' }}>
-              <div style={{ padding: '10px 12px', backgroundColor: '#f8fafc', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Utensils size={16} color="#ea580c" />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px' }}>
+              <div style={{ padding: '8px 10px', backgroundColor: '#ffffff', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Utensils size={15} color="#ea580c" />
                 <div>
                   <strong>Bar do Alemão</strong> <span style={{ color: '#64748b' }}>(Chopp Submarino • 400m)</span>
                 </div>
               </div>
 
-              <div style={{ padding: '10px 12px', backgroundColor: '#f8fafc', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Hotel size={16} color="#00a896" />
+              <div style={{ padding: '8px 10px', backgroundColor: '#ffffff', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Hotel size={15} color="#00a896" />
                 <div>
                   <strong>Radisson Hotel 5★</strong> <span style={{ color: '#64748b' }}>(Praça da Espanha • 800m)</span>
                 </div>
@@ -187,9 +199,9 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
           )}
 
           {activeTab === 'faq' && (
-            <div style={{ backgroundColor: '#f8fafc', padding: '12px 14px', borderRadius: '12px', border: '1px solid #e2e8f0', fontSize: '13px', color: '#475569' }}>
-              <strong style={{ color: '#0f172a' }}>💡 Dica Local 360°:</strong>
-              <p style={{ marginTop: '4px' }}>{attraction.tip || 'Horário ideal para fotos com iluminação perfeita é entre 16h30 e 18h no pôr do sol.'}</p>
+            <div style={{ backgroundColor: '#f0fdf4', padding: '10px 12px', borderRadius: '12px', border: '1px solid #bbf7d0', fontSize: '12px', color: '#166534' }}>
+              <strong style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#15803d', marginBottom: '2px' }}>💡 Dica Local 360°:</strong>
+              <p style={{ fontWeight: '600' }}>{attraction.tip || 'Horário ideal para fotos com iluminação perfeita é entre 16h30 e 18h no pôr do sol.'}</p>
             </div>
           )}
 
