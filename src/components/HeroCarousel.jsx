@@ -67,21 +67,35 @@ export default function HeroCarousel({ onSelectAttraction }) {
             color: '#ffffff'
           }}
         >
-          {/* Badge */}
-          <div style={{
-            display: 'inline-block',
-            backgroundColor: '#2563eb',
-            color: '#ffffff',
-            fontSize: '11px',
-            fontWeight: '800',
-            letterSpacing: '0.5px',
-            padding: '3px 10px',
-            borderRadius: '6px',
-            marginBottom: '10px',
-            textTransform: 'uppercase',
-            boxShadow: '0 2px 6px rgba(37,99,235,0.4)'
-          }}>
-            {slide.badge}
+          {/* Sales Urgency Badges Row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
+            <div style={{
+              display: 'inline-block',
+              backgroundColor: '#ea580c',
+              color: '#ffffff',
+              fontSize: '11px',
+              fontWeight: '900',
+              letterSpacing: '0.5px',
+              padding: '3px 10px',
+              borderRadius: '6px',
+              textTransform: 'uppercase',
+              boxShadow: '0 2px 8px rgba(234,88,12,0.4)'
+            }}>
+              ⚡ OFERTA DO DIA • GANHE 15% OFF
+            </div>
+
+            <div style={{
+              display: 'inline-block',
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              color: '#fef08a',
+              fontSize: '11px',
+              fontWeight: '800',
+              padding: '3px 10px',
+              borderRadius: '6px',
+              backdropFilter: 'blur(4px)'
+            }}>
+              🔥 ÚLTIMAS VAGAS HOJE
+            </div>
           </div>
 
           {/* Title */}
@@ -98,8 +112,8 @@ export default function HeroCarousel({ onSelectAttraction }) {
           {/* Subtitle */}
           <p style={{
             fontSize: '14px',
-            color: '#cbd5e1',
-            marginBottom: '16px',
+            color: '#e2e8f0',
+            marginBottom: '18px',
             lineHeight: '1.5',
             maxWidth: '520px',
             display: '-webkit-box',
@@ -111,34 +125,38 @@ export default function HeroCarousel({ onSelectAttraction }) {
           </p>
 
           {/* CTA Button */}
-          {slide.ctaText && (
-            <button
-              onClick={() => {
-                if (onSelectAttraction) onSelectAttraction(slide);
-              }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                height: '38px',
-                padding: '0 18px',
-                borderRadius: '10px',
-                backgroundColor: '#00a896',
-                color: '#ffffff',
-                fontSize: '13px',
-                fontWeight: '800',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(0,168,150,0.35)',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#028090'}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#00a896'}
-            >
-              <span>{slide.ctaText}</span>
-              <ArrowRight size={15} />
-            </button>
-          )}
+          <button
+            onClick={() => {
+              if (onSelectAttraction) onSelectAttraction(slide);
+            }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              height: '42px',
+              padding: '0 22px',
+              borderRadius: '12px',
+              backgroundColor: '#00a896',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: '900',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 4px 14px rgba(0,168,150,0.4)',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#028090';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = '#00a896';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <span>RESERVAR AGORA COM 15% OFF</span>
+            <ArrowRight size={16} />
+          </button>
         </div>
 
         {/* Navigation Arrows */}
