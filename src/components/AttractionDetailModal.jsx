@@ -30,23 +30,23 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
       justifyContent: 'center',
       padding: '16px'
     }}>
-      {/* Compact Light Card Ficha Técnica with Rounded Corners (24px) */}
+      {/* Compact Light Card Ficha Técnica with Proportional Photo (380px width) */}
       <div style={{
         backgroundColor: '#ffffff',
-        borderRadius: '24px',
-        maxWidth: '440px',
+        borderRadius: '20px',
+        maxWidth: '380px',
         width: '100%',
-        maxHeight: '90vh',
+        maxHeight: '88vh',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 20px 45px rgba(0, 0, 0, 0.12)',
+        boxShadow: '0 16px 36px rgba(0, 0, 0, 0.12)',
         border: '1px solid #e2e8f0',
         position: 'relative'
       }} className="animate-fade-in">
         
-        {/* Header Image (Square-proportioned banner with rounded corners) */}
-        <div style={{ position: 'relative', height: '170px', width: '100%', backgroundColor: '#f1f5f9', flexShrink: 0 }}>
+        {/* Header Image Proportional Banner */}
+        <div style={{ position: 'relative', height: '180px', width: '100%', backgroundColor: '#f1f5f9', flexShrink: 0 }}>
           <img
             src={attraction.image}
             alt={attraction.title}
