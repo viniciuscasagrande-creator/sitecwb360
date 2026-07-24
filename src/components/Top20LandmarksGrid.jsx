@@ -494,21 +494,19 @@ export const TOP_20_LANDMARKS = [
   }
 ];
 
-export default function Top20LandmarksGrid({ onClickDetail }) {
+export default function Top20LandmarksGrid({ onClickDetail, onSelectLandmark }) {
   const { t } = useLanguage();
   const [activeItem, setActiveItem] = useState(TOP_20_LANDMARKS[0]);
 
-  // Helper to trigger full modal
   const handleTriggerFullModal = (item) => {
-    const foundInDataset = ATTRACTIONS.find(a => a.id === item.id || a.title.toLowerCase().includes(item.id));
+    const triggerFn = onClickDetail || onSelectLandmark;
+    const foundInDataset = ATTRACTIONS.find(a => a.id === item.id || a.title.toLowerCase() === item.title.toLowerCase());
     
     const fullAttractionObject = {
       id: item.id,
       title: item.title,
       subtitle: item.subtitle,
-      location: item.location,
-      category: item.isHotel ? 'hoteis' : (foundInDataset?.category || 'parques'),
-      categories: foundInDataset?.categories || [item.category],
+      category: item.category,
       topic: item.isHotel ? 'hoteis' : (foundInDataset?.topic || 'parques'),
       rating: item.rating || foundInDataset?.rating || 4.9,
       reviewsCount: item.reviewsCount || foundInDataset?.reviewsCount || 2500,
@@ -537,8 +535,8 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
       ]
     };
 
-    if (onClickDetail) {
-      onClickDetail(fullAttractionObject);
+    if (triggerFn) {
+      triggerFn(fullAttractionObject);
     }
   };
 
