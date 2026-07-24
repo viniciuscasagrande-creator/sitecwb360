@@ -20,7 +20,7 @@ export default function ImperdiveisSection({ attractions, onClickDetail }) {
         gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
         gap: '24px'
       }}>
-        {(attractions || []).map((item) => (
+        {attractions.map((item) => (
           <AttractionCard 
             key={item.id} 
             attraction={item} 

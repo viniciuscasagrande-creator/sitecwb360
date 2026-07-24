@@ -110,14 +110,14 @@ export default function AttractionSlider({ title, subtitle, attractions, onClick
 
       </div>
 
-      {/* Grade vs Lista Layout Render */}
+      {/* Render View Mode: Grid or List */}
       {viewMode === 'grid' ? (
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
           gap: '24px'
         }}>
-          {(attractions || []).map((attraction) => (
+          {attractions.map((attraction) => (
             <AttractionCard 
               key={attraction.id} 
               attraction={attraction} 
@@ -126,8 +126,9 @@ export default function AttractionSlider({ title, subtitle, attractions, onClick
           ))}
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {(attractions || []).map((attraction) => (
+        /* List View rendering */
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {attractions.map((attraction) => (
             <AttractionListItem
               key={attraction.id}
               attraction={attraction}

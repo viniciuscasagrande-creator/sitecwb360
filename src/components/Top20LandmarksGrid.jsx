@@ -16,9 +16,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque Ecológico',
     icon: Trees,
     color: '#059669',
-    image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/jardim-botanico.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80'
+      '/images/jardim-botanico.jpg'
     ],
     location: 'Bairro Jardim Botânico • Eng. Ostoja Roguski, s/n',
     howToGet: 'Linha Turismo (Parada 1) ou BRT Centenário / Campo Comprido (Estação Botânico)',
@@ -65,9 +65,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Cultura & Arte',
     icon: Eye,
     color: '#7c3aed',
-    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/mon-olho.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=80'
+      '/images/mon-olho.jpg'
     ],
     location: 'Centro Cívico • Marechal Hermes, 999',
     howToGet: 'Linha Turismo (Parada MON) ou Ônibus Interbairros I / Ahu-Los Angeles',
@@ -89,9 +89,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Teatro & Shows',
     icon: Compass,
     color: '#d97706',
-    image: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/opera-de-arame.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80'
+      '/images/opera-de-arame.jpg'
     ],
     location: 'Pilarzinho / Abranches • R. João Gava, 970',
     howToGet: 'Linha Turismo (Parada Ópera de Arame) ou Ônibus Mateus Leme / Nilo Peçanha',
@@ -113,9 +113,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque & Vista 360°',
     icon: Sparkles,
     color: '#ea580c',
-    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/parque-tangua.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80'
+      '/images/parque-tangua.jpg'
     ],
     location: 'Taboão / Pilarzinho • R. Oswaldo Maciel, s/n',
     howToGet: 'Linha Turismo (Parada Parque Tanguá) ou Ônibus Nilo Peçanha',
@@ -752,86 +752,43 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
         })}
       </div>
 
-      {/* Selected Landmark Details Compact Light Ficha Técnica Panel (Centered 460px Card) */}
+      {/* Selected Landmark Details Compact Light Ficha Técnica Panel */}
       {activeItem && (
         <div style={{
-          marginTop: '28px',
-          maxWidth: '460px',
-          margin: '28px auto 0',
+          marginTop: '20px',
           backgroundColor: '#ffffff',
           color: '#0f172a',
-          borderRadius: '20px',
-          overflow: 'hidden',
-          boxShadow: '0 16px 36px rgba(0,0,0,0.1)',
+          borderRadius: '16px',
+          padding: '16px 20px',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
           border: '1px solid #e2e8f0',
-          position: 'relative'
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          lgGridTemplateColumns: '1fr 260px',
+          gap: '16px',
+          alignItems: 'center'
         }} className="animate-fade-in">
           
-          {/* Top Capa / Photo Banner (180px height) */}
-          <div style={{ position: 'relative', height: '180px', width: '100%', backgroundColor: '#f1f5f9' }}>
-            <img
-              src={activeItem.image || 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=800&q=80'}
-              alt={activeItem.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, transparent 60%)'
-            }} />
-
-            {/* Top-Left Badge */}
-            <div style={{ position: 'absolute', top: '12px', left: '12px', zIndex: 10, display: 'flex', gap: '6px' }}>
-              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '10px', padding: '3px 10px', borderRadius: '6px', textTransform: 'uppercase' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '10px', padding: '2px 8px', borderRadius: '4px' }}>
                 {activeItem.isHotel ? 'HOSPEDAGEM 5★' : `FICHA TÉCNICA #${activeItem.number}`}
               </span>
-            </div>
-
-            {/* Top-Right Close X Button */}
-            <button
-              onClick={() => setActiveItem(null)}
-              style={{
-                position: 'absolute',
-                top: '12px',
-                right: '12px',
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: '#ffffff',
-                color: '#0f172a',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 20,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.18)'
-              }}
-              title="Fechar Ficha Técnica"
-            >
-              <X size={16} />
-            </button>
-
-            {/* Bottom Title Overlay */}
-            <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px', zIndex: 10, color: '#ffffff' }}>
-              <span style={{ fontSize: '11px', color: '#cbd5e1', fontWeight: '600', display: 'block', marginBottom: '2px' }}>
+              <span style={{ color: '#64748b', fontSize: '12px', fontWeight: '600' }}>
                 {activeItem.category}
               </span>
-              <h3 style={{ fontSize: '18px', fontWeight: '900', lineHeight: '1.2' }}>
-                {activeItem.title}
-              </h3>
             </div>
-          </div>
 
-          {/* Card Body */}
-          <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>
+            <h3 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginBottom: '4px' }}>
+              {activeItem.title}
+            </h3>
+            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '12px' }}>
               {activeItem.subtitle}
             </p>
 
             {/* Uniform Symmetrical Info Cards: Endereço & BRT */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-              <div style={{ backgroundColor: '#f8fafc', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '8px', marginBottom: '8px' }}>
+              <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '52px' }}>
                 <div style={{ fontSize: '10px', color: '#00a896', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <MapPin size={11} color="#00a896" />
                   <span>Endereço</span>
@@ -841,7 +798,7 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#f8fafc', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+              <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '52px' }}>
                 <div style={{ fontSize: '10px', color: '#2563eb', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <Bus size={11} color="#2563eb" />
                   <span>Acesso BRT</span>
@@ -853,36 +810,49 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
             </div>
 
             {/* Symmetrical Dica 360 Card */}
-            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 12px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Info size={14} color="#16a34a" style={{ flexShrink: 0 }} />
+            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 10px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '6px', minHeight: '44px' }}>
+              <Info size={13} color="#16a34a" style={{ flexShrink: 0 }} />
               <div style={{ fontSize: '11px', color: '#166534', fontWeight: '600', lineHeight: '1.3' }}>
                 <strong>Dica 360°:</strong> {activeItem.tip}
               </div>
             </div>
+          </div>
 
-            {/* Action Button */}
+          {/* Right Square Format Image Banner & Trigger Button */}
+          <div style={{ position: 'relative', height: '180px', width: '100%', maxWidth: '240px', margin: '0 auto', aspectRatio: '1/1', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+            <img
+              src={activeItem.image}
+              alt={activeItem.title}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)'
+            }} />
             <button
               onClick={() => handleTriggerFullModal(activeItem)}
               style={{
-                width: '100%',
-                height: '40px',
-                borderRadius: '10px',
+                position: 'absolute',
+                bottom: '10px',
+                left: '10px',
+                right: '10px',
+                height: '36px',
+                borderRadius: '8px',
                 backgroundColor: '#00a896',
                 color: '#ffffff',
-                fontSize: '13px',
+                fontSize: '12px',
                 fontWeight: '800',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '6px',
-                boxShadow: '0 4px 12px rgba(0,168,150,0.3)',
-                marginTop: '4px'
+                gap: '6px'
               }}
             >
-              <span>{activeItem.isHotel ? 'Reservar Hospedagem 5★' : 'Ver Ficha Completa'}</span>
-              <ChevronRight size={15} />
+              <span>{activeItem.isHotel ? 'Reservar 5★' : 'Ver Ficha Completa'}</span>
+              <ChevronRight size={14} />
             </button>
           </div>
 
