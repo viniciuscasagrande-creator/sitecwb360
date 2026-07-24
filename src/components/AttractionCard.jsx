@@ -113,19 +113,26 @@ export default function AttractionCard({ attraction, onClickDetail }) {
             <span>{attraction.subtitle}</span>
           </div>
 
-          {/* Rating */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', backgroundColor: '#fef3c7', padding: '2px 6px', borderRadius: '4px' }}>
-              <Star size={13} color="#f59e0b" fill="#f59e0b" />
-              <span style={{ fontSize: '12px', fontWeight: '700', color: '#92400e' }}>{attraction.rating}</span>
+          {/* Rating & Availability Row */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '2px', backgroundColor: '#fef3c7', padding: '2px 6px', borderRadius: '4px' }}>
+                <Star size={13} color="#f59e0b" fill="#f59e0b" />
+                <span style={{ fontSize: '12px', fontWeight: '800', color: '#92400e' }}>{attraction.rating || 4.9}</span>
+              </div>
+              <span style={{ fontSize: '12px', color: '#64748b' }}>({attraction.reviewsCount || '1.2k'})</span>
             </div>
-            <span style={{ fontSize: '12px', color: '#64748b' }}>({attraction.reviewsCount})</span>
+
+            <span style={{ fontSize: '11px', fontWeight: '800', color: '#16a34a', backgroundColor: '#dcfce7', padding: '2px 8px', borderRadius: '9999px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16a34a' }}></span>
+              Aberto Hoje
+            </span>
           </div>
 
           {/* Duration */}
           <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#64748b', fontWeight: '600', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
             <Clock size={13} color="#64748b" />
-            <span>{attraction.duration}</span>
+            <span>{attraction.duration || 'Visita: 2 horas'}</span>
           </div>
         </div>
 
