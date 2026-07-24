@@ -4,11 +4,24 @@ import { HERO_SLIDES } from '../data/attractions';
 
 export default function HeroCarousel({ onSelectAttraction }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({ hours: 4, minutes: 32, seconds: 15 });
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        return { hours: 4, minutes: 30, seconds: 0 };
+      });
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -81,7 +94,7 @@ export default function HeroCarousel({ onSelectAttraction }) {
               textTransform: 'uppercase',
               boxShadow: '0 2px 8px rgba(234,88,12,0.4)'
             }}>
-              ⚡ OFERTA DO DIA • GANHE 15% OFF
+              ⚡ OFERTA DO DIA • ENCERRA EM {String(timeLeft.hours).padStart(2, '0')}h {String(timeLeft.minutes).padStart(2, '0')}m {String(timeLeft.seconds).padStart(2, '0')}s
             </div>
           </div>
 

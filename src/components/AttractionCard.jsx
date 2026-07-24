@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Clock, Heart, MapPin } from 'lucide-react';
+import { Star, Clock, Heart, MapPin, Share2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function AttractionCard({ attraction, onClickDetail }) {
@@ -9,6 +9,20 @@ export default function AttractionCard({ attraction, onClickDetail }) {
   const toggleFavorite = (e) => {
     e.stopPropagation();
     setIsFavorite(!isFavorite);
+  };
+
+  const handleShare = (e) => {
+    e.stopPropagation();
+    if (navigator.share) {
+      navigator.share({
+        title: attraction.title,
+        text: `Confira este passeio em Curitiba: ${attraction.title}`,
+        url: window.location.href
+      }).catch(() => {});
+    } else {
+      const text = encodeURIComponent(`Confira este passeio no Curitiba 360°: ${attraction.title} - ${window.location.href}`);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
   };
 
   return (
@@ -61,34 +75,54 @@ export default function AttractionCard({ attraction, onClickDetail }) {
           </div>
         )}
 
-        {/* Favorite Heart Button */}
-        <button
-          onClick={toggleFavorite}
-          style={{
-            position: 'absolute',
-            top: '12px',
-            right: '12px',
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            backgroundColor: 'rgba(255, 255, 255, 0.85)',
-            backdropFilter: 'blur(4px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: 'none',
-            cursor: 'pointer',
-            zIndex: 2,
-            transition: 'all 0.2s ease'
-          }}
-          title={isFavorite ? "Remover dos favoritos" : "Salvar nos favoritos"}
-        >
-          <Heart 
-            size={18} 
-            color={isFavorite ? '#ef4444' : '#64748b'} 
-            fill={isFavorite ? '#ef4444' : 'none'} 
-          />
-        </button>
+        {/* Action Buttons Top Right Overlay */}
+        <div style={{ position: 'absolute', top: '12px', right: '12px', display: 'flex', gap: '6px', zIndex: 2 }}>
+          {/* Share Button */}
+          <button
+            onClick={handleShare}
+            style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(4px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            title="Compartilhar passeio no WhatsApp"
+          >
+            <Share2 size={16} color="#00a896" />
+          </button>
+
+          {/* Favorite Heart Button */}
+          <button
+            onClick={toggleFavorite}
+            style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(4px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            title={isFavorite ? "Remover dos favoritos" : "Salvar nos favoritos"}
+          >
+            <Heart 
+              size={18} 
+              color={isFavorite ? '#ef4444' : '#64748b'} 
+              fill={isFavorite ? '#ef4444' : 'none'} 
+            />
+          </button>
+        </div>
 
         <div style={{
           position: 'absolute',
