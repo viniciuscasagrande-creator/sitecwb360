@@ -8,7 +8,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderComplete, setOrderComplete] = useState(null);
 
-  const total = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const total = cartItems.reduce((acc, item) => acc + ((item.isFree ? 0 : (item.price || 0)) * (item.quantity || 1)), 0);
 
   const handleCheckout = () => {
     setIsProcessing(true);
@@ -111,8 +111,8 @@ export default function CartModal({ isOpen, onClose, cartItems, onRemoveItem, on
                       <span style={{ fontSize: '12px', color: '#64748b', display: 'block', marginTop: '2px' }}>
                         {item.ticketType} • Qtd: {item.quantity}
                       </span>
-                      <strong style={{ fontSize: '14px', color: '#2563eb', display: 'block', marginTop: '4px' }}>
-                        R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
+                      <strong style={{ fontSize: '14px', color: item.isFree ? '#16a34a' : '#2563eb', display: 'block', marginTop: '4px' }}>
+                        {item.isFree ? 'Gratuito' : `R$ ${((item.price || 0) * (item.quantity || 1)).toFixed(2).replace('.', ',')}`}
                       </strong>
                     </div>
                     <button onClick={() => onRemoveItem(idx)} style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', padding: '6px' }}>

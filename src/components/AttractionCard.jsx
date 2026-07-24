@@ -175,7 +175,7 @@ export default function AttractionCard({ attraction, onClickDetail }) {
           <div>
             {attraction.originalPrice && attraction.originalPrice > 0 && (
               <span style={{ fontSize: '12px', color: '#94a3b8', textDecoration: 'line-through', marginRight: '6px' }}>
-                R$ {attraction.originalPrice.toFixed(2).replace('.', ',')}
+                R$ {(attraction.originalPrice || 0).toFixed(2).replace('.', ',')}
               </span>
             )}
 
@@ -187,7 +187,7 @@ export default function AttractionCard({ attraction, onClickDetail }) {
               <div>
                 <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>R$</span>
                 <span style={{ fontSize: '20px', fontWeight: '800', color: '#2563eb', lineHeight: '1' }}>
-                  {attraction.price.toFixed(2).replace('.', ',')}
+                  {(attraction.price || 0).toFixed(2).replace('.', ',')}
                 </span>
               </div>
             )}

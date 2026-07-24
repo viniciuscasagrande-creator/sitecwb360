@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { X, MapPin, Clock, Ticket, Bus, CloudSun, Utensils, Hotel, HelpCircle, Star, Sparkles } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
+import { 
+  X, MapPin, Clock, Ticket, Bus, CloudSun, Utensils, Hotel, 
+  Star, Share2, Heart, ShieldCheck
+} from 'lucide-react';
 
 export default function AttractionDetailModal({ attraction, onClose, onAddToCart }) {
-  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('overview');
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [sharedToast, setSharedToast] = useState(false);
 
   if (!attraction) return null;
 
@@ -13,40 +16,87 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
       onAddToCart({
         ...attraction,
         quantity: 1,
-        totalPrice: attraction.isFree ? 0 : attraction.price
+        totalPrice: attraction.isFree ? 0 : (attraction.price || attraction.priceVal || 0)
       });
     }
   };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: attraction.title,
+        text: `Confira ${attraction.title} no Curitiba 360°!`,
+        url: window.location.href
+      }).catch(() => {});
+    } else {
+      navigator.clipboard?.writeText(window.location.href);
+      setSharedToast(true);
+      setTimeout(() => setSharedToast(false), 2000);
+    }
+  };
+
+  const priceFormatted = attraction.isFree
+    ? 'GRÁTIS'
+    : attraction.price
+    ? typeof attraction.price === 'string' && attraction.price.includes('R$')
+      ? attraction.price
+      : `R$ ${(attraction.priceVal || attraction.price || 0).toFixed(2).replace('.', ',')}`
+    : 'GRÁTIS';
 
   return (
     <div style={{
       position: 'fixed',
       inset: 0,
-      zIndex: 3500,
-      backgroundColor: 'rgba(15, 23, 42, 0.45)',
-      backdropFilter: 'blur(6px)',
+      zIndex: 4000,
+      backgroundColor: 'rgba(15, 23, 42, 0.5)',
+      backdropFilter: 'blur(4px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '16px'
+      padding: '12px'
     }}>
-      {/* Compact Light Card Ficha Técnica with Proportional Photo (380px width) */}
+      
+      {/* Toast Notification */}
+      {sharedToast && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundColor: '#0f172a',
+          color: '#34d399',
+          padding: '8px 16px',
+          borderRadius: '9999px',
+          fontSize: '12px',
+          fontWeight: '800',
+          boxShadow: '0 8px 20px rgba(0,0,0,0.3)',
+          zIndex: 5000,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px'
+        }}>
+          <ShieldCheck size={14} />
+          <span>Link copiado!</span>
+        </div>
+      )}
+
+      {/* Ultra-Compact Ficha Técnica Card Modal (340px width) */}
       <div style={{
         backgroundColor: '#ffffff',
-        borderRadius: '20px',
-        maxWidth: '380px',
+        borderRadius: '14px',
+        maxWidth: '340px',
         width: '100%',
-        maxHeight: '88vh',
+        maxHeight: '75vh',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 16px 36px rgba(0, 0, 0, 0.12)',
-        border: '1px solid #e2e8f0',
+        boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
+        border: '1px solid #cbd5e1',
         position: 'relative'
       }} className="animate-fade-in">
         
-        {/* Header Image Proportional Banner */}
-        <div style={{ position: 'relative', height: '180px', width: '100%', backgroundColor: '#f1f5f9', flexShrink: 0 }}>
+        {/* Compact Header Image (115px) */}
+        <div style={{ position: 'relative', height: '115px', width: '100%', backgroundColor: '#f1f5f9', flexShrink: 0 }}>
           <img
             src={attraction.image}
             alt={attraction.title}
@@ -55,75 +105,107 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(15, 23, 42, 0.75) 0%, transparent 60%)'
+            background: 'linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 75%)'
           }} />
 
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            style={{
-              position: 'absolute',
-              top: '12px',
-              right: '12px',
-              width: '32px',
-              height: '32px',
-              borderRadius: '50%',
-              backgroundColor: '#ffffff',
-              color: '#0f172a',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 20,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
-              transition: 'transform 0.15s ease'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            <X size={16} />
-          </button>
+          {/* Action Header Buttons */}
+          <div style={{ position: 'absolute', top: '8px', right: '8px', display: 'flex', gap: '4px', zIndex: 20 }}>
+            <button
+              onClick={handleShare}
+              style={{
+                width: '26px',
+                height: '26px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                color: '#0f172a',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              title="Compartilhar"
+            >
+              <Share2 size={12} />
+            </button>
+
+            <button
+              onClick={() => setIsFavorite(!isFavorite)}
+              style={{
+                width: '26px',
+                height: '26px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                color: isFavorite ? '#ef4444' : '#0f172a',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              title="Favoritar"
+            >
+              <Heart size={12} fill={isFavorite ? '#ef4444' : 'none'} />
+            </button>
+
+            <button
+              onClick={onClose}
+              style={{
+                width: '26px',
+                height: '26px',
+                borderRadius: '50%',
+                backgroundColor: '#ffffff',
+                color: '#0f172a',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              title="Fechar"
+            >
+              <X size={14} />
+            </button>
+          </div>
 
           {/* Title Overlay */}
-          <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px', zIndex: 10, color: '#ffffff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-              <span style={{ backgroundColor: '#00a896', color: '#ffffff', fontSize: '10px', fontWeight: '900', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>
+          <div style={{ position: 'absolute', bottom: '8px', left: '10px', right: '10px', zIndex: 10, color: '#ffffff' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
+              <span style={{ backgroundColor: '#00a896', color: '#ffffff', fontSize: '8.5px', fontWeight: '900', padding: '1px 5px', borderRadius: '3px', textTransform: 'uppercase' }}>
                 {attraction.category || 'Atração'}
               </span>
-              <span style={{ backgroundColor: 'rgba(255,255,255,0.25)', color: '#ffffff', fontSize: '10px', fontWeight: '800', padding: '2px 8px', borderRadius: '4px', backdropFilter: 'blur(4px)' }}>
-                ⭐ {attraction.rating || 4.9} ({attraction.reviewsCount || '1.2k'})
+              <span style={{ backgroundColor: 'rgba(255,255,255,0.25)', color: '#ffffff', fontSize: '8.5px', fontWeight: '800', padding: '1px 5px', borderRadius: '3px' }}>
+                ⭐ {attraction.rating || 4.9}
               </span>
             </div>
-            <h3 style={{ fontSize: '18px', fontWeight: '900', lineHeight: '1.2' }}>
+
+            <h3 style={{ fontSize: '14px', fontWeight: '900', lineHeight: '1.2' }}>
               {attraction.title}
             </h3>
           </div>
         </div>
 
-        {/* Light Pill Navigation Tabs */}
-        <div style={{ backgroundColor: '#f8fafc', padding: '8px 12px', display: 'flex', gap: '6px', borderBottom: '1px solid #e2e8f0', overflowX: 'auto', flexShrink: 0 }} className="hide-scrollbar">
+        {/* Compact Tab Bar */}
+        <div style={{ backgroundColor: '#f8fafc', padding: '4px 8px', display: 'flex', gap: '4px', borderBottom: '1px solid #e2e8f0', overflowX: 'auto', flexShrink: 0 }} className="hide-scrollbar">
           {[
-            { id: 'overview', label: 'Informações' },
-            { id: 'transit', label: 'Como Chegar' },
+            { id: 'overview', label: 'Ficha' },
+            { id: 'transit', label: 'Acesso BRT' },
             { id: 'weather', label: 'Clima 21°C' },
-            { id: 'nearby', label: 'Próximos' },
-            { id: 'faq', label: 'Dicas' },
+            { id: 'faq', label: 'Dica' }
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
-                padding: '5px 12px',
-                fontSize: '11px',
+                padding: '3px 8px',
+                fontSize: '10px',
                 fontWeight: activeTab === tab.id ? '800' : '600',
                 color: activeTab === tab.id ? '#ffffff' : '#475569',
                 backgroundColor: activeTab === tab.id ? '#00a896' : '#ffffff',
                 borderRadius: '9999px',
                 border: activeTab === tab.id ? '1px solid #00a896' : '1px solid #cbd5e1',
                 cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                transition: 'all 0.15s ease'
+                whiteSpace: 'nowrap'
               }}
             >
               {tab.label}
@@ -131,88 +213,87 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
           ))}
         </div>
 
-        {/* Light Body Content (Clean & Readable) */}
-        <div style={{ padding: '16px', overflowY: 'auto', flex: 1, backgroundColor: '#ffffff', fontSize: '13px' }}>
+        {/* Compact Body Content */}
+        <div style={{ padding: '10px', overflowY: 'auto', flex: 1, backgroundColor: '#ffffff', fontSize: '11px', lineHeight: '1.35' }}>
           
           {activeTab === 'overview' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <p style={{ color: '#475569', lineHeight: '1.5', fontSize: '13px' }}>
-                {attraction.description || 'Ponto turístico imperdível de Curitiba! Excelente opção de passeio para toda a família.'}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p style={{
+                color: '#475569',
+                fontSize: '11px',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden'
+              }}>
+                {attraction.description || 'Ponto turístico principal de Curitiba para visitação.'}
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px' }}>
-                <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                  <span style={{ color: '#00a896', fontWeight: '800', fontSize: '10px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
-                    <MapPin size={12} color="#00a896" />
-                    <span>Endereço</span>
-                  </span>
-                  <div style={{ fontWeight: '800', color: '#0f172a' }}>{attraction.location || 'Curitiba'}</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
+                <div style={{ backgroundColor: '#f8fafc', padding: '6px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ color: '#00a896', fontWeight: '800', fontSize: '9px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '1px' }}>
+                    <MapPin size={10} color="#00a896" />
+                    <span>Local</span>
+                  </div>
+                  <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '10.5px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {attraction.location || 'Curitiba'}
+                  </div>
                 </div>
 
-                <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                  <span style={{ color: '#2563eb', fontWeight: '800', fontSize: '10px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
-                    <Clock size={12} color="#2563eb" />
-                    <span>Horários</span>
-                  </span>
-                  <div style={{ fontWeight: '800', color: '#0f172a' }}>{attraction.hours || '06h às 19h30'}</div>
+                <div style={{ backgroundColor: '#f8fafc', padding: '6px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ color: '#2563eb', fontWeight: '800', fontSize: '9px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '1px' }}>
+                    <Clock size={10} color="#2563eb" />
+                    <span>Horário</span>
+                  </div>
+                  <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '10.5px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {attraction.hours || '06h às 19h30'}
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
           {activeTab === 'transit' && (
-            <div style={{ backgroundColor: '#ffffff', padding: '10px 12px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(0,0,0,0.03)', color: '#1e40af', fontSize: '12px', lineHeight: '1.4' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#2563eb', fontWeight: '800', marginBottom: '4px' }}>
-                <Bus size={14} color="#2563eb" />
-                <span>Acesso BRT / Linha Turismo:</span>
+            <div style={{ backgroundColor: '#eff6ff', padding: '8px', borderRadius: '8px', border: '1px solid #bfdbfe', color: '#1e40af' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '800', fontSize: '11px', marginBottom: '2px' }}>
+                <Bus size={12} color="#2563eb" />
+                <span>Linha Turismo / BRT:</span>
               </div>
-              <p style={{ color: '#334155', fontWeight: '600' }}>{attraction.howToGet || 'Embarque na Linha Turismo Double-Decker ou utilize a Estação Tubo BRT mais próxima.'}</p>
+              <p style={{ fontSize: '10.5px', color: '#1e3a8a' }}>
+                {attraction.howToGet || 'Estação Tubo BRT ou Linha Turismo.'}
+              </p>
             </div>
           )}
 
           {activeTab === 'weather' && (
-            <div style={{ backgroundColor: '#f0fdf4', padding: '10px 12px', borderRadius: '12px', border: '1px solid #bbf7d0', color: '#166534', fontSize: '12px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '800', marginBottom: '4px' }}>
-                <CloudSun size={15} color="#16a34a" />
-                <span>Clima em Curitiba: 21°C Ensolarado</span>
+            <div style={{ backgroundColor: '#f0fdf4', padding: '8px', borderRadius: '8px', border: '1px solid #bbf7d0', color: '#166534' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '800', fontSize: '11px', marginBottom: '2px' }}>
+                <CloudSun size={13} color="#16a34a" />
+                <span>Clima em Curitiba: 21°C</span>
               </div>
-              <p style={{ color: '#15803d', fontWeight: '600' }}>Condição climática ideal para passeios e fotos ao ar livre nos parques.</p>
-            </div>
-          )}
-
-          {activeTab === 'nearby' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px' }}>
-              <div style={{ padding: '8px 10px', backgroundColor: '#ffffff', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Utensils size={15} color="#ea580c" />
-                <div>
-                  <strong>Bar do Alemão</strong> <span style={{ color: '#64748b' }}>(Chopp Submarino • 400m)</span>
-                </div>
-              </div>
-
-              <div style={{ padding: '8px 10px', backgroundColor: '#ffffff', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Hotel size={15} color="#00a896" />
-                <div>
-                  <strong>Radisson Hotel 5★</strong> <span style={{ color: '#64748b' }}>(Praça da Espanha • 800m)</span>
-                </div>
-              </div>
+              <p style={{ fontSize: '10.5px', color: '#15803d' }}>
+                Ensolarado e ideal para passeios.
+              </p>
             </div>
           )}
 
           {activeTab === 'faq' && (
-            <div style={{ backgroundColor: '#f0fdf4', padding: '10px 12px', borderRadius: '12px', border: '1px solid #bbf7d0', fontSize: '12px', color: '#166534' }}>
-              <strong style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#15803d', marginBottom: '2px' }}>💡 Dica Local 360°:</strong>
-              <p style={{ fontWeight: '600' }}>{attraction.tip || 'Horário ideal para fotos com iluminação perfeita é entre 16h30 e 18h no pôr do sol.'}</p>
+            <div style={{ backgroundColor: '#fef3c7', padding: '8px', borderRadius: '8px', border: '1px solid #fde68a', color: '#92400e' }}>
+              <strong style={{ color: '#b45309', fontSize: '10.5px', display: 'block', marginBottom: '1px' }}>💡 Dica Local:</strong>
+              <p style={{ fontSize: '10.5px' }}>
+                {attraction.tip || 'Fotos com iluminação perfeita das 16h30 às 18h.'}
+              </p>
             </div>
           )}
 
         </div>
 
-        {/* Light Footer Action Bar */}
-        <div style={{ padding: '12px 16px', backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+        {/* Ultra-Compact Footer */}
+        <div style={{ padding: '8px 10px', backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
           <div>
-            <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '600' }}>Ingressos a partir de</span>
-            <span style={{ fontSize: '17px', fontWeight: '900', color: attraction.isFree ? '#16a34a' : '#2563eb' }}>
-              {attraction.isFree ? 'ENTRADA GRATUITA' : `R$ ${attraction.price.toFixed(2).replace('.', ',')}`}
+            <span style={{ fontSize: '8.5px', color: '#64748b', display: 'block', fontWeight: '600' }}>Acesso</span>
+            <span style={{ fontSize: '13px', fontWeight: '900', color: attraction.isFree ? '#16a34a' : '#2563eb' }}>
+              {priceFormatted}
             </span>
           </div>
 
@@ -221,22 +302,20 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
             style={{
               backgroundColor: '#00a896',
               color: '#ffffff',
-              fontWeight: '800',
-              fontSize: '13px',
-              padding: '10px 20px',
-              borderRadius: '12px',
+              fontWeight: '900',
+              fontSize: '11px',
+              height: '30px',
+              padding: '0 12px',
+              borderRadius: '8px',
               border: 'none',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
-              boxShadow: '0 4px 12px rgba(0,168,150,0.35)',
-              transition: 'transform 0.15s ease'
+              gap: '4px',
+              boxShadow: '0 2px 6px rgba(0,168,150,0.3)'
             }}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-1px)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
-            <Ticket size={16} />
+            <Ticket size={12} />
             <span>Garantir Vaga</span>
           </button>
         </div>

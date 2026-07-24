@@ -147,3 +147,12 @@ button, a, input, select, textarea {
     min-width: 100% !important;
   }
 }
+
+@media (max-width: 768px) {
+  .mobile-only-nav {
+    display: block !important;
+  }
+  body {
+    padding-bottom: 60px !important;
+  }
+}

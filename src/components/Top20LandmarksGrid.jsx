@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Trees, Eye, Compass, Sparkles, Navigation, Landmark, Train, TowerControl as Tower,
   Smile, Flower2, Utensils, ShoppingBag, Music, Drama, Bus, Beer, Wine, CheckCircle2,
-  Clock, MapPin, Ticket, ExternalLink, ChevronRight, Info, Star, Maximize2, Hotel
+  Clock, MapPin, Ticket, ExternalLink, ChevronRight, Info, Star, Maximize2, Hotel, X
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { ATTRACTIONS } from '../data/attractions';
@@ -582,7 +582,6 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
             <div
               key={item.id}
               onClick={() => {
-                setActiveItem(item);
                 handleTriggerFullModal(item);
               }}
               className="hover-card-rise"
@@ -590,8 +589,8 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                border: item.isHotel ? '2px solid #00a896' : (isSelected ? `2px solid ${item.color}` : '1px solid #e2e8f0'),
-                boxShadow: isSelected ? `0 10px 25px rgba(0,0,0,0.12)` : '0 4px 12px rgba(0,0,0,0.03)',
+                border: item.isHotel ? '2px solid #00a896' : '1px solid #e2e8f0',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.03)',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
@@ -599,13 +598,18 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                 transition: 'all 0.25s ease'
               }}
             >
-              {/* Image & Rank Badge */}
-              <div style={{ position: 'relative', height: '170px', overflow: 'hidden' }}>
+              {/* Image & Rank Badge (Prominent 240px height) */}
+              <div style={{ position: 'relative', height: '240px', overflow: 'hidden' }}>
                 <img
                   src={item.image}
                   alt={item.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(15,23,42,0.7) 0%, transparent 60%)'
+                }} />
                 
                 {/* Rank Badge #1 to #20 */}
                 <div style={{
@@ -648,216 +652,108 @@ export default function Top20LandmarksGrid({ onClickDetail }) {
                   </div>
                 )}
 
-                {/* Category Badge */}
+                {/* Category Badge & Rating on Image */}
                 <div style={{
                   position: 'absolute',
-                  bottom: '10px',
+                  bottom: '12px',
                   left: '12px',
-                  backgroundColor: 'rgba(15, 23, 42, 0.85)',
-                  backdropFilter: 'blur(4px)',
-                  color: '#ffffff',
-                  fontSize: '11px',
-                  fontWeight: '700',
-                  padding: '3px 8px',
-                  borderRadius: '6px'
+                  right: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
                 }}>
-                  {item.category}
+                  <span style={{
+                    backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                    backdropFilter: 'blur(4px)',
+                    color: '#ffffff',
+                    fontSize: '11px',
+                    fontWeight: '700',
+                    padding: '4px 10px',
+                    borderRadius: '6px'
+                  }}>
+                    {item.category}
+                  </span>
+
+                  <span style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    color: '#0f172a',
+                    fontSize: '11px',
+                    fontWeight: '800',
+                    padding: '4px 8px',
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '3px'
+                  }}>
+                    <Star size={12} color="#f59e0b" fill="#f59e0b" />
+                    <span>{item.rating || '4.9'}</span>
+                  </span>
                 </div>
               </div>
 
-              {/* Card Body */}
+              {/* Minimal Clean Card Body */}
               <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                 <div>
-                  {/* Title & Icon */}
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '6px' }}>
-                    <div style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '8px',
-                      backgroundColor: `${item.color}15`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0
-                    }}>
-                      <IconComp size={18} color={item.color} />
-                    </div>
-                    <h3 style={{ fontSize: '15px', fontWeight: '800', color: '#0f172a', lineHeight: '1.3' }}>
-                      {item.title}
-                    </h3>
-                  </div>
+                  <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#0f172a', lineHeight: '1.3', marginBottom: '4px' }}>
+                    {item.title}
+                  </h3>
 
-                  <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '12px', fontWeight: '500' }}>
+                  <p style={{
+                    fontSize: '12px',
+                    color: '#64748b',
+                    marginBottom: '14px',
+                    fontWeight: '500',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}>
                     {item.subtitle}
                   </p>
-
-                  {/* Info Quick List */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '11px', color: '#475569', backgroundColor: '#f8fafc', padding: '10px', borderRadius: '10px', border: '1px solid #f1f5f9' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <MapPin size={13} color="#00a896" style={{ flexShrink: 0 }} />
-                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.location}</span>
-                    </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Clock size={13} color="#2563eb" style={{ flexShrink: 0 }} />
-                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.hours}</span>
-                    </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Ticket size={13} color="#ea580c" style={{ flexShrink: 0 }} />
-                      <span style={{ fontWeight: '800', color: item.price.includes('GRATUITA') || item.price.includes('GRÁTIS') ? '#16a34a' : '#2563eb' }}>
-                        {item.price}
-                      </span>
-                    </div>
-                  </div>
                 </div>
 
-                {/* Action Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleTriggerFullModal(item);
-                  }}
-                  style={{
-                    marginTop: '14px',
-                    width: '100%',
-                    height: '40px',
-                    borderRadius: '10px',
-                    backgroundColor: item.isHotel ? '#00a896' : '#2563eb',
-                    color: '#ffffff',
-                    fontSize: '12px',
-                    fontWeight: '800',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    boxShadow: item.isHotel ? '0 4px 12px rgba(0,168,150,0.3)' : '0 4px 12px rgba(37,99,235,0.25)',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.opacity = '0.9';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                  }}
-                >
-                  <span>{item.isHotel ? 'Reservar Hospedagem 5★' : 'Ver Informações Completas'}</span>
-                  <ChevronRight size={15} />
-                </button>
+                {/* Price & Action Button */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid #f1f5f9', paddingTop: '12px' }}>
+                  <div>
+                    <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '600' }}>Acesso</span>
+                    <span style={{ fontSize: '13px', fontWeight: '900', color: item.price.includes('GRATUITA') || item.price.includes('GRÁTIS') ? '#16a34a' : '#2563eb' }}>
+                      {item.price.includes('GRATUITA') ? 'GRÁTIS' : item.price}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleTriggerFullModal(item);
+                    }}
+                    style={{
+                      height: '36px',
+                      padding: '0 14px',
+                      borderRadius: '10px',
+                      backgroundColor: item.isHotel ? '#00a896' : '#2563eb',
+                      color: '#ffffff',
+                      fontSize: '12px',
+                      fontWeight: '800',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      boxShadow: item.isHotel ? '0 2px 8px rgba(0,168,150,0.3)' : '0 2px 8px rgba(37,99,235,0.25)',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseOver={(e) => { e.currentTarget.style.opacity = '0.9'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.opacity = '1'; }}
+                  >
+                    <span>{item.isHotel ? 'Reservar' : 'Ver Ficha'}</span>
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
               </div>
             </div>
           );
         })}
       </div>
-
-      {/* Selected Landmark Details Compact Light Ficha Técnica Panel */}
-      {activeItem && (
-        <div style={{
-          marginTop: '20px',
-          backgroundColor: '#ffffff',
-          color: '#0f172a',
-          borderRadius: '16px',
-          padding: '16px 20px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
-          border: '1px solid #e2e8f0',
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          lgGridTemplateColumns: '1fr 260px',
-          gap: '16px',
-          alignItems: 'center'
-        }} className="animate-fade-in">
-          
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-              <span style={{ backgroundColor: activeItem.isHotel ? '#00a896' : '#2563eb', color: '#ffffff', fontWeight: '900', fontSize: '10px', padding: '2px 8px', borderRadius: '4px' }}>
-                {activeItem.isHotel ? 'HOSPEDAGEM 5★' : `FICHA TÉCNICA #${activeItem.number}`}
-              </span>
-              <span style={{ color: '#64748b', fontSize: '12px', fontWeight: '600' }}>
-                {activeItem.category}
-              </span>
-            </div>
-
-            <h3 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginBottom: '4px' }}>
-              {activeItem.title}
-            </h3>
-            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '12px' }}>
-              {activeItem.subtitle}
-            </p>
-
-            {/* Uniform Symmetrical Info Cards: Endereço & BRT */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '8px', marginBottom: '8px' }}>
-              <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '52px' }}>
-                <div style={{ fontSize: '10px', color: '#00a896', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <MapPin size={11} color="#00a896" />
-                  <span>Endereço</span>
-                </div>
-                <div style={{ fontSize: '11px', fontWeight: '700', color: '#0f172a', lineHeight: '1.3' }}>
-                  {activeItem.location}
-                </div>
-              </div>
-
-              <div style={{ backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '52px' }}>
-                <div style={{ fontSize: '10px', color: '#2563eb', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Bus size={11} color="#2563eb" />
-                  <span>Acesso BRT</span>
-                </div>
-                <div style={{ fontSize: '11px', fontWeight: '600', color: '#334155', lineHeight: '1.3' }}>
-                  {activeItem.howToGet}
-                </div>
-              </div>
-            </div>
-
-            {/* Symmetrical Dica 360 Card */}
-            <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '8px 10px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '6px', minHeight: '44px' }}>
-              <Info size={13} color="#16a34a" style={{ flexShrink: 0 }} />
-              <div style={{ fontSize: '11px', color: '#166534', fontWeight: '600', lineHeight: '1.3' }}>
-                <strong>Dica 360°:</strong> {activeItem.tip}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Square Format Image Banner & Trigger Button */}
-          <div style={{ position: 'relative', height: '180px', width: '100%', maxWidth: '240px', margin: '0 auto', aspectRatio: '1/1', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
-            <img
-              src={activeItem.image}
-              alt={activeItem.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)'
-            }} />
-            <button
-              onClick={() => handleTriggerFullModal(activeItem)}
-              style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                right: '10px',
-                height: '36px',
-                borderRadius: '8px',
-                backgroundColor: '#00a896',
-                color: '#ffffff',
-                fontSize: '12px',
-                fontWeight: '800',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px'
-              }}
-            >
-              <span>{activeItem.isHotel ? 'Reservar 5★' : 'Ver Ficha Completa'}</span>
-              <ChevronRight size={14} />
-            </button>
-          </div>
-
-        </div>
-      )}
 
     </section>
   );

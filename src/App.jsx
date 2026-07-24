@@ -17,8 +17,8 @@ import AttractionDetailModal from './components/AttractionDetailModal';
 import FilterModal from './components/FilterModal';
 import CartModal from './components/CartModal';
 import LoginModal from './components/LoginModal';
-import BrandAboutModal from './components/BrandAboutModal';
-import AIAssistantWidget from './components/AIAssistantWidget';
+import ExperienciasEspeciaisSection from './components/ExperienciasEspeciaisSection';
+import MobileBottomNav from './components/MobileBottomNav';
 import Footer from './components/Footer';
 import { ATTRACTIONS, UNIFIED_NAV_ITEMS } from './data/attractions';
 
@@ -63,13 +63,25 @@ export default function App() {
     setIsAgencyQuoteOpen(true);
   };
 
-  // Filtered Attractions with Broad Fuzzy/Multi-Word Search Matching
+  // Filtered Attractions with Broad Fuzzy/Multi-Word Search Matching & Modal Filters
   const filteredAttractions = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     const searchWords = q.split(/\s+/).filter(Boolean);
 
     return ATTRACTIONS.filter((item) => {
-      // If user typed a search query, search globally across all fields
+      // 1. Applied Modal Filters (Price, Free, Accessibility, Parking, Kids, Wifi)
+      if (appliedFilters) {
+        if (appliedFilters.isFree && !item.isFree) return false;
+        if (appliedFilters.price === 'free' && !item.isFree) return false;
+        if (appliedFilters.price === 'under50' && !item.isFree && (item.price || 0) > 50) return false;
+        if (appliedFilters.price === 'under150' && !item.isFree && (item.price || 0) > 150) return false;
+        if (appliedFilters.accessibility && !item.accessibility) return false;
+        if (appliedFilters.parking && !item.parking) return false;
+        if (appliedFilters.kidsFriendly && !item.kidsFriendly) return false;
+        if (appliedFilters.wifi && !item.wifi) return false;
+      }
+
+      // 2. Search Query Matching (Search globally across all fields)
       if (q) {
         const fullContent = [
           item.title,
@@ -88,7 +100,7 @@ export default function App() {
         return matchesSearch;
       }
 
-      // Navigation tab filter (when no search query is typed)
+      // 3. Navigation tab filter (when no search query is typed)
       if (activeTopicTab !== 'all' && activeTopicTab !== 'roteiros' && activeTopicTab !== 'guia' && activeTopicTab !== 'agencias' && activeTopicTab !== 'hoteis') {
         if (activeTopicTab === 'ofertas') {
           if (!item.discount && !item.categories?.includes('promocionais') && !item.categories?.includes('cupons')) {
@@ -102,7 +114,7 @@ export default function App() {
 
       return true;
     });
-  }, [activeTopicTab, searchQuery]);
+  }, [activeTopicTab, searchQuery, appliedFilters]);
 
   // Featured sections
   const imperdiveisAttractions = useMemo(() => {
@@ -134,6 +146,7 @@ export default function App() {
   const handleClearFilters = () => {
     setActiveTopicTab('all');
     setSearchQuery('');
+    setAppliedFilters(null);
   };
 
   const activeTabMeta = UNIFIED_NAV_ITEMS.find(i => i.id === activeTopicTab);
@@ -250,6 +263,11 @@ export default function App() {
               />
             )}
 
+            {/* Experiências Exclusivas & Avaliações dos Turistas na Home */}
+            {activeTopicTab === 'all' && !searchQuery && (
+              <ExperienciasEspeciaisSection onClickDetail={setActiveAttraction} />
+            )}
+
             {/* Nearby / Geolocation Section */}
             <div id="nearby-section">
               <NearbySection
@@ -269,6 +287,18 @@ export default function App() {
 
       {/* Floating CWB360 AI Assistant Button */}
       <AIAssistantWidget onSelectAttraction={setActiveAttraction} />
+
+      {/* Mobile Bottom Bar Navigation */}
+      <MobileBottomNav
+        activeTab={activeTopicTab}
+        onSelectTab={handleSelectTopicTab}
+        onOpenMap={() => {
+          const nearbyEl = document.getElementById('nearby-section');
+          if (nearbyEl) nearbyEl.scrollIntoView({ behavior: 'smooth' });
+        }}
+        onOpenAccount={() => setIsLoginOpen(true)}
+        favoritesCount={0}
+      />
 
       {/* Footer */}
       <Footer onOpenAboutBrand={() => setIsAboutBrandOpen(true)} />

@@ -108,7 +108,7 @@ export default function AttractionListItem({ attraction, onClickDetail }) {
                 <div style={{ textAlign: 'right' }}>
                   <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>A partir de</span>
                   <div style={{ fontSize: '20px', fontWeight: '900', color: '#2563eb', lineHeight: '1' }}>
-                    R$ {attraction.price.toFixed(2).replace('.', ',')}
+                    R$ {(attraction.price || 0).toFixed(2).replace('.', ',')}
                   </div>
                 </div>
               )}
@@ -119,18 +119,18 @@ export default function AttractionListItem({ attraction, onClickDetail }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap', marginTop: '10px', marginBottom: '12px', fontSize: '13px', color: '#64748b' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#fef3c7', padding: '3px 10px', borderRadius: '6px' }}>
               <Star size={14} color="#f59e0b" fill="#f59e0b" />
-              <span style={{ fontSize: '12px', fontWeight: '800', color: '#92400e' }}>{attraction.rating}</span>
-              <span style={{ fontSize: '11px', color: '#78350f' }}>({attraction.reviewsCount} avaliações)</span>
+              <span style={{ fontSize: '12px', fontWeight: '800', color: '#92400e' }}>{attraction.rating || 4.9}</span>
+              <span style={{ fontSize: '11px', color: '#78350f' }}>({attraction.reviewsCount || '1.2k'} avaliações)</span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', fontWeight: '600', color: '#475569' }}>
               <Clock size={14} color="#00a896" />
-              <span>Duração: {attraction.duration}</span>
+              <span>Duração: {attraction.duration || 'Visita: 2h'}</span>
             </div>
           </div>
 
           <p style={{ fontSize: '14px', color: '#475569', lineHeight: '1.5', marginBottom: '14px' }}>
-            {attraction.description.substring(0, 160)}...
+            {(attraction.description || '').substring(0, 160)}...
           </p>
 
           {/* Bullet Features */}
