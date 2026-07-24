@@ -9,26 +9,26 @@ import { ATTRACTIONS } from '../data/attractions';
 // Database of Curitiba Landmarks, Museums, Neighborhoods, Cities, Hotels, Restaurants, Shows
 export const AUTOCOMPLETE_KNOWLEDGE = [
   // MUSEUMS & CULTURE
-  { id: 'mon', title: 'Museu Oscar Niemeyer (MON Olho)', category: 'Museus & Cultura', type: 'museus', location: 'Centro Cívico', image: '/images/mon-olho.jpg' },
-  { id: 'museu-egipcio', title: 'Museu Egípcio e Rosacruz', category: 'Museus & Cultura', type: 'museus', location: 'Bacacheri', image: '/images/mon-olho.jpg' },
-  { id: 'museu-expedicionario', title: 'Museu do Expedicionário', category: 'Museus & Cultura', type: 'museus', location: 'Alto da XV', image: '/images/mon-olho.jpg' },
-  { id: 'museu-paranaense', title: 'Museu Paranaense (Fundado em 1876)', category: 'Museus & Cultura', type: 'museus', location: 'São Francisco', image: '/images/mon-olho.jpg' },
-  { id: 'paco-da-liberdade', title: 'Sesc Paço da Liberdade', category: 'Museus & Cultura', type: 'museus', location: 'Centro Histórico', image: '/images/largo-da-ordem.jpg' },
+  { id: 'mon', title: 'Museu Oscar Niemeyer (MON Olho)', category: 'Museus & Cultura', type: 'museus', location: 'Centro Cívico', image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=600&q=80' },
+  { id: 'museu-egipcio', title: 'Museu Egípcio e Rosacruz', category: 'Museus & Cultura', type: 'museus', location: 'Bacacheri', image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=600&q=80' },
+  { id: 'museu-expedicionario', title: 'Museu do Expedicionário', category: 'Museus & Cultura', type: 'museus', location: 'Alto da XV', image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=600&q=80' },
+  { id: 'museu-paranaense', title: 'Museu Paranaense (Fundado em 1876)', category: 'Museus & Cultura', type: 'museus', location: 'São Francisco', image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=600&q=80' },
+  { id: 'paco-da-liberdade', title: 'Sesc Paço da Liberdade', category: 'Museus & Cultura', type: 'museus', location: 'Centro Histórico', image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80' },
 
   // PARKS & NATURE
-  { id: 'jardim-botanico', title: 'Jardim Botânico de Curitiba (Estufa de Vidro)', category: 'Parques & Natureza', type: 'parques', location: 'Jardim Botânico', image: '/images/jardim-botanico.jpg' },
-  { id: 'parque-tangua', title: 'Parque Tanguá (Mirante do Castelo & Cascata)', category: 'Parques & Natureza', type: 'parques', location: 'Taboão / Pilarzinho', image: '/images/parque-tangua.jpg' },
-  { id: 'parque-barigui', title: 'Parque Barigui (Recanto das Capivaras)', category: 'Parques & Natureza', type: 'parques', location: 'Bigorrilho', image: '/images/parque-barigui.jpg' },
-  { id: 'bosque-alemao', title: 'Bosque Alemão (Trilha de João e Maria)', category: 'Parques & Natureza', type: 'parques', location: 'Vista Alegre', image: '/images/bosque-alemao.jpg' },
-  { id: 'praca-do-japao', title: 'Praça do Japão (Cerejeiras & Templo)', category: 'Parques & Natureza', type: 'parques', location: 'Batel / Água Verde', image: '/images/praca-do-japao.jpg' },
-  { id: 'passeio-publico', title: 'Passeio Público (Primeiro Parque 1886)', category: 'Parques & Natureza', type: 'parques', location: 'Centro', image: '/images/passeio-publico.jpg' },
-  { id: 'bosque-papa', title: 'Bosque João Paulo II (Memorial Polonês)', category: 'Parques & Natureza', type: 'parques', location: 'Centro Cívico', image: '/images/bosque-papa.jpg' },
+  { id: 'jardim-botanico', title: 'Jardim Botânico de Curitiba (Estufa de Vidro)', category: 'Parques & Natureza', type: 'parques', location: 'Jardim Botânico', image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=600&q=80' },
+  { id: 'parque-tangua', title: 'Parque Tanguá (Mirante do Castelo & Cascata)', category: 'Parques & Natureza', type: 'parques', location: 'Taboão / Pilarzinho', image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=600&q=80' },
+  { id: 'parque-barigui', title: 'Parque Barigui (Recanto das Capivaras)', category: 'Parques & Natureza', type: 'parques', location: 'Bigorrilho', image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=600&q=80' },
+  { id: 'bosque-alemao', title: 'Bosque Alemão (Trilha de João e Maria)', category: 'Parques & Natureza', type: 'parques', location: 'Vista Alegre', image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80' },
+  { id: 'praca-do-japao', title: 'Praça do Japão (Cerejeiras & Templo)', category: 'Parques & Natureza', type: 'parques', location: 'Batel / Água Verde', image: 'https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=600&q=80' },
+  { id: 'passeio-publico', title: 'Passeio Público (Primeiro Parque 1886)', category: 'Parques & Natureza', type: 'parques', location: 'Centro', image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=600&q=80' },
+  { id: 'bosque-papa', title: 'Bosque João Paulo II (Memorial Polonês)', category: 'Parques & Natureza', type: 'parques', location: 'Centro Cívico', image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80' },
 
   // GASTRONOMY & NIGHTLIFE
-  { id: 'bar-do-alemao', title: 'Bar do Alemão (Chopp Submarino & Carne de Onça)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'Largo da Ordem', image: '/images/bar-do-alemao.jpg' },
-  { id: 'santa-felicidade', title: 'Bairro Gastronômico de Santa Felicidade (Madalosso)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'Santa Felicidade', image: '/images/santa-felicidade.jpg' },
-  { id: 'mercado-municipal', title: 'Mercado Municipal de Curitiba (Orgânicos & Especiarias)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'Centro / Capanema', image: '/images/mercado-municipal.jpg' },
-  { id: 'caminho-do-vinho', title: 'Caminho do Vinho (Adegas & Café Colonial)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'São José dos Pinhais RMC', image: '/images/caminho-do-vinho.jpg' },
+  { id: 'bar-do-alemao', title: 'Bar do Alemão (Chopp Submarino & Carne de Onça)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'Largo da Ordem', image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80' },
+  { id: 'santa-felicidade', title: 'Bairro Gastronômico de Santa Felicidade (Madalosso)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'Santa Felicidade', image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80' },
+  { id: 'mercado-municipal', title: 'Mercado Municipal de Curitiba (Orgânicos & Especiarias)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'Centro / Capanema', image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=600&q=80' },
+  { id: 'caminho-do-vinho', title: 'Caminho do Vinho (Adegas & Café Colonial)', category: 'Gastronomia & Choperias', type: 'restaurantes', location: 'São José dos Pinhais RMC', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80' },
 
   // HOTELS & 5-STAR STAYS
   { id: 'radisson-hotel-curitiba', title: 'Radisson Hotel Curitiba 5★ (Praça da Espanha)', category: 'Hotéis 5★ & Hospedagem', type: 'hoteis', location: 'Batel', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80' },
@@ -37,10 +37,10 @@ export const AUTOCOMPLETE_KNOWLEDGE = [
 
   // NEIGHBORHOODS & REGION
   { id: 'bairro-batel', title: 'Bairro Batel (Soho, Gastronomia & Shoppings)', category: 'Bairros & Cidades', type: 'bairros', location: 'Batel', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80' },
-  { id: 'largo-da-ordem', title: 'Largo da Ordem (Feira de Domingo & Centro Histórico)', category: 'Bairros & Cidades', type: 'bairros', location: 'São Francisco', image: '/images/largo-da-ordem.jpg' },
-  { id: 'cidade-morretes', title: 'Cidade de Morretes (Passeio de Trem & Barreado)', category: 'Bairros & Cidades', type: 'cidades', location: 'Serra do Mar RMC', image: '/images/trem-serra-verde.jpg' },
-  { id: 'cidade-sjp', title: 'São José dos Pinhais (Caminho do Vinho)', category: 'Bairros & Cidades', type: 'cidades', location: 'Região Metropolitana', image: '/images/caminho-do-vinho.jpg' },
-  { id: 'cidade-ponta-grossa', title: 'Ponta Grossa (Vila Velha & Arenitos)', category: 'Bairros & Cidades', type: 'cidades', location: 'Campos Gerais RMC', image: '/images/vila-velha.jpg' }
+  { id: 'largo-da-ordem', title: 'Largo da Ordem (Feira de Domingo & Centro Histórico)', category: 'Bairros & Cidades', type: 'bairros', location: 'São Francisco', image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80' },
+  { id: 'cidade-morretes', title: 'Cidade de Morretes (Passeio de Trem & Barreado)', category: 'Bairros & Cidades', type: 'cidades', location: 'Serra do Mar RMC', image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80' },
+  { id: 'cidade-sjp', title: 'São José dos Pinhais (Caminho do Vinho)', category: 'Bairros & Cidades', type: 'cidades', location: 'Região Metropolitana', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80' },
+  { id: 'cidade-ponta-grossa', title: 'Ponta Grossa (Vila Velha & Arenitos)', category: 'Bairros & Cidades', type: 'cidades', location: 'Campos Gerais RMC', image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=600&q=80' }
 ];
 
 export default function AirbnbSearchBar({ searchQuery, onSearchChange, onSelectAttraction, onSelectTab }) {
@@ -60,134 +60,209 @@ export default function AirbnbSearchBar({ searchQuery, onSearchChange, onSelectA
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Filter Knowledge Items
-  const filteredItems = useMemo(() => {
-    const q = (searchQuery || '').toLowerCase().trim();
+  // Filtered Auto-complete Knowledge Results
+  const searchResults = useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query && activeFilter === 'all') return AUTOCOMPLETE_KNOWLEDGE.slice(0, 6);
+
     return AUTOCOMPLETE_KNOWLEDGE.filter((item) => {
-      if (activeFilter !== 'all' && item.type !== activeFilter) {
-        return false;
-      }
-      if (!q) return true;
-      return (
-        item.title.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q) ||
-        item.location.toLowerCase().includes(q)
-      );
+      const matchesType = activeFilter === 'all' || item.type === activeFilter;
+      if (!matchesType) return false;
+
+      if (!query) return true;
+
+      const titleMatch = item.title.toLowerCase().includes(query);
+      const catMatch = item.category.toLowerCase().includes(query);
+      const locMatch = item.location.toLowerCase().includes(query);
+
+      return titleMatch || catMatch || locMatch;
     });
   }, [searchQuery, activeFilter]);
 
-  const handleSelectSuggestion = (item) => {
-    const cleanTitle = item.title.split(' (')[0];
-    onSearchChange(cleanTitle);
+  const handleSelectResult = (item) => {
     setIsOpen(false);
-
-    const matchedAttraction = ATTRACTIONS.find(a => a.id === item.id || (a.title && a.title.toLowerCase().includes(item.id)));
-    if (matchedAttraction && onSelectAttraction) {
-      onSelectAttraction(matchedAttraction);
+    
+    // Find in full ATTRACTIONS database
+    const fullItem = ATTRACTIONS.find(a => a.id === item.id || a.title.toLowerCase().includes(item.id));
+    if (fullItem && onSelectAttraction) {
+      onSelectAttraction(fullItem);
+    } else if (onSearchChange) {
+      onSearchChange(item.title);
     }
   };
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-xl">
-      {/* Airbnb Search Input Bar */}
-      <div 
-        onClick={() => setIsOpen(true)}
-        className="flex items-center gap-3 h-12 px-4 bg-white rounded-full border-2 border-slate-200 hover:border-emerald-500 transition-all shadow-sm cursor-pointer"
-      >
-        <Search className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+    <div ref={containerRef} style={{ position: 'relative', width: '100%' }}>
+      {/* Search Input Box */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '#ffffff',
+        border: '1px solid #cbd5e1',
+        borderRadius: '9999px',
+        padding: '6px 8px 6px 16px',
+        boxShadow: isOpen ? '0 8px 30px rgba(0,0,0,0.12)' : '0 2px 8px rgba(0,0,0,0.04)',
+        transition: 'all 0.2s ease'
+      }}>
+        <Search size={18} color="#00a896" style={{ flexShrink: 0, marginRight: '10px' }} />
         
         <input
           type="text"
-          value={searchQuery || ''}
+          value={searchQuery}
           onChange={(e) => {
             onSearchChange(e.target.value);
-            if (!isOpen) setIsOpen(true);
+            setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          placeholder={t('searchPlaceholder') || "O que você quer fazer em Curitiba? Pesquise parques, hotéis, restaurantes..."}
-          className="w-full bg-transparent text-slate-800 text-sm font-semibold placeholder:text-slate-400 placeholder:font-normal outline-none"
+          placeholder="O que você quer fazer em Curitiba? (Ex: Botânico, Trem, Batel, Bar...)"
+          style={{
+            width: '100%',
+            border: 'none',
+            outline: 'none',
+            fontSize: '13px',
+            fontWeight: '600',
+            color: '#0f172a',
+            backgroundColor: 'transparent'
+          }}
         />
 
         {searchQuery && (
           <button
-            onClick={(e) => {
-              e.stopPropagation();
+            onClick={() => {
               onSearchChange('');
+              setIsOpen(false);
             }}
-            className="p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 transition-colors"
+            style={{
+              backgroundColor: '#f1f5f9',
+              border: 'none',
+              borderRadius: '50%',
+              width: '24px',
+              height: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: '#64748b',
+              marginRight: '6px'
+            }}
           >
-            <X className="w-4 h-4" />
+            <X size={14} />
           </button>
         )}
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          style={{
+            backgroundColor: '#00a896',
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: '9999px',
+            padding: '8px 16px',
+            fontSize: '12px',
+            fontWeight: '800',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            flexShrink: 0
+          }}
+        >
+          <span>Pesquisar</span>
+        </button>
       </div>
 
-      {/* Popover Dropdown */}
+      {/* Auto-Complete Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-14 left-0 right-0 z-50 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-h-96 flex flex-col">
+        <div style={{
+          position: 'absolute',
+          top: 'calc(100% + 8px)',
+          left: 0,
+          right: 0,
+          backgroundColor: '#ffffff',
+          borderRadius: '20px',
+          boxShadow: '0 16px 40px rgba(0,0,0,0.15)',
+          border: '1px solid #e2e8f0',
+          padding: '16px',
+          zIndex: 2000,
+          maxHeight: '420px',
+          overflowY: 'auto'
+        }} className="animate-fade-in">
           
-          {/* Quick Category Chips */}
-          <div className="p-3 bg-slate-50 border-b border-slate-200 flex gap-2 overflow-x-auto hide-scrollbar">
+          {/* Quick Filter Categories */}
+          <div style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '12px', marginBottom: '12px', borderBottom: '1px solid #f1f5f9' }} className="hide-scrollbar">
             {[
               { id: 'all', label: 'Todos' },
               { id: 'parques', label: '🌲 Parques' },
               { id: 'museus', label: '🏛️ Museus' },
               { id: 'restaurantes', label: '🍝 Gastronomia' },
-              { id: 'hoteis', label: '🏨 Hotéis 5★' },
-              { id: 'bairros', label: '📍 Bairros & Cidades' },
-            ].map((chip) => (
+              { id: 'hoteis', label: '🏨 Hotéis' },
+              { id: 'bairros', label: '📍 Bairros & Cidades' }
+            ].map(f => (
               <button
-                key={chip.id}
-                onClick={() => setActiveFilter(chip.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
-                  activeFilter === chip.id
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
-                }`}
+                key={f.id}
+                onClick={() => setActiveFilter(f.id)}
+                style={{
+                  padding: '5px 12px',
+                  borderRadius: '9999px',
+                  fontSize: '11px',
+                  fontWeight: activeFilter === f.id ? '800' : '600',
+                  backgroundColor: activeFilter === f.id ? '#0f172a' : '#f8fafc',
+                  color: activeFilter === f.id ? '#ffffff' : '#64748b',
+                  border: activeFilter === f.id ? '1px solid #0f172a' : '1px solid #e2e8f0',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap'
+                }}
               >
-                {chip.label}
+                {f.label}
               </button>
             ))}
           </div>
 
-          {/* Suggestions List */}
-          <div className="overflow-y-auto p-2 divide-y divide-slate-100">
-            {filteredItems.length > 0 ? (
-              filteredItems.map((item) => (
+          {/* Results List */}
+          {searchResults.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {searchResults.map((item) => (
                 <div
                   key={item.id}
-                  onClick={() => handleSelectSuggestion(item)}
-                  className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 cursor-pointer transition-colors"
+                  onClick={() => handleSelectResult(item)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '8px 10px',
+                    borderRadius: '12px',
+                    cursor: 'pointer',
+                    transition: 'backgroundColor 0.15s ease'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
-                    loading="lazy"
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    style={{ width: '44px', height: '44px', borderRadius: '10px', objectFit: 'cover', flexShrink: 0 }}
                   />
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-extrabold text-slate-800 truncate">
+
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: '13px', fontWeight: '800', color: '#0f172a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {item.title}
                     </div>
-                    <div className="flex items-center gap-2 text-[11px] text-slate-500 mt-0.5">
-                      <span className="text-emerald-600 font-bold">{item.category}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+                      <span style={{ color: '#00a896', fontWeight: '700' }}>{item.category}</span>
                       <span>•</span>
-                      <span className="truncate">{item.location}</span>
+                      <span>{item.location}</span>
                     </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 flex-shrink-0" />
+
+                  <ChevronRight size={16} color="#cbd5e1" />
                 </div>
-              ))
-            ) : (
-              <div className="p-6 text-center text-slate-500">
-                <div className="text-sm font-bold text-slate-800 mb-1">
-                  Nenhuma sugestão encontrada para "{searchQuery}"
-                </div>
-                <div className="text-xs">
-                  Tente buscar por "Museu", "Jardim Botânico", "Batel" ou "Hotel".
-                </div>
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ padding: '20px', textAlign: 'center', color: '#64748b', fontSize: '13px' }}>
+              Nenhum resultado encontrado para "{searchQuery}".
+            </div>
+          )}
 
         </div>
       )}

@@ -113,9 +113,9 @@ export const TOP_20_LANDMARKS = [
     category: 'Parque & Vista 360°',
     icon: Sparkles,
     color: '#ea580c',
-    image: '/images/parque-tangua.jpg',
+    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80',
     gallery: [
-      '/images/parque-tangua.jpg'
+      'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1200&q=80'
     ],
     location: 'Taboão / Pilarzinho • R. Oswaldo Maciel, s/n',
     howToGet: 'Linha Turismo (Parada Parque Tanguá) ou Ônibus Nilo Peçanha',
