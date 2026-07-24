@@ -212,7 +212,7 @@ export default function AttractionDetailModal({ attraction, onClose, onAddToCart
           <div>
             <span style={{ fontSize: '10px', color: '#64748b', display: 'block', fontWeight: '600' }}>Ingressos a partir de</span>
             <span style={{ fontSize: '17px', fontWeight: '900', color: attraction.isFree ? '#16a34a' : '#2563eb' }}>
-              {attraction.isFree ? 'ENTRADA GRATUITA' : `R$ ${attraction.price.toFixed(2).replace('.', ',')}`}
+              {attraction.isFree ? 'ENTRADA GRATUITA' : `R$ ${(attraction.price || 0).toFixed(2).replace('.', ',')}`}
             </span>
           </div>
 
